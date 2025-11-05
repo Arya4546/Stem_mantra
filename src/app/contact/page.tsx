@@ -63,7 +63,7 @@ export default function ContactPage() {
                 <span className="gradient-text">Get In Touch</span>
               </h1>
               <p className="text-xl md:text-2xl text-gray-600 mb-8">
-                Let's discuss how we can transform your school with world-class STEM education
+                Let&apos;s discuss how we can transform your school with world-class STEM education
               </p>
             </div>
           </div>
@@ -140,7 +140,7 @@ export default function ContactPage() {
                   Send Us a Message
                 </h2>
                 <p className="text-lg text-gray-600 mb-8">
-                  Fill out the form below and we'll get back to you within 24 hours. Whether you want to setup a lab, get training, or just learn more about our programs.
+                  Fill out the form below and we&apos;ll get back to you within 24 hours. Whether you want to setup a lab, get training, or just learn more about our programs.
                 </p>
 
                 <form onSubmit={handleSubmit} className="space-y-6">
@@ -240,7 +240,7 @@ export default function ContactPage() {
 
                   {submitStatus === "success" && (
                     <div className="bg-green-50 border-2 border-green-500 rounded-lg p-4 text-green-700">
-                      Thank you! Your message has been sent successfully. We'll get back to you soon.
+                      Thank you! Your message has been sent successfully. We&apos;ll get back to you soon.
                     </div>
                   )}
 

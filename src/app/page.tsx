@@ -52,10 +52,10 @@ export default function HomePage() {
           <div className="container mx-auto px-4 relative">
             <div className="max-w-3xl mx-auto text-center space-y-6 mb-16">
               <h2 className="text-4xl md:text-5xl font-bold text-gray-900">
-                Building Tomorrow's <span className="gradient-text">Innovators</span>
+                Building Tomorrow&apos;s <span className="gradient-text">Innovators</span>
               </h2>
               <p className="text-lg text-gray-600">
-                India's leading provider of robotics and STEM education solutions with NEP 2020 aligned curriculum
+                India&apos;s leading provider of robotics and STEM education solutions with NEP 2020 aligned curriculum
               </p>
             </div>
 

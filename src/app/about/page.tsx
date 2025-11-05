@@ -143,8 +143,8 @@ export default function AboutPage() {
                   Our <span className="gradient-text">Vision</span>
                 </h2>
                 <p className="text-lg text-gray-700 leading-relaxed">
-                  To be India's leading STEM education provider, transforming schools into 
-                  innovation hubs where students don't just learn concepts but create solutions. 
+                  To be India&apos;s leading STEM education provider, transforming schools into 
+                  innovation hubs where students don&apos;t just learn concepts but create solutions. 
                   We envision a future where every child has hands-on experience with robotics, 
                   AI, and emerging technologies, building a generation ready for Industry 4.0.
                 </p>
@@ -222,7 +222,7 @@ export default function AboutPage() {
                 Our <span className="gradient-text">Journey</span>
               </h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                From a small startup to India's trusted STEM education partner
+                From a small startup to India&apos;s trusted STEM education partner
               </p>
             </div>
 
@@ -260,7 +260,7 @@ export default function AboutPage() {
                 Why Schools Choose <span className="gradient-text">STEM Mantra</span>
               </h2>
               <p className="text-xl text-gray-600 mb-12 leading-relaxed">
-                We don't just setup labs, we transform educational experiences. Our comprehensive 
+                We don&apos;t just setup labs, we transform educational experiences. Our comprehensive 
                 approach includes world-class equipment, expert training, innovative curriculum, 
                 and ongoing support to ensure your school stays at the forefront of STEM education.
               </p>
