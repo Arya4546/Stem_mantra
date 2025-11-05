@@ -1,0 +1,10 @@
+# https://www.robotstxt.org/robotstxt.html
+User-agent: *
+Allow: /
+
+# Disallow admin or private pages
+Disallow: /api/
+Disallow: /admin/
+
+# Sitemap
+Sitemap: https://www.stemmantra.com/sitemap.xml
