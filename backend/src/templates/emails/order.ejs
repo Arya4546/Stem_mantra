@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Confirmation - STEM Mantra</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f7fa;
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      background-color: #ffffff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+    .header {
+      background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+      padding: 40px 30px;
+      text-align: center;
+    }
+    .logo {
+      color: #ffffff;
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+    .logo span {
+      color: #FFC107;
+    }
+    .order-badge {
+      display: inline-block;
+      background-color: rgba(255, 255, 255, 0.2);
+      color: #ffffff;
+      padding: 8px 20px;
+      border-radius: 30px;
+      font-size: 14px;
+      margin-top: 15px;
+      font-weight: 500;
+    }
+    .success-section {
+      background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+      padding: 40px 30px;
+      text-align: center;
+    }
+    .success-icon {
+      width: 80px;
+      height: 80px;
+      background-color: #10b981;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      font-size: 40px;
+    }
+    .success-title {
+      font-size: 26px;
+      color: #1a1a2e;
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+    .success-subtitle {
+      color: #4a5568;
+      font-size: 16px;
+    }
+    .content {
+      padding: 40px 30px;
+    }
+    .order-info {
+      background-color: #f8fafc;
+      border-radius: 12px;
+      padding: 25px;
+      margin-bottom: 30px;
+    }
+    .order-info-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    .order-label {
+      font-size: 12px;
+      color: #64748b;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .order-value {
+      font-size: 16px;
+      color: #1a1a2e;
+      font-weight: 600;
+    }
+    .order-items {
+      margin: 30px 0;
+    }
+    .section-title {
+      font-size: 18px;
+      color: #1a1a2e;
+      margin-bottom: 20px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+    }
+    .section-title span {
+      margin-right: 10px;
+    }
+    .item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 0;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    .item:last-child {
+      border-bottom: none;
+    }
+    .item-details {
+      flex: 1;
+    }
+    .item-name {
+      font-size: 16px;
+      color: #1a1a2e;
+      font-weight: 500;
+      margin-bottom: 5px;
+    }
+    .item-meta {
+      font-size: 14px;
+      color: #64748b;
+    }
+    .item-price {
+      font-size: 16px;
+      color: #1a1a2e;
+      font-weight: 600;
+    }
+    .price-summary {
+      background: linear-gradient(135deg, #1a1a2e 0%, #2d2d44 100%);
+      border-radius: 12px;
+      padding: 25px;
+      margin: 30px 0;
+    }
+    .price-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 12px;
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 14px;
+    }
+    .price-row.total {
+      margin-top: 15px;
+      padding-top: 15px;
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFC107;
+    }
+    .payment-info {
+      background-color: #f0f9ff;
+      border-left: 4px solid #0066FF;
+      padding: 15px 20px;
+      border-radius: 0 8px 8px 0;
+      margin: 25px 0;
+    }
+    .payment-title {
+      font-weight: 600;
+      color: #0066FF;
+      margin-bottom: 5px;
+    }
+    .payment-text {
+      color: #1e40af;
+      font-size: 14px;
+    }
+    .next-steps {
+      margin: 30px 0;
+    }
+    .step {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 15px;
+    }
+    .step-number {
+      width: 30px;
+      height: 30px;
+      background: linear-gradient(135deg, #0066FF 0%, #4F46E5 100%);
+      border-radius: 50%;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 600;
+      margin-right: 15px;
+      flex-shrink: 0;
+    }
+    .step-content {
+      flex: 1;
+    }
+    .step-title {
+      font-weight: 600;
+      color: #1a1a2e;
+      margin-bottom: 3px;
+    }
+    .step-description {
+      color: #64748b;
+      font-size: 14px;
+    }
+    .cta-section {
+      text-align: center;
+      margin: 40px 0;
+    }
+    .cta-button {
+      display: inline-block;
+      background: linear-gradient(135deg, #0066FF 0%, #4F46E5 100%);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 15px 40px;
+      border-radius: 30px;
+      font-size: 16px;
+      font-weight: 600;
+      box-shadow: 0 4px 15px rgba(0, 102, 255, 0.3);
+    }
+    .divider {
+      height: 1px;
+      background: linear-gradient(to right, transparent, #e2e8f0, transparent);
+      margin: 30px 0;
+    }
+    .help-text {
+      text-align: center;
+      color: #64748b;
+      font-size: 14px;
+    }
+    .help-text a {
+      color: #0066FF;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .footer {
+      background-color: #1a1a2e;
+      padding: 30px;
+      text-align: center;
+    }
+    .footer-logo {
+      color: #ffffff;
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 15px;
+    }
+    .footer-logo span {
+      color: #FFC107;
+    }
+    .footer-text {
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 12px;
+    }
+    .footer-address {
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 11px;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="logo">STEM <span>Mantra</span></div>
+      <div class="order-badge">✅ Order Confirmed</div>
+    </div>
+    
+    <div class="success-section">
+      <div class="success-icon">✓</div>
+      <h1 class="success-title">Thank You for Your Order!</h1>
+      <p class="success-subtitle">Your order has been successfully placed</p>
+    </div>
+    
+    <div class="content">
+      <div class="order-info">
+        <div class="order-info-header">
+          <div>
+            <div class="order-label">Order Number</div>
+            <div class="order-value">#<%= orderId %></div>
+          </div>
+          <div style="text-align: right;">
+            <div class="order-label">Order Date</div>
+            <div class="order-value"><%= new Date(orderDate).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' }) %></div>
+          </div>
+        </div>
+        <div style="text-align: center;">
+          <div class="order-label">Ordered By</div>
+          <div class="order-value"><%= customerName %></div>
+        </div>
+      </div>
+      
+      <div class="order-items">
+        <h2 class="section-title"><span>📦</span> Order Details</h2>
+        <% if (items && items.length > 0) { %>
+          <% items.forEach(function(item) { %>
+            <div class="item">
+              <div class="item-details">
+                <div class="item-name"><%= item.name %></div>
+                <div class="item-meta">Qty: <%= item.quantity %></div>
+              </div>
+              <div class="item-price">₹<%= item.price.toLocaleString('en-IN') %></div>
+            </div>
+          <% }); %>
+        <% } else { %>
+          <div class="item">
+            <div class="item-details">
+              <div class="item-name"><%= productName || 'Course/Product' %></div>
+            </div>
+            <div class="item-price">₹<%= amount ? amount.toLocaleString('en-IN') : '0' %></div>
+          </div>
+        <% } %>
+      </div>
+      
+      <div class="price-summary">
+        <div class="price-row">
+          <span>Subtotal</span>
+          <span>₹<%= (subtotal || amount || 0).toLocaleString('en-IN') %></span>
+        </div>
+        <% if (discount) { %>
+        <div class="price-row">
+          <span>Discount</span>
+          <span style="color: #10b981;">-₹<%= discount.toLocaleString('en-IN') %></span>
+        </div>
+        <% } %>
+        <% if (tax) { %>
+        <div class="price-row">
+          <span>Tax (GST)</span>
+          <span>₹<%= tax.toLocaleString('en-IN') %></span>
+        </div>
+        <% } %>
+        <div class="price-row total">
+          <span>Total Paid</span>
+          <span>₹<%= (total || amount || 0).toLocaleString('en-IN') %></span>
+        </div>
+      </div>
+      
+      <div class="payment-info">
+        <div class="payment-title">💳 Payment Information</div>
+        <div class="payment-text">
+          Payment Method: <%= paymentMethod || 'Online Payment' %><br>
+          Transaction ID: <%= transactionId || 'N/A' %>
+        </div>
+      </div>
+      
+      <div class="next-steps">
+        <h2 class="section-title"><span>🚀</span> What's Next?</h2>
+        <div class="step">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <div class="step-title">Access Your Dashboard</div>
+            <div class="step-description">Log in to your account to access your purchased courses and materials.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <div class="step-title">Start Learning</div>
+            <div class="step-description">Begin your STEM journey with hands-on projects and expert guidance.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <div class="step-content">
+            <div class="step-title">Get Certified</div>
+            <div class="step-description">Complete your course and earn your certificate of achievement.</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="cta-section">
+        <a href="<%= dashboardUrl || 'https://stemmantra.com/dashboard' %>" class="cta-button">
+          Go to Dashboard →
+        </a>
+      </div>
+      
+      <div class="divider"></div>
+      
+      <p class="help-text">
+        Questions about your order? Contact us at <a href="mailto:support@stemmantra.com">support@stemmantra.com</a>
+        or call <a href="tel:+916356631515">+91-6356631515</a>
+      </p>
+    </div>
+    
+    <div class="footer">
+      <div class="footer-logo">STEM <span>Mantra</span></div>
+      <div class="footer-text">
+        © <%= new Date().getFullYear() %> STEM Mantra. All rights reserved.
+      </div>
+      <div class="footer-address">
+        C-104 2nd Floor, Noida Sec-10, UP – 201301 | +91-6356631515
+      </div>
+    </div>
+  </div>
+</body>
+</html>

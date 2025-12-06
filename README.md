@@ -1,231 +1,229 @@
-# STEM Mantra - Robotics & AI Education Platform
+# STEM Mantra - Educational Platform
+
+A modern, SEO-optimized educational platform for STEM Mantra - a premier robotics and STEM education organization.
 
 > **Master The Skills "Drive Your Future..."**
 
-A world-class, SEO-optimized educational technology website for STEM Mantra - a premier robotics and STEM education organization serving schools across India.
-
 ![Next.js](https://img.shields.io/badge/Next.js-14-black?style=flat-square&logo=next.js)
+![Node.js](https://img.shields.io/badge/Node.js-18+-green?style=flat-square&logo=node.js)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?style=flat-square&logo=typescript)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind-3-38bdf8?style=flat-square&logo=tailwind-css)
-![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)
+![Prisma](https://img.shields.io/badge/Prisma-5-2D3748?style=flat-square&logo=prisma)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-13+-316192?style=flat-square&logo=postgresql)
 
-## 🎯 Project Overview
-
-STEM Mantra provides comprehensive robotics, AI, and STEM education solutions including:
-
-- **ATL Labs (Atal Tinkering Labs)** - Complete lab setup and support
-- **Robotics & AI Labs** - World-class robotics education
-- **STEM Innovation Labs** - Hands-on STEM learning solutions
-- **Teacher Training Programs** - Expert-led skill development
-- **NEP 2020 Aligned Curriculum** - Modern, standards-compliant education
-
-## ✨ Key Features
-
-### 🚀 Performance & SEO
-- ⚡ **Lightning Fast** - Optimized for Core Web Vitals (LCP < 2.5s)
-- 🔍 **SEO Optimized** - Comprehensive meta tags, schema markup, sitemaps
-- 📱 **Mobile First** - Fully responsive design
-- ♿ **Accessible** - WCAG 2.1 AA compliant
-- 🎨 **Smooth Animations** - Framer Motion powered interactions
-
-### 🛠️ Technology Stack
-- **Framework**: Next.js 14 (App Router)
-- **Language**: TypeScript (Strict Mode)
-- **Styling**: Tailwind CSS + Shadcn/ui
-- **Animations**: Framer Motion
-- **SEO**: next-seo, next-sitemap
-- **Forms**: React Hook Form + Zod validation
-
-## 📁 Project Structure
+## 🏗️ Project Structure
 
 ```
 stem-mantra/
-├── src/
-│   ├── app/                    # Next.js App Router
-│   │   ├── layout.tsx          # Root layout with SEO
-│   │   ├── page.tsx            # Homepage
-│   │   ├── not-found.tsx       # 404 page
-│   │   └── globals.css         # Global styles
-│   ├── components/             # React components
-│   │   ├── ui/                 # Shadcn UI components
-│   │   ├── layout/             # Layout components
-│   │   └── sections/           # Page sections
-│   ├── lib/                    # Utilities
-│   │   ├── utils.ts            # Helper functions
-│   │   └── constants.ts        # Site constants
-│   ├── data/                   # Static data
-│   │   ├── testimonials.ts     # Testimonials data
-│   │   └── programs.ts         # Programs data
-│   └── types/                  # TypeScript types
-├── public/                     # Static assets
-│   ├── images/                 # Images
-│   └── robots.txt              # SEO robots file
-├── .github/                    # GitHub configs
-│   └── copilot-instructions.md # AI development guidelines
-├── tailwind.config.ts          # Tailwind configuration
-├── next.config.js              # Next.js configuration
-├── tsconfig.json               # TypeScript configuration
-└── package.json                # Dependencies
+├── frontend/              # Next.js 14 Frontend
+│   ├── src/
+│   │   ├── app/           # App Router pages
+│   │   ├── components/    # React components
+│   │   ├── lib/           # Utilities
+│   │   └── data/          # Static data
+│   ├── public/            # Static assets
+│   └── package.json
+│
+├── backend/               # Node.js Backend
+│   ├── src/
+│   │   ├── controllers/   # Route controllers
+│   │   ├── services/      # Business logic
+│   │   ├── routes/        # API routes
+│   │   ├── middlewares/   # Express middleware
+│   │   └── config/        # Configuration
+│   ├── prisma/            # Database schema & migrations
+│   └── package.json
+│
+├── package.json           # Root package.json with workspace scripts
+└── README.md
 ```
 
-## 🚀 Getting Started
+## 🚀 Tech Stack
 
-### Prerequisites
+### Frontend
+- **Next.js 14** (App Router)
+- **TypeScript**
+- **Tailwind CSS**
+- **Framer Motion** (Animations)
+- **Lenis** (Smooth Scrolling)
 
-- Node.js 18+ and npm/yarn/pnpm
-- Git
+### Backend
+- **Node.js** with **Express**
+- **TypeScript**
+- **Prisma ORM**
+- **PostgreSQL**
+- **JWT Authentication**
 
-### Installation
+## 📋 Prerequisites
 
-1. **Clone the repository**
-   ```bash
-   git clone <repository-url>
-   cd Stem_mantra
-   ```
+- Node.js 18+
+- PostgreSQL 13+
+- npm or yarn
 
-2. **Install dependencies**
-   ```bash
-   npm install
-   # or
-   yarn install
-   # or
-   pnpm install
-   ```
+## 🛠️ Quick Start
 
-3. **Run the development server**
-   ```bash
-   npm run dev
-   # or
-   yarn dev
-   # or
-   pnpm dev
-   ```
+### 1. Clone and Install
 
-4. **Open your browser**
-   Navigate to [http://localhost:3000](http://localhost:3000)
+```bash
+# Clone the repository
+git clone https://github.com/Arya4546/Stem_mantra.git
+cd Stem_mantra
+
+# Install root dependencies
+npm install
+
+# Install all workspace dependencies
+npm run install:all
+```
+
+### 2. Database Setup
+
+```bash
+# Create PostgreSQL database (using psql or pgAdmin)
+CREATE DATABASE stem_mantra_db;
+
+# Update backend/.env with your database credentials
+# DATABASE_URL="postgresql://postgres:YOUR_PASSWORD@localhost:5432/stem_mantra_db?schema=public"
+
+# Generate Prisma client
+npm run db:generate
+
+# Run database migrations
+npm run db:migrate
+
+# (Optional) Seed with sample data
+npm run db:seed
+```
+
+### 3. Start Development
+
+```bash
+# Run both frontend and backend
+npm run dev
+
+# Frontend: http://localhost:3000
+# Backend:  http://localhost:5000
+```
 
 ## 📜 Available Scripts
 
-```bash
-npm run dev        # Start development server
-npm run build      # Build for production
-npm run start      # Start production server
-npm run lint       # Run ESLint
-npm run type-check # TypeScript type checking
+| Command | Description |
+|---------|-------------|
+| `npm run dev` | Start both frontend & backend in dev mode |
+| `npm run dev:frontend` | Start only frontend (port 3000) |
+| `npm run dev:backend` | Start only backend (port 5000) |
+| `npm run build` | Build both projects |
+| `npm run start` | Start both in production mode |
+| `npm run install:all` | Install dependencies in all workspaces |
+| `npm run setup` | Full setup (install + db generate) |
+
+### Database Commands
+
+| Command | Description |
+|---------|-------------|
+| `npm run db:generate` | Generate Prisma client |
+| `npm run db:migrate` | Run database migrations |
+| `npm run db:push` | Push schema to database (no migration) |
+| `npm run db:seed` | Seed database with sample data |
+| `npm run db:studio` | Open Prisma Studio GUI |
+| `npm run db:reset` | Reset database and run migrations |
+
+### Quality Commands
+
+| Command | Description |
+|---------|-------------|
+| `npm run lint` | Run linting on both projects |
+| `npm run type-check` | TypeScript type checking |
+| `npm run clean` | Remove node_modules and build folders |
+
+## 🔗 API Endpoints
+
+Base URL: `http://localhost:5000/api/v1`
+
+### Authentication
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| POST | `/auth/register` | Register new user |
+| POST | `/auth/login` | Login |
+| GET | `/auth/profile` | Get user profile (protected) |
+| PUT | `/auth/profile` | Update profile (protected) |
+
+### Programs
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/programs` | List all programs |
+| GET | `/programs/featured` | Get featured programs |
+| GET | `/programs/:slug` | Get program by slug |
+
+### Contact
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| POST | `/contact` | Submit contact form |
+| GET | `/contact` | Get all submissions (admin) |
+
+## 🎨 Frontend Pages
+
+| Route | Description |
+|-------|-------------|
+| `/` | Homepage with hero, programs, testimonials |
+| `/about` | About STEM Mantra |
+| `/programs/atl-labs` | ATL Labs Program |
+| `/programs/robotics-lab` | Robotics Lab Program |
+| `/programs/stem-lab` | STEM Lab Program |
+| `/gallery` | Photo Gallery |
+| `/contact` | Contact Form |
+
+## 🔐 Security Features
+
+- ✅ JWT-based authentication with refresh tokens
+- ✅ Password hashing with bcrypt
+- ✅ Rate limiting (general, auth, contact)
+- ✅ Helmet security headers
+- ✅ CORS configuration
+- ✅ Input validation with express-validator
+
+## 📊 Database Schema
+
+| Model | Description |
+|-------|-------------|
+| User | User accounts with roles (Admin, Teacher, Student, etc.) |
+| School | School management with types (CBSE, ICSE, etc.) |
+| Program | STEM programs (ATL Lab, Robotics, AI/ML, etc.) |
+| Course | Individual courses within programs |
+| Enrollment | Student enrollments |
+| ContactSubmission | Contact form entries |
+| LabSetup | Lab installation tracking |
+
+## 🌐 Environment Variables
+
+### Backend (.env)
+```env
+NODE_ENV=development
+PORT=5000
+DATABASE_URL="postgresql://postgres:password@localhost:5432/stem_mantra_db?schema=public"
+JWT_SECRET=your-super-secret-jwt-key
+JWT_EXPIRES_IN=7d
+JWT_REFRESH_SECRET=your-refresh-secret
+CORS_ORIGIN=http://localhost:3000
 ```
-
-## 🎨 Design System
-
-### Color Palette
-- **Primary**: Blue (#0066FF) - Trust, technology
-- **Secondary**: Green (#4CAF50) - Growth, innovation
-- **Accent**: Yellow (#FFC107) - Energy, creativity
-- **Neutral**: Gray scale - Balance, professionalism
-
-### Typography
-- **Headings**: Poppins (700, 600, 500)
-- **Body**: Inter (400, 500, 600)
-- **Base Size**: 16px
-
-### Animations
-- Subtle micro-interactions
-- Smooth page transitions
-- Hover effects with scale/shadow
-- Scroll-based animations
-
-## 🔍 SEO Features
-
-- ✅ Semantic HTML5 structure
-- ✅ Meta tags optimization
-- ✅ Open Graph & Twitter Cards
-- ✅ Schema.org structured data
-- ✅ XML sitemap generation
-- ✅ Robots.txt configuration
-- ✅ Image optimization (WebP, lazy loading)
-- ✅ Core Web Vitals optimization
-
-## 📊 Performance Goals
-
-| Metric | Target | Current |
-|--------|--------|---------|
-| Lighthouse Performance | 95+ | TBD |
-| Lighthouse SEO | 100 | TBD |
-| Lighthouse Accessibility | 95+ | TBD |
-| Lighthouse Best Practices | 100 | TBD |
-| LCP (Largest Contentful Paint) | < 2.5s | TBD |
-| CLS (Cumulative Layout Shift) | < 0.1 | TBD |
-
-## 🧪 Testing
-
-```bash
-# Run type checking
-npm run type-check
-
-# Run linting
-npm run lint
-
-# Build and check for errors
-npm run build
-```
-
-## 🚀 Deployment
-
-### Vercel (Recommended)
-1. Push code to GitHub
-2. Import project in Vercel
-3. Deploy automatically
-
-### Manual Deployment
-```bash
-npm run build
-npm run start
-```
-
-## 📝 Content Management
-
-### Adding Testimonials
-Edit `src/data/testimonials.ts`
-
-### Adding Programs
-Edit `src/data/programs.ts`
-
-### Updating Site Config
-Edit `src/lib/constants.ts`
 
 ## 🤝 Contributing
 
 1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
-
-## 📞 Contact Information
-
-- **Phone**: 01203101774
-- **Mobile**: +91-6356631515
-- **Email**: sales@stemmantra.com
-- **Address**: C-104 2nd Floor, Noida Sec-10, UP – 201301
-- **Website**: [www.stemmantra.com](https://www.stemmantra.com)
-
-## 📱 Social Media
-
-- [Facebook](https://www.facebook.com/stemmantra)
-- [Twitter/X](https://x.com/stemmantra)
-- [LinkedIn](https://www.linkedin.com/company/stemmantra/)
-- [YouTube](https://www.youtube.com/@STEMMantra)
-- [Instagram](https://www.instagram.com/stemmantra/)
 
 ## 📄 License
 
-Copyright © 2025 STEM Mantra. All Rights Reserved.
+MIT License - STEM Mantra
 
-## 🙏 Acknowledgments
+## 📞 Contact
 
-- Inspired by leading EdTech platforms
-- Built with modern web technologies
-- Focused on student success and innovation
+- **Address**: C-104 2nd Floor, Noida Sec-10, UP – 201301
+- **Phone**: +91-6356631515
+- **Website**: [stemmantra.com](https://stemmantra.com)
 
 ---
 
-**Built with ❤️ for the future innovators of India**
+**Built with ❤️ by STEM Mantra Team**

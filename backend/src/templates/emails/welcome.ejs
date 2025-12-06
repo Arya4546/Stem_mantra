@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome to STEM Mantra!</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f7fa;
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      background-color: #ffffff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+    .header {
+      background: linear-gradient(135deg, #0066FF 0%, #4F46E5 100%);
+      padding: 50px 30px;
+      text-align: center;
+    }
+    .logo {
+      color: #ffffff;
+      font-size: 32px;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+    .logo span {
+      color: #FFC107;
+    }
+    .welcome-badge {
+      display: inline-block;
+      background-color: rgba(255, 255, 255, 0.2);
+      color: #ffffff;
+      padding: 8px 20px;
+      border-radius: 30px;
+      font-size: 14px;
+      margin-top: 15px;
+      font-weight: 500;
+    }
+    .hero {
+      background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+      padding: 40px 30px;
+      text-align: center;
+    }
+    .hero-emoji {
+      font-size: 60px;
+      margin-bottom: 20px;
+    }
+    .hero-title {
+      font-size: 28px;
+      color: #1a1a2e;
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+    .hero-subtitle {
+      color: #4a5568;
+      font-size: 16px;
+    }
+    .content {
+      padding: 40px 30px;
+    }
+    .greeting {
+      font-size: 18px;
+      color: #1a1a2e;
+      margin-bottom: 20px;
+    }
+    .message {
+      color: #4a5568;
+      font-size: 15px;
+      margin-bottom: 30px;
+      line-height: 1.8;
+    }
+    .features {
+      margin: 30px 0;
+    }
+    .feature-item {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 20px;
+      padding: 15px;
+      background-color: #f8fafc;
+      border-radius: 10px;
+    }
+    .feature-icon {
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(135deg, #0066FF 0%, #4F46E5 100%);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      margin-right: 15px;
+      flex-shrink: 0;
+    }
+    .feature-content h3 {
+      color: #1a1a2e;
+      font-size: 16px;
+      margin-bottom: 5px;
+    }
+    .feature-content p {
+      color: #64748b;
+      font-size: 14px;
+    }
+    .cta-section {
+      text-align: center;
+      margin: 40px 0;
+    }
+    .cta-button {
+      display: inline-block;
+      background: linear-gradient(135deg, #0066FF 0%, #4F46E5 100%);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 15px 40px;
+      border-radius: 30px;
+      font-size: 16px;
+      font-weight: 600;
+      box-shadow: 0 4px 15px rgba(0, 102, 255, 0.3);
+    }
+    .cta-text {
+      color: #64748b;
+      font-size: 14px;
+      margin-top: 15px;
+    }
+    .stats {
+      display: flex;
+      justify-content: space-around;
+      background: linear-gradient(135deg, #1a1a2e 0%, #2d2d44 100%);
+      padding: 30px;
+      margin: 30px 0;
+      border-radius: 12px;
+    }
+    .stat-item {
+      text-align: center;
+    }
+    .stat-number {
+      font-size: 28px;
+      font-weight: 700;
+      color: #FFC107;
+    }
+    .stat-label {
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.7);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .divider {
+      height: 1px;
+      background: linear-gradient(to right, transparent, #e2e8f0, transparent);
+      margin: 30px 0;
+    }
+    .help-section {
+      background-color: #f8fafc;
+      padding: 25px;
+      border-radius: 10px;
+      text-align: center;
+    }
+    .help-title {
+      font-size: 16px;
+      color: #1a1a2e;
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+    .help-text {
+      color: #64748b;
+      font-size: 14px;
+    }
+    .help-text a {
+      color: #0066FF;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .footer {
+      background-color: #1a1a2e;
+      padding: 30px;
+      text-align: center;
+    }
+    .footer-logo {
+      color: #ffffff;
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 15px;
+    }
+    .footer-logo span {
+      color: #FFC107;
+    }
+    .social-links {
+      margin: 20px 0;
+    }
+    .social-links a {
+      display: inline-block;
+      width: 40px;
+      height: 40px;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      margin: 0 8px;
+      line-height: 40px;
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 18px;
+    }
+    .footer-text {
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 12px;
+    }
+    .footer-address {
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 11px;
+      margin-top: 15px;
+    }
+    .unsubscribe {
+      color: rgba(255, 255, 255, 0.4);
+      font-size: 11px;
+      margin-top: 20px;
+    }
+    .unsubscribe a {
+      color: rgba(255, 255, 255, 0.5);
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="logo">STEM <span>Mantra</span></div>
+      <div class="welcome-badge">🎉 Welcome Aboard!</div>
+    </div>
+    
+    <div class="hero">
+      <div class="hero-emoji">🚀</div>
+      <h1 class="hero-title">Welcome to the Future of Learning!</h1>
+      <p class="hero-subtitle">Your journey to innovation starts here</p>
+    </div>
+    
+    <div class="content">
+      <p class="greeting">Dear <strong><%= firstName %></strong>,</p>
+      
+      <p class="message">
+        Congratulations on joining STEM Mantra! 🎊 You're now part of a growing community of innovators, 
+        tinkerers, and future tech leaders. We're thrilled to have you with us on this exciting journey 
+        into the world of robotics, AI, and STEM education.
+      </p>
+      
+      <div class="features">
+        <div class="feature-item">
+          <div class="feature-icon">🤖</div>
+          <div class="feature-content">
+            <h3>Robotics & AI Labs</h3>
+            <p>Explore cutting-edge robotics and artificial intelligence programs designed for all skill levels.</p>
+          </div>
+        </div>
+        
+        <div class="feature-item">
+          <div class="feature-icon">🔬</div>
+          <div class="feature-content">
+            <h3>Hands-on Learning</h3>
+            <p>Project-based curriculum that transforms theoretical knowledge into practical innovation.</p>
+          </div>
+        </div>
+        
+        <div class="feature-item">
+          <div class="feature-icon">🏆</div>
+          <div class="feature-content">
+            <h3>Certifications</h3>
+            <p>Earn recognized certifications and showcase your skills to the world.</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="stats">
+        <div class="stat-item">
+          <div class="stat-number">500+</div>
+          <div class="stat-label">Schools</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">50K+</div>
+          <div class="stat-label">Students</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">100+</div>
+          <div class="stat-label">Programs</div>
+        </div>
+      </div>
+      
+      <div class="cta-section">
+        <a href="<%= loginUrl || 'https://stemmantra.com/login' %>" class="cta-button">
+          Explore Your Dashboard →
+        </a>
+        <p class="cta-text">Start your first lesson today!</p>
+      </div>
+      
+      <div class="divider"></div>
+      
+      <div class="help-section">
+        <h3 class="help-title">Need Help Getting Started?</h3>
+        <p class="help-text">
+          Our support team is here to help! Reach out anytime at 
+          <a href="mailto:support@stemmantra.com">support@stemmantra.com</a> 
+          or call us at <a href="tel:+916356631515">+91-6356631515</a>
+        </p>
+      </div>
+    </div>
+    
+    <div class="footer">
+      <div class="footer-logo">STEM <span>Mantra</span></div>
+      <div class="social-links">
+        <a href="#">📘</a>
+        <a href="#">🐦</a>
+        <a href="#">📸</a>
+        <a href="#">💼</a>
+      </div>
+      <div class="footer-text">
+        © <%= new Date().getFullYear() %> STEM Mantra. All rights reserved.
+      </div>
+      <div class="footer-address">
+        C-104 2nd Floor, Noida Sec-10, UP – 201301 | +91-6356631515
+      </div>
+      <div class="unsubscribe">
+        <a href="#">Unsubscribe</a> | <a href="#">Privacy Policy</a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

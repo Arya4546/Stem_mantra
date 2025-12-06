@@ -1,0 +1,1137 @@
+// This is your Prisma schema file
+// Learn more about it at: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ==========================================
+// User Management
+// ==========================================
+
+enum UserRole {
+  SUPER_ADMIN
+  ADMIN
+  MANAGER
+  SCHOOL_ADMIN
+  TEACHER
+  STUDENT
+  PARENT
+  USER
+}
+
+enum UserStatus {
+  ACTIVE
+  INACTIVE
+  PENDING
+  SUSPENDED
+}
+
+enum OTPPurpose {
+  VERIFICATION
+  LOGIN
+  PASSWORD_RESET
+}
+
+model OTP {
+  id          String     @id @default(cuid())
+  identifier  String     // email or phone
+  code        String     // hashed OTP
+  purpose     OTPPurpose
+  expiresAt   DateTime
+  verified    Boolean    @default(false)
+  attempts    Int        @default(0)
+  metadata    Json?      // additional data like userId, name
+  createdAt   DateTime   @default(now())
+  
+  @@index([identifier, purpose])
+  @@index([expiresAt])
+}
+
+model User {
+  id            String     @id @default(cuid())
+  email         String     @unique
+  password      String?    // Optional for OTP-only users
+  firstName     String
+  lastName      String
+  phone         String?
+  avatar        String?
+  role          UserRole   @default(STUDENT)
+  status        UserStatus @default(PENDING)
+  emailVerified Boolean    @default(false)
+  
+  // Relations
+  school        School?    @relation(fields: [schoolId], references: [id])
+  schoolId      String?
+  
+  // Metadata
+  createdAt     DateTime   @default(now())
+  updatedAt     DateTime   @updatedAt
+  lastLoginAt   DateTime?
+  
+  // Related models
+  contactSubmissions ContactSubmission[]
+  enrollments        Enrollment[]
+  refreshTokens      RefreshToken[]
+  
+  @@index([email])
+  @@index([role])
+  @@index([schoolId])
+}
+
+model RefreshToken {
+  id          String   @id @default(cuid())
+  token       String   @unique
+  userId      String
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  expiresAt   DateTime
+  createdAt   DateTime @default(now())
+  
+  @@index([userId])
+  @@index([token])
+}
+
+// ==========================================
+// School Management
+// ==========================================
+
+enum SchoolType {
+  GOVERNMENT
+  PRIVATE
+  INTERNATIONAL
+  CBSE
+  ICSE
+  STATE_BOARD
+}
+
+model School {
+  id            String     @id @default(cuid())
+  name          String
+  code          String     @unique
+  type          SchoolType
+  address       String
+  city          String
+  state         String
+  pincode       String
+  phone         String
+  email         String
+  website       String?
+  logo          String?
+  principalName String?
+  isActive      Boolean    @default(true)
+  
+  // Relations
+  users         User[]
+  programs      SchoolProgram[]
+  labSetups     LabSetup[]
+  
+  // Metadata
+  createdAt     DateTime   @default(now())
+  updatedAt     DateTime   @updatedAt
+  
+  @@index([city])
+  @@index([state])
+  @@index([type])
+}
+
+// ==========================================
+// Programs & Courses
+// ==========================================
+
+enum ProgramType {
+  ATL_LAB
+  ROBOTICS_LAB
+  STEM_LAB
+  AI_ML
+  IOT
+  CODING
+}
+
+enum ProgramStatus {
+  ACTIVE
+  UPCOMING
+  COMPLETED
+  CANCELLED
+}
+
+model Program {
+  id              String        @id @default(cuid())
+  name            String
+  slug            String        @unique
+  type            ProgramType
+  description     String        @db.Text
+  shortDescription String?
+  duration        String
+  price           Decimal       @db.Decimal(10, 2)
+  discountPrice   Decimal?      @db.Decimal(10, 2)
+  thumbnail       String?
+  features        String[]
+  curriculum      Json?
+  status          ProgramStatus @default(ACTIVE)
+  isFeatured      Boolean       @default(false)
+  
+  // Relations
+  schools         SchoolProgram[]
+  courses         Course[]
+  enrollments     Enrollment[]
+  
+  // Metadata
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+  
+  @@index([type])
+  @@index([status])
+  @@index([slug])
+}
+
+model SchoolProgram {
+  id          String    @id @default(cuid())
+  school      School    @relation(fields: [schoolId], references: [id])
+  schoolId    String
+  program     Program   @relation(fields: [programId], references: [id])
+  programId   String
+  startDate   DateTime
+  endDate     DateTime?
+  isActive    Boolean   @default(true)
+  
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  
+  @@unique([schoolId, programId])
+  @@index([schoolId])
+  @@index([programId])
+}
+
+model Course {
+  id            String   @id @default(cuid())
+  name          String
+  slug          String   @unique
+  description   String   @db.Text
+  gradeLevel    String
+  duration      String
+  topics        String[]
+  learningOutcomes String[]
+  prerequisites String[]
+  
+  // Relations
+  program       Program  @relation(fields: [programId], references: [id])
+  programId     String
+  
+  // Metadata
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  
+  @@index([programId])
+  @@index([gradeLevel])
+  @@index([slug])
+}
+
+model Enrollment {
+  id          String   @id @default(cuid())
+  user        User     @relation(fields: [userId], references: [id])
+  userId      String
+  program     Program  @relation(fields: [programId], references: [id])
+  programId   String
+  enrolledAt  DateTime @default(now())
+  completedAt DateTime?
+  progress    Int      @default(0)
+  status      String   @default("enrolled")
+  
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  @@unique([userId, programId])
+  @@index([userId])
+  @@index([programId])
+}
+
+// ==========================================
+// Lab Setup
+// ==========================================
+
+enum LabStatus {
+  PLANNING
+  IN_PROGRESS
+  COMPLETED
+  OPERATIONAL
+}
+
+model LabSetup {
+  id            String    @id @default(cuid())
+  school        School    @relation(fields: [schoolId], references: [id])
+  schoolId      String
+  labType       ProgramType
+  status        LabStatus @default(PLANNING)
+  roomNumber    String?
+  roomSize      String?
+  equipment     Json?
+  budget        Decimal?  @db.Decimal(12, 2)
+  startDate     DateTime?
+  completionDate DateTime?
+  notes         String?   @db.Text
+  
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  
+  @@index([schoolId])
+  @@index([labType])
+  @@index([status])
+}
+
+// ==========================================
+// Contact & Inquiries
+// ==========================================
+
+enum InquiryType {
+  GENERAL
+  LAB_SETUP
+  TRAINING
+  PARTNERSHIP
+  DEMO_REQUEST
+  SUPPORT
+}
+
+enum InquiryStatus {
+  NEW
+  IN_PROGRESS
+  RESPONDED
+  CLOSED
+}
+
+model ContactSubmission {
+  id          String        @id @default(cuid())
+  name        String
+  email       String
+  phone       String?
+  schoolName  String?
+  designation String?
+  subject     String?
+  message     String        @db.Text
+  type        InquiryType   @default(GENERAL)
+  status      InquiryStatus @default(NEW)
+  
+  // Optional user relation
+  user        User?         @relation(fields: [userId], references: [id])
+  userId      String?
+  
+  // Response tracking
+  respondedAt DateTime?
+  respondedBy String?
+  response    String?       @db.Text
+  
+  // Metadata
+  ipAddress   String?
+  userAgent   String?
+  source      String?
+  
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+  
+  @@index([email])
+  @@index([type])
+  @@index([status])
+  @@index([createdAt])
+}
+
+// ==========================================
+// Testimonials
+// ==========================================
+
+model Testimonial {
+  id          String   @id @default(cuid())
+  name        String
+  designation String
+  schoolName  String
+  content     String   @db.Text
+  rating      Int      @default(5)
+  avatar      String?
+  isApproved  Boolean  @default(false)
+  isFeatured  Boolean  @default(false)
+  
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  @@index([isApproved])
+  @@index([isFeatured])
+}
+
+// ==========================================
+// Gallery
+// ==========================================
+
+enum MediaType {
+  IMAGE
+  VIDEO
+}
+
+model GalleryItem {
+  id          String    @id @default(cuid())
+  title       String
+  description String?
+  url         String
+  thumbnail   String?
+  type        MediaType @default(IMAGE)
+  category    String
+  tags        String[]
+  isPublished Boolean   @default(true)
+  sortOrder   Int       @default(0)
+  
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  
+  @@index([category])
+  @@index([isPublished])
+}
+
+// ==========================================
+// Blog & Content
+// ==========================================
+
+enum PostStatus {
+  DRAFT
+  PUBLISHED
+  ARCHIVED
+}
+
+model BlogPost {
+  id            String     @id @default(cuid())
+  title         String
+  slug          String     @unique
+  excerpt       String?
+  content       String     @db.Text
+  featuredImage String?
+  status        PostStatus @default(DRAFT)
+  publishedAt   DateTime?
+  tags          String[]
+  
+  // SEO
+  metaTitle     String?
+  metaDescription String?
+  canonicalUrl  String?
+  ogImage       String?
+  
+  // Engagement
+  viewCount     Int        @default(0)
+  readTime      Int?       // minutes
+  
+  // Relations
+  categories    BlogPostCategory[]
+  authors       BlogPostAuthor[]
+  comments      BlogComment[]
+  
+  createdAt     DateTime   @default(now())
+  updatedAt     DateTime   @updatedAt
+  
+  @@index([slug])
+  @@index([status])
+  @@index([publishedAt])
+}
+
+// ==========================================
+// Newsletter
+// ==========================================
+
+model NewsletterSubscriber {
+  id            String   @id @default(cuid())
+  email         String   @unique
+  name          String?
+  isSubscribed  Boolean  @default(true)
+  subscribedAt  DateTime @default(now())
+  unsubscribedAt DateTime?
+  
+  @@index([email])
+  @@index([isSubscribed])
+}
+
+// ==========================================
+// Blog Categories & Authors
+// ==========================================
+
+model BlogCategory {
+  id          String     @id @default(cuid())
+  name        String
+  slug        String     @unique
+  description String?
+  icon        String?
+  color       String?
+  sortOrder   Int        @default(0)
+  isActive    Boolean    @default(true)
+  
+  posts       BlogPostCategory[]
+  
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+  
+  @@index([slug])
+  @@index([isActive])
+}
+
+model BlogAuthor {
+  id          String     @id @default(cuid())
+  name        String
+  slug        String     @unique
+  email       String     @unique
+  bio         String?    @db.Text
+  avatar      String?
+  designation String?
+  social      Json?      // { twitter, linkedin, github, etc. }
+  isActive    Boolean    @default(true)
+  
+  posts       BlogPostAuthor[]
+  
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+  
+  @@index([slug])
+}
+
+model BlogPostCategory {
+  id         String       @id @default(cuid())
+  post       BlogPost     @relation(fields: [postId], references: [id], onDelete: Cascade)
+  postId     String
+  category   BlogCategory @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  categoryId String
+  
+  @@unique([postId, categoryId])
+}
+
+model BlogPostAuthor {
+  id       String     @id @default(cuid())
+  post     BlogPost   @relation(fields: [postId], references: [id], onDelete: Cascade)
+  postId   String
+  author   BlogAuthor @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  authorId String
+  
+  @@unique([postId, authorId])
+}
+
+model BlogComment {
+  id          String        @id @default(cuid())
+  content     String        @db.Text
+  authorName  String
+  authorEmail String
+  isApproved  Boolean       @default(false)
+  
+  post        BlogPost      @relation(fields: [postId], references: [id], onDelete: Cascade)
+  postId      String
+  
+  parent      BlogComment?  @relation("CommentReplies", fields: [parentId], references: [id])
+  parentId    String?
+  replies     BlogComment[] @relation("CommentReplies")
+  
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+  
+  @@index([postId])
+  @@index([isApproved])
+}
+
+// ==========================================
+// Products & E-commerce
+// ==========================================
+
+enum ProductType {
+  PHYSICAL      // Kits, equipment
+  DIGITAL       // E-books, videos
+  SUBSCRIPTION  // Monthly/yearly access
+  COURSE        // Online courses
+  BUNDLE        // Product bundles
+}
+
+enum ProductStatus {
+  DRAFT
+  ACTIVE
+  OUT_OF_STOCK
+  DISCONTINUED
+}
+
+model ProductCategory {
+  id          String    @id @default(cuid())
+  name        String
+  slug        String    @unique
+  description String?
+  image       String?
+  parentId    String?
+  parent      ProductCategory?  @relation("CategoryHierarchy", fields: [parentId], references: [id])
+  children    ProductCategory[] @relation("CategoryHierarchy")
+  sortOrder   Int       @default(0)
+  isActive    Boolean   @default(true)
+  
+  products    ProductToCategory[]
+  
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  
+  @@index([slug])
+  @@index([parentId])
+}
+
+model Product {
+  id              String        @id @default(cuid())
+  name            String
+  slug            String        @unique
+  sku             String        @unique
+  type            ProductType
+  status          ProductStatus @default(DRAFT)
+  
+  // Pricing
+  price           Decimal       @db.Decimal(10, 2)
+  compareAtPrice  Decimal?      @db.Decimal(10, 2)
+  costPrice       Decimal?      @db.Decimal(10, 2)
+  
+  // Details
+  shortDescription String?
+  description     String        @db.Text
+  features        String[]
+  specifications  Json?
+  
+  // Media
+  thumbnail       String?
+  images          String[]
+  video           String?
+  
+  // Inventory (for physical products)
+  trackInventory  Boolean       @default(false)
+  quantity        Int           @default(0)
+  lowStockAlert   Int           @default(5)
+  
+  // SEO
+  metaTitle       String?
+  metaDescription String?
+  
+  // Flags
+  isFeatured      Boolean       @default(false)
+  isNew           Boolean       @default(false)
+  isBestSeller    Boolean       @default(false)
+  
+  // For digital products
+  downloadUrl     String?
+  accessDuration  Int?          // Days of access
+  
+  // Relations
+  categories      ProductToCategory[]
+  reviews         ProductReview[]
+  orderItems      OrderItem[]
+  cartItems       CartItem[]
+  
+  // Metadata
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+  
+  @@index([slug])
+  @@index([sku])
+  @@index([type])
+  @@index([status])
+  @@index([isFeatured])
+}
+
+model ProductToCategory {
+  id         String          @id @default(cuid())
+  product    Product         @relation(fields: [productId], references: [id], onDelete: Cascade)
+  productId  String
+  category   ProductCategory @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  categoryId String
+  
+  @@unique([productId, categoryId])
+}
+
+model ProductReview {
+  id          String   @id @default(cuid())
+  rating      Int      // 1-5
+  title       String?
+  content     String   @db.Text
+  authorName  String
+  authorEmail String
+  isVerified  Boolean  @default(false)
+  isApproved  Boolean  @default(false)
+  
+  product     Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  productId   String
+  
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  @@index([productId])
+  @@index([isApproved])
+  @@index([rating])
+}
+
+// ==========================================
+// Shopping Cart & Orders
+// ==========================================
+
+model Cart {
+  id        String     @id @default(cuid())
+  sessionId String?    @unique
+  userId    String?
+  
+  items     CartItem[]
+  
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+  
+  @@index([userId])
+  @@index([sessionId])
+}
+
+model CartItem {
+  id        String   @id @default(cuid())
+  cart      Cart     @relation(fields: [cartId], references: [id], onDelete: Cascade)
+  cartId    String
+  product   Product  @relation(fields: [productId], references: [id])
+  productId String
+  quantity  Int      @default(1)
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  @@unique([cartId, productId])
+}
+
+enum OrderStatus {
+  PENDING
+  CONFIRMED
+  PROCESSING
+  SHIPPED
+  DELIVERED
+  CANCELLED
+  REFUNDED
+}
+
+enum PaymentStatus {
+  PENDING
+  PAID
+  FAILED
+  REFUNDED
+}
+
+model Order {
+  id              String        @id @default(cuid())
+  orderNumber     String        @unique
+  userId          String?
+  
+  // Customer info
+  customerName    String
+  customerEmail   String
+  customerPhone   String
+  
+  // Shipping (for physical products)
+  shippingAddress Json?
+  billingAddress  Json?
+  
+  // Amounts
+  subtotal        Decimal       @db.Decimal(10, 2)
+  discount        Decimal       @default(0) @db.Decimal(10, 2)
+  tax             Decimal       @default(0) @db.Decimal(10, 2)
+  shipping        Decimal       @default(0) @db.Decimal(10, 2)
+  total           Decimal       @db.Decimal(10, 2)
+  
+  // Status
+  status          OrderStatus   @default(PENDING)
+  paymentStatus   PaymentStatus @default(PENDING)
+  paymentMethod   String?
+  paymentId       String?
+  
+  // Coupon
+  couponCode      String?
+  couponDiscount  Decimal?      @db.Decimal(10, 2)
+  
+  // Notes
+  notes           String?       @db.Text
+  adminNotes      String?       @db.Text
+  
+  items           OrderItem[]
+  
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+  
+  @@index([orderNumber])
+  @@index([userId])
+  @@index([customerEmail])
+  @@index([status])
+  @@index([createdAt])
+}
+
+model OrderItem {
+  id          String   @id @default(cuid())
+  order       Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  orderId     String
+  product     Product  @relation(fields: [productId], references: [id])
+  productId   String
+  
+  name        String
+  sku         String
+  price       Decimal  @db.Decimal(10, 2)
+  quantity    Int
+  total       Decimal  @db.Decimal(10, 2)
+  
+  createdAt   DateTime @default(now())
+  
+  @@index([orderId])
+}
+
+model Coupon {
+  id            String    @id @default(cuid())
+  code          String    @unique
+  description   String?
+  discountType  String    // 'percentage' or 'fixed'
+  discountValue Decimal   @db.Decimal(10, 2)
+  minOrderValue Decimal?  @db.Decimal(10, 2)
+  maxDiscount   Decimal?  @db.Decimal(10, 2)
+  usageLimit    Int?
+  usedCount     Int       @default(0)
+  validFrom     DateTime
+  validTo       DateTime
+  isActive      Boolean   @default(true)
+  
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  
+  @@index([code])
+  @@index([isActive])
+}
+
+// ==========================================
+// Authentication Enhancements
+// ==========================================
+
+model VerificationToken {
+  id        String   @id @default(cuid())
+  email     String
+  token     String   @unique
+  type      String   // 'email_verification', 'password_reset', 'otp'
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+  
+  @@index([email])
+  @@index([token])
+}
+
+model SocialAccount {
+  id            String   @id @default(cuid())
+  userId        String
+  provider      String   // 'google', 'facebook', 'github'
+  providerAccountId String
+  accessToken   String?
+  refreshToken  String?
+  expiresAt     DateTime?
+  
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  
+  @@unique([provider, providerAccountId])
+  @@index([userId])
+}
+
+// ==========================================
+// Events & Webinars
+// ==========================================
+
+enum EventType {
+  WEBINAR
+  WORKSHOP
+  SEMINAR
+  CONFERENCE
+  DEMO
+}
+
+enum EventStatus {
+  UPCOMING
+  LIVE
+  COMPLETED
+  CANCELLED
+}
+
+model Event {
+  id            String      @id @default(cuid())
+  title         String
+  slug          String      @unique
+  description   String      @db.Text
+  shortDescription String?
+  type          EventType
+  status        EventStatus @default(UPCOMING)
+  
+  // Schedule
+  startDate     DateTime
+  endDate       DateTime
+  timezone      String      @default("Asia/Kolkata")
+  
+  // Location
+  isOnline      Boolean     @default(true)
+  venue         String?
+  meetingUrl    String?
+  
+  // Media
+  thumbnail     String?
+  banner        String?
+  
+  // Capacity
+  maxAttendees  Int?
+  
+  // Pricing
+  isFree        Boolean     @default(true)
+  price         Decimal?    @db.Decimal(10, 2)
+  
+  // SEO
+  metaTitle     String?
+  metaDescription String?
+  
+  // Speakers
+  speakers      Json?
+  
+  registrations EventRegistration[]
+  
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+  
+  @@index([slug])
+  @@index([type])
+  @@index([status])
+  @@index([startDate])
+}
+
+model EventRegistration {
+  id          String   @id @default(cuid())
+  event       Event    @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  eventId     String
+  
+  name        String
+  email       String
+  phone       String?
+  schoolName  String?
+  designation String?
+  
+  isAttended  Boolean  @default(false)
+  
+  createdAt   DateTime @default(now())
+  
+  @@unique([eventId, email])
+  @@index([eventId])
+  @@index([email])
+}
+
+// ==========================================
+// Lead Management & CRM
+// ==========================================
+
+enum LeadSource {
+  WEBSITE
+  REFERRAL
+  SOCIAL_MEDIA
+  EVENT
+  COLD_CALL
+  PARTNERSHIP
+  OTHER
+}
+
+enum LeadStatus {
+  NEW
+  CONTACTED
+  QUALIFIED
+  PROPOSAL
+  NEGOTIATION
+  WON
+  LOST
+}
+
+model Lead {
+  id            String     @id @default(cuid())
+  
+  // Contact info
+  name          String
+  email         String     @unique
+  phone         String?
+  schoolName    String?
+  designation   String?
+  city          String?
+  state         String?
+  
+  // Lead details
+  source        LeadSource @default(WEBSITE)
+  status        LeadStatus @default(NEW)
+  score         Int        @default(0)
+  
+  // Interests
+  interests     String[]   // ['ATL_LAB', 'ROBOTICS', etc.]
+  budget        String?
+  timeline      String?
+  
+  // Notes
+  notes         String?    @db.Text
+  
+  // Assignment
+  assignedTo    String?
+  
+  // Activities
+  activities    LeadActivity[]
+  
+  // Tracking
+  lastContactAt DateTime?
+  nextFollowUp  DateTime?
+  
+  createdAt     DateTime   @default(now())
+  updatedAt     DateTime   @updatedAt
+  
+  @@index([status])
+  @@index([source])
+  @@index([assignedTo])
+}
+
+model LeadActivity {
+  id          String   @id @default(cuid())
+  lead        Lead     @relation(fields: [leadId], references: [id], onDelete: Cascade)
+  leadId      String
+  
+  type        String   // 'call', 'email', 'meeting', 'note'
+  title       String
+  description String?  @db.Text
+  outcome     String?
+  performedBy String
+  
+  createdAt   DateTime @default(now())
+  
+  @@index([leadId])
+}
+
+// ==========================================
+// Demo Bookings
+// ==========================================
+
+enum DemoStatus {
+  SCHEDULED
+  CONFIRMED
+  COMPLETED
+  CANCELLED
+  NO_SHOW
+}
+
+model DemoBooking {
+  id            String     @id @default(cuid())
+  
+  // Contact
+  name          String
+  email         String
+  phone         String
+  schoolName    String?
+  designation   String?
+  city          String?
+  
+  // Schedule
+  preferredDate DateTime
+  preferredTime String
+  timezone      String     @default("Asia/Kolkata")
+  
+  // Demo details
+  demoType      String     // 'online', 'onsite'
+  interests     String[]
+  message       String?    @db.Text
+  
+  // Status
+  status        DemoStatus @default(SCHEDULED)
+  confirmedDate DateTime?
+  meetingUrl    String?
+  
+  // Assignment
+  assignedTo    String?
+  
+  // Notes
+  adminNotes    String?    @db.Text
+  
+  createdAt     DateTime   @default(now())
+  updatedAt     DateTime   @updatedAt
+  
+  @@index([email])
+  @@index([status])
+  @@index([preferredDate])
+}
+
+// ==========================================
+// Page Views & Analytics
+// ==========================================
+
+model PageView {
+  id          String   @id @default(cuid())
+  path        String
+  title       String?
+  referrer    String?
+  userAgent   String?
+  ipAddress   String?
+  sessionId   String?
+  userId      String?
+  
+  createdAt   DateTime @default(now())
+  
+  @@index([path])
+  @@index([createdAt])
+  @@index([sessionId])
+}
+
+model UserActivity {
+  id          String   @id @default(cuid())
+  userId      String?
+  sessionId   String?
+  action      String   // 'login', 'signup', 'purchase', 'view', etc.
+  resource    String?  // 'product', 'blog', 'course'
+  resourceId  String?
+  metadata    Json?
+  ipAddress   String?
+  
+  createdAt   DateTime @default(now())
+  
+  @@index([userId])
+  @@index([action])
+  @@index([createdAt])
+}
+
+// ==========================================
+// SEO & Site Settings
+// ==========================================
+
+model SiteSetting {
+  id          String   @id @default(cuid())
+  key         String   @unique
+  value       String   @db.Text
+  type        String   @default("string") // 'string', 'json', 'boolean', 'number'
+  group       String   @default("general")
+  description String?
+  
+  updatedAt   DateTime @updatedAt
+  
+  @@index([key])
+  @@index([group])
+}
+
+model Redirect {
+  id          String   @id @default(cuid())
+  fromPath    String   @unique
+  toPath      String
+  statusCode  Int      @default(301)
+  isActive    Boolean  @default(true)
+  
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  @@index([fromPath])
+  @@index([isActive])
+}
+
+model FAQ {
+  id          String   @id @default(cuid())
+  question    String
+  answer      String   @db.Text
+  category    String?
+  sortOrder   Int      @default(0)
+  isPublished Boolean  @default(true)
+  
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  @@index([category])
+  @@index([isPublished])
+}
+

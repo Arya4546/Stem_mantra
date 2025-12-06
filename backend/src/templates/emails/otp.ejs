@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your OTP Code - STEM Mantra</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f7fa;
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      background-color: #ffffff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+    .header {
+      background: linear-gradient(135deg, #0066FF 0%, #4F46E5 100%);
+      padding: 40px 30px;
+      text-align: center;
+    }
+    .logo {
+      color: #ffffff;
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+    .logo span {
+      color: #FFC107;
+    }
+    .tagline {
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 14px;
+      margin-top: 8px;
+    }
+    .content {
+      padding: 40px 30px;
+      text-align: center;
+    }
+    .greeting {
+      font-size: 22px;
+      color: #1a1a2e;
+      margin-bottom: 15px;
+      font-weight: 600;
+    }
+    .message {
+      color: #4a5568;
+      font-size: 16px;
+      margin-bottom: 30px;
+    }
+    .otp-container {
+      background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+      border-radius: 12px;
+      padding: 30px;
+      margin: 30px 0;
+      border: 2px dashed #0066FF;
+    }
+    .otp-label {
+      font-size: 14px;
+      color: #64748b;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+    .otp-code {
+      font-size: 42px;
+      font-weight: 700;
+      color: #0066FF;
+      letter-spacing: 12px;
+      font-family: 'Courier New', monospace;
+    }
+    .expiry {
+      color: #dc2626;
+      font-size: 14px;
+      margin-top: 15px;
+      font-weight: 500;
+    }
+    .warning {
+      background-color: #fef3c7;
+      border-left: 4px solid #f59e0b;
+      padding: 15px 20px;
+      margin: 30px 0;
+      text-align: left;
+      border-radius: 0 8px 8px 0;
+    }
+    .warning-title {
+      font-weight: 600;
+      color: #92400e;
+      margin-bottom: 5px;
+    }
+    .warning-text {
+      color: #78350f;
+      font-size: 14px;
+    }
+    .divider {
+      height: 1px;
+      background: linear-gradient(to right, transparent, #e2e8f0, transparent);
+      margin: 30px 0;
+    }
+    .help-text {
+      color: #64748b;
+      font-size: 14px;
+    }
+    .help-text a {
+      color: #0066FF;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .footer {
+      background-color: #1a1a2e;
+      padding: 30px;
+      text-align: center;
+    }
+    .footer-logo {
+      color: #ffffff;
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 15px;
+    }
+    .footer-logo span {
+      color: #FFC107;
+    }
+    .social-links {
+      margin: 20px 0;
+    }
+    .social-links a {
+      display: inline-block;
+      width: 40px;
+      height: 40px;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      margin: 0 8px;
+      line-height: 40px;
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 18px;
+    }
+    .footer-text {
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 12px;
+    }
+    .footer-address {
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 11px;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="logo">STEM <span>Mantra</span></div>
+      <div class="tagline">Master The Skills • Drive Your Future</div>
+    </div>
+    
+    <div class="content">
+      <h1 class="greeting">Hello <%= firstName %>! 👋</h1>
+      <p class="message">
+        <% if (purpose === 'verification') { %>
+          Welcome to STEM Mantra! Please use the following OTP to verify your email address and complete your registration.
+        <% } else if (purpose === 'login') { %>
+          You've requested to log in to your STEM Mantra account. Use the following OTP to continue.
+        <% } else if (purpose === 'reset-password') { %>
+          We received a request to reset your password. Use the following OTP to proceed with the password reset.
+        <% } else { %>
+          Here's your one-time password for verification.
+        <% } %>
+      </p>
+      
+      <div class="otp-container">
+        <div class="otp-label">Your Verification Code</div>
+        <div class="otp-code"><%= otp %></div>
+        <div class="expiry">⏰ This code expires in <%= expiryMinutes %> minutes</div>
+      </div>
+      
+      <div class="warning">
+        <div class="warning-title">🔒 Security Notice</div>
+        <div class="warning-text">
+          Never share this code with anyone. STEM Mantra will never ask you for this code via phone or message.
+        </div>
+      </div>
+      
+      <div class="divider"></div>
+      
+      <p class="help-text">
+        Didn't request this code? You can safely ignore this email.<br>
+        Need help? <a href="mailto:support@stemmantra.com">Contact our support team</a>
+      </p>
+    </div>
+    
+    <div class="footer">
+      <div class="footer-logo">STEM <span>Mantra</span></div>
+      <div class="social-links">
+        <a href="#">📘</a>
+        <a href="#">🐦</a>
+        <a href="#">📸</a>
+        <a href="#">💼</a>
+      </div>
+      <div class="footer-text">
+        © <%= new Date().getFullYear() %> STEM Mantra. All rights reserved.
+      </div>
+      <div class="footer-address">
+        C-104 2nd Floor, Noida Sec-10, UP – 201301 | +91-6356631515
+      </div>
+    </div>
+  </div>
+</body>
+</html>
