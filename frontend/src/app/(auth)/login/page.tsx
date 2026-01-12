@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, Suspense } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -10,7 +10,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { toast } from "sonner";
 import { Mail, Lock, ArrowLeft, ArrowRight, CheckCircle2, Loader2, Shield, Eye, EyeOff } from "lucide-react";
-import { apiClient } from "@/lib/api";
+import { useAuth } from "@/providers/auth-provider";
 
 // Validation schemas
 const emailSchema = z.object({
@@ -25,10 +25,23 @@ const passwordSchema = z.object({
 type EmailFormData = z.infer<typeof emailSchema>;
 type PasswordFormData = z.infer<typeof passwordSchema>;
 
-export default function LoginPage() {
+// Loading component for Suspense
+function LoginLoading() {
+  return (
+    <div className="min-h-screen flex items-center justify-center bg-slate-50">
+      <div className="flex flex-col items-center gap-4">
+        <Loader2 className="w-10 h-10 animate-spin text-indigo-600" />
+        <p className="text-slate-600">Loading...</p>
+      </div>
+    </div>
+  );
+}
+
+function LoginContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const redirect = searchParams.get("redirect") || "/dashboard";
+  const { login, loginWithOTP, sendOTP, isAuthenticated, isAdmin, isLoading: authLoading } = useAuth();
   
   const [loginMethod, setLoginMethod] = useState<"otp" | "password">("otp");
   const [step, setStep] = useState<"email" | "otp" | "password">("email");
@@ -38,6 +51,18 @@ export default function LoginPage() {
   const [otpValues, setOtpValues] = useState(["", "", "", "", "", ""]);
   const [showPassword, setShowPassword] = useState(false);
   const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
+
+  // Redirect if already authenticated
+  useEffect(() => {
+    if (!authLoading && isAuthenticated) {
+      // Redirect admin users to admin dashboard
+      if (isAdmin && redirect === "/dashboard") {
+        router.push("/admin");
+      } else {
+        router.push(redirect);
+      }
+    }
+  }, [authLoading, isAuthenticated, isAdmin, redirect, router]);
 
   // Forms
   const emailForm = useForm<EmailFormData>({
@@ -62,13 +87,18 @@ export default function LoginPage() {
   const handleEmailSubmit = async (data: EmailFormData) => {
     setIsLoading(true);
     try {
-      await apiClient.post("/auth/login/send-otp", { email: data.email });
-      setEmail(data.email);
-      setStep("otp");
-      setCountdown(60);
-      toast.success("OTP sent to your email!");
-    } catch (error) {
-      // Error handled by API interceptor
+      const result = await sendOTP(data.email, "login");
+      if (result.success) {
+        setEmail(data.email);
+        setStep("otp");
+        setCountdown(60);
+        // In development, show OTP for testing
+        if (result.otp) {
+          toast.info(`Development OTP: ${result.otp}`, { duration: 10000 });
+        }
+      }
+    } catch {
+      // Error handled by auth provider
     } finally {
       setIsLoading(false);
     }
@@ -78,22 +108,12 @@ export default function LoginPage() {
   const handlePasswordSubmit = async (data: PasswordFormData) => {
     setIsLoading(true);
     try {
-      const response = await apiClient.post<{
-        user: { id: string; email: string; firstName: string };
-        accessToken: string;
-        refreshToken: string;
-      }>("/auth/login", {
-        email: data.email,
-        password: data.password,
-      });
-      
-      localStorage.setItem("accessToken", response.accessToken);
-      localStorage.setItem("refreshToken", response.refreshToken);
-      
-      toast.success("Welcome back!");
-      router.push(redirect);
-    } catch (error) {
-      // Error handled by interceptor
+      const success = await login(data.email, data.password);
+      if (success) {
+        // Redirect will be handled by the useEffect above
+      }
+    } catch {
+      // Error handled by auth provider
     } finally {
       setIsLoading(false);
     }
@@ -141,18 +161,11 @@ export default function LoginPage() {
 
     setIsLoading(true);
     try {
-      const response = await apiClient.post<{
-        user: { id: string; email: string; firstName: string };
-        accessToken: string;
-        refreshToken: string;
-      }>("/auth/login/verify-otp", { email, otp });
-      
-      localStorage.setItem("accessToken", response.accessToken);
-      localStorage.setItem("refreshToken", response.refreshToken);
-      
-      toast.success("Welcome back!");
-      router.push(redirect);
-    } catch (error) {
+      const success = await loginWithOTP(email, otp);
+      if (success) {
+        // Redirect will be handled by the useEffect above
+      }
+    } catch {
       setOtpValues(["", "", "", "", "", ""]);
       inputRefs.current[0]?.focus();
     } finally {
@@ -166,21 +179,26 @@ export default function LoginPage() {
     
     setIsLoading(true);
     try {
-      await apiClient.post("/auth/login/send-otp", { email });
-      setCountdown(60);
-      setOtpValues(["", "", "", "", "", ""]);
-      toast.success("New OTP sent!");
-    } catch (error) {
-      // Error handled by interceptor
+      const result = await sendOTP(email, "login");
+      if (result.success) {
+        setCountdown(60);
+        setOtpValues(["", "", "", "", "", ""]);
+        // In development, show OTP for testing
+        if (result.otp) {
+          toast.info(`Development OTP: ${result.otp}`, { duration: 10000 });
+        }
+      }
+    } catch {
+      // Error handled by auth provider
     } finally {
       setIsLoading(false);
     }
   };
 
   return (
-    <div className="min-h-screen flex">
-      {/* Left Panel - Decorative */}
-      <div className="hidden lg:flex lg:w-1/2 bg-gradient-to-br from-secondary via-secondary/90 to-primary relative overflow-hidden">
+    <div className="h-screen flex overflow-hidden">
+      {/* Left Panel - Decorative (Fixed) */}
+      <div className="hidden lg:flex lg:w-1/2 bg-gradient-to-br from-indigo-600 via-purple-600 to-indigo-800 overflow-hidden fixed inset-y-0 left-0">
         <div className="absolute inset-0 bg-[url('/images/pattern.svg')] opacity-10" />
         
         {/* Floating elements */}
@@ -197,7 +215,7 @@ export default function LoginPage() {
                 repeat: Infinity,
                 ease: "easeInOut",
               }}
-              className="absolute w-20 h-20 bg-white/10 rounded-2xl"
+              className="absolute w-20 h-20 bg-white/10 rounded-2xl backdrop-blur-sm"
               style={{
                 right: `${20 + i * 15}%`,
                 top: `${30 + (i % 3) * 20}%`,
@@ -214,8 +232,8 @@ export default function LoginPage() {
             transition={{ duration: 0.6 }}
           >
             <Link href="/" className="inline-flex items-center gap-3 mb-12">
-              <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center">
-                <span className="text-secondary font-bold text-xl">SM</span>
+              <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center shadow-lg">
+                <span className="text-indigo-600 font-bold text-xl">SM</span>
               </div>
               <span className="text-2xl font-bold">STEM Mantra</span>
             </Link>
@@ -254,13 +272,13 @@ export default function LoginPage() {
         </div>
       </div>
 
-      {/* Right Panel - Form */}
-      <div className="w-full lg:w-1/2 flex items-center justify-center p-8 bg-slate-50">
-        <div className="w-full max-w-md">
+      {/* Right Panel - Form (Scrollable) */}
+      <div className="w-full lg:w-1/2 lg:ml-[50%] min-h-screen overflow-y-auto flex items-center justify-center p-8 bg-slate-50">
+        <div className="w-full max-w-md my-auto py-8">
           {/* Mobile logo */}
           <div className="lg:hidden flex justify-center mb-8">
             <Link href="/" className="flex items-center gap-2">
-              <div className="w-10 h-10 bg-secondary rounded-xl flex items-center justify-center">
+              <div className="w-10 h-10 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-xl flex items-center justify-center">
                 <span className="text-white font-bold">SM</span>
               </div>
               <span className="text-xl font-bold text-slate-900">STEM Mantra</span>
@@ -320,7 +338,7 @@ export default function LoginPage() {
                           {...emailForm.register("email")}
                           type="email"
                           placeholder="john@example.com"
-                          className="w-full pl-12 pr-4 py-3 rounded-xl border border-slate-200 focus:border-secondary focus:ring-2 focus:ring-secondary/20 outline-none transition-all"
+                          className="w-full pl-12 pr-4 py-3 rounded-xl border border-slate-200 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 outline-none transition-all"
                         />
                       </div>
                       {emailForm.formState.errors.email && (
@@ -333,7 +351,7 @@ export default function LoginPage() {
                     <button
                       type="submit"
                       disabled={isLoading}
-                      className="w-full py-3 px-4 bg-secondary text-white rounded-xl font-semibold hover:bg-secondary/90 transition-colors flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="w-full py-3.5 px-4 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-xl font-semibold hover:from-indigo-700 hover:to-purple-700 transition-all shadow-lg shadow-indigo-500/25 hover:shadow-indigo-500/40 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                       {isLoading ? (
                         <Loader2 className="w-5 h-5 animate-spin" />
@@ -356,7 +374,7 @@ export default function LoginPage() {
                           {...passwordForm.register("email")}
                           type="email"
                           placeholder="john@example.com"
-                          className="w-full pl-12 pr-4 py-3 rounded-xl border border-slate-200 focus:border-secondary focus:ring-2 focus:ring-secondary/20 outline-none transition-all"
+                          className="w-full pl-12 pr-4 py-3 rounded-xl border border-slate-200 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 outline-none transition-all"
                         />
                       </div>
                       {passwordForm.formState.errors.email && (
@@ -376,7 +394,7 @@ export default function LoginPage() {
                           {...passwordForm.register("password")}
                           type={showPassword ? "text" : "password"}
                           placeholder="••••••••"
-                          className="w-full pl-12 pr-12 py-3 rounded-xl border border-slate-200 focus:border-secondary focus:ring-2 focus:ring-secondary/20 outline-none transition-all"
+                          className="w-full pl-12 pr-12 py-3 rounded-xl border border-slate-200 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 outline-none transition-all"
                         />
                         <button
                           type="button"
@@ -395,10 +413,10 @@ export default function LoginPage() {
 
                     <div className="flex items-center justify-between">
                       <label className="flex items-center gap-2 cursor-pointer">
-                        <input type="checkbox" className="w-4 h-4 rounded border-slate-300 text-secondary focus:ring-secondary" />
+                        <input type="checkbox" className="w-4 h-4 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500" />
                         <span className="text-sm text-slate-600">Remember me</span>
                       </label>
-                      <Link href="/forgot-password" className="text-sm text-secondary hover:underline">
+                      <Link href="/forgot-password" className="text-sm text-indigo-600 hover:underline font-medium">
                         Forgot password?
                       </Link>
                     </div>
@@ -406,7 +424,7 @@ export default function LoginPage() {
                     <button
                       type="submit"
                       disabled={isLoading}
-                      className="w-full py-3 px-4 bg-secondary text-white rounded-xl font-semibold hover:bg-secondary/90 transition-colors flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="w-full py-3.5 px-4 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-xl font-semibold hover:from-indigo-700 hover:to-purple-700 transition-all shadow-lg shadow-indigo-500/25 hover:shadow-indigo-500/40 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                       {isLoading ? (
                         <Loader2 className="w-5 h-5 animate-spin" />
@@ -422,34 +440,10 @@ export default function LoginPage() {
                 <div className="text-center">
                   <p className="text-slate-600">
                     Don&apos;t have an account?{" "}
-                    <Link href="/register" className="text-secondary font-semibold hover:underline">
+                    <Link href="/register" className="text-indigo-600 font-semibold hover:underline">
                       Sign up
                     </Link>
                   </p>
-                </div>
-
-                {/* Divider */}
-                <div className="relative">
-                  <div className="absolute inset-0 flex items-center">
-                    <div className="w-full border-t border-slate-200" />
-                  </div>
-                  <div className="relative flex justify-center text-sm">
-                    <span className="px-4 bg-slate-50 text-slate-500">
-                      or continue with
-                    </span>
-                  </div>
-                </div>
-
-                {/* Social buttons */}
-                <div className="grid grid-cols-2 gap-3">
-                  <button className="flex items-center justify-center gap-2 py-3 px-4 border border-slate-200 rounded-xl hover:bg-slate-100 transition-colors">
-                    <Image src="/images/google.svg" alt="Google" width={20} height={20} />
-                    <span className="text-sm font-medium text-slate-600">Google</span>
-                  </button>
-                  <button className="flex items-center justify-center gap-2 py-3 px-4 border border-slate-200 rounded-xl hover:bg-slate-100 transition-colors">
-                    <Image src="/images/microsoft.svg" alt="Microsoft" width={20} height={20} />
-                    <span className="text-sm font-medium text-slate-600">Microsoft</span>
-                  </button>
                 </div>
               </motion.div>
             )}
@@ -472,8 +466,8 @@ export default function LoginPage() {
                 </button>
 
                 <div className="text-center">
-                  <div className="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <Shield className="w-8 h-8 text-secondary" />
+                  <div className="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Shield className="w-8 h-8 text-indigo-600" />
                   </div>
                   <h2 className="text-3xl font-bold text-slate-900 mb-2">Enter OTP</h2>
                   <p className="text-slate-600">
@@ -495,7 +489,7 @@ export default function LoginPage() {
                       value={value}
                       onChange={(e) => handleOtpChange(index, e.target.value)}
                       onKeyDown={(e) => handleOtpKeyDown(index, e)}
-                      className="w-12 h-14 text-center text-2xl font-bold rounded-xl border-2 border-slate-200 focus:border-secondary focus:ring-2 focus:ring-secondary/20 outline-none transition-all"
+                      className="w-12 h-14 text-center text-2xl font-bold rounded-xl border-2 border-slate-200 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 outline-none transition-all"
                     />
                   ))}
                 </div>
@@ -503,7 +497,7 @@ export default function LoginPage() {
                 <button
                   onClick={handleOtpSubmit}
                   disabled={isLoading || otpValues.some((v) => !v)}
-                  className="w-full py-3 px-4 bg-secondary text-white rounded-xl font-semibold hover:bg-secondary/90 transition-colors flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full py-3.5 px-4 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-xl font-semibold hover:from-indigo-700 hover:to-purple-700 transition-all shadow-lg shadow-indigo-500/25 hover:shadow-indigo-500/40 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {isLoading ? (
                     <Loader2 className="w-5 h-5 animate-spin" />
@@ -520,7 +514,7 @@ export default function LoginPage() {
                     <button
                       onClick={handleResendOtp}
                       disabled={countdown > 0 || isLoading}
-                      className="text-secondary font-semibold hover:underline disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="text-indigo-600 font-semibold hover:underline disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                       {countdown > 0 ? `Resend in ${countdown}s` : "Resend OTP"}
                     </button>
@@ -533,16 +527,24 @@ export default function LoginPage() {
           {/* Footer */}
           <div className="mt-8 text-center text-sm text-slate-500">
             Protected by reCAPTCHA and subject to our{" "}
-            <Link href="/terms" className="text-secondary hover:underline">
+            <Link href="/terms" className="text-indigo-600 hover:underline">
               Terms
             </Link>{" "}
             and{" "}
-            <Link href="/privacy" className="text-secondary hover:underline">
+            <Link href="/privacy" className="text-indigo-600 hover:underline">
               Privacy Policy
             </Link>
           </div>
         </div>
       </div>
     </div>
+  );
+}
+
+export default function LoginPage() {
+  return (
+    <Suspense fallback={<LoginLoading />}>
+      <LoginContent />
+    </Suspense>
   );
 }

@@ -417,6 +417,41 @@ class AuthService {
     return { message: 'Password changed successfully' };
   }
 
+  async updateProfile(userId: string, data: { firstName?: string; lastName?: string; phone?: string; avatar?: string }) {
+    const user = await prisma.user.findUnique({
+      where: { id: userId },
+    });
+
+    if (!user) {
+      throw new NotFoundError('User not found');
+    }
+
+    const updatedUser = await prisma.user.update({
+      where: { id: userId },
+      data: {
+        firstName: data.firstName || user.firstName,
+        lastName: data.lastName,
+        phone: data.phone,
+        avatar: data.avatar,
+      },
+      select: {
+        id: true,
+        email: true,
+        firstName: true,
+        lastName: true,
+        phone: true,
+        avatar: true,
+        role: true,
+        status: true,
+        emailVerified: true,
+        createdAt: true,
+        lastLoginAt: true,
+      },
+    });
+
+    return updatedUser;
+  }
+
   private async generateTokens(payload: TokenPayload): Promise<AuthTokens> {
     // Generate access token
     const accessToken = jwt.sign(payload, config.jwt.secret, {

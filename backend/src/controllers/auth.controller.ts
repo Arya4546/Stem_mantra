@@ -173,6 +173,20 @@ export const getProfile = asyncHandler(async (req: Request, res: Response) => {
   return sendSuccess(res, user, 'Profile retrieved successfully');
 });
 
+export const updateProfile = asyncHandler(async (req: Request, res: Response) => {
+  const userId = req.user?.id;
+
+  if (!userId) {
+    return sendSuccess(res, null, 'No user found');
+  }
+
+  const { firstName, lastName, phone, avatar } = req.body;
+
+  const user = await authService.updateProfile(userId, { firstName, lastName, phone, avatar });
+
+  return sendSuccess(res, user, 'Profile updated successfully');
+});
+
 export const changePassword = asyncHandler(async (req: Request, res: Response) => {
   const userId = req.user?.id;
   const { currentPassword, newPassword } = req.body;

@@ -1,4 +1,5 @@
 import { Router } from 'express';
+import { UserRole } from '@prisma/client';
 import {
   createOrderFromCart,
   getOrderById,
@@ -36,15 +37,15 @@ router.patch('/:id/cancel', authenticate, cancelOrder);
 // ============ ADMIN ROUTES ============
 
 // Get all orders
-router.get('/', authenticate, authorize('ADMIN'), getAllOrders);
+router.get('/', authenticate, authorize(UserRole.ADMIN, UserRole.SUPER_ADMIN, UserRole.MANAGER), getAllOrders);
 
 // Update order status
-router.patch('/:id/status', authenticate, authorize('ADMIN'), updateOrderStatus);
+router.patch('/:id/status', authenticate, authorize(UserRole.ADMIN, UserRole.SUPER_ADMIN, UserRole.MANAGER), updateOrderStatus);
 
 // Update payment status
-router.patch('/:id/payment', authenticate, authorize('ADMIN'), updatePaymentStatus);
+router.patch('/:id/payment', authenticate, authorize(UserRole.ADMIN, UserRole.SUPER_ADMIN, UserRole.MANAGER), updatePaymentStatus);
 
 // Get order statistics
-router.get('/stats/overview', authenticate, authorize('ADMIN'), getOrderStats);
+router.get('/stats/overview', authenticate, authorize(UserRole.ADMIN, UserRole.SUPER_ADMIN, UserRole.MANAGER), getOrderStats);
 
 export default router;

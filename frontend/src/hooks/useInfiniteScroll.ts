@@ -1,7 +1,7 @@
 "use client";
 
 import { useInfiniteQuery } from "@tanstack/react-query";
-import { apiClient, PaginatedResponse } from "@/lib/api";
+import { apiClient, PaginatedResponse } from "@/lib/api-client";
 
 interface UseInfiniteScrollParams {
   queryKey: string[];

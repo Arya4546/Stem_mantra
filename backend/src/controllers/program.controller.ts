@@ -55,3 +55,87 @@ export const getProgramsByType = asyncHandler(async (req: Request, res: Response
 
   return sendSuccess(res, programs, 'Programs retrieved successfully');
 });
+
+export const createProgram = asyncHandler(async (req: Request, res: Response) => {
+  const {
+    name,
+    slug,
+    description,
+    shortDescription,
+    type,
+    status,
+    thumbnail,
+    duration,
+    price,
+    discountPrice,
+    features,
+    isFeatured,
+  } = req.body;
+
+  if (!name || !slug || !type || !description || !duration || price === undefined) {
+    return res.status(400).json({
+      success: false,
+      message: 'Name, slug, type, description, duration, and price are required',
+    });
+  }
+
+  const program = await programService.create({
+    name,
+    slug,
+    description,
+    shortDescription,
+    type: type as ProgramType,
+    status: status as ProgramStatus,
+    icon: thumbnail,
+    duration,
+    price: parseFloat(price),
+    discountPrice: discountPrice ? parseFloat(discountPrice) : undefined,
+    features,
+    isFeatured,
+  });
+
+  return sendSuccess(res, program, 'Program created successfully', 201);
+});
+
+export const updateProgram = asyncHandler(async (req: Request, res: Response) => {
+  const { id } = req.params;
+  const {
+    name,
+    slug,
+    description,
+    shortDescription,
+    type,
+    status,
+    thumbnail,
+    duration,
+    price,
+    discountPrice,
+    features,
+    isFeatured,
+  } = req.body;
+
+  const program = await programService.update(id, {
+    name,
+    slug,
+    description,
+    shortDescription,
+    type: type as ProgramType,
+    status: status as ProgramStatus,
+    thumbnail,
+    duration,
+    price: price !== undefined ? parseFloat(price) : undefined,
+    discountPrice: discountPrice !== undefined ? parseFloat(discountPrice) : undefined,
+    features,
+    isFeatured,
+  });
+
+  return sendSuccess(res, program, 'Program updated successfully');
+});
+
+export const deleteProgram = asyncHandler(async (req: Request, res: Response) => {
+  const { id } = req.params;
+
+  const result = await programService.delete(id);
+
+  return sendSuccess(res, result, 'Program deleted successfully');
+});

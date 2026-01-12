@@ -142,11 +142,11 @@ export const authorize = (...allowedRoles: UserRole[]) => {
   };
 };
 
-// Check if user is admin
-export const isAdmin = authorize(UserRole.ADMIN);
+// Check if user is admin (includes SUPER_ADMIN)
+export const isAdmin = authorize(UserRole.ADMIN, UserRole.SUPER_ADMIN, UserRole.MANAGER);
 
 // Check if user is school admin or above
-export const isSchoolAdmin = authorize(UserRole.ADMIN, UserRole.SCHOOL_ADMIN);
+export const isSchoolAdmin = authorize(UserRole.ADMIN, UserRole.SUPER_ADMIN, UserRole.MANAGER, UserRole.SCHOOL_ADMIN);
 
 // Check if user is teacher or above
-export const isTeacher = authorize(UserRole.ADMIN, UserRole.SCHOOL_ADMIN, UserRole.TEACHER);
+export const isTeacher = authorize(UserRole.ADMIN, UserRole.SUPER_ADMIN, UserRole.MANAGER, UserRole.SCHOOL_ADMIN, UserRole.TEACHER);

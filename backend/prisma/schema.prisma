@@ -58,7 +58,7 @@ model User {
   email         String     @unique
   password      String?    // Optional for OTP-only users
   firstName     String
-  lastName      String
+  lastName      String?
   phone         String?
   avatar        String?
   role          UserRole   @default(STUDENT)
@@ -245,9 +245,85 @@ model Enrollment {
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
   
+  // Certificate relation
+  certificate Certificate?
+  
   @@unique([userId, programId])
   @@index([userId])
   @@index([programId])
+}
+
+// ==========================================
+// Achievements & Certificates
+// ==========================================
+
+enum AchievementCategory {
+  LEARNING
+  COMPLETION
+  STREAK
+  SPECIAL
+}
+
+model AchievementDefinition {
+  id          String              @id @default(cuid())
+  title       String
+  description String
+  icon        String              @default("award")
+  category    AchievementCategory @default(LEARNING)
+  points      Int                 @default(100)
+  maxProgress Int?                // For progress-based achievements
+  isActive    Boolean             @default(true)
+  sortOrder   Int                 @default(0)
+  
+  // Relations
+  userAchievements UserAchievement[]
+  
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  @@index([category])
+  @@index([isActive])
+}
+
+model UserAchievement {
+  id            String   @id @default(cuid())
+  userId        String
+  achievementId String
+  progress      Int      @default(0)
+  isCompleted   Boolean  @default(false)
+  earnedAt      DateTime?
+  
+  // Relations
+  achievement   AchievementDefinition @relation(fields: [achievementId], references: [id], onDelete: Cascade)
+  
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  
+  @@unique([userId, achievementId])
+  @@index([userId])
+  @@index([achievementId])
+  @@index([isCompleted])
+}
+
+model Certificate {
+  id            String   @id @default(cuid())
+  userId        String
+  enrollmentId  String   @unique
+  title         String
+  courseName    String
+  certificateNumber String @unique
+  certificateUrl String?
+  issuedAt      DateTime @default(now())
+  
+  // Relations
+  enrollment    Enrollment @relation(fields: [enrollmentId], references: [id], onDelete: Cascade)
+  
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  
+  @@index([userId])
+  @@index([enrollmentId])
+  @@index([certificateNumber])
 }
 
 // ==========================================
@@ -691,6 +767,36 @@ model CartItem {
   updatedAt DateTime @updatedAt
   
   @@unique([cartId, productId])
+}
+
+// ==========================================
+// Wishlist
+// ==========================================
+
+model Wishlist {
+  id        String         @id @default(cuid())
+  userId    String         @unique
+  items     WishlistItem[]
+  
+  createdAt DateTime       @default(now())
+  updatedAt DateTime       @updatedAt
+  
+  @@index([userId])
+}
+
+model WishlistItem {
+  id         String    @id @default(cuid())
+  wishlist   Wishlist  @relation(fields: [wishlistId], references: [id], onDelete: Cascade)
+  wishlistId String
+  type       String    // 'product' or 'program'
+  productId  String?
+  programId  String?
+  
+  createdAt  DateTime  @default(now())
+  
+  @@unique([wishlistId, productId])
+  @@unique([wishlistId, programId])
+  @@index([wishlistId])
 }
 
 enum OrderStatus {

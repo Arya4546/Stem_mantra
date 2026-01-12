@@ -3,6 +3,7 @@ import { Inter, Poppins } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "@/components/SmoothScroll";
 import Providers from "@/providers";
+import FloatingDemoButton from "@/components/ui/FloatingDemoButton";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -86,6 +87,7 @@ export default function RootLayout({
         <Providers>
           <SmoothScroll />
           {children}
+          <FloatingDemoButton />
         </Providers>
       </body>
     </html>

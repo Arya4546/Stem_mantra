@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, ReactNode } from "react";
 import { motion } from "framer-motion";
-import { Loader2 } from "lucide-react";
+import { Loader2, Sparkles } from "lucide-react";
 
 interface InfiniteScrollContainerProps {
   children: ReactNode;
@@ -67,7 +67,7 @@ export default function InfiniteScrollContainer({
       animate={{ opacity: 1, y: 0 }}
       className="flex flex-col items-center justify-center py-8 space-y-2"
     >
-      <span className="text-3xl">🎉</span>
+      <Sparkles className="w-8 h-8 text-amber-400" />
       <span className="text-sm text-slate-500">You&apos;ve seen it all!</span>
     </motion.div>
   );

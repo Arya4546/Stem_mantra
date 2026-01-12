@@ -129,14 +129,21 @@ class TestimonialService {
     return testimonial;
   }
 
-  async getAll(query: { page?: number; limit?: number; isApproved?: boolean; isFeatured?: boolean }) {
+  async getAll(query: { page?: number; limit?: number; isApproved?: boolean; isFeatured?: boolean; search?: string }) {
     const page = query.page || 1;
     const limit = query.limit || 10;
     const skip = (page - 1) * limit;
 
-    const where: { isApproved?: boolean; isFeatured?: boolean } = {};
+    const where: { isApproved?: boolean; isFeatured?: boolean; OR?: any[] } = {};
     if (query.isApproved !== undefined) where.isApproved = query.isApproved;
     if (query.isFeatured !== undefined) where.isFeatured = query.isFeatured;
+    if (query.search) {
+      where.OR = [
+        { name: { contains: query.search, mode: 'insensitive' } },
+        { content: { contains: query.search, mode: 'insensitive' } },
+        { schoolName: { contains: query.search, mode: 'insensitive' } },
+      ];
+    }
 
     const [testimonials, total] = await Promise.all([
       prisma.testimonial.findMany({
@@ -184,6 +191,17 @@ class TestimonialService {
     });
   }
 
+  async update(id: string, data: Partial<{ name: string; designation: string; schoolName: string; content: string; rating: number; avatar: string | null; isApproved: boolean; isFeatured: boolean }>) {
+    return prisma.testimonial.update({
+      where: { id },
+      data,
+    });
+  }
+
+  async getById(id: string) {
+    return prisma.testimonial.findUnique({ where: { id } });
+  }
+
   async delete(id: string) {
     await prisma.testimonial.delete({ where: { id } });
     return { message: 'Testimonial deleted' };
@@ -199,13 +217,19 @@ class FAQService {
     return prisma.fAQ.create({ data });
   }
 
-  async getAll(category?: string) {
-    const where = category ? { category, isPublished: true } : { isPublished: true };
+  async getAll(category?: string, includeUnpublished: boolean = false) {
+    const where: any = {};
+    if (category) where.category = category;
+    if (!includeUnpublished) where.isPublished = true;
 
     return prisma.fAQ.findMany({
       where,
       orderBy: [{ category: 'asc' }, { sortOrder: 'asc' }],
     });
+  }
+
+  async getById(id: string) {
+    return prisma.fAQ.findUnique({ where: { id } });
   }
 
   async getByCategory(category: string) {

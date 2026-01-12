@@ -38,6 +38,8 @@ export const NAVIGATION = [
   { name: "Contact", href: "/contact" },
 ] as const;
 
+import { Microscope, Bot, Zap } from "lucide-react";
+
 export const PROGRAMS = [
   {
     id: "atl-labs",
@@ -51,7 +53,7 @@ export const PROGRAMS = [
       "Curriculum development",
       "Ongoing support and mentorship",
     ],
-    icon: "🔬",
+    icon: Microscope,
   },
   {
     id: "robotics-labs",
@@ -65,7 +67,7 @@ export const PROGRAMS = [
       "IoT integration",
       "Competition preparation",
     ],
-    icon: "🤖",
+    icon: Bot,
   },
   {
     id: "stem-labs",
@@ -79,7 +81,7 @@ export const PROGRAMS = [
       "Coding and programming",
       "Project-based workshops",
     ],
-    icon: "⚡",
+    icon: Zap,
   },
 ] as const;
 

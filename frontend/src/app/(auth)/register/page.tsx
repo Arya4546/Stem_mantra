@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, Suspense } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -9,13 +9,14 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { toast } from "sonner";
-import { Mail, ArrowLeft, ArrowRight, CheckCircle2, Loader2, Shield } from "lucide-react";
-import { apiClient } from "@/lib/api";
+import { Mail, ArrowLeft, ArrowRight, CheckCircle2, Loader2, Shield, User } from "lucide-react";
+import { useAuth } from "@/providers/auth-provider";
 
 // Validation schemas
 const emailSchema = z.object({
   email: z.string().email("Please enter a valid email address"),
   firstName: z.string().min(2, "First name must be at least 2 characters"),
+  lastName: z.string().min(2, "Last name must be at least 2 characters"),
 });
 
 const otpSchema = z.object({
@@ -25,23 +26,44 @@ const otpSchema = z.object({
 type EmailFormData = z.infer<typeof emailSchema>;
 type OTPFormData = z.infer<typeof otpSchema>;
 
-export default function RegisterPage() {
+// Loading component for Suspense
+function RegisterLoading() {
+  return (
+    <div className="min-h-screen flex items-center justify-center bg-slate-50">
+      <div className="flex flex-col items-center gap-4">
+        <Loader2 className="w-10 h-10 animate-spin text-indigo-600" />
+        <p className="text-slate-600">Loading...</p>
+      </div>
+    </div>
+  );
+}
+
+function RegisterContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const redirect = searchParams.get("redirect") || "/dashboard";
+  const { sendOTP, registerWithOTP, isAuthenticated, isLoading: authLoading } = useAuth();
   
   const [step, setStep] = useState<"email" | "otp" | "success">("email");
   const [email, setEmail] = useState("");
   const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [countdown, setCountdown] = useState(0);
   const [otpValues, setOtpValues] = useState(["", "", "", "", "", ""]);
   const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
 
+  // Redirect if already authenticated
+  useEffect(() => {
+    if (!authLoading && isAuthenticated) {
+      router.push(redirect);
+    }
+  }, [authLoading, isAuthenticated, redirect, router]);
+
   // Email form
   const emailForm = useForm<EmailFormData>({
     resolver: zodResolver(emailSchema),
-    defaultValues: { email: "", firstName: "" },
+    defaultValues: { email: "", firstName: "", lastName: "" },
   });
 
   // Countdown timer for resend
@@ -56,18 +78,20 @@ export default function RegisterPage() {
   const handleEmailSubmit = async (data: EmailFormData) => {
     setIsLoading(true);
     try {
-      await apiClient.post("/auth/register/send-otp", {
-        email: data.email,
-        firstName: data.firstName,
-      });
-      
-      setEmail(data.email);
-      setFirstName(data.firstName);
-      setStep("otp");
-      setCountdown(60);
-      toast.success("OTP sent to your email!");
-    } catch (error) {
-      // Error handled by API interceptor
+      const result = await sendOTP(data.email, "register");
+      if (result.success) {
+        setEmail(data.email);
+        setFirstName(data.firstName);
+        setLastName(data.lastName);
+        setStep("otp");
+        setCountdown(60);
+        // In development, show OTP for testing
+        if (result.otp) {
+          toast.info(`Development OTP: ${result.otp}`, { duration: 10000 });
+        }
+      }
+    } catch {
+      // Error handled by auth provider
     } finally {
       setIsLoading(false);
     }
@@ -116,26 +140,19 @@ export default function RegisterPage() {
 
     setIsLoading(true);
     try {
-      const response = await apiClient.post<{
-        user: { id: string; email: string; firstName: string };
-        accessToken: string;
-        refreshToken: string;
-      }>("/auth/register/verify-otp", {
+      const success = await registerWithOTP({
         email,
         otp,
         firstName,
+        lastName,
       });
       
-      // Store tokens
-      localStorage.setItem("accessToken", response.accessToken);
-      localStorage.setItem("refreshToken", response.refreshToken);
-      
-      setStep("success");
-      toast.success("Account created successfully!");
-      
-      // Redirect after animation
-      setTimeout(() => router.push(redirect), 2000);
-    } catch (error) {
+      if (success) {
+        setStep("success");
+        // Redirect after animation
+        setTimeout(() => router.push(redirect), 2000);
+      }
+    } catch {
       setOtpValues(["", "", "", "", "", ""]);
       inputRefs.current[0]?.focus();
     } finally {
@@ -149,24 +166,26 @@ export default function RegisterPage() {
     
     setIsLoading(true);
     try {
-      await apiClient.post("/auth/register/send-otp", {
-        email,
-        firstName,
-      });
-      setCountdown(60);
-      setOtpValues(["", "", "", "", "", ""]);
-      toast.success("New OTP sent!");
-    } catch (error) {
-      // Error handled by interceptor
+      const result = await sendOTP(email, "register");
+      if (result.success) {
+        setCountdown(60);
+        setOtpValues(["", "", "", "", "", ""]);
+        // In development, show OTP for testing
+        if (result.otp) {
+          toast.info(`Development OTP: ${result.otp}`, { duration: 10000 });
+        }
+      }
+    } catch {
+      // Error handled by auth provider
     } finally {
       setIsLoading(false);
     }
   };
 
   return (
-    <div className="min-h-screen flex">
-      {/* Left Panel - Decorative */}
-      <div className="hidden lg:flex lg:w-1/2 bg-gradient-to-br from-primary via-primary/90 to-secondary relative overflow-hidden">
+    <div className="h-screen flex overflow-hidden">
+      {/* Left Panel - Decorative (Fixed) */}
+      <div className="hidden lg:flex lg:w-1/2 bg-gradient-to-br from-primary via-primary/90 to-secondary overflow-hidden fixed inset-y-0 left-0">
         <div className="absolute inset-0 bg-[url('/images/pattern.svg')] opacity-10" />
         
         {/* Floating elements */}
@@ -240,9 +259,9 @@ export default function RegisterPage() {
         </div>
       </div>
 
-      {/* Right Panel - Form */}
-      <div className="w-full lg:w-1/2 flex items-center justify-center p-8 bg-slate-50">
-        <div className="w-full max-w-md">
+      {/* Right Panel - Form (Scrollable) */}
+      <div className="w-full lg:w-1/2 lg:ml-[50%] min-h-screen overflow-y-auto flex items-center justify-center p-8 bg-slate-50">
+        <div className="w-full max-w-md my-auto py-8">
           {/* Mobile logo */}
           <div className="lg:hidden flex justify-center mb-8">
             <Link href="/" className="flex items-center gap-2">
@@ -271,21 +290,46 @@ export default function RegisterPage() {
                 </div>
 
                 <form onSubmit={emailForm.handleSubmit(handleEmailSubmit)} className="space-y-4">
-                  <div>
-                    <label className="block text-sm font-medium text-slate-700 mb-2">
-                      First Name
-                    </label>
-                    <input
-                      {...emailForm.register("firstName")}
-                      type="text"
-                      placeholder="John"
-                      className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
-                    />
-                    {emailForm.formState.errors.firstName && (
-                      <p className="mt-1 text-sm text-red-500">
-                        {emailForm.formState.errors.firstName.message}
-                      </p>
-                    )}
+                  <div className="grid grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-sm font-medium text-slate-700 mb-2">
+                        First Name
+                      </label>
+                      <div className="relative">
+                        <User className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
+                        <input
+                          {...emailForm.register("firstName")}
+                          type="text"
+                          placeholder="John"
+                          className="w-full pl-12 pr-4 py-3 rounded-xl border border-slate-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+                        />
+                      </div>
+                      {emailForm.formState.errors.firstName && (
+                        <p className="mt-1 text-sm text-red-500">
+                          {emailForm.formState.errors.firstName.message}
+                        </p>
+                      )}
+                    </div>
+
+                    <div>
+                      <label className="block text-sm font-medium text-slate-700 mb-2">
+                        Last Name
+                      </label>
+                      <div className="relative">
+                        <User className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
+                        <input
+                          {...emailForm.register("lastName")}
+                          type="text"
+                          placeholder="Doe"
+                          className="w-full pl-12 pr-4 py-3 rounded-xl border border-slate-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+                        />
+                      </div>
+                      {emailForm.formState.errors.lastName && (
+                        <p className="mt-1 text-sm text-red-500">
+                          {emailForm.formState.errors.lastName.message}
+                        </p>
+                      )}
+                    </div>
                   </div>
 
                   <div>
@@ -330,30 +374,6 @@ export default function RegisterPage() {
                       Sign in
                     </Link>
                   </p>
-                </div>
-
-                {/* Social signup divider */}
-                <div className="relative">
-                  <div className="absolute inset-0 flex items-center">
-                    <div className="w-full border-t border-slate-200" />
-                  </div>
-                  <div className="relative flex justify-center text-sm">
-                    <span className="px-4 bg-slate-50 text-slate-500">
-                      or continue with
-                    </span>
-                  </div>
-                </div>
-
-                {/* Social buttons */}
-                <div className="grid grid-cols-2 gap-3">
-                  <button className="flex items-center justify-center gap-2 py-3 px-4 border border-slate-200 rounded-xl hover:bg-slate-100 transition-colors">
-                    <Image src="/images/google.svg" alt="Google" width={20} height={20} />
-                    <span className="text-sm font-medium text-slate-600">Google</span>
-                  </button>
-                  <button className="flex items-center justify-center gap-2 py-3 px-4 border border-slate-200 rounded-xl hover:bg-slate-100 transition-colors">
-                    <Image src="/images/microsoft.svg" alt="Microsoft" width={20} height={20} />
-                    <span className="text-sm font-medium text-slate-600">Microsoft</span>
-                  </button>
                 </div>
               </motion.div>
             )}
@@ -471,16 +491,24 @@ export default function RegisterPage() {
           {/* Footer */}
           <div className="mt-8 text-center text-sm text-slate-500">
             By creating an account, you agree to our{" "}
-            <Link href="/terms" className="text-primary hover:underline">
+            <Link href="/terms" className="text-indigo-600 hover:underline">
               Terms of Service
             </Link>{" "}
             and{" "}
-            <Link href="/privacy" className="text-primary hover:underline">
+            <Link href="/privacy" className="text-indigo-600 hover:underline">
               Privacy Policy
             </Link>
           </div>
         </div>
       </div>
     </div>
+  );
+}
+
+export default function RegisterPage() {
+  return (
+    <Suspense fallback={<RegisterLoading />}>
+      <RegisterContent />
+    </Suspense>
   );
 }

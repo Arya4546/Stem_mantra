@@ -10,8 +10,10 @@ export const getAllPosts = asyncHandler(async (req: Request, res: Response, _nex
   const category = req.query.category as string;
   const tag = req.query.tag as string;
   const search = req.query.search as string;
+  const status = req.query.status as string; // 'all', 'PUBLISHED', 'DRAFT', 'ARCHIVED'
+  const author = req.query.author as string;
 
-  const result = await blogService.getAllPosts({ page, limit, category, tag, search });
+  const result = await blogService.getAllPosts({ page, limit, category, tag, search, status, author });
   
   sendPaginated(res, result.posts, page, limit, result.meta.total, 'Blog posts fetched successfully');
 });

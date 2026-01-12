@@ -1,4 +1,5 @@
 import { Router } from 'express';
+import { UserRole } from '@prisma/client';
 import {
   subscribeToNewsletter,
   unsubscribeFromNewsletter,
@@ -37,8 +38,8 @@ router.post('/newsletter/subscribe', subscribeToNewsletter);
 router.post('/newsletter/unsubscribe', unsubscribeFromNewsletter);
 
 // Admin routes
-router.get('/newsletter/subscribers', authenticate, authorize('ADMIN'), getNewsletterSubscribers);
-router.post('/newsletter/send', authenticate, authorize('ADMIN'), sendNewsletter);
+router.get('/newsletter/subscribers', authenticate, authorize(UserRole.ADMIN, UserRole.SUPER_ADMIN, UserRole.MANAGER), getNewsletterSubscribers);
+router.post('/newsletter/send', authenticate, authorize(UserRole.ADMIN, UserRole.SUPER_ADMIN, UserRole.MANAGER), sendNewsletter);
 
 // ============ TESTIMONIALS ============
 
@@ -51,9 +52,9 @@ router.get('/testimonials/:id', getTestimonialById);
 router.post('/testimonials', createTestimonial);
 
 // Admin routes
-router.put('/testimonials/:id', authenticate, authorize('ADMIN'), updateTestimonial);
-router.patch('/testimonials/:id/approve', authenticate, authorize('ADMIN'), approveTestimonial);
-router.delete('/testimonials/:id', authenticate, authorize('ADMIN'), deleteTestimonial);
+router.put('/testimonials/:id', authenticate, authorize(UserRole.ADMIN, UserRole.SUPER_ADMIN, UserRole.MANAGER), updateTestimonial);
+router.patch('/testimonials/:id/approve', authenticate, authorize(UserRole.ADMIN, UserRole.SUPER_ADMIN, UserRole.MANAGER), approveTestimonial);
+router.delete('/testimonials/:id', authenticate, authorize(UserRole.ADMIN, UserRole.SUPER_ADMIN, UserRole.MANAGER), deleteTestimonial);
 
 // ============ GALLERY ============
 
@@ -64,9 +65,9 @@ router.get('/gallery/categories', getGalleryCategories);
 router.get('/gallery/:id', getGalleryItemById);
 
 // Admin routes
-router.post('/gallery', authenticate, authorize('ADMIN'), createGalleryItem);
-router.put('/gallery/:id', authenticate, authorize('ADMIN'), updateGalleryItem);
-router.delete('/gallery/:id', authenticate, authorize('ADMIN'), deleteGalleryItem);
+router.post('/gallery', authenticate, authorize(UserRole.ADMIN, UserRole.SUPER_ADMIN, UserRole.MANAGER), createGalleryItem);
+router.put('/gallery/:id', authenticate, authorize(UserRole.ADMIN, UserRole.SUPER_ADMIN, UserRole.MANAGER), updateGalleryItem);
+router.delete('/gallery/:id', authenticate, authorize(UserRole.ADMIN, UserRole.SUPER_ADMIN, UserRole.MANAGER), deleteGalleryItem);
 
 // ============ FAQ ============
 
@@ -76,9 +77,9 @@ router.get('/faq/categories', getFAQCategories);
 router.get('/faq/:id', getFAQById);
 
 // Admin routes
-router.post('/faq', authenticate, authorize('ADMIN'), createFAQ);
-router.put('/faq/:id', authenticate, authorize('ADMIN'), updateFAQ);
-router.delete('/faq/:id', authenticate, authorize('ADMIN'), deleteFAQ);
-router.post('/faq/reorder', authenticate, authorize('ADMIN'), reorderFAQs);
+router.post('/faq', authenticate, authorize(UserRole.ADMIN, UserRole.SUPER_ADMIN, UserRole.MANAGER), createFAQ);
+router.put('/faq/:id', authenticate, authorize(UserRole.ADMIN, UserRole.SUPER_ADMIN, UserRole.MANAGER), updateFAQ);
+router.delete('/faq/:id', authenticate, authorize(UserRole.ADMIN, UserRole.SUPER_ADMIN, UserRole.MANAGER), deleteFAQ);
+router.post('/faq/reorder', authenticate, authorize(UserRole.ADMIN, UserRole.SUPER_ADMIN, UserRole.MANAGER), reorderFAQs);
 
 export default router;

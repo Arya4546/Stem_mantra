@@ -5,7 +5,7 @@ import { PostStatus, Prisma } from '@prisma/client';
 interface BlogQuery {
   page?: number;
   limit?: number;
-  status?: PostStatus;
+  status?: string; // 'all' or PostStatus values
   category?: string;
   tag?: string;
   author?: string;
@@ -44,12 +44,14 @@ class BlogService {
 
     const where: Prisma.BlogPostWhereInput = {};
 
-    if (query.status) {
-      where.status = query.status;
-    } else {
+    // Status filter - 'all' means no filter, otherwise default to PUBLISHED for public
+    if (query.status && query.status !== 'all') {
+      where.status = query.status as PostStatus;
+    } else if (!query.status) {
       // Default to published for public queries
       where.status = PostStatus.PUBLISHED;
     }
+    // When status === 'all', we don't add any status filter
 
     if (query.category) {
       where.categories = {

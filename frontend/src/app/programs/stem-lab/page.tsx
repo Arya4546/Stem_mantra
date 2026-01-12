@@ -1,4 +1,6 @@
-import type { Metadata } from "next";
+"use client";
+
+import { motion } from "framer-motion";
 import Link from "next/link";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
@@ -12,67 +14,83 @@ import {
   FaCheckCircle,
   FaRulerCombined,
 } from "react-icons/fa";
-
-export const metadata: Metadata = {
-  title: "STEM Innovation Labs Setup | STEM Mantra",
-  description:
-    "Complete STEM Innovation Lab setup for schools. Hands-on learning in science, mathematics, engineering with modern equipment, experiments, and project-based curriculum.",
-  openGraph: {
-    title: "STEM Innovation Labs Setup | STEM Mantra",
-    description:
-      "Complete STEM Innovation Lab setup for schools. Hands-on learning in science, mathematics, engineering with modern equipment.",
-    type: "website",
-  },
-};
+import {
+  ArrowRight,
+  Sparkles,
+  Wrench,
+  BookOpen,
+  Zap,
+  Award,
+  Phone,
+  CheckCircle,
+  Beaker,
+  Calculator,
+  Microscope,
+  Printer,
+  Lightbulb,
+  Shield,
+  GraduationCap,
+  Users,
+  Target,
+  TrendingUp
+} from "lucide-react";
 
 const features = [
   {
-    icon: FaFlask,
+    icon: Beaker,
     title: "Science Experiments",
     description:
       "200+ hands-on experiments covering physics, chemistry, and biology with modern lab equipment and safety protocols.",
+    color: "from-orange-500 to-orange-600",
   },
   {
-    icon: FaRulerCombined,
+    icon: Calculator,
     title: "Mathematics Lab",
     description:
       "Interactive tools and manipulatives for teaching geometry, algebra, statistics, and advanced mathematics concepts.",
+    color: "from-teal-500 to-teal-600",
   },
   {
-    icon: FaCube,
+    icon: Printer,
     title: "3D Design & Printing",
     description:
       "CAD software and 3D printers for turning ideas into physical models, teaching design thinking and prototyping.",
+    color: "from-orange-500 to-orange-600",
   },
   {
-    icon: FaBolt,
+    icon: Zap,
     title: "Electronics Workshop",
     description:
       "Complete electronics workbench with components, tools, and kits for circuit design and electrical engineering basics.",
+    color: "from-teal-500 to-teal-600",
   },
   {
-    icon: FaMicroscope,
+    icon: Microscope,
     title: "Research Tools",
     description:
       "Digital microscopes, data loggers, and measurement instruments for scientific investigation and research projects.",
+    color: "from-orange-500 to-orange-600",
   },
   {
     icon: FaAtom,
     title: "Physics Lab",
     description:
       "Mechanics, optics, thermodynamics, and modern physics equipment for comprehensive hands-on learning.",
+    color: "from-teal-500 to-teal-600",
   },
   {
-    icon: FaLightbulb,
+    icon: Lightbulb,
     title: "Innovation Space",
     description:
       "Open workspace for brainstorming, prototyping, and collaborative projects with modern furniture and whiteboards.",
+    color: "from-orange-500 to-orange-600",
   },
   {
-    icon: FaCheckCircle,
+    icon: Shield,
     title: "Safety Equipment",
     description:
       "Complete safety gear, first aid, and emergency equipment ensuring safe learning environment for all experiments.",
+    color: "from-teal-500 to-teal-600",
   },
 ];
 
@@ -112,6 +130,7 @@ const equipment = {
 const curriculum = [
   {
     grade: "Grades 6-8",
+    color: "from-orange-500 to-orange-600",
     topics: [
       "Basic Scientific Method",
       "Simple Machines & Mechanics",
@@ -123,6 +142,7 @@ const curriculum = [
   },
   {
     grade: "Grades 9-10",
+    color: "from-teal-500 to-teal-600",
     topics: [
       "Advanced Physics Concepts",
       "Organic Chemistry Labs",
@@ -134,6 +154,7 @@ const curriculum = [
   },
   {
     grade: "Grades 11-12",
+    color: "from-orange-500 to-teal-500",
     topics: [
       "Modern Physics & Quantum",
       "Advanced Chemistry Analysis",
@@ -146,227 +167,327 @@ const curriculum = [
 ];
 
 const benefits = [
-  "Hands-on learning improves concept retention by 75%",
-  "Project-based approach develops critical thinking",
-  "Interdisciplinary learning connects real-world applications",
-  "Prepares students for STEM careers and higher education",
-  "Builds confidence through successful experiments",
-  "Develops teamwork and collaboration skills",
+  { icon: TrendingUp, text: "Hands-on learning improves concept retention by 75%" },
+  { icon: Target, text: "Project-based approach develops critical thinking" },
+  { icon: Zap, text: "Interdisciplinary learning connects real-world applications" },
+  { icon: GraduationCap, text: "Prepares students for STEM careers and higher education" },
+  { icon: Award, text: "Builds confidence through successful experiments" },
+  { icon: Users, text: "Develops teamwork and collaboration skills" },
 ];
 
 export default function StemLabPage() {
   return (
     <>
       <Header />
-      <main className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50">
+      <main className="min-h-screen bg-gradient-to-br from-orange-50/30 via-white to-teal-50/30">
         {/* Hero Section */}
         <section className="relative overflow-hidden pt-32 pb-20 px-4">
-          {/* Soft blur backgrounds */}
-          <div className="absolute top-20 -left-20 w-96 h-96 bg-indigo-200/30 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-purple-200/20 rounded-full blur-3xl"></div>
+          {/* Animated Background */}
+          <div className="absolute top-20 -left-20 w-96 h-96 bg-orange-200/30 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-teal-200/20 rounded-full blur-3xl"></div>
+          
+          {/* Floating Icons */}
+          <motion.div 
+            className="absolute top-40 left-[10%] text-orange-500/20 hidden lg:block"
+            animate={{ y: [0, -20, 0], rotate: [0, 10, 0] }}
+            transition={{ duration: 5, repeat: Infinity }}
+          >
+            <Beaker className="w-16 h-16" />
+          </motion.div>
+          <motion.div 
+            className="absolute top-60 right-[15%] text-teal-500/20 hidden lg:block"
+            animate={{ y: [0, 20, 0], rotate: [0, -10, 0] }}
+            transition={{ duration: 6, repeat: Infinity }}
+          >
+            <Calculator className="w-12 h-12" />
+          </motion.div>
+          <motion.div 
+            className="absolute bottom-40 left-[20%] text-orange-500/20 hidden lg:block"
+            animate={{ y: [0, -15, 0], rotate: [0, 15, 0] }}
+            transition={{ duration: 4, repeat: Infinity }}
+          >
+            <Microscope className="w-14 h-14" />
+          </motion.div>
           
           <div className="container relative mx-auto">
-            <div className="max-w-4xl mx-auto text-center">
-              <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-indigo-100 to-purple-100 rounded-2xl mb-6 shadow-lg">
-                <FaFlask className="w-10 h-10 text-indigo-600" />
-              </div>
+            <motion.div 
+              className="max-w-4xl mx-auto text-center"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+            >
+              <motion.div
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ delay: 0.2, type: "spring" }}
+                className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-orange-500 to-teal-500 rounded-2xl mb-6 shadow-lg"
+              >
+                <Beaker className="w-10 h-10 text-white" />
+              </motion.div>
+              
+              <motion.span 
+                className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-orange-100 to-teal-100 rounded-full text-sm font-semibold text-gray-700 mb-4"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.3 }}
+              >
+                <Sparkles className="w-4 h-4 text-orange-500" />
+                Integrated STEM Learning
+              </motion.span>
+              
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6">
-                <span className="gradient-text">STEM Innovation Labs</span>
+                <span className="bg-gradient-to-r from-orange-500 via-teal-500 to-teal-600 bg-clip-text text-transparent">
+                  STEM Innovation Labs
+                </span>
               </h1>
-              <p className="text-xl md:text-2xl text-gray-600 mb-8">
-                Comprehensive labs for hands-on learning in science, technology, engineering, and mathematics
+              <p className="text-xl md:text-2xl text-gray-600 mb-8 leading-relaxed">
+                Comprehensive labs for hands-on learning in science, technology, 
+                engineering, and mathematics with project-based curriculum
               </p>
               <div className="flex flex-wrap gap-4 justify-center">
-                <Link href="/contact" className="inline-block px-8 py-4 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-bold rounded-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
-                  Setup Your Lab
+                <Link 
+                  href="/contact" 
+                  className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-orange-500 to-teal-500 text-white rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all hover:scale-105"
+                >
+                  Setup Your Lab <ArrowRight className="w-4 h-4" />
                 </Link>
-                <a href="#features" className="inline-block px-8 py-4 bg-white/80 backdrop-blur-sm text-indigo-600 font-bold rounded-xl border-2 border-indigo-200 hover:border-indigo-400 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                <a 
+                  href="#features" 
+                  className="px-8 py-4 bg-white/80 backdrop-blur-sm text-gray-900 rounded-xl font-semibold border-2 border-orange-200 hover:border-orange-400 transition-all hover:scale-105"
+                >
                   Explore Features
                 </a>
               </div>
-            </div>
+            </motion.div>
           </div>
         </section>
 
         {/* Introduction */}
-        <section className="py-16 px-4">
+        <section className="py-20 px-4">
           <div className="container mx-auto">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 text-center">
-                Transform Theory into <span className="gradient-text">Practice</span>
-              </h2>
-              <p className="text-xl text-gray-600 mb-6 leading-relaxed">
-                STEM Innovation Labs bridge the gap between theoretical knowledge and practical application. 
-                Our labs provide complete infrastructure for schools to deliver experiential learning across 
-                all STEM disciplines, making complex concepts tangible and exciting for students.
-              </p>
-              <p className="text-xl text-gray-600 leading-relaxed">
-                With 200+ experiments, project-based curriculum, and modern equipment, students develop 
-                critical thinking, problem-solving, and innovation skills essential for the 21st century.
-              </p>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+              >
+                <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 text-center">
+                  Transform Theory into <span className="text-orange-500">Practice</span>
+                </h2>
+                <p className="text-xl text-gray-600 mb-6 leading-relaxed">
+                  STEM Innovation Labs bridge the gap between theoretical knowledge and practical application. 
+                  Our labs provide complete infrastructure for schools to deliver experiential learning across 
+                  all STEM subjects with NEP 2020 aligned curriculum and project-based learning methodology.
+                </p>
+                <p className="text-xl text-gray-600 leading-relaxed">
+                  From basic science experiments to complex engineering projects, students learn by doing, 
+                  developing critical thinking, problem-solving, and collaboration skills essential for 
+                  21st-century success.
+                </p>
+              </motion.div>
+              
+              {/* Benefits Grid */}
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mt-12">
+                {benefits.map((benefit, index) => (
+                  <motion.div 
+                    key={index} 
+                    className="flex items-center gap-3 bg-white rounded-xl p-4 shadow-sm border border-gray-100"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.05 }}
+                    whileHover={{ x: 5 }}
+                  >
+                    <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${index % 2 === 0 ? 'from-orange-500 to-orange-600' : 'from-teal-500 to-teal-600'} flex items-center justify-center flex-shrink-0`}>
+                      <benefit.icon className="w-5 h-5 text-white" />
+                    </div>
+                    <span className="text-gray-700 text-sm">{benefit.text}</span>
+                  </motion.div>
+                ))}
+              </div>
             </div>
           </div>
         </section>
 
         {/* Features Grid */}
-        <section id="features" className="py-16 px-4">
+        <section id="features" className="py-20 px-4 bg-gradient-to-br from-gray-50 to-orange-50/30">
           <div className="container mx-auto">
-            <div className="text-center mb-16">
+            <motion.div 
+              className="text-center mb-16"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+            >
+              <span className="inline-flex items-center gap-2 px-4 py-2 bg-orange-100 rounded-full text-sm font-semibold text-orange-700 mb-4">
+                <Sparkles className="w-4 h-4" />
+                Lab Features
+              </span>
               <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-                Lab <span className="gradient-text">Features</span>
+                What&apos;s <span className="text-orange-500">Included</span>
               </h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Everything you need for comprehensive STEM education
+                Comprehensive STEM lab infrastructure for complete experiential learning
               </p>
-            </div>
+            </motion.div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               {features.map((feature, index) => (
-                <div key={index} className="bg-white rounded-2xl p-8 border border-gray-100 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
-                  <div className="w-16 h-16 bg-gradient-to-br from-indigo-600 to-purple-600 rounded-2xl flex items-center justify-center mb-6">
-                    <feature.icon className="w-8 h-8 text-white" />
+                <motion.div 
+                  key={index} 
+                  className="group bg-white rounded-2xl p-6 border border-gray-100 hover:shadow-xl transition-all duration-300"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.05 }}
+                  whileHover={{ y: -5 }}
+                >
+                  <div className={`w-14 h-14 bg-gradient-to-br ${feature.color} rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
+                    <feature.icon className="w-7 h-7 text-white" />
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-3">
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">
                     {feature.title}
                   </h3>
-                  <p className="text-gray-600 leading-relaxed">{feature.description}</p>
-                </div>
+                  <p className="text-gray-600">{feature.description}</p>
+                </motion.div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* Benefits */}
-        <section className="py-16 px-4 bg-gradient-to-br from-indigo-50/50 to-purple-50/50">
-          <div className="container mx-auto">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div>
-                <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-                  Why <span className="gradient-text">STEM Innovation Labs</span> Matter
-                </h2>
-                <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-                  Research shows that hands-on, experiential learning significantly improves student 
-                  engagement, understanding, and retention of STEM concepts. Our innovation labs create 
-                  an environment where students become active learners and innovators.
-                </p>
-                <ul className="space-y-4">
-                  {benefits.map((benefit, index) => (
-                    <li key={index} className="flex items-start gap-3">
-                      <FaCheckCircle className="w-6 h-6 text-indigo-600 flex-shrink-0 mt-0.5" />
-                      <span className="text-lg text-gray-700">{benefit}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div className="bg-white rounded-2xl p-8 border border-gray-100 shadow-xl">
-                <div className="space-y-6">
-                  <div className="bg-gradient-to-br from-indigo-50 to-purple-50 p-6 rounded-xl">
-                    <div className="text-4xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent mb-2">200+</div>
-                    <div className="text-gray-700">Hands-on Experiments</div>
-                  </div>
-                  <div className="bg-gradient-to-br from-indigo-50 to-purple-50 p-6 rounded-xl">
-                    <div className="text-4xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent mb-2">4</div>
-                    <div className="text-gray-700">STEM Disciplines Covered</div>
-                  </div>
-                  <div className="bg-gradient-to-br from-indigo-50 to-purple-50 p-6 rounded-xl">
-                    <div className="text-4xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent mb-2">100%</div>
-                    <div className="text-gray-700">NEP 2020 Aligned</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
         {/* Equipment List */}
-        <section className="py-16 px-4">
+        <section className="py-20 px-4">
           <div className="container mx-auto">
-            <div className="text-center mb-16">
+            <motion.div 
+              className="text-center mb-16"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+            >
+              <span className="inline-flex items-center gap-2 px-4 py-2 bg-teal-100 rounded-full text-sm font-semibold text-teal-700 mb-4">
+                <Wrench className="w-4 h-4" />
+                Equipment
+              </span>
               <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-                Lab <span className="gradient-text">Equipment</span>
+                Lab <span className="text-teal-500">Equipment</span>
               </h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Modern tools and equipment for comprehensive STEM learning
+                Modern equipment for science, technology, engineering, and mathematics education
               </p>
-            </div>
+            </motion.div>
 
-            <div className="grid md:grid-cols-3 gap-8">
+            <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
               {Object.entries(equipment).map(([category, items], index) => (
-                <div key={index} className="bg-white rounded-2xl p-8 border border-gray-100 hover:shadow-xl transition-all duration-300">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-6 pb-4 border-b-2 border-indigo-200">
+                <motion.div 
+                  key={index} 
+                  className="bg-white rounded-2xl p-8 border border-gray-100 hover:shadow-xl transition-all duration-300"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                >
+                  <h3 className={`text-2xl font-bold text-gray-900 mb-6 pb-4 border-b-2 ${index === 0 ? 'border-orange-300' : index === 1 ? 'border-teal-300' : 'border-orange-300'}`}>
                     {category}
                   </h3>
                   <ul className="space-y-3">
                     {items.map((item, itemIndex) => (
                       <li key={itemIndex} className="flex items-start gap-3">
-                        <FaCheckCircle className="w-5 h-5 text-indigo-600 flex-shrink-0 mt-0.5" />
+                        <FaCheckCircle className={`w-5 h-5 flex-shrink-0 mt-0.5 ${index === 0 ? 'text-orange-500' : index === 1 ? 'text-teal-500' : 'text-orange-500'}`} />
                         <span className="text-gray-700">{item}</span>
                       </li>
                     ))}
                   </ul>
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>
         </section>
 
         {/* Curriculum */}
-        <section className="py-16 px-4 bg-gradient-to-br from-indigo-50/50 to-purple-50/50">
+        <section className="py-20 px-4 bg-gradient-to-br from-gray-50 to-teal-50/30">
           <div className="container mx-auto">
-            <div className="text-center mb-16">
+            <motion.div 
+              className="text-center mb-16"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+            >
+              <span className="inline-flex items-center gap-2 px-4 py-2 bg-orange-100 rounded-full text-sm font-semibold text-orange-700 mb-4">
+                <BookOpen className="w-4 h-4" />
+                Learning Path
+              </span>
               <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-                Grade-Wise <span className="gradient-text">Curriculum</span>
+                Grade-Wise <span className="text-orange-500">Curriculum</span>
               </h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Progressive learning path aligned with national education standards
+                Progressive STEM learning path from fundamentals to advanced projects
               </p>
-            </div>
+            </motion.div>
 
-            <div className="grid md:grid-cols-3 gap-8">
+            <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
               {curriculum.map((level, index) => (
-                <div key={index} className="bg-white rounded-2xl p-8 border border-gray-100 hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
+                <motion.div 
+                  key={index} 
+                  className="bg-white rounded-2xl p-8 border border-gray-100 hover:shadow-xl transition-all duration-300"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  whileHover={{ y: -5 }}
+                >
                   <div className="text-center mb-6">
-                    <div className="inline-block px-6 py-2 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-full font-bold text-lg mb-4">
+                    <div className={`inline-block px-6 py-2 bg-gradient-to-r ${level.color} text-white rounded-full font-bold text-lg`}>
                       {level.grade}
                     </div>
                   </div>
                   <ul className="space-y-3">
                     {level.topics.map((topic, topicIndex) => (
                       <li key={topicIndex} className="flex items-start gap-3">
-                        <FaCheckCircle className="w-5 h-5 text-indigo-600 flex-shrink-0 mt-0.5" />
+                        <FaCheckCircle className={`w-5 h-5 flex-shrink-0 mt-0.5 ${index === 0 ? 'text-orange-500' : index === 1 ? 'text-teal-500' : 'text-orange-500'}`} />
                         <span className="text-gray-700 font-medium">{topic}</span>
                       </li>
                     ))}
                   </ul>
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>
         </section>
 
         {/* CTA Section */}
-        <section className="relative py-20 px-4 overflow-hidden">
-          {/* Gradient background */}
-          <div className="absolute inset-0 bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-600"></div>
-          <div className="absolute top-0 left-0 w-96 h-96 bg-white/10 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-3xl"></div>
+        <section className="py-20 px-4 bg-gradient-to-br from-orange-500 via-orange-600 to-teal-600 relative overflow-hidden">
+          <div className="absolute inset-0 opacity-10">
+            <div className="absolute top-10 left-10 w-40 h-40 border-2 border-white rounded-full"></div>
+            <div className="absolute bottom-10 right-10 w-60 h-60 border-2 border-white rounded-full"></div>
+          </div>
           
-          <div className="container relative mx-auto text-center">
+          <motion.div 
+            className="container relative mx-auto text-center"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-              Ready to Ignite Innovation?
+              Ready to Transform Learning?
             </h2>
-            <p className="text-xl text-white/90 mb-10 max-w-2xl mx-auto">
-              Get a complete STEM Innovation Lab with equipment, training, curriculum, and ongoing support
+            <p className="text-xl text-orange-100 mb-10 max-w-2xl mx-auto">
+              Get a comprehensive STEM Innovation Lab with complete equipment, curriculum, and teacher training
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
-              <Link href="/contact" className="inline-block px-8 py-4 bg-white text-indigo-600 font-bold rounded-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
-                Request a Demo
+              <Link 
+                href="/contact" 
+                className="inline-flex items-center gap-2 px-8 py-4 bg-white text-orange-600 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all hover:scale-105"
+              >
+                Request a Demo <ArrowRight className="w-4 h-4" />
               </Link>
-              <a href="tel:+916356631515" className="inline-block px-8 py-4 bg-white/10 backdrop-blur-sm text-white font-bold rounded-xl border-2 border-white/30 hover:bg-white/20 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-                Call Now: +91-6356631515
-              </a>
+              <Link 
+                href="tel:+916356631515" 
+                className="inline-flex items-center gap-2 px-8 py-4 bg-white/10 backdrop-blur-sm text-white rounded-xl font-semibold border-2 border-white/30 hover:bg-white/20 transition-all hover:scale-105"
+              >
+                <Phone className="w-4 h-4" />
+                Call: +91-6356631515
+              </Link>
             </div>
-          </div>
+          </motion.div>
         </section>
       </main>
       <Footer />

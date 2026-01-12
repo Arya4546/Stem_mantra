@@ -1,10 +1,13 @@
 import rateLimit from 'express-rate-limit';
 import config from '../config';
 
+// Skip rate limiting in development
+const skipRateLimitInDev = () => config.nodeEnv === 'development';
+
 // General rate limiter
 export const generalLimiter = rateLimit({
   windowMs: config.rateLimit.windowMs, // 15 minutes
-  max: config.rateLimit.maxRequests, // 100 requests per window
+  max: config.nodeEnv === 'development' ? 1000 : config.rateLimit.maxRequests, // Much higher limit in dev
   message: {
     success: false,
     message: 'Too many requests, please try again later',
@@ -12,12 +15,13 @@ export const generalLimiter = rateLimit({
   },
   standardHeaders: true,
   legacyHeaders: false,
+  skip: skipRateLimitInDev,
 });
 
 // Strict rate limiter for authentication endpoints
 export const authLimiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 5, // 5 requests per window
+  max: config.nodeEnv === 'development' ? 100 : 10, // Higher in dev
   message: {
     success: false,
     message: 'Too many login attempts, please try again after 15 minutes',
@@ -57,7 +61,7 @@ export const newsletterLimiter = rateLimit({
 // Rate limiter for OTP requests (stricter)
 export const otpLimiter = rateLimit({
   windowMs: 60 * 1000, // 1 minute
-  max: 3, // 3 OTP requests per minute
+  max: config.nodeEnv === 'development' ? 20 : 3, // Higher in dev
   message: {
     success: false,
     message: 'Too many OTP requests. Please wait before requesting again.',

@@ -58,9 +58,12 @@ export const sendNewsletter = asyncHandler(async (req: Request, res: Response, _
 export const getAllTestimonials = asyncHandler(async (req: Request, res: Response, _next: NextFunction) => {
   const page = parseInt(req.query.page as string) || 1;
   const limit = parseInt(req.query.limit as string) || 10;
-  const isApproved = req.query.isApproved !== 'false';
+  const search = req.query.search as string;
   
-  const result = await testimonialService.getAll({ page, limit, isApproved });
+  // Allow showing all (including unapproved) for admin endpoints
+  const isApproved = req.query.isApproved === 'false' ? false : req.query.isApproved === undefined ? undefined : true;
+  
+  const result = await testimonialService.getAll({ page, limit, isApproved, search });
   sendPaginated(res, result.testimonials, page, limit, result.meta.total, 'Testimonials fetched successfully');
 });
 
@@ -72,8 +75,7 @@ export const getFeaturedTestimonials = asyncHandler(async (req: Request, res: Re
 
 export const getTestimonialById = asyncHandler(async (req: Request, res: Response, _next: NextFunction) => {
   const { id } = req.params;
-  const testimonials = await testimonialService.getAll({ isApproved: true });
-  const testimonial = testimonials.testimonials.find(t => t.id === id);
+  const testimonial = await testimonialService.getById(id);
   
   if (!testimonial) {
     throw new NotFoundError('Testimonial not found');
@@ -89,8 +91,7 @@ export const createTestimonial = asyncHandler(async (req: Request, res: Response
 
 export const updateTestimonial = asyncHandler(async (req: Request, res: Response, _next: NextFunction) => {
   const { id } = req.params;
-  // For update, we can set featured status
-  const testimonial = await testimonialService.setFeatured(id, req.body.isFeatured || false);
+  const testimonial = await testimonialService.update(id, req.body);
   sendSuccess(res, testimonial, 'Testimonial updated successfully');
 });
 
@@ -162,8 +163,10 @@ export const deleteGalleryItem = asyncHandler(async (req: Request, res: Response
 
 export const getAllFAQs = asyncHandler(async (req: Request, res: Response, _next: NextFunction) => {
   const category = req.query.category as string;
+  // Check if admin wants to see all (including unpublished) - for now show all in admin
+  const includeUnpublished = req.query.all === 'true' || (req as any).user?.role === 'ADMIN' || (req as any).user?.role === 'SUPER_ADMIN';
   
-  const faqs = await faqService.getAll(category);
+  const faqs = await faqService.getAll(category, includeUnpublished);
   sendSuccess(res, faqs, 'FAQs fetched successfully');
 });
 
@@ -174,8 +177,7 @@ export const getFAQCategories = asyncHandler(async (_req: Request, res: Response
 
 export const getFAQById = asyncHandler(async (req: Request, res: Response, _next: NextFunction) => {
   const { id } = req.params;
-  const faqs = await faqService.getAll();
-  const faq = faqs.find((f: any) => f.id === id);
+  const faq = await faqService.getById(id);
   
   if (!faq) {
     throw new NotFoundError('FAQ not found');

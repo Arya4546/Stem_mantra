@@ -5,8 +5,8 @@ import { ProductType, ProductStatus, Prisma } from '@prisma/client';
 interface ProductQuery {
   page?: number;
   limit?: number;
-  type?: ProductType;
-  status?: ProductStatus;
+  type?: string; // Allow 'all' or ProductType values
+  status?: string; // Allow 'all' or ProductStatus values
   category?: string;
   minPrice?: number;
   maxPrice?: number;
@@ -57,15 +57,17 @@ class ProductService {
 
     const where: Prisma.ProductWhereInput = {};
 
-    // Status filter (default to ACTIVE for public)
-    if (query.status) {
-      where.status = query.status;
-    } else {
+    // Status filter - 'all' means no filter, otherwise default to ACTIVE for public
+    if (query.status && query.status !== 'all') {
+      where.status = query.status as ProductStatus;
+    } else if (!query.status) {
+      // Default to ACTIVE only for public (when no status specified)
       where.status = ProductStatus.ACTIVE;
     }
+    // When status === 'all', we don't add any status filter
 
-    if (query.type) {
-      where.type = query.type;
+    if (query.type && query.type !== 'all') {
+      where.type = query.type as ProductType;
     }
 
     if (query.category) {
@@ -683,6 +685,17 @@ class ProductService {
   }
 
   async removeFromCart(cartId: string, productId: string) {
+    // Check if item exists first
+    const existingItem = await prisma.cartItem.findUnique({
+      where: {
+        cartId_productId: { cartId, productId },
+      },
+    });
+
+    if (!existingItem) {
+      throw new NotFoundError('Item not found in cart');
+    }
+
     await prisma.cartItem.delete({
       where: {
         cartId_productId: { cartId, productId },

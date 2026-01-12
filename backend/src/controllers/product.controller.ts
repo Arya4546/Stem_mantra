@@ -9,6 +9,8 @@ export const getAllProducts = asyncHandler(async (req: Request, res: Response, _
   const page = parseInt(req.query.page as string) || 1;
   const limit = parseInt(req.query.limit as string) || 12;
   const category = req.query.category as string;
+  const status = req.query.status as string; // 'all', 'ACTIVE', 'DRAFT', 'ARCHIVED'
+  const type = req.query.type as string;
   const minPrice = req.query.minPrice ? parseFloat(req.query.minPrice as string) : undefined;
   const maxPrice = req.query.maxPrice ? parseFloat(req.query.maxPrice as string) : undefined;
   const search = req.query.search as string;
@@ -19,7 +21,9 @@ export const getAllProducts = asyncHandler(async (req: Request, res: Response, _
   const result = await productService.getAllProducts({ 
     page, 
     limit, 
-    category, 
+    category,
+    status,
+    type,
     minPrice, 
     maxPrice, 
     search,

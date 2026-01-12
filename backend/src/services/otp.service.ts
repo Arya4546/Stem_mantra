@@ -41,7 +41,7 @@ class OTPService {
   /**
    * Send OTP for email verification during registration
    */
-  async sendVerificationOTP(email: string, name: string): Promise<{ message: string; expiresAt: Date }> {
+  async sendVerificationOTP(email: string, name: string): Promise<{ message: string; expiresAt: Date; otp?: string }> {
     // Check cooldown period
     await this.checkCooldown(email, 'VERIFICATION');
 
@@ -78,16 +78,24 @@ class OTPService {
 
     logger.info(`Verification OTP sent to ${email}`);
 
-    return {
+    // In development mode, return the OTP for testing
+    const response: { message: string; expiresAt: Date; otp?: string } = {
       message: 'OTP sent successfully. Please check your email.',
       expiresAt,
     };
+
+    if (config.nodeEnv === 'development') {
+      response.otp = otp;
+      logger.info(`[DEV MODE] OTP for ${email}: ${otp}`);
+    }
+
+    return response;
   }
 
   /**
    * Send OTP for login (passwordless)
    */
-  async sendLoginOTP(email: string): Promise<{ message: string; expiresAt: Date }> {
+  async sendLoginOTP(email: string): Promise<{ message: string; expiresAt: Date; otp?: string }> {
     // Check if user exists
     const user = await prisma.user.findUnique({
       where: { email },
@@ -138,16 +146,24 @@ class OTPService {
 
     logger.info(`Login OTP sent to ${email}`);
 
-    return {
+    // In development mode, return the OTP for testing
+    const response: { message: string; expiresAt: Date; otp?: string } = {
       message: 'OTP sent successfully. Please check your email.',
       expiresAt,
     };
+
+    if (config.nodeEnv === 'development') {
+      response.otp = otp;
+      logger.info(`[DEV MODE] OTP for ${email}: ${otp}`);
+    }
+
+    return response;
   }
 
   /**
    * Send OTP for password reset
    */
-  async sendPasswordResetOTP(email: string): Promise<{ message: string; expiresAt: Date }> {
+  async sendPasswordResetOTP(email: string): Promise<{ message: string; expiresAt: Date; otp?: string }> {
     const user = await prisma.user.findUnique({
       where: { email },
       select: { id: true, firstName: true },
@@ -197,10 +213,18 @@ class OTPService {
 
     logger.info(`Password reset OTP sent to ${email}`);
 
-    return {
+    // In development mode, return the OTP for testing
+    const response: { message: string; expiresAt: Date; otp?: string } = {
       message: 'If an account exists with this email, you will receive an OTP shortly.',
       expiresAt,
     };
+
+    if (config.nodeEnv === 'development') {
+      response.otp = otp;
+      logger.info(`[DEV MODE] OTP for ${email}: ${otp}`);
+    }
+
+    return response;
   }
 
   /**

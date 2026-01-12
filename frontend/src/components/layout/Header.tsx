@@ -3,14 +3,19 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { FaRobot } from "react-icons/fa";
-import { SITE_CONFIG, NAVIGATION } from "@/lib/constants";
+import { motion, AnimatePresence } from "framer-motion";
+import { FaRobot, FaPhone } from "react-icons/fa";
+import { LogOut, User, Settings, LayoutDashboard, ChevronDown, Menu, X, Microscope, Bot, Zap } from "lucide-react";
+import { SITE_CONFIG } from "@/lib/constants";
+import { useAuth } from "@/providers/auth-provider";
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isProgramsOpen, setIsProgramsOpen] = useState(false);
+  const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
   const pathname = usePathname();
+  const { user, isAuthenticated, logout } = useAuth();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -21,59 +26,101 @@ export default function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Close mobile menu on route change
+  useEffect(() => {
+    setIsMobileMenuOpen(false);
+  }, [pathname]);
+
   const programs = [
     {
       title: "ATL Labs",
       href: "/programs/atl-labs",
       description: "Atal Tinkering Labs setup & support",
+      icon: <Microscope className="w-6 h-6 text-orange-500" />,
     },
     {
       title: "Robotics & AI Labs",
       href: "/programs/robotics-lab",
       description: "Advanced robotics and AI education",
+      icon: <Bot className="w-6 h-6 text-teal-500" />,
     },
     {
       title: "STEM Innovation Labs",
       href: "/programs/stem-lab",
       description: "Complete STEM learning solutions",
-    }
+      icon: <Zap className="w-6 h-6 text-orange-500" />,
+    },
   ];
 
+  // Determine if on landing page
+  const isHome = pathname === "/";
+  let headerBg = "";
+  if (isScrolled) {
+    headerBg = "bg-white/90 backdrop-blur-lg shadow-lg border-b border-gray-100";
+  } else if (isHome) {
+    headerBg = "bg-gray-900/80";
+  } else {
+    headerBg = "bg-transparent";
+  }
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? "bg-white/80 backdrop-blur-md shadow-sm border-b border-gray-100"
-          : "bg-transparent"
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${headerBg}`}
     >
+      {/* Top Bar - Contact Info */}
+      <div
+        className={`hidden lg:block bg-gradient-to-r from-orange-500 to-orange-600 text-white transition-all duration-300 ${
+          isScrolled ? "h-0 opacity-0 overflow-hidden" : "h-10"
+        }`}
+      >
+        <div className="container mx-auto px-4 h-full flex items-center justify-between text-sm">
+          <div className="flex items-center gap-6">
+            <a href={`tel:${SITE_CONFIG.contact.mobile}`} className="flex items-center gap-2 hover:text-orange-100 transition-colors">
+              <FaPhone className="w-3 h-3" />
+              <span>{SITE_CONFIG.contact.mobile}</span>
+            </a>
+            <a href={`mailto:${SITE_CONFIG.contact.email}`} className="hover:text-orange-100 transition-colors">
+              {SITE_CONFIG.contact.email}
+            </a>
+          </div>
+          <div className="flex items-center gap-4">
+            <span>India&apos;s Leading STEM Education Provider</span>
+          </div>
+        </div>
+      </div>
+
       <nav className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Link
-            href="/"
-            className="flex items-center gap-2 group relative z-50"
-          >
-            <div className="w-10 h-10 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-xl flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300">
-              <FaRobot className="w-5 h-5 text-white" />
-            </div>
-            <span className="font-heading text-2xl font-bold">
-              <span className="bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
-                STEM
+          <Link href="/" className="flex items-center gap-3 group relative z-50">
+            <motion.div
+              whileHover={{ scale: 1.05, rotate: 5 }}
+              whileTap={{ scale: 0.95 }}
+              className="w-12 h-12 bg-gradient-to-br from-orange-500 to-orange-600 rounded-2xl flex items-center justify-center shadow-lg shadow-orange-500/30"
+            >
+              <FaRobot className="w-6 h-6 text-white" />
+            </motion.div>
+            <div className="flex flex-col">
+              <span className="font-heading text-2xl font-bold leading-tight">
+                <span className="bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">
+                  STEM
+                </span>
+                <span className={isScrolled ? "text-gray-800" : "text-gray-900"}>Mantra</span>
               </span>
-              <span className={`${isScrolled ? 'text-gray-800' : 'text-gray-900'}`}>Mantra</span>
-            </span>
+              <span className="text-[10px] text-gray-500 tracking-widest uppercase">
+                Drive Your Future
+              </span>
+            </div>
           </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-1">
-            <NavLink href="/" active={pathname === "/"}>
+            <NavLink href="/" active={pathname === "/"} isScrolled={isScrolled} textClass={!isScrolled ? "text-white hover:text-orange-400" : "text-gray-900 hover:text-orange-600"}>
               Home
             </NavLink>
-            <NavLink href="/about" active={pathname === "/about"}>
+            <NavLink href="/about" active={pathname === "/about"} isScrolled={isScrolled} textClass={!isScrolled ? "text-white hover:text-orange-400" : "text-gray-900 hover:text-orange-600"}>
               About
             </NavLink>
-            
+
             {/* Programs Dropdown */}
             <div
               className="relative"
@@ -81,175 +128,340 @@ export default function Header() {
               onMouseLeave={() => setIsProgramsOpen(false)}
             >
               <button
-                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
+                className={`px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 flex items-center gap-1 ${
                   pathname.startsWith("/programs")
-                    ? "text-indigo-600 bg-indigo-50"
-                    : "text-gray-700 hover:text-indigo-600 hover:bg-gray-50"
+                    ? "text-orange-600 bg-orange-50"
+                    : !isScrolled && pathname === "/"
+                    ? "text-white hover:text-orange-400"
+                    : isScrolled
+                    ? "text-gray-700 hover:text-orange-600 hover:bg-orange-50"
+                    : "text-gray-800 hover:text-orange-600 hover:bg-white/50"
                 }`}
               >
                 Programs
-                <svg
-                  className={`inline-block ml-1 w-4 h-4 transition-transform duration-200 ${
-                    isProgramsOpen ? "rotate-180" : ""
-                  }`}
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                </svg>
+                <ChevronDown
+                  className={`w-4 h-4 transition-transform duration-300 ${isProgramsOpen ? "rotate-180" : ""}`}
+                />
               </button>
 
               {/* Dropdown Menu */}
-              {isProgramsOpen && (
-                <div 
-                  className="absolute top-full left-0 mt-0 pt-2 w-80"
-                  onMouseEnter={() => setIsProgramsOpen(true)}
-                  onMouseLeave={() => setIsProgramsOpen(false)}
-                >
-                  <div className="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden">
-                    <div className="p-2">
-                      {programs.map((program, index) => (
+              <AnimatePresence>
+                {isProgramsOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                    transition={{ duration: 0.2 }}
+                    className="absolute top-full left-0 mt-2 w-80"
+                  >
+                    <div className="bg-white rounded-2xl shadow-2xl border border-gray-100 overflow-hidden">
+                      <div className="p-2">
+                        {programs.map((program, index) => (
+                          <Link
+                            key={index}
+                            href={program.href}
+                            className="block p-4 rounded-xl hover:bg-gradient-to-r hover:from-orange-50 hover:to-transparent transition-all duration-200 group"
+                          >
+                            <div className="flex items-start gap-4">
+                              <span className="text-2xl group-hover:scale-110 transition-transform">
+                                {program.icon}
+                              </span>
+                              <div>
+                                <div className="font-semibold text-gray-900 group-hover:text-orange-600 transition-colors">
+                                  {program.title}
+                                </div>
+                                <div className="text-sm text-gray-500 mt-0.5">
+                                  {program.description}
+                                </div>
+                              </div>
+                            </div>
+                          </Link>
+                        ))}
+                      </div>
+                      {/* Dropdown Footer */}
+                      <div className="p-4 bg-gradient-to-r from-orange-50 to-teal-50 border-t border-gray-100">
                         <Link
-                          key={index}
-                          href={program.href}
-                          className="block p-4 rounded-xl hover:bg-indigo-50 transition-all duration-200 group"
+                          href="/programs"
+                          className="flex items-center justify-between text-sm font-medium text-gray-700 hover:text-orange-600 transition-colors"
                         >
-                          <div className="flex items-start gap-3">
-                            <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-indigo-50 to-purple-50 flex items-center justify-center group-hover:scale-110 transition-transform">
-                              <div className="w-2 h-2 rounded-full bg-indigo-600" />
-                            </div>
-                            <div>
-                              <div className="font-semibold text-gray-900 group-hover:text-indigo-600 transition-colors">
-                                {program.title}
-                              </div>
-                              <div className="text-sm text-gray-500 mt-0.5">
-                                {program.description}
-                              </div>
-                            </div>
-                          </div>
+                          <span>View All Programs</span>
+                          <span className="text-orange-500">→</span>
                         </Link>
-                      ))}
+                      </div>
                     </div>
-                  </div>
-                </div>
-              )}
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
 
-            <NavLink href="/gallery" active={pathname === "/gallery"}>
+            <NavLink href="/gallery" active={pathname === "/gallery"} isScrolled={isScrolled} textClass={!isScrolled ? "text-white hover:text-orange-400" : "text-gray-900 hover:text-orange-600"}>
               Gallery
             </NavLink>
-            <NavLink href="/contact" active={pathname === "/contact"}>
+            <NavLink href="/contact" active={pathname === "/contact"} isScrolled={isScrolled} textClass={!isScrolled ? "text-white hover:text-orange-400" : "text-gray-900 hover:text-orange-600"}>
               Contact
             </NavLink>
 
-            {/* CTA Button */}
-            <Link
-              href="/contact"
-              className="ml-4 px-6 py-2.5 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-full font-medium hover:shadow-lg hover:shadow-indigo-500/30 transform hover:scale-105 transition-all duration-200"
-            >
-              Get Started
-            </Link>
+            {/* Auth Section */}
+            {isAuthenticated ? (
+              <div
+                className="relative ml-4"
+                onMouseEnter={() => setIsUserMenuOpen(true)}
+                onMouseLeave={() => setIsUserMenuOpen(false)}
+              >
+                <motion.button
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="flex items-center gap-2 px-3 py-2 rounded-full bg-gradient-to-r from-orange-50 to-teal-50 border border-orange-100 hover:border-orange-200 transition-all"
+                >
+                  <div className="w-8 h-8 rounded-full bg-gradient-to-br from-orange-500 to-teal-500 flex items-center justify-center text-white font-semibold text-sm shadow-md">
+                    {user?.firstName?.charAt(0).toUpperCase() || "U"}
+                  </div>
+                  <span className="text-sm font-medium text-gray-700 hidden xl:inline">
+                    {user?.firstName || "User"}
+                  </span>
+                  <ChevronDown
+                    className={`w-4 h-4 text-gray-500 transition-transform ${isUserMenuOpen ? "rotate-180" : ""}`}
+                  />
+                </motion.button>
+
+                {/* User Dropdown */}
+                <AnimatePresence>
+                  {isUserMenuOpen && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                      className="absolute top-full right-0 mt-2 w-56"
+                    >
+                      <div className="bg-white rounded-xl shadow-2xl border border-gray-100 overflow-hidden">
+                        <div className="p-4 bg-gradient-to-r from-orange-50 to-teal-50 border-b border-gray-100">
+                          <p className="font-semibold text-gray-900">
+                            {user?.firstName} {user?.lastName}
+                          </p>
+                          <p className="text-sm text-gray-500 truncate">{user?.email}</p>
+                        </div>
+                        <div className="p-2">
+                          <Link
+                            href="/dashboard"
+                            className="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-orange-50 text-gray-700 transition-colors"
+                          >
+                            <LayoutDashboard className="w-4 h-4 text-orange-500" />
+                            <span>Dashboard</span>
+                          </Link>
+                          <Link
+                            href="/profile"
+                            className="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-orange-50 text-gray-700 transition-colors"
+                          >
+                            <User className="w-4 h-4 text-orange-500" />
+                            <span>Profile</span>
+                          </Link>
+                          <Link
+                            href="/settings"
+                            className="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-orange-50 text-gray-700 transition-colors"
+                          >
+                            <Settings className="w-4 h-4 text-orange-500" />
+                            <span>Settings</span>
+                          </Link>
+                          <hr className="my-2" />
+                          <button
+                            onClick={logout}
+                            className="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-red-50 text-red-600 transition-colors w-full"
+                          >
+                            <LogOut className="w-4 h-4" />
+                            <span>Logout</span>
+                          </button>
+                        </div>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            ) : (
+              <div className="flex items-center gap-3 ml-4">
+                <Link
+                  href="/login"
+                  className={`px-5 py-2.5 text-sm font-medium transition-colors ${
+                    !isScrolled && pathname === "/"
+                      ? "text-white hover:text-orange-400"
+                      : "text-gray-700 hover:text-orange-600"
+                  }`}
+                >
+                  Login
+                </Link>
+                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                  <Link
+                    href="/register"
+                    className="px-6 py-2.5 bg-gradient-to-r from-orange-500 to-orange-600 text-white rounded-full text-sm font-medium shadow-lg shadow-orange-500/30 hover:shadow-xl hover:shadow-orange-500/40 transition-all"
+                  >
+                    Sign Up
+                  </Link>
+                </motion.div>
+              </div>
+            )}
           </div>
 
           {/* Mobile Menu Button */}
-          <button
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="lg:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors"
+            className="lg:hidden p-2.5 rounded-xl bg-orange-50 hover:bg-orange-100 transition-colors"
             aria-label="Toggle mobile menu"
           >
-            <svg
-              className="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              {isMobileMenuOpen ? (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              ) : (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              )}
-            </svg>
-          </button>
+            {isMobileMenuOpen ? (
+              <X className="w-6 h-6 text-orange-600" />
+            ) : (
+              <Menu className="w-6 h-6 text-orange-600" />
+            )}
+          </motion.button>
         </div>
 
         {/* Mobile Menu */}
-        {isMobileMenuOpen && (
-          <div className="lg:hidden border-t border-gray-100 bg-white/95 backdrop-blur-md animate-in slide-in-from-top duration-200">
-            <div className="py-4 space-y-1">
-              <MobileNavLink href="/" onClick={() => setIsMobileMenuOpen(false)}>
-                Home
-              </MobileNavLink>
-              <MobileNavLink href="/about" onClick={() => setIsMobileMenuOpen(false)}>
-                About
-              </MobileNavLink>
-              <div className="px-4 py-2">
-                <div className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">
-                  Programs
+        <AnimatePresence>
+          {isMobileMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              className="lg:hidden overflow-hidden"
+            >
+              <div className="py-4 space-y-1 border-t border-gray-100 bg-white">
+                <MobileNavLink href="/" onClick={() => setIsMobileMenuOpen(false)}>
+                  Home
+                </MobileNavLink>
+                <MobileNavLink href="/about" onClick={() => setIsMobileMenuOpen(false)}>
+                  About
+                </MobileNavLink>
+
+                {/* Mobile Programs Section */}
+                <div className="px-4 py-3">
+                  <div className="text-xs font-bold text-orange-500 uppercase tracking-wider mb-3">
+                    Our Programs
+                  </div>
+                  {programs.map((program, index) => (
+                    <Link
+                      key={index}
+                      href={program.href}
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className="flex items-start gap-3 p-3 rounded-xl hover:bg-orange-50 transition-colors mb-1"
+                    >
+                      <span className="text-xl">{program.icon}</span>
+                      <div>
+                        <div className="font-medium text-gray-900">{program.title}</div>
+                        <div className="text-sm text-gray-500">{program.description}</div>
+                      </div>
+                    </Link>
+                  ))}
                 </div>
-                {programs.map((program, index) => (
-                  <Link
-                    key={index}
-                    href={program.href}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className="block p-3 rounded-lg hover:bg-gray-50 transition-colors mb-1"
+
+                <MobileNavLink href="/gallery" onClick={() => setIsMobileMenuOpen(false)}>
+                  Gallery
+                </MobileNavLink>
+                <MobileNavLink href="/contact" onClick={() => setIsMobileMenuOpen(false)}>
+                  Contact
+                </MobileNavLink>
+
+                {/* Mobile Auth Section */}
+                <div className="px-4 pt-4 space-y-3 border-t border-gray-100 mt-4">
+                  {isAuthenticated ? (
+                    <>
+                      <div className="flex items-center gap-3 p-3 bg-gradient-to-r from-orange-50 to-teal-50 rounded-xl">
+                        <div className="w-12 h-12 rounded-full bg-gradient-to-br from-orange-500 to-teal-500 flex items-center justify-center text-white font-bold text-lg shadow-md">
+                          {user?.firstName?.charAt(0).toUpperCase() || "U"}
+                        </div>
+                        <div>
+                          <p className="font-semibold text-gray-900">
+                            {user?.firstName} {user?.lastName}
+                          </p>
+                          <p className="text-sm text-gray-500">{user?.email}</p>
+                        </div>
+                      </div>
+                      <Link
+                        href="/dashboard"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                        className="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-orange-50 text-gray-700 transition-colors"
+                      >
+                        <LayoutDashboard className="w-5 h-5 text-orange-500" />
+                        <span>Dashboard</span>
+                      </Link>
+                      <Link
+                        href="/profile"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                        className="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-orange-50 text-gray-700 transition-colors"
+                      >
+                        <User className="w-5 h-5 text-orange-500" />
+                        <span>Profile</span>
+                      </Link>
+                      <button
+                        onClick={() => {
+                          logout();
+                          setIsMobileMenuOpen(false);
+                        }}
+                        className="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-red-50 text-red-600 transition-colors w-full"
+                      >
+                        <LogOut className="w-5 h-5" />
+                        <span>Logout</span>
+                      </button>
+                    </>
+                  ) : (
+                    <div className="flex flex-col gap-3">
+                      <Link
+                        href="/login"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                        className="block w-full px-6 py-3.5 border-2 border-orange-500 text-orange-600 rounded-xl font-semibold text-center hover:bg-orange-50 transition-colors"
+                      >
+                        Login
+                      </Link>
+                      <Link
+                        href="/register"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                        className="block w-full px-6 py-3.5 bg-gradient-to-r from-orange-500 to-orange-600 text-white rounded-xl font-semibold text-center shadow-lg shadow-orange-500/30"
+                      >
+                        Sign Up
+                      </Link>
+                    </div>
+                  )}
+                </div>
+
+                {/* Mobile Contact Info */}
+                <div className="px-4 pt-4 border-t border-gray-100 mt-4">
+                  <a
+                    href={`tel:${SITE_CONFIG.contact.mobile}`}
+                    className="flex items-center gap-3 p-3 bg-gradient-to-r from-teal-500 to-teal-600 text-white rounded-xl font-medium"
                   >
-                    <div className="font-medium text-gray-900">{program.title}</div>
-                    <div className="text-sm text-gray-500">{program.description}</div>
-                  </Link>
-                ))}
+                    <FaPhone className="w-4 h-4" />
+                    <span>Call Us: {SITE_CONFIG.contact.mobile}</span>
+                  </a>
+                </div>
               </div>
-              <MobileNavLink href="/gallery" onClick={() => setIsMobileMenuOpen(false)}>
-                Gallery
-              </MobileNavLink>
-              <MobileNavLink href="/contact" onClick={() => setIsMobileMenuOpen(false)}>
-                Contact
-              </MobileNavLink>
-              <div className="px-4 pt-4">
-                <Link
-                  href="/contact"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="block w-full px-6 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-full font-medium text-center"
-                >
-                  Get Started
-                </Link>
-              </div>
-            </div>
-          </div>
-        )}
+            </motion.div>
+          )}
+        </AnimatePresence>
       </nav>
     </header>
   );
 }
 
-function NavLink({
-  href,
-  active,
-  children,
-}: {
+type NavLinkProps = {
   href: string;
   active: boolean;
   children: React.ReactNode;
-}) {
+  isScrolled: boolean;
+  textClass?: string;
+};
+function NavLink({ href, active, children, isScrolled, textClass }: NavLinkProps) {
+  let baseClass = "px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200";
+  if (active) {
+    baseClass += " text-orange-600 bg-orange-50";
+  } else if (textClass) {
+    baseClass += ` ${textClass}`;
+  } else if (isScrolled) {
+    baseClass += " text-gray-700 hover:text-orange-600 hover:bg-orange-50";
+  } else {
+    baseClass += " text-gray-800 hover:text-orange-600 hover:bg-white/50";
+  }
   return (
-    <Link
-      href={href}
-      className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
-        active
-          ? "text-indigo-600 bg-indigo-50"
-          : "text-gray-700 hover:text-indigo-600 hover:bg-gray-50"
-      }`}
-    >
+    <Link href={href} className={baseClass}>
       {children}
     </Link>
   );
@@ -268,7 +480,7 @@ function MobileNavLink({
     <Link
       href={href}
       onClick={onClick}
-      className="block px-4 py-3 text-gray-700 hover:bg-gray-50 hover:text-indigo-600 transition-colors rounded-lg mx-2"
+      className="block px-4 py-3 text-gray-700 hover:bg-orange-50 hover:text-orange-600 transition-colors rounded-xl mx-2 font-medium"
     >
       {children}
     </Link>

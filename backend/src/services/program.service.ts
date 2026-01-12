@@ -150,6 +150,116 @@ class ProgramService {
 
     return programs;
   }
+
+  async create(data: {
+    name: string;
+    slug: string;
+    description: string;
+    shortDescription?: string;
+    type: ProgramType;
+    status?: ProgramStatus;
+    icon?: string;
+    coverImage?: string;
+    duration: string;
+    price: number;
+    discountPrice?: number;
+    features?: string[];
+    isFeatured?: boolean;
+  }) {
+    // Check if slug already exists
+    const existingProgram = await prisma.program.findUnique({
+      where: { slug: data.slug },
+    });
+
+    if (existingProgram) {
+      throw new Error('Program with this slug already exists');
+    }
+
+    const program = await prisma.program.create({
+      data: {
+        name: data.name,
+        slug: data.slug,
+        description: data.description,
+        shortDescription: data.shortDescription,
+        type: data.type,
+        status: data.status || ProgramStatus.ACTIVE,
+        thumbnail: data.icon,
+        duration: data.duration,
+        price: data.price,
+        discountPrice: data.discountPrice,
+        features: data.features || [],
+        isFeatured: data.isFeatured || false,
+      },
+    });
+
+    return program;
+  }
+
+  async update(id: string, data: {
+    name?: string;
+    slug?: string;
+    description?: string;
+    shortDescription?: string;
+    type?: ProgramType;
+    status?: ProgramStatus;
+    thumbnail?: string;
+    duration?: string;
+    price?: number;
+    discountPrice?: number;
+    features?: string[];
+    isFeatured?: boolean;
+  }) {
+    const program = await prisma.program.findUnique({
+      where: { id },
+    });
+
+    if (!program) {
+      throw new NotFoundError('Program not found');
+    }
+
+    // Check if new slug already exists (if being changed)
+    if (data.slug && data.slug !== program.slug) {
+      const existingProgram = await prisma.program.findUnique({
+        where: { slug: data.slug },
+      });
+
+      if (existingProgram) {
+        throw new Error('Program with this slug already exists');
+      }
+    }
+
+    const updatedProgram = await prisma.program.update({
+      where: { id },
+      data,
+    });
+
+    return updatedProgram;
+  }
+
+  async delete(id: string) {
+    const program = await prisma.program.findUnique({
+      where: { id },
+    });
+
+    if (!program) {
+      throw new NotFoundError('Program not found');
+    }
+
+    // Check if program has enrollments
+    const enrollmentCount = await prisma.enrollment.count({
+      where: { programId: id },
+    });
+
+    if (enrollmentCount > 0) {
+      throw new Error('Cannot delete program with active enrollments');
+    }
+
+    await prisma.program.delete({
+      where: { id },
+    });
+
+    return { message: 'Program deleted successfully' };
+  }
 }
 
 export default new ProgramService();

@@ -141,6 +141,20 @@ router.post('/logout', authenticate, authController.logout);
 router.get('/profile', authenticate, authController.getProfile);
 
 /**
+ * @route   PUT /api/v1/auth/profile
+ * @desc    Update current user profile
+ * @access  Private
+ */
+router.put('/profile', authenticate, authController.updateProfile);
+
+/**
+ * @route   PATCH /api/v1/auth/profile
+ * @desc    Update current user profile (partial)
+ * @access  Private
+ */
+router.patch('/profile', authenticate, authController.updateProfile);
+
+/**
  * @route   PUT /api/v1/auth/change-password
  * @desc    Change user password
  * @access  Private
