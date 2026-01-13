@@ -16,12 +16,12 @@ export default function HeroSection() {
   const [typedText, setTypedText] = useState("");
   const fullText = "Master The Skills";
   const containerRef = useRef<HTMLDivElement>(null);
-  
+
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end start"],
   });
-  
+
   const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
 
@@ -50,18 +50,17 @@ export default function HeroSection() {
           muted
           loop
           playsInline
-          className="absolute inset-0 w-full h-full object-cover opacity-30"
-          poster="/images/hero-poster.jpg"
+          className="absolute inset-0 w-full h-full object-cover opacity-60"
         >
-          <source src="/videos/robotics-bg.mp4" type="video/mp4" />
+          <source src="https://stembotix-lms.s3.ap-south-1.amazonaws.com/videos%2F444343ab-79b0-45f2-8511-5e1d3a1a7dbf-AIROBOTICSLAB.mp4" type="video/mp4" />
         </video>
-        {/* Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-gray-900/80 via-gray-900/60 to-gray-900/90" />
-        <div className="absolute inset-0 bg-gradient-to-r from-orange-500/10 via-transparent to-teal-500/10" />
+        {/* Gradient Overlay - reduced opacity */}
+        <div className="absolute inset-0 bg-gradient-to-b from-gray-900/50 via-gray-900/30 to-gray-900/60" />
+        <div className="absolute inset-0 bg-gradient-to-r from-orange-500/5 via-transparent to-teal-500/5" />
       </div>
 
-      {/* Animated Background Elements */}
-      <FloatingAnimations variant="hero" density="medium" />
+      {/* Animated Background Elements - reduced to minimal */}
+      <FloatingAnimations variant="hero" density="low" />
 
       {/* Animated Grid Pattern */}
       <div

@@ -55,12 +55,16 @@ export default function Header() {
   // Determine if on landing page
   const isHome = pathname === "/";
   let headerBg = "";
+  let textColor = "text-gray-700";
   if (isScrolled) {
-    headerBg = "bg-white/90 backdrop-blur-lg shadow-lg border-b border-gray-100";
+    headerBg = "bg-white/95 backdrop-blur-lg shadow-lg border-b border-gray-100";
+    textColor = "text-gray-700";
   } else if (isHome) {
-    headerBg = "bg-gray-900/80";
+    headerBg = "bg-gray-900/80 backdrop-blur-sm";
+    textColor = "text-white";
   } else {
-    headerBg = "bg-transparent";
+    headerBg = "bg-white shadow-md border-b border-gray-100";
+    textColor = "text-gray-700";
   }
   return (
     <header
@@ -68,9 +72,8 @@ export default function Header() {
     >
       {/* Top Bar - Contact Info */}
       <div
-        className={`hidden lg:block bg-gradient-to-r from-orange-500 to-orange-600 text-white transition-all duration-300 ${
-          isScrolled ? "h-0 opacity-0 overflow-hidden" : "h-10"
-        }`}
+        className={`hidden lg:block bg-gradient-to-r from-orange-500 to-orange-600 text-white transition-all duration-300 ${isScrolled ? "h-0 opacity-0 overflow-hidden" : "h-10"
+          }`}
       >
         <div className="container mx-auto px-4 h-full flex items-center justify-between text-sm">
           <div className="flex items-center gap-6">
@@ -91,113 +94,42 @@ export default function Header() {
       <nav className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-3 group relative z-50">
+          <Link href="/" className="flex items-center group relative z-50">
             <motion.div
-              whileHover={{ scale: 1.05, rotate: 5 }}
-              whileTap={{ scale: 0.95 }}
-              className="w-12 h-12 bg-gradient-to-br from-orange-500 to-orange-600 rounded-2xl flex items-center justify-center shadow-lg shadow-orange-500/30"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="h-12 md:h-14"
             >
-              <FaRobot className="w-6 h-6 text-white" />
+              <img
+                src="https://stemmantra.com/assets/img/Custom/Newlogo.jpeg"
+                alt="STEM Mantra Logo"
+                className="h-full w-auto object-contain"
+                style={{ maxWidth: '180px' }}
+              />
             </motion.div>
-            <div className="flex flex-col">
-              <span className="font-heading text-2xl font-bold leading-tight">
-                <span className="bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">
-                  STEM
-                </span>
-                <span className={isScrolled ? "text-gray-800" : "text-gray-900"}>Mantra</span>
-              </span>
-              <span className="text-[10px] text-gray-500 tracking-widest uppercase">
-                Drive Your Future
-              </span>
-            </div>
           </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-1">
-            <NavLink href="/" active={pathname === "/"} isScrolled={isScrolled} textClass={!isScrolled ? "text-white hover:text-orange-400" : "text-gray-900 hover:text-orange-600"}>
+            <NavLink href="/" active={pathname === "/"} isScrolled={isScrolled} textClass={isHome && !isScrolled ? "text-white hover:text-orange-400" : "text-gray-700 hover:text-orange-600"}>
               Home
             </NavLink>
-            <NavLink href="/about" active={pathname === "/about"} isScrolled={isScrolled} textClass={!isScrolled ? "text-white hover:text-orange-400" : "text-gray-900 hover:text-orange-600"}>
+            <NavLink href="/about" active={pathname === "/about"} isScrolled={isScrolled} textClass={isHome && !isScrolled ? "text-white hover:text-orange-400" : "text-gray-700 hover:text-orange-600"}>
               About
             </NavLink>
 
-            {/* Programs Dropdown */}
-            <div
-              className="relative"
-              onMouseEnter={() => setIsProgramsOpen(true)}
-              onMouseLeave={() => setIsProgramsOpen(false)}
-            >
-              <button
-                className={`px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 flex items-center gap-1 ${
-                  pathname.startsWith("/programs")
-                    ? "text-orange-600 bg-orange-50"
-                    : !isScrolled && pathname === "/"
-                    ? "text-white hover:text-orange-400"
-                    : isScrolled
-                    ? "text-gray-700 hover:text-orange-600 hover:bg-orange-50"
-                    : "text-gray-800 hover:text-orange-600 hover:bg-white/50"
-                }`}
-              >
-                Programs
-                <ChevronDown
-                  className={`w-4 h-4 transition-transform duration-300 ${isProgramsOpen ? "rotate-180" : ""}`}
-                />
-              </button>
+            {/* Programs Link */}
+            <NavLink href="/programs" active={pathname.startsWith("/programs")} isScrolled={isScrolled} textClass={isHome && !isScrolled ? "text-white hover:text-orange-400" : "text-gray-700 hover:text-orange-600"}>
+              Programs
+            </NavLink>
 
-              {/* Dropdown Menu */}
-              <AnimatePresence>
-                {isProgramsOpen && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 10, scale: 0.95 }}
-                    animate={{ opacity: 1, y: 0, scale: 1 }}
-                    exit={{ opacity: 0, y: 10, scale: 0.95 }}
-                    transition={{ duration: 0.2 }}
-                    className="absolute top-full left-0 mt-2 w-80"
-                  >
-                    <div className="bg-white rounded-2xl shadow-2xl border border-gray-100 overflow-hidden">
-                      <div className="p-2">
-                        {programs.map((program, index) => (
-                          <Link
-                            key={index}
-                            href={program.href}
-                            className="block p-4 rounded-xl hover:bg-gradient-to-r hover:from-orange-50 hover:to-transparent transition-all duration-200 group"
-                          >
-                            <div className="flex items-start gap-4">
-                              <span className="text-2xl group-hover:scale-110 transition-transform">
-                                {program.icon}
-                              </span>
-                              <div>
-                                <div className="font-semibold text-gray-900 group-hover:text-orange-600 transition-colors">
-                                  {program.title}
-                                </div>
-                                <div className="text-sm text-gray-500 mt-0.5">
-                                  {program.description}
-                                </div>
-                              </div>
-                            </div>
-                          </Link>
-                        ))}
-                      </div>
-                      {/* Dropdown Footer */}
-                      <div className="p-4 bg-gradient-to-r from-orange-50 to-teal-50 border-t border-gray-100">
-                        <Link
-                          href="/programs"
-                          className="flex items-center justify-between text-sm font-medium text-gray-700 hover:text-orange-600 transition-colors"
-                        >
-                          <span>View All Programs</span>
-                          <span className="text-orange-500">→</span>
-                        </Link>
-                      </div>
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
-
-            <NavLink href="/gallery" active={pathname === "/gallery"} isScrolled={isScrolled} textClass={!isScrolled ? "text-white hover:text-orange-400" : "text-gray-900 hover:text-orange-600"}>
+            <NavLink href="/blog" active={pathname.startsWith("/blog")} isScrolled={isScrolled} textClass={isHome && !isScrolled ? "text-white hover:text-orange-400" : "text-gray-700 hover:text-orange-600"}>
+              Blog
+            </NavLink>
+            <NavLink href="/gallery" active={pathname === "/gallery"} isScrolled={isScrolled} textClass={isHome && !isScrolled ? "text-white hover:text-orange-400" : "text-gray-700 hover:text-orange-600"}>
               Gallery
             </NavLink>
-            <NavLink href="/contact" active={pathname === "/contact"} isScrolled={isScrolled} textClass={!isScrolled ? "text-white hover:text-orange-400" : "text-gray-900 hover:text-orange-600"}>
+            <NavLink href="/contact" active={pathname === "/contact"} isScrolled={isScrolled} textClass={isHome && !isScrolled ? "text-white hover:text-orange-400" : "text-gray-700 hover:text-orange-600"}>
               Contact
             </NavLink>
 
@@ -280,11 +212,10 @@ export default function Header() {
               <div className="flex items-center gap-3 ml-4">
                 <Link
                   href="/login"
-                  className={`px-5 py-2.5 text-sm font-medium transition-colors ${
-                    !isScrolled && pathname === "/"
-                      ? "text-white hover:text-orange-400"
-                      : "text-gray-700 hover:text-orange-600"
-                  }`}
+                  className={`px-5 py-2.5 text-sm font-medium transition-colors ${!isScrolled && pathname === "/"
+                    ? "text-white hover:text-orange-400"
+                    : "text-gray-700 hover:text-orange-600"
+                    }`}
                 >
                   Login
                 </Link>
@@ -354,6 +285,9 @@ export default function Header() {
                   ))}
                 </div>
 
+                <MobileNavLink href="/blog" onClick={() => setIsMobileMenuOpen(false)}>
+                  Blog
+                </MobileNavLink>
                 <MobileNavLink href="/gallery" onClick={() => setIsMobileMenuOpen(false)}>
                   Gallery
                 </MobileNavLink>

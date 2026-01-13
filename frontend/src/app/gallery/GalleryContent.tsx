@@ -9,10 +9,10 @@ export default function GalleryContent() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
   return (
-    <main className="min-h-screen bg-gradient-to-br from-orange-50/40 via-white to-teal-50/40 relative">
+    <main className="min-h-screen bg-gradient-to-br from-orange-50/40 via-white to-teal-50/40 relative pt-32">
       {/* Floating icons for the whole page, behind everything */}
       <FloatingIcons count={3} zIndex={0} />
-      <article ref={ref} className="relative py-24 lg:py-32 bg-white overflow-hidden" itemScope itemType="https://schema.org/ImageGallery">
+      <article ref={ref} className="relative pb-16 bg-white overflow-hidden" itemScope itemType="https://schema.org/ImageGallery">
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-5">
           <div

@@ -28,7 +28,7 @@ export default function AdminRootLayout({
     return (
       <div className="min-h-screen flex items-center justify-center bg-slate-50">
         <div className="flex flex-col items-center gap-4">
-          <Loader2 className="w-10 h-10 animate-spin text-indigo-600" />
+          <Loader2 className="w-10 h-10 animate-spin text-orange-500" />
           <p className="text-slate-600">Loading...</p>
         </div>
       </div>

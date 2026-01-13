@@ -67,17 +67,27 @@ export default function TestimonialsSection() {
                 <div className="md:col-span-2 relative bg-gradient-to-br from-orange-500 to-purple-600 p-8 flex flex-col justify-center items-center min-h-[300px] md:min-h-[400px]">
                   {/* Quote Icon */}
                   <FaQuoteLeft className="absolute top-8 left-8 w-12 h-12 text-white/20" />
-                  
+
                   {/* Profile Image */}
                   <div className="relative mb-6">
-                    <div className="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden border-4 border-white/30 shadow-2xl">
-                      <Image
-                        src={testimonials[activeIndex].image || "/images/placeholder-avatar.jpg"}
-                        alt={testimonials[activeIndex].name}
-                        width={160}
-                        height={160}
-                        className="w-full h-full object-cover"
-                      />
+                    <div className="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden border-4 border-white/30 shadow-2xl bg-white/20 flex items-center justify-center">
+                      {testimonials[activeIndex].image ? (
+                        <Image
+                          src={testimonials[activeIndex].image}
+                          alt={testimonials[activeIndex].name}
+                          width={160}
+                          height={160}
+                          className="w-full h-full object-cover"
+                          onError={(e) => {
+                            const target = e.target as HTMLImageElement;
+                            target.style.display = 'none';
+                          }}
+                        />
+                      ) : null}
+                      {/* Fallback Initials */}
+                      <span className="absolute inset-0 flex items-center justify-center text-3xl md:text-4xl font-bold text-white">
+                        {testimonials[activeIndex].name.split(' ').map(n => n[0]).join('').slice(0, 2)}
+                      </span>
                     </div>
                     {/* Video Play Button (if video exists) */}
                     <button
@@ -132,11 +142,10 @@ export default function TestimonialsSection() {
                         <button
                           key={index}
                           onClick={() => setActiveIndex(index)}
-                          className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
-                            index === activeIndex
-                              ? "w-8 bg-orange-500"
-                              : "bg-gray-300 hover:bg-gray-400"
-                          }`}
+                          className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${index === activeIndex
+                            ? "w-8 bg-orange-500"
+                            : "bg-gray-300 hover:bg-gray-400"
+                            }`}
                         />
                       ))}
                     </div>
@@ -172,19 +181,27 @@ export default function TestimonialsSection() {
             <button
               key={testimonial.id}
               onClick={() => setActiveIndex(index)}
-              className={`relative flex-shrink-0 w-16 h-16 rounded-full overflow-hidden border-2 transition-all duration-300 ${
-                index === activeIndex
+              className={`relative flex-shrink-0 w-16 h-16 rounded-full overflow-hidden border-2 transition-all duration-300 bg-gradient-to-br from-orange-400 to-purple-500 flex items-center justify-center ${index === activeIndex
                   ? "border-orange-500 scale-110 shadow-lg"
                   : "border-transparent opacity-60 hover:opacity-100"
-              }`}
+                }`}
             >
-              <Image
-                src={testimonial.image || "/images/placeholder-avatar.jpg"}
-                alt={testimonial.name}
-                width={64}
-                height={64}
-                className="w-full h-full object-cover"
-              />
+              {testimonial.image ? (
+                <Image
+                  src={testimonial.image}
+                  alt={testimonial.name}
+                  width={64}
+                  height={64}
+                  className="w-full h-full object-cover absolute inset-0"
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement;
+                    target.style.display = 'none';
+                  }}
+                />
+              ) : null}
+              <span className="text-white font-bold text-lg">
+                {testimonial.name.split(' ').map(n => n[0]).join('').slice(0, 2)}
+              </span>
             </button>
           ))}
         </motion.div>

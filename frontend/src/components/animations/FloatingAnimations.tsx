@@ -147,7 +147,7 @@ export default function FloatingAnimations({
   useEffect(() => {
     setIsClient(true);
 
-    const elementCount = density === "low" ? 6 : density === "medium" ? 10 : 15;
+    const elementCount = density === "low" ? 2 : density === "medium" ? 4 : 6;
     const icons: FloatingElement["icon"][] = ["drone", "robot", "gear", "circuit", "bulb", "atom"];
 
     const newElements: FloatingElement[] = [];

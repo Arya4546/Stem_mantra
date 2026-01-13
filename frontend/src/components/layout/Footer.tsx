@@ -49,20 +49,16 @@ export default function Footer() {
           {/* Brand Section */}
           <div className="lg:col-span-2 space-y-6">
             <div>
-              <Link href="/" className="flex items-center gap-3 mb-4">
-                <div className="w-12 h-12 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center shadow-lg">
-                  <FaRobot className="w-6 h-6 text-white" />
-                </div>
-                <div>
-                  <span className="font-heading text-2xl font-bold">
-                    <span className="text-orange-500">STEM</span>
-                    <span className="text-white">Mantra</span>
-                  </span>
-                  <p className="text-xs text-gray-400">Master The Skills, Drive Your Future</p>
-                </div>
+              <Link href="/" className="flex items-center mb-4">
+                <img
+                  src="https://stemmantra.com/assets/img/Custom/Newlogo.jpeg"
+                  alt="STEM Mantra Logo"
+                  className="h-14 w-auto object-contain"
+                  style={{ maxWidth: '180px' }}
+                />
               </Link>
               <p className="text-gray-400 text-sm leading-relaxed max-w-sm">
-                India&apos;s leading provider of robotics, AI, and STEM education solutions for schools. 
+                India&apos;s leading provider of robotics, AI, and STEM education solutions for schools.
                 Transforming education through innovation and hands-on learning.
               </p>
             </div>
@@ -123,10 +119,10 @@ export default function Footer() {
               {[
                 { label: "Home", href: "/" },
                 { label: "About Us", href: "/about" },
+                { label: "Programs", href: "/programs" },
+                { label: "Blog", href: "/blog" },
                 { label: "Gallery", href: "/gallery" },
                 { label: "Contact", href: "/contact" },
-                { label: "Careers", href: "/careers" },
-                { label: "Blog", href: "/blog" },
               ].map((link, index) => (
                 <li key={index}>
                   <Link

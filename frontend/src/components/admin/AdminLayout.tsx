@@ -177,7 +177,7 @@ export function Sidebar({ isCollapsed, onToggle, isMobileOpen, onMobileClose }: 
                       className={cn(
                         "block px-3 py-2 rounded-lg text-sm transition-colors duration-200",
                         pathname === child.href
-                          ? "text-indigo-600 bg-indigo-50 font-medium"
+                          ? "text-orange-600 bg-orange-50 font-medium"
                           : "text-slate-500 hover:text-slate-900 hover:bg-slate-50"
                       )}
                     >
@@ -200,7 +200,7 @@ export function Sidebar({ isCollapsed, onToggle, isMobileOpen, onMobileClose }: 
         className={cn(
           "flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-200",
           active
-            ? "bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-md shadow-indigo-500/25"
+            ? "bg-gradient-to-r from-orange-500 to-teal-500 text-white shadow-md shadow-orange-500/25"
             : "text-slate-600 hover:bg-slate-100 hover:text-slate-900"
         )}
       >
@@ -223,12 +223,16 @@ export function Sidebar({ isCollapsed, onToggle, isMobileOpen, onMobileClose }: 
     <>
       {/* Logo */}
       <div className={cn("flex items-center gap-3 px-4 py-5 border-b border-slate-200", isCollapsed && "justify-center")}>
-        <div className="w-10 h-10 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-xl flex items-center justify-center shrink-0">
-          <FaRobot className="w-5 h-5 text-white" />
+        <div className="w-10 h-10 rounded-xl overflow-hidden shadow-lg flex-shrink-0">
+          <img
+            src="https://stemmantra.com/assets/img/Custom/Newlogo.jpeg"
+            alt="STEM Mantra Logo"
+            className="w-full h-full object-cover"
+          />
         </div>
         {!isCollapsed && (
           <span className="font-bold text-xl">
-            <span className="text-indigo-600">STEM</span>
+            <span className="text-orange-500">STEM</span>
             <span className="text-slate-800">Mantra</span>
           </span>
         )}
@@ -243,7 +247,7 @@ export function Sidebar({ isCollapsed, onToggle, isMobileOpen, onMobileClose }: 
       <div className="p-4 border-t border-slate-200">
         {!isCollapsed && user && (
           <div className="flex items-center gap-3 px-3 py-2 mb-2">
-            <div className="w-9 h-9 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-white font-medium text-sm">
+            <div className="w-9 h-9 rounded-full bg-gradient-to-br from-orange-500 to-teal-500 flex items-center justify-center text-white font-medium text-sm">
               {user.firstName.charAt(0)}
             </div>
             <div className="flex-1 min-w-0">
@@ -372,7 +376,7 @@ export function TopHeader({ onMenuClick, title }: TopHeaderProps) {
               <p className="text-sm font-medium text-slate-900">{user.firstName}</p>
               <p className="text-xs text-slate-500">{user.role}</p>
             </div>
-            <div className="w-9 h-9 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-white font-medium text-sm">
+            <div className="w-9 h-9 rounded-full bg-gradient-to-br from-orange-500 to-teal-500 flex items-center justify-center text-white font-medium text-sm">
               {user.firstName.charAt(0)}
             </div>
           </div>

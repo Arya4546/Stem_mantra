@@ -4,9 +4,12 @@ import Footer from "@/components/layout/Footer";
 import FloatingDemoButton from "@/components/ui/FloatingDemoButton";
 import HeroSection from "@/components/sections/HeroSection";
 import AboutSection from "@/components/sections/AboutSection";
+import LabSolutionsSection from "@/components/sections/LabSolutionsSection";
+import WhyChooseUsSection from "@/components/sections/WhyChooseUsSection";
 import ProgramsSection from "@/components/sections/ProgramsSection";
 import StatsSection from "@/components/sections/StatsSection";
 import TestimonialsSection from "@/components/sections/TestimonialsSection";
+import FAQSection from "@/components/sections/FAQSection";
 import GalleryPreview from "@/components/sections/GalleryPreview";
 import PartnersSection from "@/components/sections/PartnersSection";
 import CTASection from "@/components/sections/CTASection";
@@ -53,6 +56,12 @@ export default function HomePage() {
         {/* About Section */}
         <AboutSection />
 
+        {/* Lab Solutions Section */}
+        <LabSolutionsSection />
+
+        {/* Why Choose Us - SEO Rich Content */}
+        <WhyChooseUsSection />
+
         {/* Programs Section */}
         <ProgramsSection />
 
@@ -61,6 +70,9 @@ export default function HomePage() {
 
         {/* Testimonials Section */}
         <TestimonialsSection />
+
+        {/* FAQ Section - SEO Rich Content */}
+        <FAQSection />
 
         {/* Gallery Preview */}
         <GalleryPreview />
