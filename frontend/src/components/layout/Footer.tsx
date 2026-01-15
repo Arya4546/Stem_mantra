@@ -4,39 +4,157 @@ import Link from "next/link";
 import { FaFacebookF, FaTwitter, FaLinkedinIn, FaYoutube, FaInstagram, FaPhone, FaEnvelope, FaMapMarkerAlt, FaRobot, FaChevronRight, FaWhatsapp } from "react-icons/fa";
 import { SITE_CONFIG } from "@/lib/constants";
 
-// Location-based service pages
+// Location-based service pages - using the dynamic routes
 const locationServices = {
   "STEM Labs": [
-    { city: "Delhi", href: "/services/stem-lab-delhi" },
-    { city: "Mumbai", href: "/services/stem-lab-mumbai" },
-    { city: "Bangalore", href: "/services/stem-lab-bangalore" },
-    { city: "Hyderabad", href: "/services/stem-lab-hyderabad" },
-    { city: "Chennai", href: "/services/stem-lab-chennai" },
-    { city: "Kolkata", href: "/services/stem-lab-kolkata" },
+    { city: "Delhi", href: "/stem-labs/delhi" },
+    { city: "Mumbai", href: "/stem-labs/mumbai" },
+    { city: "Bangalore", href: "/stem-labs/bangalore" },
+    { city: "Hyderabad", href: "/stem-labs/hyderabad" },
+    { city: "Chennai", href: "/stem-labs/chennai" },
+    { city: "Kolkata", href: "/stem-labs/kolkata" },
   ],
   "Robotics Labs": [
-    { city: "Noida", href: "/services/robotics-lab-noida" },
-    { city: "Gurgaon", href: "/services/robotics-lab-gurgaon" },
-    { city: "Pune", href: "/services/robotics-lab-pune" },
-    { city: "Ahmedabad", href: "/services/robotics-lab-ahmedabad" },
-    { city: "Jaipur", href: "/services/robotics-lab-jaipur" },
-    { city: "Lucknow", href: "/services/robotics-lab-lucknow" },
+    { city: "Noida", href: "/robotics-labs/noida" },
+    { city: "Gurgaon", href: "/robotics-labs/gurugram" },
+    { city: "Pune", href: "/robotics-labs/pune" },
+    { city: "Lucknow", href: "/robotics-labs/lucknow" },
+    { city: "Delhi", href: "/robotics-labs/delhi" },
+    { city: "Mumbai", href: "/robotics-labs/mumbai" },
   ],
   "ATL Labs": [
-    { city: "Delhi NCR", href: "/services/atl-lab-delhi-ncr" },
-    { city: "UP", href: "/services/atl-lab-uttar-pradesh" },
-    { city: "Maharashtra", href: "/services/atl-lab-maharashtra" },
-    { city: "Karnataka", href: "/services/atl-lab-karnataka" },
-    { city: "Tamil Nadu", href: "/services/atl-lab-tamil-nadu" },
-    { city: "Gujarat", href: "/services/atl-lab-gujarat" },
+    { city: "Delhi NCR", href: "/labs/atl" },
+    { city: "Mumbai", href: "/labs/atl" },
+    { city: "Bangalore", href: "/labs/atl" },
+    { city: "Hyderabad", href: "/labs/atl" },
+    { city: "Chennai", href: "/labs/atl" },
+    { city: "Pune", href: "/labs/atl" },
   ],
 };
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
+  // SEO Links Data
+  const seoLinks = {
+    labsByCity: {
+      title: "STEM Labs By City",
+      links: [
+        { name: "STEM Labs in Delhi", href: "/stem-labs/delhi" },
+        { name: "STEM Labs in Mumbai", href: "/stem-labs/mumbai" },
+        { name: "STEM Labs in Bangalore", href: "/stem-labs/bangalore" },
+        { name: "STEM Labs in Hyderabad", href: "/stem-labs/hyderabad" },
+        { name: "STEM Labs in Chennai", href: "/stem-labs/chennai" },
+        { name: "STEM Labs in Pune", href: "/stem-labs/pune" },
+        { name: "STEM Labs in Gurugram", href: "/stem-labs/gurugram" },
+        { name: "STEM Labs in Noida", href: "/stem-labs/noida" },
+        { name: "STEM Labs in Kolkata", href: "/stem-labs/kolkata" },
+        { name: "STEM Labs in Jaipur", href: "/stem-labs/jaipur" },
+      ],
+    },
+    roboticsLabsByCity: {
+      title: "Robotics Labs By City",
+      links: [
+        { name: "Robotics Labs in Delhi", href: "/robotics-labs/delhi" },
+        { name: "Robotics Labs in Mumbai", href: "/robotics-labs/mumbai" },
+        { name: "Robotics Labs in Bangalore", href: "/robotics-labs/bangalore" },
+        { name: "Robotics Labs in Hyderabad", href: "/robotics-labs/hyderabad" },
+        { name: "Robotics Labs in Chennai", href: "/robotics-labs/chennai" },
+        { name: "Robotics Labs in Pune", href: "/robotics-labs/pune" },
+        { name: "Robotics Labs in Gurugram", href: "/robotics-labs/gurugram" },
+        { name: "Robotics Labs in Lucknow", href: "/robotics-labs/lucknow" },
+      ],
+    },
+    labsByType: {
+      title: "Labs By Type",
+      links: [
+        { name: "Atal Tinkering Labs (ATL)", href: "/labs/atl" },
+        { name: "Robotics & AI Labs", href: "/labs/robotics-ai" },
+        { name: "STEM Innovation Labs", href: "/labs/stem-innovation" },
+        { name: "Coding & Programming Labs", href: "/labs/coding" },
+        { name: "3D Printing Labs", href: "/labs/3d-printing" },
+        { name: "IoT & Electronics Labs", href: "/labs/iot-electronics" },
+        { name: "Maker Space Labs", href: "/labs/maker-space" },
+      ],
+    },
+    programsByAge: {
+      title: "Programs By Class",
+      links: [
+        { name: "STEM for Class 1-3", href: "/programs/class-1-3" },
+        { name: "STEM for Class 4-5", href: "/programs/class-4-5" },
+        { name: "Robotics for Class 6-8", href: "/programs/class-6-8" },
+        { name: "AI & Coding for Class 9-10", href: "/programs/class-9-10" },
+        { name: "Advanced Robotics Class 11-12", href: "/programs/class-11-12" },
+        { name: "Teacher Training", href: "/programs/teacher-training" },
+      ],
+    },
+    services: {
+      title: "Our Services",
+      links: [
+        { name: "ATL Lab Setup", href: "/services/atl-lab-setup" },
+        { name: "Robotics Lab Setup", href: "/services/robotics-lab-setup" },
+        { name: "STEM Curriculum", href: "/services/curriculum" },
+        { name: "Teacher Training", href: "/services/teacher-training" },
+        { name: "Student Workshops", href: "/services/workshops" },
+        { name: "Competition Prep", href: "/services/competitions" },
+      ],
+    },
+    competitions: {
+      title: "Competitions & Events",
+      links: [
+        { name: "Robotics Olympiad", href: "/competitions/robotics-olympiad" },
+        { name: "STEM Challenge", href: "/competitions/stem-challenge" },
+        { name: "ATL Marathon", href: "/competitions/atl-marathon" },
+        { name: "Coding Championship", href: "/competitions/coding" },
+        { name: "Science Exhibitions", href: "/competitions/exhibitions" },
+      ],
+    },
+  };
+
   return (
     <footer className="relative bg-gray-900 text-white overflow-hidden">
+      {/* SEO Links Section - Before Main Footer */}
+      <div className="relative bg-gray-950 py-10 border-b border-gray-800">
+        <div className="container mx-auto px-4">
+          <h2 className="text-xl font-bold text-white mb-6 text-center">
+            Explore STEM Education{" "}
+            <span className="bg-gradient-to-r from-orange-500 to-teal-500 bg-clip-text text-transparent">
+              Solutions Across India
+            </span>
+          </h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {Object.entries(seoLinks).map(([key, category]) => (
+              <div key={key}>
+                <h3 className="text-sm font-semibold text-orange-400 mb-3 border-b border-gray-700 pb-2">
+                  {category.title}
+                </h3>
+                <div className="flex flex-wrap gap-x-1 gap-y-0.5">
+                  {category.links.map((link, index) => (
+                    <span key={link.href} className="inline-flex items-center">
+                      <Link
+                        href={link.href}
+                        className="text-gray-400 hover:text-orange-400 text-xs transition-colors"
+                      >
+                        {link.name}
+                      </Link>
+                      {index < category.links.length - 1 && (
+                        <span className="text-gray-600 mx-1">|</span>
+                      )}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+          <p className="text-gray-500 text-xs mt-6 text-center max-w-4xl mx-auto">
+            <strong className="text-gray-400">STEM Mantra</strong> is India&apos;s premier provider of
+            robotics labs, AI labs, STEM labs, and Atal Tinkering Labs (ATL) for schools. Complete
+            turnkey lab solutions with equipment, NEP 2020 aligned curriculum, teacher training,
+            and support across 500+ cities.
+          </p>
+        </div>
+      </div>
+
       {/* Decorative Elements */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-0 right-1/4 w-96 h-96 bg-orange-500/5 rounded-full filter blur-3xl" />

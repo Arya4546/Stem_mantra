@@ -61,13 +61,10 @@ export default function GalleryContent() {
                 itemProp="associatedMedia" itemScope itemType="https://schema.org/ImageObject"
               >
                 <div className="relative w-full h-56">
-                  <Image
+                  <img
                     src={image.src}
                     alt={image.alt}
-                    fill
-                    className="object-cover object-center group-hover:scale-110 transition-transform duration-300"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    itemProp="contentUrl"
+                    className="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-300"
                   />
                 </div>
                 <figcaption className="absolute top-4 left-4 bg-white/80 rounded-full px-3 py-1 flex items-center gap-2 shadow text-xs font-semibold">

@@ -42,20 +42,187 @@ interface Program {
 }
 
 // ============================================
+// Static SEO Program Data
+// ============================================
+
+const staticPrograms: Record<string, Program> = {
+  "class-1-3": {
+    id: "seo-class-1-3",
+    slug: "class-1-3",
+    name: "STEM Foundation Program for Class 1-3",
+    description: "Fun-filled introduction to STEM concepts through play-based learning for young learners aged 6-8 years.",
+    type: "STEM_LAB",
+    status: "ACTIVE",
+    duration: "9 months",
+    gradeLevel: "Class 1-3 (6-8 years)",
+    features: ["Play-based learning", "Hands-on activities", "Age-appropriate robotics", "Basic coding with Scratch Jr"],
+    learningOutcomes: ["Scientific curiosity", "Basic logical thinking", "Motor skill development", "Teamwork skills"],
+    curriculum: ["Discover Science", "Basic Coding", "Simple Machines", "Creative Building"],
+    isFeatured: true,
+  },
+  "class-4-5": {
+    id: "seo-class-4-5",
+    slug: "class-4-5",
+    name: "STEM Explorer Program for Class 4-5",
+    description: "Hands-on exploration of science, coding, and basic robotics for students aged 9-10 years.",
+    type: "STEM_LAB",
+    status: "ACTIVE",
+    duration: "9 months",
+    gradeLevel: "Class 4-5 (9-10 years)",
+    features: ["Science experiments", "Visual programming", "Basic robotics", "Math & logic puzzles"],
+    learningOutcomes: ["Scientific method understanding", "Coding fundamentals", "Basic robotics skills", "Critical thinking"],
+    curriculum: ["Science Experiments", "Visual Programming", "Basic Robotics", "Math & Logic"],
+    isFeatured: true,
+  },
+  "class-6-8": {
+    id: "seo-class-6-8",
+    slug: "class-6-8",
+    name: "Robotics & Coding Program for Class 6-8",
+    description: "Advanced robotics, text-based coding, and electronics fundamentals for students aged 11-13 years.",
+    type: "ROBOTICS_LAB",
+    status: "ACTIVE",
+    duration: "10 months",
+    gradeLevel: "Class 6-8 (11-13 years)",
+    features: ["Python programming", "Advanced robotics", "Electronics basics", "3D design"],
+    learningOutcomes: ["Python proficiency", "Advanced robotics", "Electronics basics", "Competition readiness"],
+    curriculum: ["Python Programming", "Advanced Robotics", "Electronics", "3D Design"],
+    isFeatured: true,
+  },
+  "class-9-10": {
+    id: "seo-class-9-10",
+    slug: "class-9-10",
+    name: "AI & Advanced Coding for Class 9-10",
+    description: "AI/ML basics, advanced programming, and IoT project development for students aged 14-15 years.",
+    type: "AI_ML",
+    status: "ACTIVE",
+    duration: "10 months",
+    gradeLevel: "Class 9-10 (14-15 years)",
+    features: ["AI & Machine Learning", "Advanced Python", "IoT Development", "Web Development"],
+    learningOutcomes: ["AI/ML foundations", "Advanced programming", "IoT project skills", "Career preparation"],
+    curriculum: ["AI & Machine Learning", "Advanced Python", "IoT Development", "Web Development"],
+    isFeatured: true,
+  },
+  "class-11-12": {
+    id: "seo-class-11-12",
+    slug: "class-11-12",
+    name: "Advanced Robotics & Research for Class 11-12",
+    description: "Industry-level robotics, research projects, and competition preparation for students aged 16-17 years.",
+    type: "ROBOTICS_LAB",
+    status: "ACTIVE",
+    duration: "12 months",
+    gradeLevel: "Class 11-12 (16-17 years)",
+    features: ["Autonomous systems", "Deep learning", "Research methods", "Competition preparation"],
+    learningOutcomes: ["Research skills", "Advanced AI/ML", "Autonomous systems", "University readiness"],
+    curriculum: ["Autonomous Systems", "Deep Learning", "Research Methods", "Competition Prep"],
+    isFeatured: true,
+  },
+  "teacher-training": {
+    id: "seo-teacher-training",
+    slug: "teacher-training",
+    name: "STEM Educator Certification Program",
+    description: "Comprehensive training for teachers to conduct STEM classes effectively with certification.",
+    type: "CODING",
+    status: "ACTIVE",
+    duration: "3-6 months",
+    gradeLevel: "Educators",
+    features: ["STEM pedagogy", "Robotics training", "Coding instruction", "Lab management"],
+    learningOutcomes: ["STEM teaching skills", "Lab management expertise", "Student mentoring", "Certification"],
+    curriculum: ["STEM Pedagogy", "Robotics Training", "Coding Instruction", "Lab Management"],
+    isFeatured: true,
+  },
+  "atl-labs": {
+    id: "seo-atl-labs",
+    slug: "atl-labs",
+    name: "Atal Tinkering Labs Program",
+    description: "Government of India initiative fostering innovation and entrepreneurship for Class 6-12 students.",
+    type: "ATL_LAB",
+    status: "ACTIVE",
+    duration: "Full academic year",
+    gradeLevel: "Class 6-12",
+    features: ["Design thinking", "Tinkering basics", "Innovation projects", "Entrepreneurship"],
+    learningOutcomes: ["Innovation mindset", "Design thinking", "Prototyping skills", "Problem-solving"],
+    curriculum: ["Design Thinking", "Tinkering Basics", "Innovation Projects", "Entrepreneurship"],
+    isFeatured: true,
+  },
+  "robotics-lab": {
+    id: "seo-robotics-lab",
+    slug: "robotics-lab",
+    name: "Robotics & AI Labs Program",
+    description: "Build, program, and compete with advanced robots for students from Class 3-12.",
+    type: "ROBOTICS_LAB",
+    status: "ACTIVE",
+    duration: "Full academic year",
+    gradeLevel: "Class 3-12",
+    features: ["Robot building", "Programming", "AI integration", "Competition training"],
+    learningOutcomes: ["Robot building skills", "Programming proficiency", "AI basics", "Competition readiness"],
+    curriculum: ["Robot Building", "Programming", "AI Integration", "Competition Training"],
+    isFeatured: true,
+  },
+  "stem-lab": {
+    id: "seo-stem-lab",
+    slug: "stem-lab",
+    name: "STEM Innovation Labs Program",
+    description: "Integrated science, technology, engineering, and math education for Class 1-12.",
+    type: "STEM_LAB",
+    status: "ACTIVE",
+    duration: "Full academic year",
+    gradeLevel: "Class 1-12",
+    features: ["Science exploration", "Technology literacy", "Engineering design", "Mathematical thinking"],
+    learningOutcomes: ["Scientific inquiry", "Tech literacy", "Engineering mindset", "Critical thinking"],
+    curriculum: ["Science Exploration", "Technology Literacy", "Engineering Design", "Mathematical Thinking"],
+    isFeatured: true,
+  },
+  "coding": {
+    id: "seo-coding",
+    slug: "coding",
+    name: "Coding & Programming Mastery",
+    description: "From block coding to advanced programming languages for students from Class 1-12.",
+    type: "CODING",
+    status: "ACTIVE",
+    duration: "Full academic year",
+    gradeLevel: "Class 1-12",
+    features: ["Block coding", "Python programming", "Web development", "Advanced topics"],
+    learningOutcomes: ["Computational thinking", "Multiple languages", "Web development", "Problem-solving"],
+    curriculum: ["Block Coding", "Python Programming", "Web Development", "Advanced Topics"],
+    isFeatured: true,
+  },
+  "summer-camps": {
+    id: "seo-summer-camps",
+    slug: "summer-camps",
+    name: "STEM Summer Camp Programs",
+    description: "Intensive STEM learning during summer vacation with fun activities for Class 1-12.",
+    type: "STEM_LAB",
+    status: "ACTIVE",
+    duration: "1-4 weeks",
+    gradeLevel: "Class 1-12",
+    features: ["Robotics bootcamp", "Coding marathon", "Science adventure", "Innovation week"],
+    learningOutcomes: ["Skill acceleration", "Project completion", "New friendships", "Fun learning"],
+    curriculum: ["Robotics Bootcamp", "Coding Marathon", "Science Adventure", "Innovation Week"],
+    isFeatured: true,
+  },
+};
+
+// ============================================
 // Fetch Program Data
 // ============================================
 
 async function getProgram(slug: string): Promise<Program | null> {
+  // First check static programs
+  if (staticPrograms[slug]) {
+    return staticPrograms[slug];
+  }
+
+  // Then try API
   try {
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000/api/v1"}/programs/slug/${slug}`,
       { next: { revalidate: 3600 } }
     );
-    
+
     if (!res.ok) {
       return null;
     }
-    
+
     const data = await res.json();
     return data.data;
   } catch (error) {
@@ -129,7 +296,7 @@ export default async function ProgramPage({
         <section className={`relative py-20 lg:py-28 overflow-hidden bg-gradient-to-r ${colors.gradient}`}>
           <div className="absolute inset-0 bg-black/20" />
           <div className="absolute inset-0 bg-[url('/images/grid-pattern.svg')] opacity-10" />
-          
+
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             {/* Back Link */}
             <Link
@@ -158,7 +325,7 @@ export default async function ProgramPage({
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
                   {program.name}
                 </h1>
-                
+
                 <p className="text-lg md:text-xl text-white/90 mb-8 leading-relaxed">
                   {program.description}
                 </p>
@@ -305,7 +472,7 @@ export default async function ProgramPage({
               Ready to Transform Your School?
             </h2>
             <p className="text-xl text-white/90 mb-10 max-w-2xl mx-auto">
-              Join hundreds of schools that have already partnered with STEM Mantra 
+              Join hundreds of schools that have already partnered with STEM Mantra
               to bring world-class STEM education to their students.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

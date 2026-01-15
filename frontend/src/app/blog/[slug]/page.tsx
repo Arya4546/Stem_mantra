@@ -233,10 +233,12 @@ export default function BlogPostPage() {
                                             <span>{post.readTime} min read</span>
                                         </div>
                                     )}
-                                    <div className="flex items-center gap-2">
-                                        <Eye className="w-4 h-4" />
-                                        <span>{post.views.toLocaleString()} views</span>
-                                    </div>
+                                    {typeof post.views === 'number' && (
+                                        <div className="flex items-center gap-2">
+                                            <Eye className="w-4 h-4" />
+                                            <span>{post.views.toLocaleString()} views</span>
+                                        </div>
+                                    )}
                                 </div>
                             </motion.div>
                         </div>

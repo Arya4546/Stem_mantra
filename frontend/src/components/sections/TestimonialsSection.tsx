@@ -23,7 +23,7 @@ export default function TestimonialsSection() {
   };
 
   return (
-    <section ref={ref} className="relative py-24 lg:py-32 bg-gradient-to-b from-gray-50 to-white overflow-hidden">
+    <section ref={ref} className="relative py-16 lg:py-20 bg-gradient-to-b from-gray-50 to-white overflow-hidden">
       {/* Floating Icons Animation */}
       <SectionFloatingIcons count={2} zIndex={1} />
       {/* Background Elements */}
@@ -72,20 +72,30 @@ export default function TestimonialsSection() {
                   <div className="relative mb-6">
                     <div className="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden border-4 border-white/30 shadow-2xl bg-white/20 flex items-center justify-center">
                       {testimonials[activeIndex].image ? (
-                        <Image
+                        <img
                           src={testimonials[activeIndex].image}
                           alt={testimonials[activeIndex].name}
-                          width={160}
-                          height={160}
-                          className="w-full h-full object-cover"
+                          className="w-full h-full object-cover absolute inset-0 z-10"
                           onError={(e) => {
                             const target = e.target as HTMLImageElement;
                             target.style.display = 'none';
+                            // Show initials when image fails
+                            const fallback = target.nextElementSibling as HTMLElement;
+                            if (fallback) fallback.style.display = 'flex';
+                          }}
+                          onLoad={(e) => {
+                            // Hide initials when image loads successfully
+                            const target = e.target as HTMLImageElement;
+                            const fallback = target.nextElementSibling as HTMLElement;
+                            if (fallback) fallback.style.display = 'none';
                           }}
                         />
                       ) : null}
-                      {/* Fallback Initials */}
-                      <span className="absolute inset-0 flex items-center justify-center text-3xl md:text-4xl font-bold text-white">
+                      {/* Fallback Initials - hidden by default when image exists */}
+                      <span
+                        className="absolute inset-0 flex items-center justify-center text-3xl md:text-4xl font-bold text-white"
+                        style={{ display: testimonials[activeIndex].image ? 'none' : 'flex' }}
+                      >
                         {testimonials[activeIndex].name.split(' ').map(n => n[0]).join('').slice(0, 2)}
                       </span>
                     </div>
@@ -182,24 +192,32 @@ export default function TestimonialsSection() {
               key={testimonial.id}
               onClick={() => setActiveIndex(index)}
               className={`relative flex-shrink-0 w-16 h-16 rounded-full overflow-hidden border-2 transition-all duration-300 bg-gradient-to-br from-orange-400 to-purple-500 flex items-center justify-center ${index === activeIndex
-                  ? "border-orange-500 scale-110 shadow-lg"
-                  : "border-transparent opacity-60 hover:opacity-100"
+                ? "border-orange-500 scale-110 shadow-lg"
+                : "border-transparent opacity-60 hover:opacity-100"
                 }`}
             >
               {testimonial.image ? (
-                <Image
+                <img
                   src={testimonial.image}
                   alt={testimonial.name}
-                  width={64}
-                  height={64}
-                  className="w-full h-full object-cover absolute inset-0"
+                  className="w-full h-full object-cover absolute inset-0 z-10"
                   onError={(e) => {
                     const target = e.target as HTMLImageElement;
                     target.style.display = 'none';
+                    const fallback = target.nextElementSibling as HTMLElement;
+                    if (fallback) fallback.style.display = 'flex';
+                  }}
+                  onLoad={(e) => {
+                    const target = e.target as HTMLImageElement;
+                    const fallback = target.nextElementSibling as HTMLElement;
+                    if (fallback) fallback.style.display = 'none';
                   }}
                 />
               ) : null}
-              <span className="text-white font-bold text-lg">
+              <span
+                className="text-white font-bold text-lg"
+                style={{ display: testimonial.image ? 'none' : 'flex' }}
+              >
                 {testimonial.name.split(' ').map(n => n[0]).join('').slice(0, 2)}
               </span>
             </button>

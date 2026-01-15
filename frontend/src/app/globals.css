@@ -48,6 +48,33 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+  min-height: 100vh;
+  background-color: #ffffff;
+}
+
+/* Ensure main content is always visible */
+main {
+  background-color: #ffffff;
+  min-height: 100vh;
+}
+
+/* Fix for sections that might not be visible on mobile due to animations */
+section {
+  background-color: inherit;
+}
+
+/* Mobile-specific fixes */
+@media (max-width: 768px) {
+  /* Reduce animation complexity on mobile for better performance */
+  .floating-element {
+    display: none !important;
+  }
+  
+  /* Ensure all sections are visible even if animations haven't triggered */
+  section > div {
+    opacity: 1 !important;
+    transform: none !important;
+  }
 }
 
 /* Smooth scroll for all anchor links */

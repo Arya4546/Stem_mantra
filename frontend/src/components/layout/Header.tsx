@@ -263,28 +263,9 @@ export default function Header() {
                 <MobileNavLink href="/about" onClick={() => setIsMobileMenuOpen(false)}>
                   About
                 </MobileNavLink>
-
-                {/* Mobile Programs Section */}
-                <div className="px-4 py-3">
-                  <div className="text-xs font-bold text-orange-500 uppercase tracking-wider mb-3">
-                    Our Programs
-                  </div>
-                  {programs.map((program, index) => (
-                    <Link
-                      key={index}
-                      href={program.href}
-                      onClick={() => setIsMobileMenuOpen(false)}
-                      className="flex items-start gap-3 p-3 rounded-xl hover:bg-orange-50 transition-colors mb-1"
-                    >
-                      <span className="text-xl">{program.icon}</span>
-                      <div>
-                        <div className="font-medium text-gray-900">{program.title}</div>
-                        <div className="text-sm text-gray-500">{program.description}</div>
-                      </div>
-                    </Link>
-                  ))}
-                </div>
-
+                <MobileNavLink href="/programs" onClick={() => setIsMobileMenuOpen(false)}>
+                  Programs
+                </MobileNavLink>
                 <MobileNavLink href="/blog" onClick={() => setIsMobileMenuOpen(false)}>
                   Blog
                 </MobileNavLink>

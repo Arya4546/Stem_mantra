@@ -142,6 +142,49 @@ const locationServices: Record<string, {
     serviceType: "atl-lab",
     description: "Comprehensive ATL lab solutions in Gujarat. From lab setup to teacher training and competitions.",
   },
+  // SEO Service Pages  
+  "atl-lab-setup": {
+    title: "Atal Tinkering Lab Setup Service",
+    city: "India",
+    state: "All States",
+    serviceType: "atl-lab",
+    description: "Complete turnkey ATL lab setup services. End-to-end support from design to installation as per NITI Aayog guidelines.",
+  },
+  "robotics-lab-setup": {
+    title: "Robotics Lab Setup Service",
+    city: "India",
+    state: "All States",
+    serviceType: "robotics-lab",
+    description: "State-of-the-art robotics lab setup with competition-grade equipment, curriculum, and teacher training.",
+  },
+  "curriculum": {
+    title: "STEM Curriculum Development",
+    city: "India",
+    state: "All States",
+    serviceType: "stem-lab",
+    description: "NEP 2020 aligned STEM curriculum design with grade-wise content, assessments, and teacher guides.",
+  },
+  "teacher-training": {
+    title: "Teacher Training & Certification",
+    city: "India",
+    state: "All States",
+    serviceType: "stem-lab",
+    description: "Comprehensive STEM teacher training program with hands-on workshops and certification.",
+  },
+  "workshops": {
+    title: "Student STEM Workshops",
+    city: "India",
+    state: "All States",
+    serviceType: "stem-lab",
+    description: "Interactive STEM workshops for students covering robotics, coding, AI, and more.",
+  },
+  "competitions": {
+    title: "Competition Preparation Service",
+    city: "India",
+    state: "All States",
+    serviceType: "robotics-lab",
+    description: "Expert coaching to prepare students for national and international robotics and STEM competitions.",
+  },
 };
 
 interface Props {
@@ -154,7 +197,7 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const service = locationServices[params.slug];
-  
+
   if (!service) {
     return { title: "Service Not Found" };
   }

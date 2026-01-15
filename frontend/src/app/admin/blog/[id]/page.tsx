@@ -1,9 +1,8 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
-import { useRouter } from "next/navigation";
+import { useState, useEffect } from "react";
+import { useRouter, useParams } from "next/navigation";
 import Image from "next/image";
-import { motion } from "framer-motion";
 import { toast } from "sonner";
 import { AdminLayout } from "@/components/admin/AdminLayout";
 import {
@@ -11,12 +10,10 @@ import {
     ArrowLeft,
     Image as ImageIcon,
     Eye,
-    Tag,
     Loader2,
     Upload,
     X,
     Plus,
-    FileText,
     Bold,
     Italic,
     List,
@@ -37,8 +34,25 @@ interface Category {
     slug: string;
 }
 
-export default function NewBlogPostPage() {
+interface BlogPost {
+    id: string;
+    title: string;
+    slug: string;
+    excerpt?: string;
+    content?: string;
+    featuredImage?: string;
+    status: string;
+    readTime?: number;
+    tags?: string[];
+    categories?: { category: Category }[];
+}
+
+export default function EditBlogPostPage() {
     const router = useRouter();
+    const params = useParams();
+    const postId = params.id as string;
+
+    const [loading, setLoading] = useState(true);
     const [saving, setSaving] = useState(false);
     const [uploading, setUploading] = useState(false);
     const [categories, setCategories] = useState<Category[]>([]);
@@ -55,19 +69,44 @@ export default function NewBlogPostPage() {
     const [status, setStatus] = useState<"DRAFT" | "PUBLISHED">("DRAFT");
     const [readTime, setReadTime] = useState(5);
 
-    // Auto-generate slug from title
+    // Fetch post data
     useEffect(() => {
-        const generatedSlug = title
-            .toLowerCase()
-            .replace(/[^a-z0-9\s-]/g, "")
-            .replace(/\s+/g, "-")
-            .replace(/-+/g, "-")
-            .trim();
-        setSlug(generatedSlug);
-    }, [title]);
+        const fetchPost = async () => {
+            try {
+                setLoading(true);
+                const token = localStorage.getItem("accessToken");
+                const response = await fetch(`${API_URL}/blog/posts/${postId}`, {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                });
+                const data = await response.json();
 
-    // Fetch categories
-    useEffect(() => {
+                if (data.success && data.data?.post) {
+                    const post = data.data.post;
+                    setTitle(post.title || "");
+                    setSlug(post.slug || "");
+                    setExcerpt(post.excerpt || "");
+                    setContent(post.content || "");
+                    setFeaturedImage(post.featuredImage || "");
+                    setStatus(post.status || "DRAFT");
+                    setReadTime(post.readTime || 5);
+                    setTags(post.tags || []);
+                    setSelectedCategories(
+                        post.categories?.map((c: any) => c.category.id) || []
+                    );
+                } else {
+                    toast.error("Post not found");
+                    router.push("/admin/blog");
+                }
+            } catch (err) {
+                console.error("Error fetching post:", err);
+                toast.error("Failed to load post");
+            } finally {
+                setLoading(false);
+            }
+        };
+
         const fetchCategories = async () => {
             try {
                 const response = await fetch(`${API_URL}/blog/categories`);
@@ -79,8 +118,12 @@ export default function NewBlogPostPage() {
                 console.error("Error fetching categories:", err);
             }
         };
-        fetchCategories();
-    }, []);
+
+        if (postId) {
+            fetchPost();
+            fetchCategories();
+        }
+    }, [postId, router]);
 
     // Handle image upload
     const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -90,10 +133,10 @@ export default function NewBlogPostPage() {
         try {
             setUploading(true);
             const formData = new FormData();
-            formData.append("image", file); // Changed from "file" to "image"
+            formData.append("image", file);
 
             const token = localStorage.getItem("accessToken");
-            const response = await fetch(`${API_URL}/upload/image`, { // Changed from /upload to /upload/image
+            const response = await fetch(`${API_URL}/upload/image`, {
                 method: "POST",
                 headers: {
                     Authorization: `Bearer ${token}`,
@@ -147,8 +190,8 @@ export default function NewBlogPostPage() {
                 categoryIds: selectedCategories,
             };
 
-            const response = await fetch(`${API_URL}/blog/posts`, {
-                method: "POST",
+            const response = await fetch(`${API_URL}/blog/posts/${postId}`, {
+                method: "PUT",
                 headers: {
                     "Content-Type": "application/json",
                     Authorization: `Bearer ${token}`,
@@ -172,7 +215,7 @@ export default function NewBlogPostPage() {
         }
     };
 
-    // Simple text formatting for content (basic rich text)
+    // Simple text formatting
     const insertFormatting = (format: string) => {
         const textarea = document.getElementById("content-editor") as HTMLTextAreaElement;
         if (!textarea) return;
@@ -221,8 +264,18 @@ export default function NewBlogPostPage() {
         setContent(newContent);
     };
 
+    if (loading) {
+        return (
+            <AdminLayout title="Edit Blog Post">
+                <div className="flex items-center justify-center h-64">
+                    <Loader2 className="w-8 h-8 animate-spin text-orange-500" />
+                </div>
+            </AdminLayout>
+        );
+    }
+
     return (
-        <AdminLayout title="New Blog Post">
+        <AdminLayout title="Edit Blog Post">
             <div className="max-w-5xl mx-auto space-y-6">
                 {/* Header */}
                 <div className="flex items-center justify-between">
@@ -234,8 +287,8 @@ export default function NewBlogPostPage() {
                             <ArrowLeft className="w-5 h-5 text-gray-500" />
                         </Link>
                         <div>
-                            <h1 className="text-2xl font-bold text-gray-900">Create New Post</h1>
-                            <p className="text-gray-500">Write and publish your blog post</p>
+                            <h1 className="text-2xl font-bold text-gray-900">Edit Post</h1>
+                            <p className="text-gray-500">Update your blog post</p>
                         </div>
                     </div>
                     <div className="flex items-center gap-3">
@@ -281,8 +334,14 @@ export default function NewBlogPostPage() {
                                 placeholder="Enter your post title..."
                                 className="w-full px-4 py-3 text-xl font-semibold border-0 focus:outline-none focus:ring-0 placeholder-gray-300"
                             />
-                            <div className="mt-2 text-sm text-gray-400">
-                                Slug: /{slug || "your-post-url"}
+                            <div className="mt-2">
+                                <label className="block text-sm text-gray-500 mb-1">Slug</label>
+                                <input
+                                    type="text"
+                                    value={slug}
+                                    onChange={(e) => setSlug(e.target.value)}
+                                    className="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-orange-500"
+                                />
                             </div>
                         </div>
 
@@ -336,13 +395,10 @@ export default function NewBlogPostPage() {
                                 id="content-editor"
                                 value={content}
                                 onChange={(e) => setContent(e.target.value)}
-                                placeholder="Write your blog content here... You can use HTML for formatting."
+                                placeholder="Write your blog content here..."
                                 rows={15}
                                 className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 resize-y font-mono text-sm"
                             />
-                            <p className="mt-2 text-xs text-gray-400">
-                                Supports HTML formatting. Use the toolbar above for quick formatting.
-                            </p>
                         </div>
                     </div>
 

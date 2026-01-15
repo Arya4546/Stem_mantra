@@ -11,38 +11,38 @@ import { FaArrowRight, FaImages } from "react-icons/fa";
 const galleryImages = [
   {
     id: 1,
-    src: "/images/gallery/robotics-lab-1.jpg",
+    src: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=600&q=80",
     alt: "Students working on robotics project",
     category: "Robotics Lab",
   },
   {
     id: 2,
-    src: "/images/gallery/atl-lab-1.jpg",
-    alt: "ATL Lab setup in school",
+    src: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=600&q=80",
+    alt: "Modern robotics and AI technology",
     category: "ATL Labs",
   },
   {
     id: 3,
-    src: "/images/gallery/students-1.jpg",
-    alt: "Students with their robot creations",
-    category: "Student Projects",
+    src: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80",
+    alt: "Electronics and circuit boards",
+    category: "Electronics",
   },
   {
     id: 4,
-    src: "/images/gallery/training-1.jpg",
-    alt: "Teacher training session",
-    category: "Training",
+    src: "https://images.unsplash.com/photo-1531746790731-6c087fecd65a?w=600&q=80",
+    alt: "AI and coding visualization",
+    category: "AI & Coding",
   },
   {
     id: 5,
-    src: "/images/gallery/competition-1.jpg",
-    alt: "Robotics competition",
-    category: "Competitions",
+    src: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=600&q=80",
+    alt: "3D printing in action",
+    category: "3D Printing",
   },
   {
     id: 6,
-    src: "/images/gallery/workshop-1.jpg",
-    alt: "STEM workshop in progress",
+    src: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=600&q=80",
+    alt: "Students in STEM workshop",
     category: "Workshops",
   },
 ];
@@ -106,23 +106,20 @@ export default function GalleryPreview() {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={isInView ? { opacity: 1, scale: 1 } : {}}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className={`group relative overflow-hidden rounded-2xl ${
-                index === 0 ? "md:col-span-2 md:row-span-2" : ""
-              }`}
+              className={`group relative overflow-hidden rounded-2xl ${index === 0 ? "md:col-span-2 md:row-span-2" : ""
+                }`}
             >
               <div
-                className={`relative ${
-                  index === 0 ? "aspect-square md:aspect-[4/3]" : "aspect-square"
-                }`}
+                className={`relative ${index === 0 ? "aspect-square md:aspect-[4/3]" : "aspect-square"
+                  }`}
               >
-                {/* Placeholder gradient for missing images */}
-                <div className="absolute inset-0 bg-gradient-to-br from-orange-100 to-teal-100 flex items-center justify-center">
-                  <div className="text-center p-4">
-                    <FaImages className="w-12 h-12 text-orange-300 mx-auto mb-2" />
-                    <span className="text-sm text-gray-500">{image.category}</span>
-                  </div>
-                </div>
-                
+                {/* Actual Image */}
+                <img
+                  src={image.src}
+                  alt={image.alt}
+                  className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                />
+
                 {/* Hover Overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <div className="absolute bottom-0 left-0 right-0 p-4 md:p-6">
@@ -132,9 +129,6 @@ export default function GalleryPreview() {
                     <p className="text-white text-sm md:text-base">{image.alt}</p>
                   </div>
                 </div>
-
-                {/* Scale Effect on Hover */}
-                <div className="absolute inset-0 group-hover:scale-110 transition-transform duration-500" />
               </div>
             </motion.div>
           ))}
