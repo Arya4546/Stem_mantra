@@ -59,10 +59,8 @@ export default function Header() {
   if (isScrolled) {
     headerBg = "bg-white/95 backdrop-blur-lg shadow-lg border-b border-gray-100";
     textColor = "text-gray-700";
-  } else if (isHome) {
-    headerBg = "bg-transparent";
-    textColor = "text-white";
   } else {
+    // Always white header on all pages including home
     headerBg = "bg-white shadow-md border-b border-gray-100";
     textColor = "text-gray-700";
   }
@@ -98,43 +96,43 @@ export default function Header() {
             <motion.div
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              className="h-12 md:h-14"
+              className="h-14 md:h-16"
             >
               <img
-                src="https://stemmantra.com/assets/img/Custom/Newlogo.jpeg"
+                src="/images/logo.png"
                 alt="STEMmantra Logo"
                 className="h-full w-auto object-contain"
-                style={{ maxWidth: '180px' }}
+                style={{ maxWidth: '220px' }}
               />
             </motion.div>
           </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-1">
-            <NavLink href="/" active={pathname === "/"} isScrolled={isScrolled} textClass={isHome && !isScrolled ? "text-white hover:text-orange-400" : "text-gray-700 hover:text-orange-600"}>
+            <NavLink href="/" active={pathname === "/"} isScrolled={isScrolled} textClass="text-gray-700 hover:text-orange-600">
               Home
             </NavLink>
-            <NavLink href="/about" active={pathname === "/about"} isScrolled={isScrolled} textClass={isHome && !isScrolled ? "text-white hover:text-orange-400" : "text-gray-700 hover:text-orange-600"}>
+            <NavLink href="/about" active={pathname === "/about"} isScrolled={isScrolled} textClass="text-gray-700 hover:text-orange-600">
               About
             </NavLink>
 
             {/* Programs Link */}
-            <NavLink href="/programs" active={pathname.startsWith("/programs")} isScrolled={isScrolled} textClass={isHome && !isScrolled ? "text-white hover:text-orange-400" : "text-gray-700 hover:text-orange-600"}>
+            <NavLink href="/programs" active={pathname.startsWith("/programs")} isScrolled={isScrolled} textClass="text-gray-700 hover:text-orange-600">
               Programs
             </NavLink>
 
-            <NavLink href="/blog" active={pathname.startsWith("/blog")} isScrolled={isScrolled} textClass={isHome && !isScrolled ? "text-white hover:text-orange-400" : "text-gray-700 hover:text-orange-600"}>
+            <NavLink href="/blog" active={pathname.startsWith("/blog")} isScrolled={isScrolled} textClass="text-gray-700 hover:text-orange-600">
               Blog
             </NavLink>
-            <NavLink href="/gallery" active={pathname === "/gallery"} isScrolled={isScrolled} textClass={isHome && !isScrolled ? "text-white hover:text-orange-400" : "text-gray-700 hover:text-orange-600"}>
+            <NavLink href="/gallery" active={pathname === "/gallery"} isScrolled={isScrolled} textClass="text-gray-700 hover:text-orange-600">
               Gallery
             </NavLink>
-            <NavLink href="/contact" active={pathname === "/contact"} isScrolled={isScrolled} textClass={isHome && !isScrolled ? "text-white hover:text-orange-400" : "text-gray-700 hover:text-orange-600"}>
+            <NavLink href="/contact" active={pathname === "/contact"} isScrolled={isScrolled} textClass="text-gray-700 hover:text-orange-600">
               Contact
             </NavLink>
 
-            {/* Auth Section */}
-            {isAuthenticated ? (
+            {/* Auth Section - Only shown when authenticated */}
+            {isAuthenticated && (
               <div
                 className="relative ml-4"
                 onMouseEnter={() => setIsUserMenuOpen(true)}
@@ -208,26 +206,6 @@ export default function Header() {
                   )}
                 </AnimatePresence>
               </div>
-            ) : (
-              <div className="flex items-center gap-3 ml-4">
-                <Link
-                  href="/login"
-                  className={`px-5 py-2.5 text-sm font-medium transition-colors ${!isScrolled && pathname === "/"
-                    ? "text-white hover:text-orange-400"
-                    : "text-gray-700 hover:text-orange-600"
-                    }`}
-                >
-                  Login
-                </Link>
-                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                  <Link
-                    href="/register"
-                    className="px-6 py-2.5 bg-gradient-to-r from-orange-500 to-orange-600 text-white rounded-full text-sm font-medium shadow-lg shadow-orange-500/30 hover:shadow-xl hover:shadow-orange-500/40 transition-all"
-                  >
-                    Sign Up
-                  </Link>
-                </motion.div>
-              </div>
             )}
           </div>
 
@@ -276,67 +254,48 @@ export default function Header() {
                   Contact
                 </MobileNavLink>
 
-                {/* Mobile Auth Section */}
-                <div className="px-4 pt-4 space-y-3 border-t border-gray-100 mt-4">
-                  {isAuthenticated ? (
-                    <>
-                      <div className="flex items-center gap-3 p-3 bg-gradient-to-r from-orange-50 to-teal-50 rounded-xl">
-                        <div className="w-12 h-12 rounded-full bg-gradient-to-br from-orange-500 to-teal-500 flex items-center justify-center text-white font-bold text-lg shadow-md">
-                          {user?.firstName?.charAt(0).toUpperCase() || "U"}
-                        </div>
-                        <div>
-                          <p className="font-semibold text-gray-900">
-                            {user?.firstName} {user?.lastName}
-                          </p>
-                          <p className="text-sm text-gray-500">{user?.email}</p>
-                        </div>
+                {/* Mobile Auth Section - Only shown when authenticated */}
+                {isAuthenticated && (
+                  <div className="px-4 pt-4 space-y-3 border-t border-gray-100 mt-4">
+                    <div className="flex items-center gap-3 p-3 bg-gradient-to-r from-orange-50 to-teal-50 rounded-xl">
+                      <div className="w-12 h-12 rounded-full bg-gradient-to-br from-orange-500 to-teal-500 flex items-center justify-center text-white font-bold text-lg shadow-md">
+                        {user?.firstName?.charAt(0).toUpperCase() || "U"}
                       </div>
-                      <Link
-                        href="/dashboard"
-                        onClick={() => setIsMobileMenuOpen(false)}
-                        className="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-orange-50 text-gray-700 transition-colors"
-                      >
-                        <LayoutDashboard className="w-5 h-5 text-orange-500" />
-                        <span>Dashboard</span>
-                      </Link>
-                      <Link
-                        href="/profile"
-                        onClick={() => setIsMobileMenuOpen(false)}
-                        className="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-orange-50 text-gray-700 transition-colors"
-                      >
-                        <User className="w-5 h-5 text-orange-500" />
-                        <span>Profile</span>
-                      </Link>
-                      <button
-                        onClick={() => {
-                          logout();
-                          setIsMobileMenuOpen(false);
-                        }}
-                        className="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-red-50 text-red-600 transition-colors w-full"
-                      >
-                        <LogOut className="w-5 h-5" />
-                        <span>Logout</span>
-                      </button>
-                    </>
-                  ) : (
-                    <div className="flex flex-col gap-3">
-                      <Link
-                        href="/login"
-                        onClick={() => setIsMobileMenuOpen(false)}
-                        className="block w-full px-6 py-3.5 border-2 border-orange-500 text-orange-600 rounded-xl font-semibold text-center hover:bg-orange-50 transition-colors"
-                      >
-                        Login
-                      </Link>
-                      <Link
-                        href="/register"
-                        onClick={() => setIsMobileMenuOpen(false)}
-                        className="block w-full px-6 py-3.5 bg-gradient-to-r from-orange-500 to-orange-600 text-white rounded-xl font-semibold text-center shadow-lg shadow-orange-500/30"
-                      >
-                        Sign Up
-                      </Link>
+                      <div>
+                        <p className="font-semibold text-gray-900">
+                          {user?.firstName} {user?.lastName}
+                        </p>
+                        <p className="text-sm text-gray-500">{user?.email}</p>
+                      </div>
                     </div>
-                  )}
-                </div>
+                    <Link
+                      href="/dashboard"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-orange-50 text-gray-700 transition-colors"
+                    >
+                      <LayoutDashboard className="w-5 h-5 text-orange-500" />
+                      <span>Dashboard</span>
+                    </Link>
+                    <Link
+                      href="/profile"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-orange-50 text-gray-700 transition-colors"
+                    >
+                      <User className="w-5 h-5 text-orange-500" />
+                      <span>Profile</span>
+                    </Link>
+                    <button
+                      onClick={() => {
+                        logout();
+                        setIsMobileMenuOpen(false);
+                      }}
+                      className="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-red-50 text-red-600 transition-colors w-full"
+                    >
+                      <LogOut className="w-5 h-5" />
+                      <span>Logout</span>
+                    </button>
+                  </div>
+                )}
 
                 {/* Mobile Contact Info */}
                 <div className="px-4 pt-4 border-t border-gray-100 mt-4">

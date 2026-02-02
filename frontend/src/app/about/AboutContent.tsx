@@ -244,7 +244,7 @@ export default function AboutContent() {
                 <div className="aspect-square rounded-3xl overflow-hidden shadow-2xl bg-gradient-to-br from-orange-100 via-white to-teal-100 flex items-center justify-center p-8">
                   <div className="w-48 h-48 md:w-64 md:h-64 rounded-2xl overflow-hidden shadow-xl bg-white p-4">
                     <img
-                      src="https://stemmantra.com/assets/img/Custom/Newlogo.jpeg"
+                      src="/images/logo.png"
                       alt="STEMmantra Logo"
                       className="w-full h-full object-contain"
                     />

@@ -175,7 +175,7 @@ export default function LabSolutionsSection() {
                             <div className="w-32 h-32 md:w-40 md:h-40 rounded-full bg-gradient-to-br from-orange-500 to-teal-500 p-1 shadow-2xl">
                                 <div className="w-full h-full rounded-full overflow-hidden bg-white flex items-center justify-center">
                                     <img
-                                        src="https://stemmantra.com/assets/img/Custom/Newlogo.jpeg"
+                                        src="/images/logo.png"
                                         alt="STEMmantra"
                                         className="w-24 h-24 md:w-32 md:h-32 object-contain"
                                     />

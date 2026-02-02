@@ -12,7 +12,7 @@ interface LogoProps {
     linkTo?: string;
 }
 
-const LOGO_URL = "https://stemmantra.com/assets/img/Custom/Newlogo.jpeg";
+const LOGO_URL = "/images/logo.png";
 
 const sizeClasses = {
     sm: "w-8 h-8",

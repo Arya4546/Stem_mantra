@@ -41,10 +41,10 @@ export default function HeroSection() {
   return (
     <section
       ref={containerRef}
-      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 pt-32"
     >
-      {/* Video Background */}
-      <div className="absolute inset-0 z-0">
+      {/* Video Background - starts below navbar */}
+      <div className="absolute top-20 left-0 right-0 bottom-0 z-0">
         <video
           autoPlay
           muted

@@ -169,7 +169,7 @@ export default function Footer() {
             <div>
               <Link href="/" className="flex items-center mb-4">
                 <img
-                  src="https://stemmantra.com/assets/img/Custom/Newlogo.jpeg"
+                  src="/images/logo.png"
                   alt="STEMmantra Logo"
                   className="h-14 w-auto object-contain"
                   style={{ maxWidth: '180px' }}

@@ -225,7 +225,7 @@ export function Sidebar({ isCollapsed, onToggle, isMobileOpen, onMobileClose }: 
       <div className={cn("flex items-center gap-3 px-4 py-5 border-b border-slate-200", isCollapsed && "justify-center")}>
         <div className="w-10 h-10 rounded-xl overflow-hidden shadow-lg flex-shrink-0">
           <img
-            src="https://stemmantra.com/assets/img/Custom/Newlogo.jpeg"
+            src="/images/logo.png"
             alt="STEMmantra Logo"
             className="w-full h-full object-cover"
           />

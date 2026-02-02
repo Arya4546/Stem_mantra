@@ -71,8 +71,30 @@ section {
     display: none !important;
   }
 
-  /* Ensure all sections are visible even if animations haven't triggered */
-  section>div {
+  /* Hide large decorative blur backgrounds on mobile that can cause layout issues */
+  section .absolute.blur-3xl,
+  section .absolute.blur-2xl,
+  section>.absolute[class*="w-[400px]"],
+  section>.absolute[class*="w-[500px]"],
+  section>.absolute[class*="w-[600px]"],
+  section>.absolute[class*="w-[800px]"],
+  section>.absolute[class*="h-[400px]"],
+  section>.absolute[class*="h-[500px]"],
+  section>.absolute[class*="h-[600px]"],
+  section>.absolute[class*="h-[800px]"] {
+    display: none !important;
+  }
+
+  /* Ensure all sections and their content are visible even if animations haven't triggered */
+  section,
+  section * {
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+
+  /* Reset transforms that might hide content */
+  section [style*="opacity: 0"],
+  section [style*="transform"] {
     opacity: 1 !important;
     transform: none !important;
   }
