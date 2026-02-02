@@ -157,7 +157,7 @@ export default function SEOLinksSection() {
                     className="mt-10 pt-8 border-t border-gray-800"
                 >
                     <p className="text-gray-500 text-xs leading-relaxed text-center max-w-4xl mx-auto">
-                        <strong className="text-gray-400">STEM Mantra</strong> is India&apos;s leading provider of
+                        <strong className="text-gray-400">STEMmantra</strong> is India&apos;s leading provider of
                         robotics labs, AI labs, STEM labs, and Atal Tinkering Labs (ATL) for schools. We provide
                         complete turnkey lab solutions including equipment, NEP 2020 aligned curriculum, teacher
                         training, and ongoing support across Delhi, Mumbai, Bangalore, Hyderabad, Chennai, Pune,

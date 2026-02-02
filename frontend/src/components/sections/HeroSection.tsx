@@ -52,7 +52,7 @@ export default function HeroSection() {
           playsInline
           className="absolute inset-0 w-full h-full object-cover opacity-60"
         >
-          <source src="https://stembotix-lms.s3.ap-south-1.amazonaws.com/videos%2F444343ab-79b0-45f2-8511-5e1d3a1a7dbf-AIROBOTICSLAB.mp4" type="video/mp4" />
+          <source src="/videos/home_video.mp4" type="video/mp4" />
         </video>
         {/* Gradient Overlay - reduced opacity */}
         <div className="absolute inset-0 bg-gradient-to-b from-gray-900/50 via-gray-900/30 to-gray-900/60" />

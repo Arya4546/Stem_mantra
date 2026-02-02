@@ -34,7 +34,7 @@ export const verifyRegistrationOTP = asyncHandler(async (req: Request, res: Resp
   return sendCreated(res, {
     user: result.user,
     accessToken: result.accessToken,
-  }, 'Registration successful! Welcome to STEM Mantra.');
+  }, 'Registration successful! Welcome to STEMmantra.');
 });
 
 export const requestLoginOTP = asyncHandler(async (req: Request, res: Response) => {

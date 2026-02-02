@@ -287,7 +287,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         isAdmin: checkIsAdmin(response.user),
       });
 
-      toast.success(`Welcome to STEM Mantra, ${response.user.firstName}!`);
+      toast.success(`Welcome to STEMmantra, ${response.user.firstName}!`);
       return true;
     } catch (error) {
       toast.error(getErrorMessage(error));
@@ -310,7 +310,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         isAdmin: checkIsAdmin(response.user),
       });
 
-      toast.success(`Welcome to STEM Mantra, ${response.user.firstName}!`);
+      toast.success(`Welcome to STEMmantra, ${response.user.firstName}!`);
       return true;
     } catch (error) {
       toast.error(getErrorMessage(error));

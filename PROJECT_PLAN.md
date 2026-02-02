@@ -1,8 +1,8 @@
-# STEM Mantra - Complete Project Plan & System Design
+# STEMmantra - Complete Project Plan & System Design
 
 ## 📋 Executive Summary
 
-This document outlines the comprehensive plan to make STEM Mantra a fully functional EdTech application with professional-grade backend APIs, admin dashboard, user management, and SEO-optimized frontend.
+This document outlines the comprehensive plan to make STEMmantra a fully functional EdTech application with professional-grade backend APIs, admin dashboard, user management, and SEO-optimized frontend.
 
 ---
 

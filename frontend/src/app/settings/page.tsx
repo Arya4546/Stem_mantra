@@ -105,12 +105,12 @@ export default function SettingsPage() {
       toast.error("New passwords do not match");
       return;
     }
-    
+
     if (passwords.new.length < 8) {
       toast.error("Password must be at least 8 characters");
       return;
     }
-    
+
     setIsLoading(true);
     try {
       await apiClient.put("/auth/change-password", {
@@ -153,11 +153,10 @@ export default function SettingsPage() {
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
-                  className={`flex items-center gap-2 px-4 py-3 rounded-xl text-sm font-medium transition-colors whitespace-nowrap ${
-                    activeTab === tab.id
+                  className={`flex items-center gap-2 px-4 py-3 rounded-xl text-sm font-medium transition-colors whitespace-nowrap ${activeTab === tab.id
                       ? "bg-indigo-50 text-indigo-600"
                       : "text-slate-600 hover:bg-slate-50"
-                  }`}
+                    }`}
                 >
                   <tab.icon className="w-4 h-4" />
                   {tab.label}
@@ -177,7 +176,7 @@ export default function SettingsPage() {
               >
                 <div>
                   <h3 className="text-lg font-semibold text-slate-900 mb-4">Account Settings</h3>
-                  
+
                   <div className="space-y-4">
                     <div>
                       <label className="block text-sm font-medium text-slate-700 mb-2">
@@ -250,7 +249,7 @@ export default function SettingsPage() {
                     {[
                       { key: "emailNewCourse", label: "New courses and programs", desc: "Get notified when new courses are available" },
                       { key: "emailPromotions", label: "Promotions and offers", desc: "Receive special offers and discounts" },
-                      { key: "emailUpdates", label: "Platform updates", desc: "Important updates about STEM Mantra" },
+                      { key: "emailUpdates", label: "Platform updates", desc: "Important updates about STEMmantra" },
                     ].map((item) => (
                       <div key={item.key} className="flex items-start justify-between p-4 bg-slate-50 rounded-xl">
                         <div>
@@ -386,7 +385,7 @@ export default function SettingsPage() {
                         className="w-full px-4 py-3 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500"
                       />
                     </div>
-                    <button 
+                    <button
                       onClick={handlePasswordChange}
                       disabled={isLoading || !passwords.current || !passwords.new || !passwords.confirm}
                       className="px-6 py-2 bg-indigo-600 text-white rounded-xl font-medium hover:bg-indigo-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
@@ -455,18 +454,15 @@ export default function SettingsPage() {
                       <button
                         key={theme.id}
                         onClick={() => setAppearance((prev) => ({ ...prev, theme: theme.id }))}
-                        className={`p-4 rounded-xl border-2 transition-colors ${
-                          appearance.theme === theme.id
+                        className={`p-4 rounded-xl border-2 transition-colors ${appearance.theme === theme.id
                             ? "border-indigo-600 bg-indigo-50"
                             : "border-slate-200 hover:border-slate-300"
-                        }`}
+                          }`}
                       >
-                        <theme.icon className={`w-6 h-6 mx-auto mb-2 ${
-                          appearance.theme === theme.id ? "text-indigo-600" : "text-slate-400"
-                        }`} />
-                        <p className={`text-sm font-medium ${
-                          appearance.theme === theme.id ? "text-indigo-600" : "text-slate-600"
-                        }`}>
+                        <theme.icon className={`w-6 h-6 mx-auto mb-2 ${appearance.theme === theme.id ? "text-indigo-600" : "text-slate-400"
+                          }`} />
+                        <p className={`text-sm font-medium ${appearance.theme === theme.id ? "text-indigo-600" : "text-slate-600"
+                          }`}>
                           {theme.label}
                         </p>
                       </button>
@@ -481,11 +477,10 @@ export default function SettingsPage() {
                       <button
                         key={size}
                         onClick={() => setAppearance((prev) => ({ ...prev, fontSize: size }))}
-                        className={`px-4 py-2 rounded-xl border-2 transition-colors capitalize ${
-                          appearance.fontSize === size
+                        className={`px-4 py-2 rounded-xl border-2 transition-colors capitalize ${appearance.fontSize === size
                             ? "border-indigo-600 bg-indigo-50 text-indigo-600"
                             : "border-slate-200 text-slate-600 hover:border-slate-300"
-                        }`}
+                          }`}
                       >
                         {size}
                       </button>

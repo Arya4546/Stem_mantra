@@ -291,7 +291,7 @@ export default function STEMLabCityPage() {
                         <div className="grid lg:grid-cols-2 gap-12 items-center">
                             <div>
                                 <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-                                    Why Choose STEM Mantra for Your School in {data.name}?
+                                    Why Choose STEMmantra for Your School in {data.name}?
                                 </h2>
                                 <p className="text-gray-600 mb-8">
                                     We provide comprehensive STEM education solutions that transform classrooms into
@@ -333,7 +333,7 @@ export default function STEMLabCityPage() {
                         </h2>
                         <p className="text-gray-300 max-w-2xl mx-auto mb-8">
                             Join {data.schools}+ schools in {data.name} that have already transformed their
-                            education with STEM Mantra&apos;s comprehensive lab solutions.
+                            education with STEMmantra&apos;s comprehensive lab solutions.
                         </p>
                         <div className="flex flex-wrap justify-center gap-4">
                             <Link

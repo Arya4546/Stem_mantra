@@ -214,8 +214,8 @@ class AnalyticsService {
     const revenueGrowth =
       Number(revenueLastMonth._sum.total) > 0
         ? ((Number(revenueThisMonth._sum.total) - Number(revenueLastMonth._sum.total)) /
-            Number(revenueLastMonth._sum.total)) *
-          100
+          Number(revenueLastMonth._sum.total)) *
+        100
         : 0;
 
     return {
@@ -306,7 +306,7 @@ class AnalyticsService {
 class SiteSettingsService {
   async get(key: string) {
     const setting = await prisma.siteSetting.findUnique({ where: { key } });
-    
+
     if (!setting) return null;
 
     // Parse value based on type
@@ -492,7 +492,7 @@ class SEOService {
         return {
           '@context': 'https://schema.org',
           '@type': 'EducationalOrganization',
-          name: 'STEM Mantra',
+          name: 'STEMmantra',
           url: process.env.FRONTEND_URL,
           logo: `${process.env.FRONTEND_URL}/logo.png`,
           description: 'Premier robotics and STEM education organization',
@@ -533,10 +533,10 @@ class SEOService {
           },
           aggregateRating: data.avgRating
             ? {
-                '@type': 'AggregateRating',
-                ratingValue: data.avgRating,
-                reviewCount: data.reviewCount,
-              }
+              '@type': 'AggregateRating',
+              ratingValue: data.avgRating,
+              reviewCount: data.reviewCount,
+            }
             : undefined,
         };
 
@@ -548,7 +548,7 @@ class SEOService {
           description: data.description,
           provider: {
             '@type': 'EducationalOrganization',
-            name: 'STEM Mantra',
+            name: 'STEMmantra',
           },
         };
 
@@ -562,24 +562,24 @@ class SEOService {
           endDate: data.endDate,
           location: data.isOnline
             ? {
-                '@type': 'VirtualLocation',
-                url: data.meetingUrl,
-              }
+              '@type': 'VirtualLocation',
+              url: data.meetingUrl,
+            }
             : {
-                '@type': 'Place',
-                name: data.venue,
-              },
+              '@type': 'Place',
+              name: data.venue,
+            },
           organizer: {
             '@type': 'Organization',
-            name: 'STEM Mantra',
+            name: 'STEMmantra',
           },
           offers: data.isFree
             ? undefined
             : {
-                '@type': 'Offer',
-                price: data.price,
-                priceCurrency: 'INR',
-              },
+              '@type': 'Offer',
+              price: data.price,
+              priceCurrency: 'INR',
+            },
         };
 
       case 'article':
@@ -597,7 +597,7 @@ class SEOService {
           })),
           publisher: {
             '@type': 'Organization',
-            name: 'STEM Mantra',
+            name: 'STEMmantra',
             logo: {
               '@type': 'ImageObject',
               url: `${process.env.FRONTEND_URL}/logo.png`,

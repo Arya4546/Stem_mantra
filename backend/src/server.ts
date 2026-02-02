@@ -24,7 +24,7 @@ const startServer = async (): Promise<void> => {
       logger.info(`
 +-----------------------------------------------------------+
 |                                                           |
-|   STEM Mantra Backend Server                              |
+|   STEMmantra Backend Server                              |
 |                                                           |
 |   Environment: ${config.nodeEnv.padEnd(40)}|
 |   Port: ${config.port.toString().padEnd(47)}|

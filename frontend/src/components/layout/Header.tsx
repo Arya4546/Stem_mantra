@@ -102,7 +102,7 @@ export default function Header() {
             >
               <img
                 src="https://stemmantra.com/assets/img/Custom/Newlogo.jpeg"
-                alt="STEM Mantra Logo"
+                alt="STEMmantra Logo"
                 className="h-full w-auto object-contain"
                 style={{ maxWidth: '180px' }}
               />

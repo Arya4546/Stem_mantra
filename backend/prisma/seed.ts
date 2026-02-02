@@ -8,7 +8,7 @@ async function main() {
 
   // Create admin user
   const hashedPassword = await bcrypt.hash('Admin@123', 12);
-  
+
   const admin = await prisma.user.upsert({
     where: { email: 'admin@stemmantra.com' },
     update: {},
@@ -16,7 +16,7 @@ async function main() {
       email: 'admin@stemmantra.com',
       password: hashedPassword,
       firstName: 'Admin',
-      lastName: 'STEM Mantra',
+      lastName: 'STEMmantra',
       phone: '+91-6356631515',
       role: UserRole.ADMIN,
       status: UserStatus.ACTIVE,
@@ -286,7 +286,7 @@ async function main() {
       name: 'Dr. Priya Sharma',
       designation: 'Principal',
       schoolName: 'St. Thomas Girls School, Delhi',
-      content: 'STEM Mantra has transformed our school\'s science education. The ATL Lab setup was professional and the ongoing support has been exceptional. Our students are now winning robotics competitions!',
+      content: 'STEMmantra has transformed our school\'s science education. The ATL Lab setup was professional and the ongoing support has been exceptional. Our students are now winning robotics competitions!',
       rating: 5,
       isApproved: true,
       isFeatured: true,
@@ -295,7 +295,7 @@ async function main() {
       name: 'Rajesh Kumar',
       designation: 'Science Teacher',
       schoolName: 'DAV Public School, Noida',
-      content: 'The training provided by STEM Mantra helped me become confident in teaching robotics. The curriculum is well-designed and students love the hands-on approach.',
+      content: 'The training provided by STEMmantra helped me become confident in teaching robotics. The curriculum is well-designed and students love the hands-on approach.',
       rating: 5,
       isApproved: true,
       isFeatured: true,
@@ -304,7 +304,7 @@ async function main() {
       name: 'Mrs. Anjali Gupta',
       designation: 'Director',
       schoolName: 'Modern Academy, Gurgaon',
-      content: 'We chose STEM Mantra for our robotics lab setup and it was the best decision. The equipment quality is excellent and the support team is always helpful.',
+      content: 'We chose STEMmantra for our robotics lab setup and it was the best decision. The equipment quality is excellent and the support team is always helpful.',
       rating: 5,
       isApproved: true,
       isFeatured: true,
@@ -313,7 +313,7 @@ async function main() {
       name: 'Amit Singh',
       designation: 'Parent',
       schoolName: 'Delhi Public School, Faridabad',
-      content: 'My son has developed a passion for coding and robotics after joining the STEM Mantra program. The teachers are knowledgeable and make learning fun.',
+      content: 'My son has developed a passion for coding and robotics after joining the STEMmantra program. The teachers are knowledgeable and make learning fun.',
       rating: 5,
       isApproved: true,
       isFeatured: false,

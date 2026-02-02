@@ -20,11 +20,11 @@ const poppins = Poppins({
 
 export const metadata: Metadata = {
   title: {
-    default: "STEM Mantra - Robotics & AI Education for Schools | Master The Skills",
-    template: "%s | STEM Mantra",
+    default: "STEMmantra - Robotics & AI Education for Schools | Master The Skills",
+    template: "%s | STEMmantra",
   },
   description:
-    "STEM Mantra provides world-class robotics, AI, and STEM education solutions for schools. Setup ATL Labs, Robotics Labs with expert training, NEP 2020 aligned curriculum, and innovative project-based learning.",
+    "STEMmantra provides world-class robotics, AI, and STEM education solutions for schools. Setup ATL Labs, Robotics Labs with expert training, NEP 2020 aligned curriculum, and innovative project-based learning.",
   keywords: [
     "robotics education",
     "STEM learning",
@@ -41,21 +41,21 @@ export const metadata: Metadata = {
     "IoT learning",
     "3D printing education",
   ],
-  authors: [{ name: "STEM Mantra" }],
-  creator: "STEM Mantra",
-  publisher: "STEM Mantra",
+  authors: [{ name: "STEMmantra" }],
+  creator: "STEMmantra",
+  publisher: "STEMmantra",
   openGraph: {
     type: "website",
     locale: "en_US",
     url: "https://www.stemmantra.com",
-    title: "STEM Mantra - Robotics & AI Education for Schools",
+    title: "STEMmantra - Robotics & AI Education for Schools",
     description:
       "Master The Skills Drive Your Future - Leading provider of robotics, AI, and STEM education solutions with ATL Labs setup and expert training.",
-    siteName: "STEM Mantra",
+    siteName: "STEMmantra",
   },
   twitter: {
     card: "summary_large_image",
-    title: "STEM Mantra - Robotics & AI Education for Schools",
+    title: "STEMmantra - Robotics & AI Education for Schools",
     description:
       "Master The Skills Drive Your Future - Leading provider of robotics, AI, and STEM education solutions.",
     creator: "@stemmantra",

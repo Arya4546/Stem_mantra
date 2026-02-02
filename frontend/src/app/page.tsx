@@ -15,7 +15,7 @@ import PartnersSection from "@/components/sections/PartnersSection";
 import CTASection from "@/components/sections/CTASection";
 
 export const metadata: Metadata = {
-  title: "STEM Mantra - Master The Skills, Drive Your Future | Robotics & AI Education",
+  title: "STEMmantra - Master The Skills, Drive Your Future | Robotics & AI Education",
   description:
     "India's leading provider of robotics, AI, and STEM education solutions for schools. ATL Labs setup, teacher training, NEP 2020 aligned curriculum. Transform your school with cutting-edge technology education.",
   keywords: [
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     "school robotics program",
   ],
   openGraph: {
-    title: "STEM Mantra - Master The Skills, Drive Your Future",
+    title: "STEMmantra - Master The Skills, Drive Your Future",
     description:
       "India's leading provider of robotics, AI, and STEM education solutions for schools.",
     images: ["/images/og-image.jpg"],
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "STEM Mantra - Master The Skills, Drive Your Future",
+    title: "STEMmantra - Master The Skills, Drive Your Future",
     description:
       "India's leading provider of robotics, AI, and STEM education solutions for schools.",
   },

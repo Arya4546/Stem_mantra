@@ -1,6 +1,6 @@
-# STEM Mantra - Educational Platform
+# STEMmantra - Educational Platform
 
-A modern, SEO-optimized educational platform for STEM Mantra - a premier robotics and STEM education organization.
+A modern, SEO-optimized educational platform for STEMmantra - a premier robotics and STEM education organization.
 
 > **Master The Skills "Drive Your Future..."**
 
@@ -165,7 +165,7 @@ Base URL: `http://localhost:5000/api/v1`
 | Route | Description |
 |-------|-------------|
 | `/` | Homepage with hero, programs, testimonials |
-| `/about` | About STEM Mantra |
+| `/about` | About STEMmantra |
 | `/programs/atl-labs` | ATL Labs Program |
 | `/programs/robotics-lab` | Robotics Lab Program |
 | `/programs/stem-lab` | STEM Lab Program |
@@ -216,7 +216,7 @@ CORS_ORIGIN=http://localhost:3000
 
 ## 📄 License
 
-MIT License - STEM Mantra
+MIT License - STEMmantra
 
 ## 📞 Contact
 
@@ -226,4 +226,4 @@ MIT License - STEM Mantra
 
 ---
 
-**Built with ❤️ by STEM Mantra Team**
+**Built with ❤️ by STEMmantra Team**

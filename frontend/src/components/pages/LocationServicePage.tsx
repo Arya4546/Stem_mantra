@@ -140,7 +140,7 @@ export default function LocationServicePage({
       {/* Hero Section */}
       <section className="relative min-h-[60vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
         <FloatingAnimations variant="hero" density="low" />
-        
+
         {/* Gradient Overlay */}
         <div className={`absolute inset-0 bg-gradient-to-r ${details.gradient} opacity-20`} />
 
@@ -293,7 +293,7 @@ export default function LocationServicePage({
               transition={{ duration: 0.6 }}
             >
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-                Why Choose STEM Mantra in {city}?
+                Why Choose STEMmantra in {city}?
               </h2>
               <ul className="space-y-4">
                 {[
@@ -361,7 +361,7 @@ export default function LocationServicePage({
             Ready to Transform Your School in {city}?
           </h2>
           <p className="text-white/90 text-lg mb-8 max-w-2xl mx-auto">
-            Join 500+ schools across India that have partnered with STEM Mantra for quality STEM education.
+            Join 500+ schools across India that have partnered with STEMmantra for quality STEM education.
           </p>
           <Link
             href="/contact"

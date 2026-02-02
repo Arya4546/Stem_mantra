@@ -58,7 +58,7 @@ interface SettingsState {
 }
 
 const defaultSettings: SettingsState = {
-  siteName: "STEM Mantra",
+  siteName: "STEMmantra",
   siteDescription: "Leading STEM Education Provider in India",
   siteUrl: "https://stemmantra.com",
   contactEmail: "info@stemmantra.com",
@@ -114,10 +114,10 @@ export default function AdminSettingsPage() {
   const fetchSettings = async () => {
     try {
       const response = await api.get<{ data: Setting[] }>('/settings');
-      
+
       if (response.data?.data) {
         const fetchedSettings = { ...defaultSettings };
-        
+
         response.data.data.forEach((setting: Setting) => {
           const key = setting.key as keyof SettingsState;
           if (key in fetchedSettings) {
@@ -128,7 +128,7 @@ export default function AdminSettingsPage() {
             }
           }
         });
-        
+
         setSettings(fetchedSettings);
         setOriginalSettings(fetchedSettings);
       }
@@ -149,11 +149,11 @@ export default function AdminSettingsPage() {
       const settingsToSave = Object.entries(settings).map(([key, value]) => {
         let type = 'string';
         let group = 'general';
-        
+
         if (typeof value === 'boolean') {
           type = 'boolean';
         }
-        
+
         // Determine group based on key
         if (['facebook', 'twitter', 'instagram', 'linkedin', 'youtube'].includes(key)) {
           group = 'social';
@@ -164,7 +164,7 @@ export default function AdminSettingsPage() {
         } else if (['emailNotifications', 'newUserNotification', 'orderNotification', 'leadNotification'].includes(key)) {
           group = 'notifications';
         }
-        
+
         return {
           key,
           value: String(value),
@@ -172,9 +172,9 @@ export default function AdminSettingsPage() {
           group,
         };
       });
-      
+
       await api.post('/settings/bulk', { settings: settingsToSave });
-      
+
       setOriginalSettings(settings);
       setHasChanges(false);
       toast.success("Settings saved successfully");
@@ -266,11 +266,10 @@ export default function AdminSettingsPage() {
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
-                  className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-left transition-colors ${
-                    activeTab === tab.id
+                  className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-left transition-colors ${activeTab === tab.id
                       ? "bg-indigo-50 text-indigo-600"
                       : "text-slate-600 hover:bg-slate-50"
-                  }`}
+                    }`}
                 >
                   <tab.icon className="w-5 h-5" />
                   <span className="font-medium">{tab.label}</span>
@@ -279,56 +278,56 @@ export default function AdminSettingsPage() {
             </div>
           </div>
 
-        {/* Content */}
-        <div className="flex-1">
-          <motion.div
-            key={activeTab}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="bg-white rounded-2xl p-6 shadow-sm border border-slate-100"
-          >
-            {activeTab === "general" && (
-              <div className="space-y-6">
-                <h2 className="text-lg font-semibold text-slate-900">General Settings</h2>
-                
-                <div className="grid md:grid-cols-2 gap-6">
+          {/* Content */}
+          <div className="flex-1">
+            <motion.div
+              key={activeTab}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="bg-white rounded-2xl p-6 shadow-sm border border-slate-100"
+            >
+              {activeTab === "general" && (
+                <div className="space-y-6">
+                  <h2 className="text-lg font-semibold text-slate-900">General Settings</h2>
+
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <div>
+                      <label className="block text-sm font-medium text-slate-700 mb-2">
+                        Site Name
+                      </label>
+                      <input
+                        type="text"
+                        value={settings.siteName}
+                        onChange={(e) => setSettings({ ...settings, siteName: e.target.value })}
+                        className="w-full px-4 py-2.5 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-slate-700 mb-2">
+                        Site URL
+                      </label>
+                      <input
+                        type="url"
+                        value={settings.siteUrl}
+                        onChange={(e) => setSettings({ ...settings, siteUrl: e.target.value })}
+                        className="w-full px-4 py-2.5 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                      />
+                    </div>
+                  </div>
+
                   <div>
                     <label className="block text-sm font-medium text-slate-700 mb-2">
-                      Site Name
+                      Site Description
                     </label>
-                    <input
-                      type="text"
-                      value={settings.siteName}
-                      onChange={(e) => setSettings({ ...settings, siteName: e.target.value })}
+                    <textarea
+                      value={settings.siteDescription}
+                      onChange={(e) => setSettings({ ...settings, siteDescription: e.target.value })}
+                      rows={3}
                       className="w-full px-4 py-2.5 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
                     />
                   </div>
-                  <div>
-                    <label className="block text-sm font-medium text-slate-700 mb-2">
-                      Site URL
-                    </label>
-                    <input
-                      type="url"
-                      value={settings.siteUrl}
-                      onChange={(e) => setSettings({ ...settings, siteUrl: e.target.value })}
-                      className="w-full px-4 py-2.5 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                    />
-                  </div>
-                </div>
 
-                <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-2">
-                    Site Description
-                  </label>
-                  <textarea
-                    value={settings.siteDescription}
-                    onChange={(e) => setSettings({ ...settings, siteDescription: e.target.value })}
-                    rows={3}
-                    className="w-full px-4 py-2.5 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                  />
-                </div>
-
-                <div className="grid md:grid-cols-2 gap-6">
+                  <div className="grid md:grid-cols-2 gap-6">
                     <div>
                       <label className="block text-sm font-medium text-slate-700 mb-2">
                         Contact Email
@@ -367,236 +366,236 @@ export default function AdminSettingsPage() {
                     </div>
                   </div>
 
-                <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-2">
-                    Address
-                  </label>
-                  <textarea
-                    value={settings.address}
-                    onChange={(e) => setSettings({ ...settings, address: e.target.value })}
-                    rows={2}
-                    className="w-full px-4 py-2.5 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                  />
-                </div>
-
-                <hr className="border-slate-200" />
-
-                <h3 className="text-md font-semibold text-slate-900">Social Media Links</h3>
-                <div className="grid md:grid-cols-2 gap-4">
-                  {[
-                    { key: "facebook", label: "Facebook" },
-                    { key: "twitter", label: "Twitter" },
-                    { key: "instagram", label: "Instagram" },
-                    { key: "linkedin", label: "LinkedIn" },
-                    { key: "youtube", label: "YouTube" },
-                  ].map((social) => (
-                    <div key={social.key}>
-                      <label className="block text-sm font-medium text-slate-700 mb-2">
-                        {social.label}
-                      </label>
-                      <input
-                        type="url"
-                        value={settings[social.key as keyof typeof settings] as string}
-                        onChange={(e) => setSettings({ ...settings, [social.key]: e.target.value })}
-                        className="w-full px-4 py-2.5 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                      />
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {activeTab === "email" && (
-              <div className="space-y-6">
-                <h2 className="text-lg font-semibold text-slate-900">Email Settings (SMTP)</h2>
-                <p className="text-slate-600 text-sm">Configure your email server for sending notifications.</p>
-
-                <div className="grid md:grid-cols-2 gap-6">
                   <div>
                     <label className="block text-sm font-medium text-slate-700 mb-2">
-                      SMTP Host
+                      Address
                     </label>
-                    <input
-                      type="text"
-                      value={settings.smtpHost}
-                      onChange={(e) => setSettings({ ...settings, smtpHost: e.target.value })}
-                      placeholder="smtp.example.com"
+                    <textarea
+                      value={settings.address}
+                      onChange={(e) => setSettings({ ...settings, address: e.target.value })}
+                      rows={2}
                       className="w-full px-4 py-2.5 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
                     />
                   </div>
-                  <div>
-                    <label className="block text-sm font-medium text-slate-700 mb-2">
-                      SMTP Port
-                    </label>
-                    <input
-                      type="text"
-                      value={settings.smtpPort}
-                      onChange={(e) => setSettings({ ...settings, smtpPort: e.target.value })}
-                      placeholder="587"
-                      className="w-full px-4 py-2.5 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-slate-700 mb-2">
-                      SMTP Username
-                    </label>
-                    <input
-                      type="text"
-                      value={settings.smtpUser}
-                      onChange={(e) => setSettings({ ...settings, smtpUser: e.target.value })}
-                      className="w-full px-4 py-2.5 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-slate-700 mb-2">
-                      SMTP Password
-                    </label>
-                    <input
-                      type="password"
-                      value={settings.smtpPassword}
-                      onChange={(e) => setSettings({ ...settings, smtpPassword: e.target.value })}
-                      className="w-full px-4 py-2.5 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                    />
-                  </div>
-                </div>
 
-                <button className="px-4 py-2 border border-indigo-600 text-indigo-600 rounded-lg hover:bg-indigo-50 transition-colors">
-                  Test Email Configuration
-                </button>
-              </div>
-            )}
+                  <hr className="border-slate-200" />
 
-            {activeTab === "storage" && (
-              <div className="space-y-6">
-                <h2 className="text-lg font-semibold text-slate-900">Cloud Storage (Cloudinary)</h2>
-                <p className="text-slate-600 text-sm">Configure Cloudinary for image and media storage.</p>
-
-                <div className="space-y-4">
-                  <div>
-                    <label className="block text-sm font-medium text-slate-700 mb-2">
-                      Cloud Name
-                    </label>
-                    <input
-                      type="text"
-                      value={settings.cloudinaryCloudName}
-                      onChange={(e) => setSettings({ ...settings, cloudinaryCloudName: e.target.value })}
-                      className="w-full px-4 py-2.5 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-slate-700 mb-2">
-                      API Key
-                    </label>
-                    <input
-                      type="text"
-                      value={settings.cloudinaryApiKey}
-                      onChange={(e) => setSettings({ ...settings, cloudinaryApiKey: e.target.value })}
-                      className="w-full px-4 py-2.5 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-slate-700 mb-2">
-                      API Secret
-                    </label>
-                    <input
-                      type="password"
-                      value={settings.cloudinaryApiSecret}
-                      onChange={(e) => setSettings({ ...settings, cloudinaryApiSecret: e.target.value })}
-                      className="w-full px-4 py-2.5 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                    />
-                  </div>
-                </div>
-
-                <button className="px-4 py-2 border border-indigo-600 text-indigo-600 rounded-lg hover:bg-indigo-50 transition-colors">
-                  Test Connection
-                </button>
-              </div>
-            )}
-
-            {activeTab === "notifications" && (
-              <div className="space-y-6">
-                <h2 className="text-lg font-semibold text-slate-900">Notification Settings</h2>
-                <p className="text-slate-600 text-sm">Configure when and how you receive notifications.</p>
-
-                <div className="space-y-4">
-                  {[
-                    { key: "emailNotifications", label: "Email Notifications", desc: "Receive important updates via email" },
-                    { key: "newUserNotification", label: "New User Registration", desc: "Get notified when a new user registers" },
-                    { key: "orderNotification", label: "New Orders", desc: "Get notified when a new order is placed" },
-                    { key: "leadNotification", label: "New Leads", desc: "Get notified when a new lead is submitted" },
-                  ].map((item) => (
-                    <div key={item.key} className="flex items-center justify-between p-4 bg-slate-50 rounded-xl">
-                      <div>
-                        <p className="font-medium text-slate-900">{item.label}</p>
-                        <p className="text-sm text-slate-500">{item.desc}</p>
-                      </div>
-                      <label className="relative inline-flex items-center cursor-pointer">
+                  <h3 className="text-md font-semibold text-slate-900">Social Media Links</h3>
+                  <div className="grid md:grid-cols-2 gap-4">
+                    {[
+                      { key: "facebook", label: "Facebook" },
+                      { key: "twitter", label: "Twitter" },
+                      { key: "instagram", label: "Instagram" },
+                      { key: "linkedin", label: "LinkedIn" },
+                      { key: "youtube", label: "YouTube" },
+                    ].map((social) => (
+                      <div key={social.key}>
+                        <label className="block text-sm font-medium text-slate-700 mb-2">
+                          {social.label}
+                        </label>
                         <input
-                          type="checkbox"
-                          checked={settings[item.key as keyof typeof settings] as boolean}
-                          onChange={(e) => setSettings({ ...settings, [item.key]: e.target.checked })}
-                          className="sr-only peer"
+                          type="url"
+                          value={settings[social.key as keyof typeof settings] as string}
+                          onChange={(e) => setSettings({ ...settings, [social.key]: e.target.value })}
+                          className="w-full px-4 py-2.5 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
                         />
-                        <div className="w-11 h-6 bg-slate-300 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-indigo-300 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-indigo-600"></div>
-                      </label>
-                    </div>
-                  ))}
+                      </div>
+                    ))}
+                  </div>
                 </div>
-              </div>
-            )}
+              )}
 
-            {activeTab === "security" && (
-              <div className="space-y-6">
-                <h2 className="text-lg font-semibold text-slate-900">Security Settings</h2>
-                <p className="text-slate-600 text-sm">Manage security and authentication settings.</p>
+              {activeTab === "email" && (
+                <div className="space-y-6">
+                  <h2 className="text-lg font-semibold text-slate-900">Email Settings (SMTP)</h2>
+                  <p className="text-slate-600 text-sm">Configure your email server for sending notifications.</p>
 
-                <div className="space-y-4">
-                  <div className="p-4 bg-slate-50 rounded-xl">
-                    <h3 className="font-medium text-slate-900 mb-2">Change Admin Password</h3>
-                    <div className="space-y-3">
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <div>
+                      <label className="block text-sm font-medium text-slate-700 mb-2">
+                        SMTP Host
+                      </label>
                       <input
-                        type="password"
-                        placeholder="Current Password"
+                        type="text"
+                        value={settings.smtpHost}
+                        onChange={(e) => setSettings({ ...settings, smtpHost: e.target.value })}
+                        placeholder="smtp.example.com"
                         className="w-full px-4 py-2.5 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
                       />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-slate-700 mb-2">
+                        SMTP Port
+                      </label>
                       <input
-                        type="password"
-                        placeholder="New Password"
+                        type="text"
+                        value={settings.smtpPort}
+                        onChange={(e) => setSettings({ ...settings, smtpPort: e.target.value })}
+                        placeholder="587"
                         className="w-full px-4 py-2.5 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
                       />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-slate-700 mb-2">
+                        SMTP Username
+                      </label>
                       <input
-                        type="password"
-                        placeholder="Confirm New Password"
+                        type="text"
+                        value={settings.smtpUser}
+                        onChange={(e) => setSettings({ ...settings, smtpUser: e.target.value })}
                         className="w-full px-4 py-2.5 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
                       />
-                      <button className="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors">
-                        Update Password
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-slate-700 mb-2">
+                        SMTP Password
+                      </label>
+                      <input
+                        type="password"
+                        value={settings.smtpPassword}
+                        onChange={(e) => setSettings({ ...settings, smtpPassword: e.target.value })}
+                        className="w-full px-4 py-2.5 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                      />
+                    </div>
+                  </div>
+
+                  <button className="px-4 py-2 border border-indigo-600 text-indigo-600 rounded-lg hover:bg-indigo-50 transition-colors">
+                    Test Email Configuration
+                  </button>
+                </div>
+              )}
+
+              {activeTab === "storage" && (
+                <div className="space-y-6">
+                  <h2 className="text-lg font-semibold text-slate-900">Cloud Storage (Cloudinary)</h2>
+                  <p className="text-slate-600 text-sm">Configure Cloudinary for image and media storage.</p>
+
+                  <div className="space-y-4">
+                    <div>
+                      <label className="block text-sm font-medium text-slate-700 mb-2">
+                        Cloud Name
+                      </label>
+                      <input
+                        type="text"
+                        value={settings.cloudinaryCloudName}
+                        onChange={(e) => setSettings({ ...settings, cloudinaryCloudName: e.target.value })}
+                        className="w-full px-4 py-2.5 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-slate-700 mb-2">
+                        API Key
+                      </label>
+                      <input
+                        type="text"
+                        value={settings.cloudinaryApiKey}
+                        onChange={(e) => setSettings({ ...settings, cloudinaryApiKey: e.target.value })}
+                        className="w-full px-4 py-2.5 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-slate-700 mb-2">
+                        API Secret
+                      </label>
+                      <input
+                        type="password"
+                        value={settings.cloudinaryApiSecret}
+                        onChange={(e) => setSettings({ ...settings, cloudinaryApiSecret: e.target.value })}
+                        className="w-full px-4 py-2.5 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                      />
+                    </div>
+                  </div>
+
+                  <button className="px-4 py-2 border border-indigo-600 text-indigo-600 rounded-lg hover:bg-indigo-50 transition-colors">
+                    Test Connection
+                  </button>
+                </div>
+              )}
+
+              {activeTab === "notifications" && (
+                <div className="space-y-6">
+                  <h2 className="text-lg font-semibold text-slate-900">Notification Settings</h2>
+                  <p className="text-slate-600 text-sm">Configure when and how you receive notifications.</p>
+
+                  <div className="space-y-4">
+                    {[
+                      { key: "emailNotifications", label: "Email Notifications", desc: "Receive important updates via email" },
+                      { key: "newUserNotification", label: "New User Registration", desc: "Get notified when a new user registers" },
+                      { key: "orderNotification", label: "New Orders", desc: "Get notified when a new order is placed" },
+                      { key: "leadNotification", label: "New Leads", desc: "Get notified when a new lead is submitted" },
+                    ].map((item) => (
+                      <div key={item.key} className="flex items-center justify-between p-4 bg-slate-50 rounded-xl">
+                        <div>
+                          <p className="font-medium text-slate-900">{item.label}</p>
+                          <p className="text-sm text-slate-500">{item.desc}</p>
+                        </div>
+                        <label className="relative inline-flex items-center cursor-pointer">
+                          <input
+                            type="checkbox"
+                            checked={settings[item.key as keyof typeof settings] as boolean}
+                            onChange={(e) => setSettings({ ...settings, [item.key]: e.target.checked })}
+                            className="sr-only peer"
+                          />
+                          <div className="w-11 h-6 bg-slate-300 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-indigo-300 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-indigo-600"></div>
+                        </label>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {activeTab === "security" && (
+                <div className="space-y-6">
+                  <h2 className="text-lg font-semibold text-slate-900">Security Settings</h2>
+                  <p className="text-slate-600 text-sm">Manage security and authentication settings.</p>
+
+                  <div className="space-y-4">
+                    <div className="p-4 bg-slate-50 rounded-xl">
+                      <h3 className="font-medium text-slate-900 mb-2">Change Admin Password</h3>
+                      <div className="space-y-3">
+                        <input
+                          type="password"
+                          placeholder="Current Password"
+                          className="w-full px-4 py-2.5 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                        />
+                        <input
+                          type="password"
+                          placeholder="New Password"
+                          className="w-full px-4 py-2.5 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                        />
+                        <input
+                          type="password"
+                          placeholder="Confirm New Password"
+                          className="w-full px-4 py-2.5 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                        />
+                        <button className="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors">
+                          Update Password
+                        </button>
+                      </div>
+                    </div>
+
+                    <div className="p-4 bg-slate-50 rounded-xl">
+                      <h3 className="font-medium text-slate-900 mb-2">Two-Factor Authentication</h3>
+                      <p className="text-sm text-slate-600 mb-3">Add an extra layer of security to your account.</p>
+                      <button className="px-4 py-2 border border-indigo-600 text-indigo-600 rounded-lg hover:bg-indigo-50 transition-colors">
+                        Enable 2FA
+                      </button>
+                    </div>
+
+                    <div className="p-4 bg-red-50 rounded-xl">
+                      <h3 className="font-medium text-red-900 mb-2">Danger Zone</h3>
+                      <p className="text-sm text-red-600 mb-3">Irreversible and destructive actions.</p>
+                      <button className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors">
+                        Delete All Data
                       </button>
                     </div>
                   </div>
-
-                  <div className="p-4 bg-slate-50 rounded-xl">
-                    <h3 className="font-medium text-slate-900 mb-2">Two-Factor Authentication</h3>
-                    <p className="text-sm text-slate-600 mb-3">Add an extra layer of security to your account.</p>
-                    <button className="px-4 py-2 border border-indigo-600 text-indigo-600 rounded-lg hover:bg-indigo-50 transition-colors">
-                      Enable 2FA
-                    </button>
-                  </div>
-
-                  <div className="p-4 bg-red-50 rounded-xl">
-                    <h3 className="font-medium text-red-900 mb-2">Danger Zone</h3>
-                    <p className="text-sm text-red-600 mb-3">Irreversible and destructive actions.</p>
-                    <button className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors">
-                      Delete All Data
-                    </button>
-                  </div>
                 </div>
-              </div>
-            )}
-          </motion.div>
+              )}
+            </motion.div>
+          </div>
         </div>
       </div>
-    </div>
     </AdminLayout>
   );
 }

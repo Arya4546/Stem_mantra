@@ -1,5 +1,5 @@
 export const SITE_CONFIG = {
-  name: "STEM Mantra",
+  name: "STEMmantra",
   tagline: "Master The Skills 'Drive Your Future...'",
   description:
     "STEM learning focusing on science, technology, engineering, and mathematics. We provide ATL Labs setup, Robotics Labs, STEM Labs, teacher training, and NEP 2020 aligned curriculum for schools.",

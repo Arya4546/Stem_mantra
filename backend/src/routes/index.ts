@@ -22,7 +22,7 @@ const router = Router();
 router.get('/health', (_req, res) => {
   res.json({
     success: true,
-    message: 'STEM Mantra API is running',
+    message: 'STEMmantra API is running',
     timestamp: new Date().toISOString(),
     version: process.env.API_VERSION || 'v1',
     endpoints: {

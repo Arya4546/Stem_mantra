@@ -6,8 +6,8 @@ import { ChevronDown, HelpCircle } from "lucide-react";
 
 const faqs = [
     {
-        question: "What is STEM Mantra and what services do you provide?",
-        answer: "STEM Mantra is India's leading provider of robotics, AI, and STEM education solutions for schools. We provide complete turnkey lab solutions including equipment, curriculum, teacher training, and ongoing support. Our services include Robotics Labs, AI/ML Labs, Atal Tinkering Labs (ATL), STEM Labs, coding programs, and innovation workshops."
+        question: "What is STEMmantra and what services do you provide?",
+        answer: "STEMmantra is India's leading provider of robotics, AI, and STEM education solutions for schools. We provide complete turnkey lab solutions including equipment, curriculum, teacher training, and ongoing support. Our services include Robotics Labs, AI/ML Labs, Atal Tinkering Labs (ATL), STEM Labs, coding programs, and innovation workshops."
     },
     {
         question: "How is your curriculum aligned with NEP 2020?",
@@ -82,8 +82,8 @@ export default function FAQSection() {
                             <button
                                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
                                 className={`w-full flex items-center justify-between p-5 rounded-xl text-left transition-all ${openIndex === index
-                                        ? "bg-gradient-to-r from-orange-500 to-teal-500 text-white shadow-lg"
-                                        : "bg-white text-gray-900 hover:bg-gray-50 border border-gray-100 shadow-sm"
+                                    ? "bg-gradient-to-r from-orange-500 to-teal-500 text-white shadow-lg"
+                                    : "bg-white text-gray-900 hover:bg-gray-50 border border-gray-100 shadow-sm"
                                     }`}
                             >
                                 <span className="font-semibold pr-4">{faq.question}</span>
@@ -119,7 +119,7 @@ export default function FAQSection() {
                     className="mt-12 max-w-3xl mx-auto text-center"
                 >
                     <p className="text-gray-600">
-                        Still have questions? Our team is ready to help you understand how STEM Mantra can
+                        Still have questions? Our team is ready to help you understand how STEMmantra can
                         transform your school&apos;s technology education.
                         <a href="/contact" className="text-orange-600 font-semibold hover:underline ml-1">
                             Contact us today

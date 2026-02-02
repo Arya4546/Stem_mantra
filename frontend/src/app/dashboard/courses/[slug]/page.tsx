@@ -224,7 +224,7 @@ export default function CourseDetailPage() {
         key: paymentData.razorpayKeyId,
         amount: paymentData.amount * 100,
         currency: paymentData.currency,
-        name: "STEM Mantra",
+        name: "STEMmantra",
         description: `Enrollment: ${paymentData.programName}`,
         order_id: paymentData.razorpayOrderId,
         prefill: {
@@ -282,7 +282,7 @@ export default function CourseDetailPage() {
 
     // Check if program is free or paid
     const price = program.discountPrice || program.price;
-    
+
     if (price && price > 0) {
       // Paid program - use Razorpay
       await initializeEnrollmentPayment();
@@ -485,7 +485,7 @@ export default function CourseDetailPage() {
                   )}
                 </div>
               )}
-              
+
               {/* Action Buttons */}
               <div className="flex flex-1 gap-3 w-full sm:w-auto">
                 {isEnrolled ? (
@@ -520,11 +520,10 @@ export default function CourseDetailPage() {
                 <button
                   onClick={handleToggleWishlist}
                   disabled={isTogglingWishlist}
-                  className={`px-4 py-3 rounded-xl border transition-colors flex items-center justify-center gap-2 ${
-                    isInWishlist
+                  className={`px-4 py-3 rounded-xl border transition-colors flex items-center justify-center gap-2 ${isInWishlist
                       ? "bg-red-50 border-red-200 text-red-500"
                       : "border-slate-200 text-slate-600 hover:bg-slate-50"
-                  }`}
+                    }`}
                 >
                   <Heart className={`w-5 h-5 ${isInWishlist ? "fill-current" : ""}`} />
                 </button>
@@ -656,9 +655,9 @@ export default function CourseDetailPage() {
         >
           <h2 className="text-2xl font-bold mb-2">Ready to Start Learning?</h2>
           <p className="text-white/80 mb-6">
-            Join thousands of students who are already building the future with STEM Mantra
+            Join thousands of students who are already building the future with STEMmantra
           </p>
-          
+
           {/* Price Display in CTA */}
           {(program.discountPrice || program.price) && (program.discountPrice || program.price)! > 0 && (
             <div className="mb-6">
@@ -672,7 +671,7 @@ export default function CourseDetailPage() {
               )}
             </div>
           )}
-          
+
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             {isEnrolled ? (
               <Link

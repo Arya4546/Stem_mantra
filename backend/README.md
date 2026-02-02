@@ -1,6 +1,6 @@
-# STEM Mantra Backend
+# STEMmantra Backend
 
-Professional Node.js backend API for STEM Mantra educational platform.
+Professional Node.js backend API for STEMmantra educational platform.
 
 ## Tech Stack
 
@@ -232,4 +232,4 @@ Change the PORT in `.env` file or kill the process using the port.
 
 ## License
 
-Private - STEM Mantra
+Private - STEMmantra

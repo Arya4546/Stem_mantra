@@ -164,7 +164,7 @@ export default function CheckoutPage() {
         key: paymentData.razorpayKeyId,
         amount: paymentData.amount * 100,
         currency: paymentData.currency,
-        name: "STEM Mantra",
+        name: "STEMmantra",
         description: `Order #${paymentData.orderNumber}`,
         order_id: paymentData.razorpayOrderId,
         prefill: {
@@ -203,7 +203,7 @@ export default function CheckoutPage() {
       };
 
       const rzp = new window.Razorpay(options);
-      
+
       rzp.on("payment.failed", function (response: any) {
         toast.error(`Payment failed: ${response.error.description}`);
         setIsSubmitting(false);
@@ -218,7 +218,7 @@ export default function CheckoutPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!cart || cart.items.length === 0) {
       toast.error("Your cart is empty");
       return;
@@ -474,12 +474,11 @@ export default function CheckoutPage() {
               </h2>
               <div className="space-y-3">
                 {/* Online Payment Option */}
-                <label 
-                  className={`flex items-start gap-3 p-4 rounded-xl border-2 cursor-pointer transition-all ${
-                    formData.paymentMethod === "ONLINE" 
-                      ? "border-primary bg-primary/5" 
+                <label
+                  className={`flex items-start gap-3 p-4 rounded-xl border-2 cursor-pointer transition-all ${formData.paymentMethod === "ONLINE"
+                      ? "border-primary bg-primary/5"
                       : "border-slate-200 hover:border-primary/50"
-                  }`}
+                    }`}
                 >
                   <input
                     type="radio"
@@ -514,12 +513,11 @@ export default function CheckoutPage() {
                 </label>
 
                 {/* Cash on Delivery Option */}
-                <label 
-                  className={`flex items-center gap-3 p-4 rounded-xl border-2 cursor-pointer transition-all ${
-                    formData.paymentMethod === "COD" 
-                      ? "border-primary bg-primary/5" 
+                <label
+                  className={`flex items-center gap-3 p-4 rounded-xl border-2 cursor-pointer transition-all ${formData.paymentMethod === "COD"
+                      ? "border-primary bg-primary/5"
                       : "border-slate-200 hover:border-primary/50"
-                  }`}
+                    }`}
                 >
                   <input
                     type="radio"
@@ -548,7 +546,7 @@ export default function CheckoutPage() {
               className="bg-white rounded-2xl shadow-sm border border-slate-100 p-6 sticky top-20"
             >
               <h2 className="text-lg font-semibold text-slate-900 mb-4">Order Summary</h2>
-              
+
               {/* Cart Items */}
               <div className="space-y-3 mb-4 max-h-64 overflow-y-auto">
                 {cart?.items.map((item) => (

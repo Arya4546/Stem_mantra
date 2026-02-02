@@ -147,7 +147,7 @@ export default function Footer() {
             ))}
           </div>
           <p className="text-gray-500 text-xs mt-6 text-center max-w-4xl mx-auto">
-            <strong className="text-gray-400">STEM Mantra</strong> is India&apos;s premier provider of
+            <strong className="text-gray-400">STEMmantra</strong> is India&apos;s premier provider of
             robotics labs, AI labs, STEM labs, and Atal Tinkering Labs (ATL) for schools. Complete
             turnkey lab solutions with equipment, NEP 2020 aligned curriculum, teacher training,
             and support across 500+ cities.
@@ -170,7 +170,7 @@ export default function Footer() {
               <Link href="/" className="flex items-center mb-4">
                 <img
                   src="https://stemmantra.com/assets/img/Custom/Newlogo.jpeg"
-                  alt="STEM Mantra Logo"
+                  alt="STEMmantra Logo"
                   className="h-14 w-auto object-contain"
                   style={{ maxWidth: '180px' }}
                 />
@@ -365,7 +365,7 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="border-t border-gray-800 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-500">
-            <p>© {currentYear} STEM Mantra Technologies Pvt. Ltd. All rights reserved.</p>
+            <p>© {currentYear} STEMmantra Technologies Pvt. Ltd. All rights reserved.</p>
             <div className="flex flex-wrap justify-center gap-6">
               <Link href="/privacy-policy" className="hover:text-orange-500 transition-colors">
                 Privacy Policy

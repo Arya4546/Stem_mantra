@@ -203,7 +203,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   return {
-    title: `${service.title} | STEM Mantra`,
+    title: `${service.title} | STEMmantra`,
     description: service.description,
     keywords: [
       service.serviceType.replace("-", " "),

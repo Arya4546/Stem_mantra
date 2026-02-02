@@ -47,7 +47,7 @@ export default function Logo({
             )}>
                 <Image
                     src={LOGO_URL}
-                    alt="STEM Mantra Logo"
+                    alt="STEMmantra Logo"
                     width={48}
                     height={48}
                     className="w-full h-full object-cover"

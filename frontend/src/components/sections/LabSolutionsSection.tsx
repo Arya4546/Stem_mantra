@@ -176,7 +176,7 @@ export default function LabSolutionsSection() {
                                 <div className="w-full h-full rounded-full overflow-hidden bg-white flex items-center justify-center">
                                     <img
                                         src="https://stemmantra.com/assets/img/Custom/Newlogo.jpeg"
-                                        alt="STEM Mantra"
+                                        alt="STEMmantra"
                                         className="w-24 h-24 md:w-32 md:h-32 object-contain"
                                     />
                                 </div>

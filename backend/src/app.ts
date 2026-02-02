@@ -69,7 +69,7 @@ const createApp = (): Application => {
   app.get('/', (_req, res) => {
     res.json({
       success: true,
-      message: 'Welcome to STEM Mantra API',
+      message: 'Welcome to STEMmantra API',
       version: config.apiVersion,
       docs: `/api/${config.apiVersion}/docs`,
     });

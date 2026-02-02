@@ -79,7 +79,7 @@ const config: Config = {
   brevo: {
     apiKey: process.env.BREVO_API_KEY || '',
     senderEmail: process.env.BREVO_SENDER_EMAIL || 'noreply@stemmantra.com',
-    senderName: process.env.BREVO_SENDER_NAME || 'STEM Mantra',
+    senderName: process.env.BREVO_SENDER_NAME || 'STEMmantra',
   },
   cloudinary: {
     cloudName: process.env.CLOUDINARY_CLOUD_NAME || '',
@@ -113,7 +113,7 @@ const config: Config = {
 // Validate required environment variables in production
 const validateConfig = (): void => {
   const requiredEnvVars = ['DATABASE_URL', 'JWT_SECRET'];
-  
+
   if (config.nodeEnv === 'production') {
     const productionRequired = [
       ...requiredEnvVars,
@@ -122,9 +122,9 @@ const validateConfig = (): void => {
       'CLOUDINARY_API_KEY',
       'CLOUDINARY_API_SECRET',
     ];
-    
+
     const missingEnvVars = productionRequired.filter((envVar) => !process.env[envVar]);
-    
+
     if (missingEnvVars.length > 0) {
       throw new Error(`Missing required environment variables: ${missingEnvVars.join(', ')}`);
     }

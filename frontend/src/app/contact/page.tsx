@@ -82,12 +82,12 @@ export default function ContactPage() {
     interest: "",
     message: "",
   });
-  
+
   const submitContact = useSubmitContact();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     try {
       await submitContact.mutateAsync({
         name: formData.name,
@@ -96,7 +96,7 @@ export default function ContactPage() {
         subject: `${formData.interest} - ${formData.school || formData.name}`,
         message: formData.message + (formData.school ? `\n\nSchool/Organization: ${formData.school}` : ""),
       });
-      
+
       toast.success("Message sent successfully! We'll get back to you within 24 hours.");
       setFormData({ name: "", email: "", phone: "", school: "", interest: "", message: "" });
     } catch (error) {
@@ -123,43 +123,43 @@ export default function ContactPage() {
           <div className="absolute top-20 -left-20 w-96 h-96 bg-orange-200/30 rounded-full blur-3xl animate-floatSlow"></div>
           <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-teal-200/20 rounded-full blur-3xl animate-float"></div>
           {/* Floating Icons - subtle, everywhere */}
-          <motion.div 
+          <motion.div
             className="absolute top-40 left-[10%] text-orange-500/20 hidden md:block"
             animate={{ y: [0, -20, 0], rotate: [0, 10, 0] }}
             transition={{ duration: 5, repeat: Infinity }}
           >
             <MessageSquare className="w-14 h-14" />
           </motion.div>
-          <motion.div 
+          <motion.div
             className="absolute top-60 right-[15%] text-teal-500/20 hidden md:block"
             animate={{ y: [0, 20, 0], rotate: [0, -10, 0] }}
             transition={{ duration: 6, repeat: Infinity }}
           >
             <Mail className="w-10 h-10" />
           </motion.div>
-          <motion.div 
+          <motion.div
             className="absolute bottom-20 left-[20%] text-orange-500/10 hidden md:block"
             animate={{ y: [0, 10, 0], rotate: [0, 5, 0] }}
             transition={{ duration: 7, repeat: Infinity }}
           >
             <Phone className="w-10 h-10" />
           </motion.div>
-          <motion.div 
+          <motion.div
             className="absolute bottom-32 right-[10%] text-teal-500/10 hidden md:block"
             animate={{ y: [0, -10, 0], rotate: [0, -5, 0] }}
             transition={{ duration: 8, repeat: Infinity }}
           >
             <Users className="w-10 h-10" />
           </motion.div>
-          
+
           <div className="container relative mx-auto">
-            <motion.div 
+            <motion.div
               className="max-w-4xl mx-auto text-center"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <motion.span 
+              <motion.span
                 className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-orange-100 to-teal-100 rounded-full text-sm font-semibold text-gray-700 mb-6"
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
@@ -168,7 +168,7 @@ export default function ContactPage() {
                 <Sparkles className="w-4 h-4 text-orange-500" />
                 We&apos;d Love to Hear From You
               </motion.span>
-              
+
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6">
                 <span className="bg-gradient-to-r from-orange-500 via-orange-600 to-teal-600 bg-clip-text text-transparent">
                   Get In Touch
@@ -177,9 +177,9 @@ export default function ContactPage() {
               <p className="text-xl md:text-2xl text-gray-600 mb-8 leading-relaxed">
                 Let&apos;s discuss how we can transform your school with world-class STEM education
               </p>
-              
+
               {/* Quick Stats */}
-              <motion.div 
+              <motion.div
                 className="flex flex-wrap justify-center gap-6 mt-8"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -387,8 +387,8 @@ export default function ContactPage() {
                     Prefer a quick chat? Reach out to us directly on WhatsApp or give us a call.
                   </p>
                   <div className="space-y-4">
-                    <a 
-                      href={`https://wa.me/${SITE_CONFIG.contact.mobile.replace(/[^0-9]/g, '')}?text=Hi, I'm interested in learning more about STEM Mantra's programs.`}
+                    <a
+                      href={`https://wa.me/${SITE_CONFIG.contact.mobile.replace(/[^0-9]/g, '')}?text=Hi, I'm interested in learning more about STEMmantra's programs.`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex items-center gap-3 bg-white/10 backdrop-blur-sm rounded-xl p-4 hover:bg-white/20 transition-colors"
@@ -399,7 +399,7 @@ export default function ContactPage() {
                         <p className="text-sm text-orange-100">Quick response guaranteed</p>
                       </div>
                     </a>
-                    <a 
+                    <a
                       href={`tel:${SITE_CONFIG.contact.mobile}`}
                       className="flex items-center gap-3 bg-white/10 backdrop-blur-sm rounded-xl p-4 hover:bg-white/20 transition-colors"
                     >
@@ -460,7 +460,7 @@ export default function ContactPage() {
 
         {/* CTA Section */}
         <section className="py-20 px-4 bg-gradient-to-br from-gray-900 to-gray-800">
-          <motion.div 
+          <motion.div
             className="container mx-auto text-center"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -470,18 +470,18 @@ export default function ContactPage() {
               Ready to Transform Your School?
             </h2>
             <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-              Join 500+ schools that have partnered with STEM Mantra to bring world-class STEM education to their students.
+              Join 500+ schools that have partnered with STEMmantra to bring world-class STEM education to their students.
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
-              <Link 
-                href="/programs" 
+              <Link
+                href="/programs"
                 className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-orange-500 to-orange-600 text-white rounded-xl font-semibold hover:shadow-lg hover:scale-105 transition-all"
               >
                 Explore Programs
                 <ArrowRight className="w-5 h-5" />
               </Link>
-              <Link 
-                href="/about" 
+              <Link
+                href="/about"
                 className="inline-flex items-center gap-2 px-8 py-4 bg-white/10 text-white rounded-xl font-semibold border border-white/20 hover:bg-white/20 transition-all"
               >
                 Learn About Us

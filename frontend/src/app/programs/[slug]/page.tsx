@@ -245,16 +245,16 @@ export async function generateMetadata({
 
   if (!program) {
     return {
-      title: "Program Not Found | STEM Mantra",
+      title: "Program Not Found | STEMmantra",
       description: "The program you're looking for doesn't exist.",
     };
   }
 
   return {
-    title: `${program.name} - STEM Education Program | STEM Mantra`,
+    title: `${program.name} - STEM Education Program | STEMmantra`,
     description: program.description,
     openGraph: {
-      title: `${program.name} | STEM Mantra`,
+      title: `${program.name} | STEMmantra`,
       description: program.description,
       images: program.image ? [program.image] : [],
     },
@@ -472,7 +472,7 @@ export default async function ProgramPage({
               Ready to Transform Your School?
             </h2>
             <p className="text-xl text-white/90 mb-10 max-w-2xl mx-auto">
-              Join hundreds of schools that have already partnered with STEM Mantra
+              Join hundreds of schools that have already partnered with STEMmantra
               to bring world-class STEM education to their students.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

@@ -43,7 +43,7 @@ export default function GalleryContent() {
                 Moments of <span className="bg-gradient-to-r from-orange-500 to-teal-500 bg-clip-text text-transparent">Innovation</span>
               </h1>
               <p className="text-lg text-gray-600 max-w-xl">
-                Explore our gallery to see real students, teachers, and schools in action—building, learning, and innovating with STEM Mantra. Every photo is a testament to hands-on learning, creativity, and achievement in STEM education.
+                Explore our gallery to see real students, teachers, and schools in action—building, learning, and innovating with STEMmantra. Every photo is a testament to hands-on learning, creativity, and achievement in STEM education.
               </p>
             </div>
           </motion.header>

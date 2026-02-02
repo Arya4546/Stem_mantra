@@ -222,7 +222,7 @@ function RegisterContent() {
               <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center">
                 <span className="text-orange-600 font-bold text-xl">SM</span>
               </div>
-              <span className="text-2xl font-bold">STEM Mantra</span>
+              <span className="text-2xl font-bold">STEMmantra</span>
             </Link>
 
             <h1 className="text-4xl font-bold mb-6 leading-tight">
@@ -268,7 +268,7 @@ function RegisterContent() {
               <div className="w-10 h-10 bg-gradient-to-br from-orange-500 to-teal-500 rounded-xl flex items-center justify-center">
                 <span className="text-white font-bold">SM</span>
               </div>
-              <span className="text-xl font-bold text-slate-900">STEM Mantra</span>
+              <span className="text-xl font-bold text-slate-900">STEMmantra</span>
             </Link>
           </div>
 
@@ -472,7 +472,7 @@ function RegisterContent() {
 
                 <div>
                   <h2 className="text-3xl font-bold text-slate-900 mb-2">
-                    Welcome to STEM Mantra!
+                    Welcome to STEMmantra!
                   </h2>
                   <p className="text-slate-600">
                     Your account has been created successfully.

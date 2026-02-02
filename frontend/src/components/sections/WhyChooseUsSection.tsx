@@ -79,14 +79,14 @@ export default function WhyChooseUsSection() {
                         <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
                             Why Schools Choose{" "}
                             <span className="bg-gradient-to-r from-orange-500 to-teal-500 bg-clip-text text-transparent">
-                                STEM Mantra
+                                STEMmantra
                             </span>
                         </h2>
                     </div>
 
                     {/* SEO Content Paragraph */}
                     <p className="text-lg text-gray-600 leading-relaxed mb-6">
-                        <strong>STEM Mantra</strong> is India&apos;s leading provider of robotics, artificial intelligence,
+                        <strong>STEMmantra</strong> is India&apos;s leading provider of robotics, artificial intelligence,
                         and STEM education solutions for schools across the country. With over <strong>6 years of experience</strong>
                         and partnerships with <strong>500+ schools</strong> in <strong>15+ states</strong>, we have trained
                         more than <strong>10,000 students</strong> in cutting-edge technologies including robotics programming,
@@ -218,7 +218,7 @@ export default function WhyChooseUsSection() {
                     </h3>
                     <div className="prose prose-lg max-w-none text-gray-600">
                         <p>
-                            At <strong>STEM Mantra</strong>, we believe every student deserves access to quality
+                            At <strong>STEMmantra</strong>, we believe every student deserves access to quality
                             technology education. That&apos;s why we&apos;ve designed our programs to be accessible
                             to schools of all sizes – from small private institutions to large government schools.
                         </p>

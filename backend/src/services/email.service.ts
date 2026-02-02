@@ -80,7 +80,7 @@ class EmailService {
     }
 
     const templatePath = path.join(this.templatesDir, `${templateName}.ejs`);
-    
+
     if (!fs.existsSync(templatePath)) {
       // Return a default template if specific one doesn't exist
       return this.getDefaultTemplate(templateName);
@@ -100,7 +100,7 @@ class EmailService {
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Your OTP Code - STEM Mantra</title>
+  <title>Your OTP Code - STEMmantra</title>
 </head>
 <body style="margin: 0; padding: 0; background-color: #f4f4f4; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
   <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="min-width: 320px;">
@@ -110,7 +110,7 @@ class EmailService {
           <!-- Header -->
           <tr>
             <td style="padding: 40px 40px 30px; text-align: center; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 16px 16px 0 0;">
-              <h1 style="margin: 0; font-size: 28px; font-weight: 700; color: #ffffff; letter-spacing: -0.5px;">STEM Mantra</h1>
+              <h1 style="margin: 0; font-size: 28px; font-weight: 700; color: #ffffff; letter-spacing: -0.5px;">STEMmantra</h1>
               <p style="margin: 10px 0 0; font-size: 14px; color: rgba(255,255,255,0.8);">Empowering Future Innovators</p>
             </td>
           </tr>
@@ -145,7 +145,7 @@ class EmailService {
           <tr>
             <td style="padding: 30px 40px; background-color: #f8fafc; border-radius: 0 0 16px 16px; text-align: center;">
               <p style="margin: 0; font-size: 12px; color: #a0aec0;">
-                © <%= new Date().getFullYear() %> STEM Mantra. All rights reserved.
+                © <%= new Date().getFullYear() %> STEMmantra. All rights reserved.
               </p>
               <p style="margin: 10px 0 0; font-size: 12px; color: #a0aec0;">
                 C-104 2nd Floor, Noida Sec-10, UP - 201301
@@ -165,7 +165,7 @@ class EmailService {
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Welcome to STEM Mantra</title>
+  <title>Welcome to STEMmantra</title>
 </head>
 <body style="margin: 0; padding: 0; background-color: #f4f4f4; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
   <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="min-width: 320px;">
@@ -175,7 +175,7 @@ class EmailService {
           <!-- Header -->
           <tr>
             <td style="padding: 40px 40px 30px; text-align: center; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 16px 16px 0 0;">
-              <h1 style="margin: 0; font-size: 28px; font-weight: 700; color: #ffffff;">Welcome to STEM Mantra!</h1>
+              <h1 style="margin: 0; font-size: 28px; font-weight: 700; color: #ffffff;">Welcome to STEMmantra!</h1>
             </td>
           </tr>
           <!-- Content -->
@@ -183,7 +183,7 @@ class EmailService {
             <td style="padding: 40px;">
               <h2 style="margin: 0 0 20px; font-size: 24px; font-weight: 600; color: #1a1a2e;">Hello <%= name %>,</h2>
               <p style="margin: 0 0 20px; font-size: 16px; line-height: 1.6; color: #4a5568;">
-                Welcome to STEM Mantra! We're thrilled to have you join our community of future innovators and tech enthusiasts.
+                Welcome to STEMmantra! We're thrilled to have you join our community of future innovators and tech enthusiasts.
               </p>
               <p style="margin: 0 0 30px; font-size: 16px; line-height: 1.6; color: #4a5568;">
                 Your account has been successfully created with the email: <strong><%= email %></strong>
@@ -199,7 +199,7 @@ class EmailService {
           <tr>
             <td style="padding: 30px 40px; background-color: #f8fafc; border-radius: 0 0 16px 16px; text-align: center;">
               <p style="margin: 0; font-size: 12px; color: #a0aec0;">
-                © <%= new Date().getFullYear() %> STEM Mantra. All rights reserved.
+                © <%= new Date().getFullYear() %> STEMmantra. All rights reserved.
               </p>
             </td>
           </tr>
@@ -216,7 +216,7 @@ class EmailService {
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Order Confirmation - STEM Mantra</title>
+  <title>Order Confirmation - STEMmantra</title>
 </head>
 <body style="margin: 0; padding: 0; background-color: #f4f4f4; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
   <table role="presentation" width="100%" cellspacing="0" cellpadding="0">
@@ -273,7 +273,7 @@ class EmailService {
           <tr>
             <td style="padding: 30px 40px; background-color: #f8fafc; border-radius: 0 0 16px 16px; text-align: center;">
               <p style="margin: 0; font-size: 12px; color: #a0aec0;">
-                © <%= new Date().getFullYear() %> STEM Mantra. All rights reserved.
+                © <%= new Date().getFullYear() %> STEMmantra. All rights reserved.
               </p>
             </td>
           </tr>
@@ -321,8 +321,8 @@ class EmailService {
   async sendEmail(options: EmailOptions): Promise<boolean> {
     try {
       const htmlContent = await this.renderTemplate(options.template, options.data);
-      
-      const toEmails = Array.isArray(options.to) 
+
+      const toEmails = Array.isArray(options.to)
         ? options.to.map(email => ({ email }))
         : [{ email: options.to }];
 
@@ -352,7 +352,7 @@ class EmailService {
       }
 
       await apiInstance.sendTransacEmail(sendSmtpEmail);
-      
+
       logger.info('Email sent successfully:', {
         to: options.to,
         subject: options.subject,
@@ -373,9 +373,9 @@ class EmailService {
   // Convenience methods for specific email types
   async sendOTP(email: string, data: OTPEmailData): Promise<boolean> {
     const subjectMap = {
-      'verification': 'Verify Your Email - STEM Mantra',
-      'login': 'Your Login OTP - STEM Mantra',
-      'reset-password': 'Reset Your Password - STEM Mantra',
+      'verification': 'Verify Your Email - STEMmantra',
+      'login': 'Your Login OTP - STEMmantra',
+      'reset-password': 'Reset Your Password - STEMmantra',
     };
 
     return this.sendEmail({
@@ -389,7 +389,7 @@ class EmailService {
   async sendWelcome(email: string, data: WelcomeEmailData): Promise<boolean> {
     return this.sendEmail({
       to: email,
-      subject: 'Welcome to STEM Mantra!',
+      subject: 'Welcome to STEMmantra!',
       template: 'welcome',
       data,
     });

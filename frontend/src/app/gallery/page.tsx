@@ -1,10 +1,10 @@
 export const metadata = {
-  title: "Gallery | STEM Mantra - Robotics, AI, ATL Labs & STEM Education",
-  description: "Explore our gallery of real STEM, Robotics, ATL, and Innovation activities in schools across India. See students, teachers, and schools in action with STEM Mantra.",
+  title: "Gallery | STEMmantra - Robotics, AI, ATL Labs & STEM Education",
+  description: "Explore our gallery of real STEM, Robotics, ATL, and Innovation activities in schools across India. See students, teachers, and schools in action with STEMmantra.",
   keywords: "STEM gallery, robotics photos, ATL labs, STEM education, student projects, teacher training, innovation, workshops, competitions",
   openGraph: {
-    title: "Gallery | STEM Mantra",
-    description: "See our students, teachers, and schools in action—building, learning, and innovating with STEM Mantra.",
+    title: "Gallery | STEMmantra",
+    description: "See our students, teachers, and schools in action—building, learning, and innovating with STEMmantra.",
     type: "website",
     url: "https://www.stemmantra.com/gallery",
     images: ["https://www.stemmantra.com/og-image.jpg"],

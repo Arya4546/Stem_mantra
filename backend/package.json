@@ -1,7 +1,7 @@
 {
   "name": "stem-mantra-backend",
   "version": "1.0.0",
-  "description": "STEM Mantra Backend API - Professional Node.js server with TypeScript and Prisma",
+  "description": "STEMmantra Backend API - Professional Node.js server with TypeScript and Prisma",
   "main": "dist/src/server.js",
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
@@ -28,7 +28,7 @@
     "prisma",
     "postgresql"
   ],
-  "author": "STEM Mantra",
+  "author": "STEMmantra",
   "license": "MIT",
   "dependencies": {
     "@prisma/client": "5.22.0",

@@ -11,10 +11,10 @@ import {
   FaBrain,
   FaCheckCircle,
 } from "react-icons/fa";
-import { 
-  GraduationCap, 
-  Building2, 
-  Globe, 
+import {
+  GraduationCap,
+  Building2,
+  Globe,
   Users,
   ArrowRight,
   Sparkles,
@@ -115,25 +115,25 @@ export default function ProgramsPage() {
           <div className="absolute inset-0 bg-gradient-to-r from-orange-500 via-orange-600 to-teal-600" />
           <div className="absolute inset-0 bg-[url('/images/grid-pattern.svg')] opacity-10" />
           {/* Floating Elements */}
-          <motion.div 
+          <motion.div
             className="absolute top-20 left-10 w-72 h-72 bg-white/10 rounded-full blur-3xl animate-floatSlow"
             animate={{ scale: [1, 1.1, 1], opacity: [0.3, 0.5, 0.3] }}
             transition={{ duration: 5, repeat: Infinity }}
           />
-          <motion.div 
+          <motion.div
             className="absolute bottom-20 right-10 w-96 h-96 bg-teal-400/20 rounded-full blur-3xl animate-float"
             animate={{ scale: [1, 1.2, 1], opacity: [0.2, 0.4, 0.2] }}
             transition={{ duration: 7, repeat: Infinity }}
           />
           {/* Floating Icons - subtle, everywhere */}
-          <motion.div 
+          <motion.div
             className="absolute top-32 left-[15%] text-white/20 hidden md:block"
             animate={{ y: [0, -20, 0], rotate: [0, 10, 0] }}
             transition={{ duration: 5, repeat: Infinity }}
           >
             <Cpu className="w-14 h-14" />
           </motion.div>
-          <motion.div 
+          <motion.div
             className="absolute bottom-32 right-[20%] text-white/20 hidden md:block"
             animate={{ y: [0, 20, 0], rotate: [0, -10, 0] }}
             transition={{ duration: 6, repeat: Infinity }}
@@ -142,13 +142,13 @@ export default function ProgramsPage() {
           </motion.div>
 
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.div 
+            <motion.div
               className="text-center text-white"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <motion.span 
+              <motion.span
                 className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-sm font-medium mb-6"
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
@@ -164,8 +164,8 @@ export default function ProgramsPage() {
                 </span>
               </h1>
               <p className="text-lg md:text-xl text-orange-100 max-w-3xl mx-auto leading-relaxed">
-                Transforming education through innovative STEM programs that prepare 
-                students for the future. From ATL Labs to advanced Robotics & AI, we provide 
+                Transforming education through innovative STEM programs that prepare
+                students for the future. From ATL Labs to advanced Robotics & AI, we provide
                 comprehensive solutions for schools across India.
               </p>
             </motion.div>
@@ -174,15 +174,15 @@ export default function ProgramsPage() {
 
         {/* Stats Section */}
         <section className="relative -mt-10 z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div 
+          <motion.div
             className="bg-white rounded-2xl shadow-xl p-6 grid grid-cols-2 md:grid-cols-4 gap-6"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
           >
             {stats.map((stat, index) => (
-              <motion.div 
-                key={index} 
+              <motion.div
+                key={index}
                 className="text-center"
                 whileHover={{ scale: 1.05 }}
               >
@@ -200,7 +200,7 @@ export default function ProgramsPage() {
 
         {/* Programs Grid */}
         <section className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div 
+          <motion.div
             className="text-center mb-16"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -214,7 +214,7 @@ export default function ProgramsPage() {
               Comprehensive STEM <span className="text-orange-500">Solutions</span>
             </h2>
             <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-              Select from our range of comprehensive STEM education programs 
+              Select from our range of comprehensive STEM education programs
               designed to foster innovation and creativity.
             </p>
           </motion.div>
@@ -223,9 +223,8 @@ export default function ProgramsPage() {
             {programs.map((program, index) => (
               <motion.div
                 key={program.id}
-                className={`flex flex-col ${
-                  index % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"
-                } gap-8 lg:gap-16 items-center`}
+                className={`flex flex-col ${index % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"
+                  } gap-8 lg:gap-16 items-center`}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -233,7 +232,7 @@ export default function ProgramsPage() {
               >
                 {/* Image */}
                 <div className="flex-1 w-full">
-                  <motion.div 
+                  <motion.div
                     className="relative aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl group"
                     whileHover={{ scale: 1.02 }}
                     transition={{ duration: 0.3 }}
@@ -290,7 +289,7 @@ export default function ProgramsPage() {
         {/* Process Section */}
         <section className="py-20 bg-gradient-to-br from-gray-50 to-orange-50/30">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.div 
+            <motion.div
               className="text-center mb-16"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -321,7 +320,7 @@ export default function ProgramsPage() {
                   {index < processSteps.length - 1 && (
                     <div className="hidden md:block absolute top-8 left-1/2 w-full h-0.5 bg-gradient-to-r from-orange-300 to-teal-300" />
                   )}
-                  <motion.div 
+                  <motion.div
                     className={`relative w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br ${index % 2 === 0 ? 'from-orange-500 to-orange-600' : 'from-teal-500 to-teal-600'} flex items-center justify-center shadow-lg`}
                     whileHover={{ scale: 1.1 }}
                   >
@@ -343,8 +342,8 @@ export default function ProgramsPage() {
             <div className="absolute top-10 left-10 w-40 h-40 border-2 border-white rounded-full"></div>
             <div className="absolute bottom-10 right-10 w-60 h-60 border-2 border-white rounded-full"></div>
           </div>
-          
-          <motion.div 
+
+          <motion.div
             className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -354,7 +353,7 @@ export default function ProgramsPage() {
               Ready to Transform Your School?
             </h2>
             <p className="text-lg text-orange-100 mb-8 max-w-2xl mx-auto">
-              Join hundreds of schools that have already partnered with STEM Mantra 
+              Join hundreds of schools that have already partnered with STEMmantra
               to bring world-class STEM education to their students.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

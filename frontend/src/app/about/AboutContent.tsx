@@ -72,7 +72,7 @@ const coreValues = [
 ];
 
 const timeline = [
-  { year: "2018", title: "The Beginning", description: "STEM Mantra was founded with a vision to revolutionize STEM education in India." },
+  { year: "2018", title: "The Beginning", description: "STEMmantra was founded with a vision to revolutionize STEM education in India." },
   { year: "2019", title: "First 100 Schools", description: "Expanded our reach to 100+ schools across 5 states with hands-on robotics programs." },
   { year: "2020", title: "ATL Lab Expertise", description: "Became a leading partner for Atal Tinkering Lab setup and training programs." },
   { year: "2021", title: "NEP 2020 Alignment", description: "Redesigned curriculum to align with National Education Policy 2020 guidelines." },
@@ -245,7 +245,7 @@ export default function AboutContent() {
                   <div className="w-48 h-48 md:w-64 md:h-64 rounded-2xl overflow-hidden shadow-xl bg-white p-4">
                     <img
                       src="https://stemmantra.com/assets/img/Custom/Newlogo.jpeg"
-                      alt="STEM Mantra Logo"
+                      alt="STEMmantra Logo"
                       className="w-full h-full object-contain"
                     />
                   </div>
@@ -351,7 +351,7 @@ export default function AboutContent() {
                 <Trophy className="w-4 h-4" />
                 Our Journey
               </span>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">The STEM Mantra Story</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">The STEMmantra Story</h2>
               <p className="text-gray-600 max-w-2xl mx-auto">
                 From a small startup to India&apos;s leading STEM education provider - our journey of innovation and impact.
               </p>
@@ -394,7 +394,7 @@ export default function AboutContent() {
               <div>
                 <span className="inline-flex items-center gap-2 px-4 py-2 bg-orange-100 rounded-full text-sm font-medium text-orange-700 mb-4">
                   <FaStar className="w-4 h-4" />
-                  Why STEM Mantra
+                  Why STEMmantra
                 </span>
                 <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
                   What Makes Us Different
@@ -466,7 +466,7 @@ export default function AboutContent() {
                   Ready to Transform Your School?
                 </h2>
                 <p className="text-orange-100 mb-8 max-w-2xl mx-auto text-lg">
-                  Join 500+ schools that have already partnered with STEM Mantra to bring
+                  Join 500+ schools that have already partnered with STEMmantra to bring
                   world-class STEM education to their students.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">

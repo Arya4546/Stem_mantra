@@ -60,7 +60,7 @@ export default function AboutSection() {
           className="text-center max-w-3xl mx-auto mb-16"
         >
           <span className="inline-block px-4 py-1.5 bg-orange-100 text-orange-600 rounded-full text-sm font-semibold mb-4">
-            About STEM Mantra
+            About STEMmantra
           </span>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
             Building Tomorrow&apos;s{" "}
@@ -69,7 +69,7 @@ export default function AboutSection() {
             </span>
           </h2>
           <p className="text-lg md:text-xl text-gray-600">
-            STEM Mantra is India&apos;s leading provider of robotics and STEM education solutions
+            STEMmantra is India&apos;s leading provider of robotics and STEM education solutions
             with NEP 2020 aligned curriculum, empowering students to become future-ready innovators.
           </p>
         </motion.div>
