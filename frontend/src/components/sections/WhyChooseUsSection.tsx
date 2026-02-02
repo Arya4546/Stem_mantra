@@ -87,7 +87,7 @@ export default function WhyChooseUsSection() {
                     {/* SEO Content Paragraph */}
                     <p className="text-lg text-gray-600 leading-relaxed mb-6">
                         <strong>STEMmantra</strong> is India&apos;s leading provider of robotics, artificial intelligence,
-                        and STEM education solutions for schools across the country. With over <strong>6 years of experience</strong>
+                        and STEM education solutions for schools across the country. With over <strong>10+ years of leadership experience</strong>
                         and partnerships with <strong>500+ schools</strong> in <strong>15+ states</strong>, we have trained
                         more than <strong>10,000 students</strong> in cutting-edge technologies including robotics programming,
                         machine learning, IoT, 3D printing, and more.

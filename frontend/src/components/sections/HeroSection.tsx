@@ -50,21 +50,20 @@ export default function HeroSection() {
           muted
           loop
           playsInline
-          className="absolute inset-0 w-full h-full object-cover opacity-60"
+          className="absolute inset-0 w-full h-full object-cover"
         >
           <source src="/videos/home_video.mp4" type="video/mp4" />
         </video>
-        {/* Gradient Overlay - reduced opacity */}
-        <div className="absolute inset-0 bg-gradient-to-b from-gray-900/50 via-gray-900/30 to-gray-900/60" />
-        <div className="absolute inset-0 bg-gradient-to-r from-orange-500/5 via-transparent to-teal-500/5" />
+        {/* Gradient Overlay - lighter for better video visibility */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-black/40" />
       </div>
 
       {/* Animated Background Elements - reduced to minimal */}
       <FloatingAnimations variant="hero" density="low" />
 
-      {/* Animated Grid Pattern */}
+      {/* Animated Grid Pattern - Hidden on mobile */}
       <div
-        className="absolute inset-0 opacity-10"
+        className="absolute inset-0 opacity-10 hidden sm:block"
         style={{
           backgroundImage: `
             linear-gradient(rgba(249,115,22,0.3) 1px, transparent 1px),

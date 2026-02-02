@@ -256,8 +256,8 @@ export default function AboutContent() {
                       <FaRocket className="w-8 h-8 text-white" />
                     </div>
                     <div>
-                      <div className="text-3xl font-bold text-gray-900">6+ Years</div>
-                      <div className="text-gray-600">of Excellence</div>
+                      <div className="text-3xl font-bold text-gray-900">10+ Years</div>
+                      <div className="text-gray-600">of Leadership Experience</div>
                     </div>
                   </div>
                 </div>
@@ -340,7 +340,7 @@ export default function AboutContent() {
         </section>
 
         {/* Timeline Section */}
-        <section ref={timelineRef} className="py-16 px-4">
+        {/* <section ref={timelineRef} className="py-16 px-4">
           <div className="max-w-5xl mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -358,7 +358,6 @@ export default function AboutContent() {
             </motion.div>
 
             <div className="relative">
-              {/* Timeline Line */}
               <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-orange-500 via-teal-500 to-orange-500 rounded-full hidden lg:block"></div>
 
               {timeline.map((item, index) => (
@@ -385,7 +384,7 @@ export default function AboutContent() {
               ))}
             </div>
           </div>
-        </section>
+        </section> */}
 
         {/* Why Choose Us Section */}
         <section className="py-16 px-4 bg-gradient-to-br from-orange-50 to-teal-50">

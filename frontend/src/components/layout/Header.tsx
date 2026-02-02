@@ -60,7 +60,7 @@ export default function Header() {
     headerBg = "bg-white/95 backdrop-blur-lg shadow-lg border-b border-gray-100";
     textColor = "text-gray-700";
   } else if (isHome) {
-    headerBg = "bg-gray-900/80 backdrop-blur-sm";
+    headerBg = "bg-transparent";
     textColor = "text-white";
   } else {
     headerBg = "bg-white shadow-md border-b border-gray-100";

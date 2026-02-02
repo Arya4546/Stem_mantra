@@ -343,19 +343,19 @@ export default function Footer() {
         </div>
 
         {/* Newsletter Section */}
-        <div className="bg-gradient-to-r from-orange-500/10 to-teal-500/10 rounded-2xl p-8 mb-12 border border-gray-800">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="bg-gradient-to-r from-orange-500/10 to-teal-500/10 rounded-2xl p-6 sm:p-8 mb-12 border border-gray-800">
+          <div className="flex flex-col items-center text-center md:text-left md:flex-row md:justify-between gap-6">
             <div>
-              <h4 className="text-xl font-bold text-white mb-2">Subscribe to Our Newsletter</h4>
+              <h4 className="text-lg sm:text-xl font-bold text-white mb-2">Subscribe to Our Newsletter</h4>
               <p className="text-gray-400 text-sm">Get the latest updates on STEM education and programs</p>
             </div>
-            <div className="flex gap-3 w-full md:w-auto">
+            <div className="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
               <input
                 type="email"
                 placeholder="Enter your email"
-                className="flex-1 md:w-64 px-4 py-3 bg-white/10 border border-gray-700 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-orange-500 transition-colors"
+                className="w-full sm:w-auto md:w-64 px-4 py-3 bg-white/10 border border-gray-700 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-orange-500 transition-colors"
               />
-              <button className="px-6 py-3 bg-gradient-to-r from-orange-500 to-orange-600 text-white rounded-xl font-semibold hover:shadow-lg hover:shadow-orange-500/20 transition-all">
+              <button className="w-full sm:w-auto px-6 py-3 bg-gradient-to-r from-orange-500 to-orange-600 text-white rounded-xl font-semibold hover:shadow-lg hover:shadow-orange-500/20 transition-all whitespace-nowrap">
                 Subscribe
               </button>
             </div>

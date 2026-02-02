@@ -70,7 +70,7 @@ function AnimatedCounter({ value, suffix = "", duration = 2000 }: { value: numbe
     const animate = (timestamp: number) => {
       if (!startTime) startTime = timestamp;
       const progress = Math.min((timestamp - startTime) / duration, 1);
-      
+
       // Easing function for smooth animation
       const easeOutQuart = 1 - Math.pow(1 - progress, 4);
       setCount(Math.floor(easeOutQuart * value));
@@ -110,16 +110,16 @@ export default function StatsSection() {
       <SectionFloatingIcons count={2} zIndex={1} />
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900" />
-      
+
       {/* Animated Background Elements */}
       <div className="absolute inset-0">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-orange-500/10 rounded-full blur-3xl animate-float" />
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-teal-500/10 rounded-full blur-3xl animate-float-slow" />
       </div>
 
-      {/* Grid Pattern */}
+      {/* Grid Pattern - Hidden on mobile */}
       <div
-        className="absolute inset-0 opacity-5"
+        className="absolute inset-0 opacity-5 hidden sm:block"
         style={{
           backgroundImage: `linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
                             linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)`,
@@ -163,7 +163,7 @@ export default function StatsSection() {
               <div
                 className={`absolute -inset-0.5 bg-gradient-to-r ${stat.color} rounded-2xl opacity-0 group-hover:opacity-100 blur transition-opacity duration-500`}
               />
-              
+
               <div className="relative bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10 hover:border-white/20 transition-all duration-300 text-center h-full">
                 {/* Icon */}
                 <div className={`w-14 h-14 mx-auto mb-4 rounded-xl bg-gradient-to-r ${stat.color} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
