@@ -424,7 +424,7 @@ export default function ContactPage() {
                       allowFullScreen
                       loading="lazy"
                       referrerPolicy="no-referrer-when-downgrade"
-                      className="grayscale hover:grayscale-0 transition-all duration-500"
+                      className="w-full h-full rounded-2xl"
                     />
                   </div>
                   <div className="mt-4 flex items-start gap-3">

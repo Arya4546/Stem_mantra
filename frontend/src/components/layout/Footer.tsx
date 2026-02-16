@@ -113,48 +113,6 @@ export default function Footer() {
 
   return (
     <footer className="relative bg-gray-900 text-white overflow-hidden">
-      {/* SEO Links Section - Before Main Footer */}
-      <div className="relative bg-gray-950 py-10 border-b border-gray-800">
-        <div className="container mx-auto px-4">
-          <h2 className="text-xl font-bold text-white mb-6 text-center">
-            Explore STEM Education{" "}
-            <span className="bg-gradient-to-r from-orange-500 to-teal-500 bg-clip-text text-transparent">
-              Solutions Across India
-            </span>
-          </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {Object.entries(seoLinks).map(([key, category]) => (
-              <div key={key}>
-                <h3 className="text-sm font-semibold text-orange-400 mb-3 border-b border-gray-700 pb-2">
-                  {category.title}
-                </h3>
-                <div className="flex flex-wrap gap-x-1 gap-y-0.5">
-                  {category.links.map((link, index) => (
-                    <span key={link.href} className="inline-flex items-center">
-                      <Link
-                        href={link.href}
-                        className="text-gray-400 hover:text-orange-400 text-xs transition-colors"
-                      >
-                        {link.name}
-                      </Link>
-                      {index < category.links.length - 1 && (
-                        <span className="text-gray-600 mx-1">|</span>
-                      )}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-          <p className="text-gray-500 text-xs mt-6 text-center max-w-4xl mx-auto">
-            <strong className="text-gray-400">STEMmantra</strong> is India&apos;s premier provider of
-            robotics labs, AI labs, STEM labs, and Atal Tinkering Labs (ATL) for schools. Complete
-            turnkey lab solutions with equipment, NEP 2020 aligned curriculum, teacher training,
-            and support across 500+ cities.
-          </p>
-        </div>
-      </div>
-
       {/* Decorative Elements */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-0 right-1/4 w-96 h-96 bg-orange-500/5 rounded-full filter blur-3xl" />
@@ -381,6 +339,48 @@ export default function Footer() {
               </Link>
             </div>
           </div>
+        </div>
+      </div>
+
+      {/* SEO Links Section - After Main Footer */}
+      <div className="relative bg-gray-950 py-10 border-t border-gray-800">
+        <div className="container mx-auto px-4">
+          <h2 className="text-xl font-bold text-white mb-6 text-center">
+            Explore STEM Education{" "}
+            <span className="bg-gradient-to-r from-orange-500 to-teal-500 bg-clip-text text-transparent">
+              Solutions Across India
+            </span>
+          </h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {Object.entries(seoLinks).map(([key, category]) => (
+              <div key={key}>
+                <h3 className="text-sm font-semibold text-orange-400 mb-3 border-b border-gray-700 pb-2">
+                  {category.title}
+                </h3>
+                <div className="flex flex-wrap gap-x-1 gap-y-0.5">
+                  {category.links.map((link, index) => (
+                    <span key={link.href} className="inline-flex items-center">
+                      <Link
+                        href={link.href}
+                        className="text-gray-400 hover:text-orange-400 text-xs transition-colors"
+                      >
+                        {link.name}
+                      </Link>
+                      {index < category.links.length - 1 && (
+                        <span className="text-gray-600 mx-1">|</span>
+                      )}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+          <p className="text-gray-500 text-xs mt-6 text-center max-w-4xl mx-auto">
+            <strong className="text-gray-400">STEMmantra</strong> is India&apos;s premier provider of
+            robotics labs, AI labs, STEM labs, and Atal Tinkering Labs (ATL) for schools. Complete
+            turnkey lab solutions with equipment, NEP 2020 aligned curriculum, teacher training,
+            and support across 500+ cities.
+          </p>
         </div>
       </div>
     </footer>

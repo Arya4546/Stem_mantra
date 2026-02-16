@@ -90,7 +90,7 @@ export default function Header() {
       </div>
 
       <nav className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center group relative z-50">
             <motion.div
