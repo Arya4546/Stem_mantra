@@ -392,7 +392,7 @@ export default function CompetitionPage() {
                         <div className="flex flex-col md:flex-row gap-10 items-center">
                             <div className="flex-1 text-center md:text-left">
                                 <h2 className="text-3xl font-bold text-gray-900 mb-4">Who Can Participate?</h2>
-                                <p className="text-gray-600 mb-6">We invite passionate innovators, coders, and makers to showcase their talent. Whether you're a beginner or an expert, there's a category for everyone.</p>
+                                <p className="text-gray-600 mb-6">We invite passionate innovators, coders, and makers to showcase their talent. Whether you&apos;re a beginner or an expert, there&apos;s a category for everyone.</p>
                             </div>
                             <div className="flex-1 space-y-3">
                                 {data.eligibility.map((item, index) => (
@@ -415,7 +415,7 @@ export default function CompetitionPage() {
                                     Become the Next <span className="text-orange-400">Industry Leader</span>
                                 </h2>
                                 <p className="text-gray-400 text-lg max-w-2xl mx-auto mb-10">
-                                    Don't miss the chance to compete at national and international levels.
+                                    Don&apos;t miss the chance to compete at national and international levels.
                                     Register your team today and start your journey towards excellence.
                                 </p>
                                 <div className="flex flex-wrap justify-center gap-4">

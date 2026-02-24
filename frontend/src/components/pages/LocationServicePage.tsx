@@ -241,7 +241,7 @@ export default function LocationServicePage({
         <div className="max-w-4xl mx-auto bg-gray-900 rounded-[2.5rem] p-10 md:p-16 text-center text-white relative overflow-hidden">
           <div className="relative z-10">
             <h2 className="text-3xl md:text-5xl font-bold mb-6">Elevate Education Standards</h2>
-            <p className="text-gray-400 text-lg mb-10 max-w-xl mx-auto">Join the revolution of practical learning in {city}. Partner with India's leading STEM laboratory provider.</p>
+            <p className="text-gray-400 text-lg mb-10 max-w-xl mx-auto">Join the revolution of practical learning in {city}. Partner with India&apos;s leading STEM laboratory provider.</p>
             <Link href="/contact" className="inline-flex items-center gap-3 px-10 py-4 bg-orange-500 text-white rounded-2xl font-bold hover:bg-orange-600 transition-all shadow-lg hover:shadow-orange-900/40">
               Get Started Today
             </Link>
