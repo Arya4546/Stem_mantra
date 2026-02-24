@@ -107,21 +107,29 @@ const features = [
         icon: FaRobot,
         title: "Robotics Kits",
         description: "Age-appropriate robotics kits from basic to advanced levels for hands-on learning",
+        color: "text-orange-500",
+        bg: "bg-orange-50"
     },
     {
         icon: FaLaptopCode,
-        title: "Coding Workstations",
+        title: "Coding Stations",
         description: "Modern computer systems with programming software and development environments",
+        color: "text-blue-500",
+        bg: "bg-blue-50"
     },
     {
         icon: FaFlask,
         title: "Science Equipment",
         description: "Complete science lab equipment for physics, chemistry, and biology experiments",
+        color: "text-teal-500",
+        bg: "bg-teal-50"
     },
     {
         icon: FaCogs,
         title: "3D Printing",
         description: "Industrial-grade 3D printers for prototyping and design thinking projects",
+        color: "text-purple-500",
+        bg: "bg-purple-50"
     },
 ];
 
@@ -145,7 +153,7 @@ export default function STEMLabCityPage() {
         return (
             <>
                 <Header />
-                <main className="min-h-screen bg-gradient-to-br from-orange-50/40 via-white to-teal-50/40 pt-32 pb-16">
+                <main className="min-h-screen bg-white pt-32 pb-16">
                     <div className="container mx-auto px-4 text-center">
                         <h1 className="text-3xl font-bold text-gray-900 mb-4">City Not Found</h1>
                         <p className="text-gray-600 mb-8">We couldn&apos;t find information for this city.</p>
@@ -162,193 +170,213 @@ export default function STEMLabCityPage() {
     return (
         <>
             <Header />
-            <main className="min-h-screen bg-gradient-to-br from-orange-50/40 via-white to-teal-50/40">
-                {/* Hero Section */}
-                <section className="relative pt-32 pb-20 overflow-hidden">
-                    <div className="absolute inset-0 bg-gradient-to-r from-orange-500 to-teal-500 opacity-10" />
-                    <div className="container mx-auto px-4 relative z-10">
+            <main className="min-h-screen bg-white">
+                {/* Hero Section — Left aligned, white bg */}
+                <section className="relative pt-32 pb-12 overflow-hidden">
+                    <div className="container mx-auto px-4">
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6 }}
-                            className="max-w-4xl mx-auto text-center"
+                            className="max-w-4xl"
                         >
-                            <span className="inline-flex items-center gap-2 px-4 py-2 bg-orange-100 text-orange-600 rounded-full text-sm font-semibold mb-6">
+                            <span className="inline-flex items-center gap-2 px-4 py-1.5 bg-orange-50 text-orange-600 rounded-full text-sm font-semibold mb-6 border border-orange-100">
                                 <FaMapMarkerAlt className="w-4 h-4" />
-                                {data.state}
+                                {data.state} STEM Education Hub
                             </span>
-                            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
-                                STEM Labs in{" "}
+                            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+                                STEM Labs in <br />
                                 <span className="bg-gradient-to-r from-orange-500 to-teal-500 bg-clip-text text-transparent">
                                     {data.name}
                                 </span>
                             </h1>
-                            <p className="text-lg md:text-xl text-gray-600 mb-8 leading-relaxed">
+                            <p className="text-lg md:text-xl text-gray-600 mb-8 leading-relaxed max-w-2xl">
                                 {data.description}
                             </p>
-                            <div className="flex flex-wrap justify-center gap-4">
+                            <div className="flex flex-wrap gap-4">
                                 <Link
                                     href="/contact"
-                                    className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-orange-500 to-teal-500 text-white rounded-xl font-semibold hover:shadow-xl transition-all"
+                                    className="inline-flex items-center gap-2 px-8 py-3.5 bg-orange-500 text-white rounded-xl font-semibold hover:bg-orange-600 transition-all shadow-sm"
                                 >
-                                    <FaPhone className="w-4 h-4" />
+                                    <FaPhone className="w-3 h-3" />
                                     Get a Quote
                                 </Link>
                                 <Link
                                     href="/programs"
-                                    className="inline-flex items-center gap-2 px-8 py-4 bg-white text-gray-900 rounded-xl font-semibold border-2 border-gray-200 hover:border-orange-500 transition-all"
+                                    className="inline-flex items-center gap-2 px-8 py-3.5 bg-white text-gray-900 rounded-xl font-semibold border border-gray-200 hover:border-orange-400 transition-all"
                                 >
                                     View Programs
-                                    <FaArrowRight className="w-4 h-4" />
+                                    <FaArrowRight className="w-3 h-3" />
                                 </Link>
                             </div>
                         </motion.div>
                     </div>
                 </section>
 
-                {/* Stats Section */}
-                <section className="py-12 bg-white border-y border-gray-100">
+                {/* Stats Section — Horizontal Strip */}
+                <section className="py-8 bg-gray-50 border-y border-gray-100">
                     <div className="container mx-auto px-4">
-                        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-                            <div className="text-center">
-                                <div className="text-3xl md:text-4xl font-bold text-orange-500">{data.schools}+</div>
-                                <div className="text-gray-600">Schools Served</div>
+                        <div className="flex flex-wrap justify-between items-center gap-6 max-w-6xl mx-auto">
+                            <div className="flex items-center gap-3">
+                                <div className="text-3xl font-bold text-gray-900">{data.schools}+</div>
+                                <div className="text-sm text-gray-500 leading-tight">Partner <br />Schools</div>
                             </div>
-                            <div className="text-center">
-                                <div className="text-3xl md:text-4xl font-bold text-teal-500">{data.students.toLocaleString()}+</div>
-                                <div className="text-gray-600">Students Trained</div>
+                            <div className="hidden md:block w-px h-8 bg-gray-200" />
+                            <div className="flex items-center gap-3">
+                                <div className="text-3xl font-bold text-gray-900">{data.students.toLocaleString()}+</div>
+                                <div className="text-sm text-gray-500 leading-tight">Students <br />Trained</div>
                             </div>
-                            <div className="text-center">
-                                <div className="text-3xl md:text-4xl font-bold text-purple-500">50+</div>
-                                <div className="text-gray-600">Expert Trainers</div>
+                            <div className="hidden md:block w-px h-8 bg-gray-200" />
+                            <div className="flex items-center gap-3">
+                                <div className="text-3xl font-bold text-gray-900">50+</div>
+                                <div className="text-sm text-gray-500 leading-tight">Expert <br />Trainers</div>
                             </div>
-                            <div className="text-center">
-                                <div className="text-3xl md:text-4xl font-bold text-blue-500">98%</div>
-                                <div className="text-gray-600">Satisfaction Rate</div>
+                            <div className="hidden md:block w-px h-8 bg-gray-200" />
+                            <div className="flex items-center gap-3">
+                                <div className="text-3xl font-bold text-gray-900">98%</div>
+                                <div className="text-sm text-gray-500 leading-tight">Success <br />Rate</div>
                             </div>
                         </div>
                     </div>
                 </section>
 
-                {/* Features Section */}
-                <section className="py-20">
+                {/* Features Section — Clean Grid */}
+                <section className="py-20 bg-white">
                     <div className="container mx-auto px-4">
-                        <div className="text-center mb-12">
+                        <div className="mb-12">
                             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                                What Our STEM Labs in {data.name} Include
+                                Integrated <span className="text-orange-500">Innovation</span>
                             </h2>
-                            <p className="text-gray-600 max-w-2xl mx-auto">
-                                Complete turnkey STEM lab solutions designed for schools in {data.name}
+                            <p className="text-gray-600 max-w-2xl">
+                                Complete turnkey STEM lab solutions designed for the educational needs of {data.name}.
                             </p>
                         </div>
-                        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                             {features.map((feature, index) => (
                                 <motion.div
                                     key={index}
                                     initial={{ opacity: 0, y: 20 }}
                                     whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
                                     transition={{ duration: 0.5, delay: index * 0.1 }}
-                                    className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 hover:shadow-xl transition-shadow"
+                                    className="bg-white rounded-2xl p-6 border border-gray-100 hover:border-orange-200 hover:shadow-lg transition-all"
                                 >
-                                    <div className="w-14 h-14 bg-gradient-to-br from-orange-500 to-teal-500 rounded-xl flex items-center justify-center mb-4">
-                                        <feature.icon className="w-7 h-7 text-white" />
+                                    <div className={`w-12 h-12 ${feature.bg} rounded-xl flex items-center justify-center mb-4`}>
+                                        <feature.icon className={`w-6 h-6 ${feature.color}`} />
                                     </div>
                                     <h3 className="text-xl font-bold text-gray-900 mb-2">{feature.title}</h3>
-                                    <p className="text-gray-600">{feature.description}</p>
+                                    <p className="text-gray-500 text-sm leading-relaxed">{feature.description}</p>
                                 </motion.div>
                             ))}
                         </div>
                     </div>
                 </section>
 
-                {/* Areas Covered */}
-                <section className="py-20 bg-gray-50">
+                {/* Areas Covered — Inline Tags */}
+                <section className="py-12 bg-gray-50">
                     <div className="container mx-auto px-4">
-                        <div className="text-center mb-12">
-                            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                                Areas We Cover in {data.name}
+                        <div className="flex flex-col md:flex-row items-center gap-8 max-w-6xl mx-auto">
+                            <h2 className="text-2xl font-bold text-gray-900 flex-shrink-0">
+                                Serving <br /> {data.name}
                             </h2>
-                            <p className="text-gray-600">
-                                We provide STEM lab solutions across all major areas in {data.name}
-                            </p>
-                        </div>
-                        <div className="flex flex-wrap justify-center gap-4">
-                            {data.highlights.map((area, index) => (
-                                <span
-                                    key={index}
-                                    className="px-6 py-3 bg-white rounded-full text-gray-700 font-medium shadow-sm border border-gray-200"
-                                >
-                                    {area}
-                                </span>
-                            ))}
+                            <div className="flex flex-wrap gap-3">
+                                {data.highlights.map((area, index) => (
+                                    <span
+                                        key={index}
+                                        className="px-5 py-2.5 bg-white border border-gray-200 text-gray-700 rounded-xl text-sm font-medium shadow-sm"
+                                    >
+                                        {area}
+                                    </span>
+                                ))}
+                            </div>
                         </div>
                     </div>
                 </section>
 
-                {/* Benefits Section */}
-                <section className="py-20">
+                {/* Benefits Section — Two Column */}
+                <section className="py-20 bg-white">
                     <div className="container mx-auto px-4">
-                        <div className="grid lg:grid-cols-2 gap-12 items-center">
-                            <div>
-                                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-                                    Why Choose STEMmantra for Your School in {data.name}?
+                        <div className="grid lg:grid-cols-2 gap-16 items-center">
+                            <motion.div
+                                initial={{ opacity: 0, x: -20 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                viewport={{ once: true }}
+                            >
+                                <h2 className="text-3xl font-bold text-gray-900 mb-6 font-display">
+                                    Why Schools in {data.name} <br />Trust STEMmantra
                                 </h2>
-                                <p className="text-gray-600 mb-8">
+                                <p className="text-gray-600 mb-8 leading-relaxed max-w-xl">
                                     We provide comprehensive STEM education solutions that transform classrooms into
-                                    innovation labs. Our proven methodology has helped thousands of students develop
-                                    critical thinking and problem-solving skills.
+                                    innovation hubs. Our methodology has helped thousands of students develop
+                                    21st-century skills.
                                 </p>
-                                <div className="grid sm:grid-cols-2 gap-4">
+                                <div className="grid sm:grid-cols-2 gap-y-4 gap-x-6">
                                     {benefits.map((benefit, index) => (
                                         <div key={index} className="flex items-center gap-3">
-                                            <FaCheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
-                                            <span className="text-gray-700">{benefit}</span>
+                                            <FaCheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" />
+                                            <span className="text-gray-700 text-sm font-medium">{benefit}</span>
                                         </div>
                                     ))}
                                 </div>
-                            </div>
-                            <div className="bg-gradient-to-br from-orange-500 to-teal-500 rounded-3xl p-8 text-white">
-                                <h3 className="text-2xl font-bold mb-4">Get Started Today</h3>
-                                <p className="mb-6 opacity-90">
-                                    Transform your school with our comprehensive STEM lab solutions.
-                                    Contact us for a free consultation and quote.
-                                </p>
-                                <Link
-                                    href="/contact"
-                                    className="inline-flex items-center gap-2 px-6 py-3 bg-white text-orange-500 rounded-xl font-semibold hover:shadow-lg transition-all"
-                                >
-                                    <FaPhone className="w-4 h-4" />
-                                    Contact Us
-                                </Link>
-                            </div>
+                            </motion.div>
+
+                            <motion.div
+                                initial={{ opacity: 0, x: 20 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                viewport={{ once: true }}
+                                className="bg-gray-900 rounded-3xl p-10 text-white relative overflow-hidden"
+                            >
+                                <div className="relative z-10">
+                                    <div className="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center mb-6">
+                                        <FaAward className="w-8 h-8 text-orange-400" />
+                                    </div>
+                                    <h3 className="text-2xl font-bold mb-4">Get Started Today</h3>
+                                    <p className="text-gray-400 mb-8 leading-relaxed">
+                                        Transform your school into a center of excellence.
+                                        Contact us for a free consultation and customized lab blueprint.
+                                    </p>
+                                    <Link
+                                        href="/contact"
+                                        className="inline-flex items-center gap-2 px-8 py-3.5 bg-orange-500 text-white rounded-xl font-bold hover:bg-orange-600 transition-all"
+                                    >
+                                        <FaPhone className="w-3 h-3" />
+                                        Contact Our Experts
+                                    </Link>
+                                </div>
+                                {/* Decorative geometric element */}
+                                <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -mr-32 -mt-32 blur-3xl opacity-50" />
+                            </motion.div>
                         </div>
                     </div>
                 </section>
 
-                {/* CTA Section */}
-                <section className="py-20 bg-gray-900 text-white">
-                    <div className="container mx-auto px-4 text-center">
-                        <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                            Ready to Set Up a STEM Lab in Your {data.name} School?
-                        </h2>
-                        <p className="text-gray-300 max-w-2xl mx-auto mb-8">
-                            Join {data.schools}+ schools in {data.name} that have already transformed their
-                            education with STEMmantra&apos;s comprehensive lab solutions.
-                        </p>
-                        <div className="flex flex-wrap justify-center gap-4">
-                            <Link
-                                href="/contact"
-                                className="inline-flex items-center gap-2 px-8 py-4 bg-orange-500 text-white rounded-xl font-semibold hover:bg-orange-600 transition-colors"
-                            >
-                                Request a Demo
-                            </Link>
-                            <a
-                                href="tel:+916356631515"
-                                className="inline-flex items-center gap-2 px-8 py-4 bg-white/10 text-white rounded-xl font-semibold hover:bg-white/20 transition-colors"
-                            >
-                                <FaPhone className="w-4 h-4" />
-                                Call: +91 6356631515
-                            </a>
+                {/* CTA Section — Boxed Dark Card */}
+                <section className="py-20 border-t border-gray-100">
+                    <div className="container mx-auto px-4">
+                        <div className="max-w-5xl mx-auto bg-gray-900 rounded-[2.5rem] p-12 md:p-16 text-center relative overflow-hidden">
+                            <div className="relative z-10">
+                                <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
+                                    Ignite <span className="text-teal-400">Innovation</span> in Your School
+                                </h2>
+                                <p className="text-gray-400 text-lg max-w-2xl mx-auto mb-10">
+                                    Join {data.schools}+ schools in {data.name} that have already transformed their
+                                    education with STEMmantra&apos;s comprehensive lab solutions.
+                                </p>
+                                <div className="flex flex-wrap justify-center gap-4">
+                                    <Link
+                                        href="/contact"
+                                        className="px-10 py-4 bg-orange-500 text-white rounded-2xl font-bold hover:bg-orange-600 transition-all shadow-lg shadow-orange-900/20"
+                                    >
+                                        Request a Demo
+                                    </Link>
+                                    <a
+                                        href="tel:+916356631515"
+                                        className="px-10 py-4 bg-white/5 text-white border border-white/10 rounded-2xl font-bold hover:bg-white/10 transition-all"
+                                    >
+                                        Call: +91 6356631515
+                                    </a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </section>

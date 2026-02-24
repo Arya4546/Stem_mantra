@@ -3,10 +3,8 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-import FloatingAnimations from "@/components/animations/FloatingAnimations";
 import {
   FaGraduationCap,
   FaRobot,
@@ -17,31 +15,18 @@ import {
   FaHandshake,
   FaChalkboardTeacher,
   FaGlobeAsia,
-  FaRocket,
   FaCheckCircle,
   FaArrowRight,
-  FaHeart,
-  FaStar,
   FaCogs,
   FaBrain,
 } from "react-icons/fa";
-import {
-  Sparkles,
-  Target,
-  Eye,
-  Award,
-  BookOpen,
-  Users,
-  Zap,
-  Trophy,
-  CheckCircle,
-} from "lucide-react";
+import { Target, Eye } from "lucide-react";
 
 const stats = [
-  { number: "10,000+", label: "Students Trained", icon: FaGraduationCap, color: "from-orange-500 to-orange-600" },
-  { number: "500+", label: "Schools Partnered", icon: FaSchool, color: "from-teal-500 to-teal-600" },
-  { number: "15+", label: "States Covered", icon: FaGlobeAsia, color: "from-blue-500 to-blue-600" },
-  { number: "200+", label: "Expert Trainers", icon: FaChalkboardTeacher, color: "from-purple-500 to-purple-600" },
+  { number: "10,000+", label: "Students Trained", icon: FaGraduationCap, color: "text-orange-500" },
+  { number: "500+", label: "Schools Partnered", icon: FaSchool, color: "text-teal-500" },
+  { number: "15+", label: "States Covered", icon: FaGlobeAsia, color: "text-blue-500" },
+  { number: "200+", label: "Expert Trainers", icon: FaChalkboardTeacher, color: "text-purple-500" },
 ];
 
 const coreValues = [
@@ -49,59 +34,41 @@ const coreValues = [
     icon: FaLightbulb,
     title: "Innovation First",
     description: "We believe in pushing boundaries and embracing cutting-edge technologies to shape the future of education.",
-    color: "bg-orange-100 text-orange-600",
+    accent: "border-l-orange-500",
+    iconBg: "bg-orange-50",
+    iconColor: "text-orange-600",
   },
   {
     icon: FaUsers,
     title: "Student-Centric",
     description: "Every program is designed with students at the center, ensuring engaging, accessible, and impactful learning experiences.",
-    color: "bg-teal-100 text-teal-600",
+    accent: "border-l-teal-500",
+    iconBg: "bg-teal-50",
+    iconColor: "text-teal-600",
   },
   {
     icon: FaHandshake,
     title: "Collaborative Growth",
     description: "We partner with schools, educators, and communities to create sustainable STEM education ecosystems.",
-    color: "bg-blue-100 text-blue-600",
+    accent: "border-l-blue-500",
+    iconBg: "bg-blue-50",
+    iconColor: "text-blue-600",
   },
   {
     icon: FaAward,
     title: "Excellence in Delivery",
     description: "Our commitment to quality ensures every workshop, lab setup, and training program meets the highest standards.",
-    color: "bg-purple-100 text-purple-600",
+    accent: "border-l-purple-500",
+    iconBg: "bg-purple-50",
+    iconColor: "text-purple-600",
   },
-];
-
-const timeline = [
-  { year: "2018", title: "The Beginning", description: "STEMmantra was founded with a vision to revolutionize STEM education in India." },
-  { year: "2019", title: "First 100 Schools", description: "Expanded our reach to 100+ schools across 5 states with hands-on robotics programs." },
-  { year: "2020", title: "ATL Lab Expertise", description: "Became a leading partner for Atal Tinkering Lab setup and training programs." },
-  { year: "2021", title: "NEP 2020 Alignment", description: "Redesigned curriculum to align with National Education Policy 2020 guidelines." },
-  { year: "2022", title: "AI Integration", description: "Introduced AI and Machine Learning modules to our robotics curriculum." },
-  { year: "2023", title: "10,000 Students", description: "Reached the milestone of training 10,000+ students across India." },
-  { year: "2024", title: "National Expansion", description: "Expanded to 15+ states with specialized STEM, AI, and Robotics Labs." },
 ];
 
 const services = [
-  {
-    icon: FaRobot,
-    title: "Robotics Labs",
-    description: "Complete turnkey robotics lab solutions with curriculum, hardware, and training support.",
-  },
-  {
-    icon: FaBrain,
-    title: "AI & ML Labs",
-    description: "Cutting-edge artificial intelligence and machine learning labs for future-ready students.",
-  },
-  {
-    icon: FaLightbulb,
-    title: "ATL Labs",
-    description: "Atal Tinkering Lab setup, mentorship, and innovation programs aligned with government initiatives.",
-  },
-  {
-    icon: FaCogs,
-    title: "STEM Labs",
-    description: "Integrated Science, Technology, Engineering, and Mathematics laboratories for holistic learning.",
-  },
+  { icon: FaRobot, title: "Robotics Labs", description: "Complete turnkey robotics lab solutions with curriculum, hardware, and training support." },
+  { icon: FaBrain, title: "AI & ML Labs", description: "Cutting-edge artificial intelligence and machine learning labs for future-ready students." },
+  { icon: FaLightbulb, title: "ATL Labs", description: "Atal Tinkering Lab setup, mentorship, and innovation programs aligned with government initiatives." },
+  { icon: FaCogs, title: "STEM Labs", description: "Integrated Science, Technology, Engineering, and Mathematics laboratories for holistic learning." },
 ];
 
 const whyChooseUs = [
@@ -116,374 +83,256 @@ const whyChooseUs = [
 export default function AboutContent() {
   const missionRef = useRef(null);
   const valuesRef = useRef(null);
-  const timelineRef = useRef(null);
   const isMissionInView = useInView(missionRef, { once: true });
   const isValuesInView = useInView(valuesRef, { once: true });
-  const isTimelineInView = useInView(timelineRef, { once: true });
 
   return (
     <>
       <Header />
-      <main className="min-h-screen bg-gradient-to-br from-orange-50/40 via-white to-teal-50/40">
-        {/* Hero Section */}
-        <section className="relative overflow-hidden pt-32 pb-16 px-4">
-          {/* Animated Background Elements */}
-          <div className="absolute top-20 -left-20 w-96 h-96 bg-orange-200/30 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-0 -right-20 w-96 h-96 bg-teal-200/30 rounded-full blur-3xl"></div>
-          <FloatingAnimations density="low" />
-
-          <div className="max-w-7xl mx-auto relative z-10">
-            {/* Badge */}
+      <main className="min-h-screen bg-white">
+        {/* Hero Section — Left aligned, no floating blobs */}
+        <section className="pt-32 pb-12 px-4">
+          <div className="max-w-6xl mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="flex justify-center mb-6"
+              transition={{ duration: 0.5 }}
             >
-              <span className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-orange-500/10 to-teal-500/10 rounded-full text-sm font-medium text-orange-600 border border-orange-200">
-                <Sparkles className="w-4 h-4" />
+              <span className="inline-block px-4 py-1.5 bg-orange-100 text-orange-600 rounded-full text-sm font-semibold mb-4">
                 India&apos;s Leading STEM Education Provider
               </span>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="text-center"
-            >
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+              <h1 className="text-4xl md:text-5xl font-bold mb-6">
                 About{" "}
-                <span className="bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">
-                  STEM
-                </span>{" "}
-                <span className="text-gray-900">Mantra</span>
+                <span className="bg-gradient-to-r from-orange-500 to-teal-500 bg-clip-text text-transparent">
+                  STEMmantra
+                </span>
               </h1>
-              <p className="text-lg md:text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+              <p className="text-lg text-gray-600 max-w-3xl leading-relaxed">
                 Empowering the next generation of innovators through world-class STEM education,
                 cutting-edge robotics labs, and transformative learning experiences. We are on a mission
                 to make quality STEM education accessible to every student in India.
               </p>
             </motion.div>
 
-            {/* Stats Grid */}
+            {/* Stats — Inline horizontal strip */}
             <motion.div
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3, duration: 0.6 }}
-              className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12"
+              transition={{ delay: 0.2, duration: 0.5 }}
+              className="flex flex-wrap items-center gap-8 mt-10 pt-6 border-t border-gray-100"
             >
-              {stats.map((stat, index) => (
-                <motion.div
-                  key={stat.label}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.4 + index * 0.1 }}
-                  className="bg-white rounded-2xl p-6 text-center shadow-lg border border-gray-100 hover:shadow-xl transition-shadow"
-                >
-                  <div className={`w-14 h-14 mx-auto mb-4 rounded-xl bg-gradient-to-br ${stat.color} flex items-center justify-center`}>
-                    <stat.icon className="w-7 h-7 text-white" />
+              {stats.map((stat) => (
+                <div key={stat.label} className="flex items-center gap-3">
+                  <stat.icon className={`w-5 h-5 ${stat.color}`} />
+                  <div>
+                    <div className={`text-2xl font-bold ${stat.color}`}>{stat.number}</div>
+                    <div className="text-xs text-gray-500">{stat.label}</div>
                   </div>
-                  <div className="text-3xl font-bold text-gray-900 mb-1">{stat.number}</div>
-                  <div className="text-sm text-gray-600">{stat.label}</div>
-                </motion.div>
+                </div>
               ))}
             </motion.div>
           </div>
         </section>
 
-        {/* Mission & Vision Section */}
-        <section ref={missionRef} className="py-16 px-4 bg-white">
-          <div className="max-w-7xl mx-auto">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
+        {/* Mission & Vision — Stacked cards, no gradient blobs */}
+        <section ref={missionRef} className="py-12 px-4 bg-gray-50">
+          <div className="max-w-6xl mx-auto">
+            <div className="grid lg:grid-cols-2 gap-8">
               <motion.div
-                initial={{ opacity: 0, x: -50 }}
-                animate={isMissionInView ? { opacity: 1, x: 0 } : {}}
-                transition={{ duration: 0.6 }}
+                initial={{ opacity: 0, y: 20 }}
+                animate={isMissionInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.5 }}
+                className="bg-white rounded-xl p-8 border-l-4 border-l-orange-500 shadow-sm"
               >
-                <div className="relative">
-                  <div className="absolute -top-4 -left-4 w-24 h-24 bg-orange-500/10 rounded-full blur-2xl"></div>
-                  <div className="relative bg-gradient-to-br from-orange-50 to-teal-50 rounded-3xl p-8 border border-orange-100">
-                    <div className="flex items-center gap-3 mb-4">
-                      <div className="w-12 h-12 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center">
-                        <Target className="w-6 h-6 text-white" />
-                      </div>
-                      <h2 className="text-2xl font-bold text-gray-900">Our Mission</h2>
-                    </div>
-                    <p className="text-gray-600 leading-relaxed text-lg">
-                      To democratize STEM education by providing schools with world-class robotics labs,
-                      AI-powered learning tools, and trained educators. We aim to nurture curiosity,
-                      foster innovation, and prepare students for the challenges of tomorrow.
-                    </p>
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-10 h-10 bg-orange-50 rounded-lg flex items-center justify-center">
+                    <Target className="w-5 h-5 text-orange-600" />
                   </div>
+                  <h2 className="text-xl font-bold text-gray-900">Our Mission</h2>
                 </div>
-
-                <div className="relative mt-8">
-                  <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-teal-500/10 rounded-full blur-2xl"></div>
-                  <div className="relative bg-gradient-to-br from-teal-50 to-orange-50 rounded-3xl p-8 border border-teal-100">
-                    <div className="flex items-center gap-3 mb-4">
-                      <div className="w-12 h-12 bg-gradient-to-br from-teal-500 to-teal-600 rounded-xl flex items-center justify-center">
-                        <Eye className="w-6 h-6 text-white" />
-                      </div>
-                      <h2 className="text-2xl font-bold text-gray-900">Our Vision</h2>
-                    </div>
-                    <p className="text-gray-600 leading-relaxed text-lg">
-                      To be India&apos;s most trusted partner in STEM education, reaching 1 million students
-                      by 2030. We envision a future where every school has access to cutting-edge
-                      technology labs and every student has the opportunity to become an innovator.
-                    </p>
-                  </div>
-                </div>
+                <p className="text-gray-600 leading-relaxed">
+                  To democratize STEM education by providing schools with world-class robotics labs,
+                  AI-powered learning tools, and trained educators. We aim to nurture curiosity,
+                  foster innovation, and prepare students for the challenges of tomorrow.
+                </p>
               </motion.div>
 
               <motion.div
-                initial={{ opacity: 0, x: 50 }}
-                animate={isMissionInView ? { opacity: 1, x: 0 } : {}}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="relative"
+                initial={{ opacity: 0, y: 20 }}
+                animate={isMissionInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.5, delay: 0.1 }}
+                className="bg-white rounded-xl p-8 border-l-4 border-l-teal-500 shadow-sm"
               >
-                <div className="aspect-square rounded-3xl overflow-hidden shadow-2xl bg-gradient-to-br from-orange-100 via-white to-teal-100 flex items-center justify-center p-8">
-                  <div className="w-48 h-48 md:w-64 md:h-64 rounded-2xl overflow-hidden shadow-xl bg-white p-4">
-                    <img
-                      src="/images/logo.png"
-                      alt="STEMmantra Logo"
-                      className="w-full h-full object-contain"
-                    />
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-10 h-10 bg-teal-50 rounded-lg flex items-center justify-center">
+                    <Eye className="w-5 h-5 text-teal-600" />
                   </div>
+                  <h2 className="text-xl font-bold text-gray-900">Our Vision</h2>
                 </div>
-                <div className="absolute -bottom-6 -left-6 bg-white rounded-2xl p-6 shadow-xl border border-gray-100">
-                  <div className="flex items-center gap-4">
-                    <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-teal-500 rounded-full flex items-center justify-center">
-                      <FaRocket className="w-8 h-8 text-white" />
-                    </div>
-                    <div>
-                      <div className="text-3xl font-bold text-gray-900">10+ Years</div>
-                      <div className="text-gray-600">of Leadership Experience</div>
-                    </div>
-                  </div>
-                </div>
+                <p className="text-gray-600 leading-relaxed">
+                  To be India&apos;s most trusted partner in STEM education, reaching 1 million students
+                  by 2030. We envision a future where every school has access to cutting-edge
+                  technology labs and every student has the opportunity to become an innovator.
+                </p>
               </motion.div>
             </div>
           </div>
         </section>
 
-        {/* Core Values Section */}
-        <section ref={valuesRef} className="py-16 px-4">
-          <div className="max-w-7xl mx-auto">
+        {/* Core Values — 2x2 bento with left accent borders */}
+        <section ref={valuesRef} className="py-12 px-4">
+          <div className="max-w-6xl mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={isValuesInView ? { opacity: 1, y: 0 } : {}}
-              className="text-center mb-12"
+              className="mb-10"
             >
-              <span className="inline-flex items-center gap-2 px-4 py-2 bg-teal-100 rounded-full text-sm font-medium text-teal-700 mb-4">
-                <FaHeart className="w-4 h-4" />
+              <span className="inline-block px-4 py-1.5 bg-teal-100 text-teal-600 rounded-full text-sm font-semibold mb-3">
                 What Drives Us
               </span>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Core Values</h2>
-              <p className="text-gray-600 max-w-2xl mx-auto">
-                These principles guide everything we do, from designing curriculum to partnering with schools.
-              </p>
+              <h2 className="text-3xl font-bold text-gray-900">Our Core Values</h2>
             </motion.div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid md:grid-cols-2 gap-5">
               {coreValues.map((value, index) => (
                 <motion.div
                   key={value.title}
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 15 }}
                   animate={isValuesInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ delay: index * 0.1 }}
-                  className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 hover:shadow-xl transition-all hover:-translate-y-1"
+                  transition={{ delay: index * 0.08 }}
+                  className={`bg-white rounded-xl p-6 border border-gray-100 border-l-4 ${value.accent} shadow-sm hover:shadow-md transition-shadow`}
                 >
-                  <div className={`w-14 h-14 rounded-xl ${value.color} flex items-center justify-center mb-4`}>
-                    <value.icon className="w-7 h-7" />
+                  <div className="flex items-start gap-4">
+                    <div className={`w-11 h-11 ${value.iconBg} rounded-lg flex items-center justify-center flex-shrink-0`}>
+                      <value.icon className={`w-5 h-5 ${value.iconColor}`} />
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-bold text-gray-900 mb-1">{value.title}</h3>
+                      <p className="text-sm text-gray-600">{value.description}</p>
+                    </div>
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">{value.title}</h3>
-                  <p className="text-gray-600 text-sm">{value.description}</p>
                 </motion.div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* Services Overview */}
-        <section className="py-16 px-4 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
-          <div className="max-w-7xl mx-auto">
-            <div className="text-center mb-12">
-              <span className="inline-flex items-center gap-2 px-4 py-2 bg-orange-500/20 rounded-full text-sm font-medium text-orange-400 mb-4">
-                <Zap className="w-4 h-4" />
+        {/* Services — White bg, alternating list items */}
+        <section className="py-12 px-4 bg-gray-50">
+          <div className="max-w-6xl mx-auto">
+            <div className="mb-10">
+              <span className="inline-block px-4 py-1.5 bg-orange-100 text-orange-600 rounded-full text-sm font-semibold mb-3">
                 Our Solutions
               </span>
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Complete Lab Solutions</h2>
-              <p className="text-gray-400 max-w-2xl mx-auto">
+              <h2 className="text-3xl font-bold text-gray-900">Complete Lab Solutions</h2>
+              <p className="text-gray-600 mt-2">
                 End-to-end solutions for setting up world-class STEM, AI, and Robotics labs in schools.
               </p>
             </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="space-y-4">
               {services.map((service, index) => (
                 <motion.div
                   key={service.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                  initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10 hover:bg-white/10 transition-all group"
+                  transition={{ delay: index * 0.08 }}
+                  className={`flex items-center gap-5 bg-white rounded-xl p-5 border border-gray-100 shadow-sm ${index % 2 === 1 ? "md:flex-row-reverse md:text-right" : ""
+                    }`}
                 >
-                  <div className="w-14 h-14 bg-gradient-to-br from-orange-500 to-teal-500 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                    <service.icon className="w-7 h-7 text-white" />
+                  <div className="w-12 h-12 bg-orange-50 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <service.icon className="w-6 h-6 text-orange-600" />
                   </div>
-                  <h3 className="text-xl font-bold text-white mb-2">{service.title}</h3>
-                  <p className="text-gray-400 text-sm">{service.description}</p>
+                  <div className="flex-1">
+                    <h3 className="font-bold text-gray-900 mb-1">{service.title}</h3>
+                    <p className="text-sm text-gray-600">{service.description}</p>
+                  </div>
                 </motion.div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* Timeline Section */}
-        {/* <section ref={timelineRef} className="py-16 px-4">
-          <div className="max-w-5xl mx-auto">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={isTimelineInView ? { opacity: 1, y: 0 } : {}}
-              className="text-center mb-12"
-            >
-              <span className="inline-flex items-center gap-2 px-4 py-2 bg-orange-100 rounded-full text-sm font-medium text-orange-700 mb-4">
-                <Trophy className="w-4 h-4" />
-                Our Journey
-              </span>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">The STEMmantra Story</h2>
-              <p className="text-gray-600 max-w-2xl mx-auto">
-                From a small startup to India&apos;s leading STEM education provider - our journey of innovation and impact.
-              </p>
-            </motion.div>
-
-            <div className="relative">
-              <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-orange-500 via-teal-500 to-orange-500 rounded-full hidden lg:block"></div>
-
-              {timeline.map((item, index) => (
-                <motion.div
-                  key={item.year}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={isTimelineInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ delay: index * 0.1 }}
-                  className={`relative flex items-center gap-8 mb-8 ${index % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"
-                    }`}
-                >
-                  <div className={`flex-1 ${index % 2 === 0 ? "lg:text-right" : "lg:text-left"}`}>
-                    <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 hover:shadow-xl transition-shadow">
-                      <span className="inline-block px-3 py-1 bg-gradient-to-r from-orange-500 to-teal-500 text-white rounded-full text-sm font-bold mb-2">
-                        {item.year}
-                      </span>
-                      <h3 className="text-xl font-bold text-gray-900 mb-2">{item.title}</h3>
-                      <p className="text-gray-600 text-sm">{item.description}</p>
-                    </div>
-                  </div>
-                  <div className="hidden lg:block w-4 h-4 bg-orange-500 rounded-full border-4 border-white shadow-lg z-10"></div>
-                  <div className="flex-1 hidden lg:block"></div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section> */}
-
-        {/* Why Choose Us Section */}
-        <section className="py-16 px-4 bg-gradient-to-br from-orange-50 to-teal-50">
-          <div className="max-w-7xl mx-auto">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div>
-                <span className="inline-flex items-center gap-2 px-4 py-2 bg-orange-100 rounded-full text-sm font-medium text-orange-700 mb-4">
-                  <FaStar className="w-4 h-4" />
+        {/* Why Choose Us — Numbered steps instead of checklist */}
+        <section className="py-12 px-4">
+          <div className="max-w-6xl mx-auto">
+            <div className="grid lg:grid-cols-5 gap-10 items-start">
+              <div className="lg:col-span-2">
+                <span className="inline-block px-4 py-1.5 bg-orange-100 text-orange-600 rounded-full text-sm font-semibold mb-3">
                   Why STEMmantra
                 </span>
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+                <h2 className="text-3xl font-bold text-gray-900 mb-4">
                   What Makes Us Different
                 </h2>
-                <p className="text-gray-600 mb-8 text-lg">
+                <p className="text-gray-600 leading-relaxed">
                   We don&apos;t just set up labs - we build complete STEM education ecosystems with
                   ongoing support, training, and innovation.
                 </p>
 
-                <div className="space-y-4">
-                  {whyChooseUs.map((item, index) => (
-                    <motion.div
-                      key={index}
-                      initial={{ opacity: 0, x: -20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: index * 0.1 }}
-                      className="flex items-center gap-3"
-                    >
-                      <div className="w-6 h-6 bg-gradient-to-br from-orange-500 to-teal-500 rounded-full flex items-center justify-center flex-shrink-0">
-                        <CheckCircle className="w-4 h-4 text-white" />
-                      </div>
-                      <span className="text-gray-700">{item}</span>
-                    </motion.div>
+                {/* Compact stats */}
+                <div className="flex flex-wrap gap-6 mt-6 pt-6 border-t border-gray-100">
+                  {[
+                    { value: "100%", label: "Satisfaction", color: "text-orange-500" },
+                    { value: "24/7", label: "Support", color: "text-teal-500" },
+                    { value: "50+", label: "Awards", color: "text-blue-500" },
+                  ].map((s) => (
+                    <div key={s.label}>
+                      <div className={`text-2xl font-bold ${s.color}`}>{s.value}</div>
+                      <div className="text-xs text-gray-500">{s.label}</div>
+                    </div>
                   ))}
                 </div>
               </div>
-
-              <div className="relative">
-                <div className="bg-white rounded-3xl p-8 shadow-2xl">
-                  <div className="grid grid-cols-2 gap-6">
-                    <div className="text-center">
-                      <div className="text-4xl font-bold text-orange-500 mb-2">100%</div>
-                      <div className="text-sm text-gray-600">School Satisfaction</div>
-                    </div>
-                    <div className="text-center">
-                      <div className="text-4xl font-bold text-teal-500 mb-2">24/7</div>
-                      <div className="text-sm text-gray-600">Support Available</div>
-                    </div>
-                    <div className="text-center">
-                      <div className="text-4xl font-bold text-blue-500 mb-2">50+</div>
-                      <div className="text-sm text-gray-600">Awards Won</div>
-                    </div>
-                    <div className="text-center">
-                      <div className="text-4xl font-bold text-purple-500 mb-2">15+</div>
-                      <div className="text-sm text-gray-600">States Covered</div>
-                    </div>
-                  </div>
-                </div>
+              <div className="lg:col-span-3 space-y-3">
+                {whyChooseUs.map((item, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, x: 10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.06 }}
+                    className="flex items-center gap-4 p-4 bg-gray-50 rounded-xl"
+                  >
+                    <span className="w-8 h-8 bg-orange-100 text-orange-600 rounded-lg flex items-center justify-center text-sm font-bold flex-shrink-0">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                    <span className="text-gray-700">{item}</span>
+                  </motion.div>
+                ))}
               </div>
             </div>
           </div>
         </section>
 
-        {/* CTA Section */}
-        <section className="py-16 px-4">
+        {/* CTA — Contained card */}
+        <section className="py-12 px-4">
           <div className="max-w-4xl mx-auto">
-            <div className="bg-gradient-to-r from-orange-500 via-orange-600 to-teal-600 rounded-3xl p-8 md:p-12 text-center text-white relative overflow-hidden">
-              {/* Background Pattern */}
-              <div className="absolute inset-0 bg-[url('/images/grid-pattern.svg')] opacity-10"></div>
-
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                className="relative z-10"
-              >
-                <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                  Ready to Transform Your School?
+            <div className="bg-gray-900 rounded-2xl p-8 md:p-10 text-center relative overflow-hidden">
+              <div className="relative z-10">
+                <h2 className="text-3xl font-bold text-white mb-3">
+                  Ready to Transform <span className="text-orange-400">Your School?</span>
                 </h2>
-                <p className="text-orange-100 mb-8 max-w-2xl mx-auto text-lg">
+                <p className="text-gray-300 mb-6 max-w-xl mx-auto">
                   Join 500+ schools that have already partnered with STEMmantra to bring
                   world-class STEM education to their students.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <Link
                     href="/contact"
-                    className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-orange-600 rounded-full font-semibold hover:shadow-xl hover:scale-105 transition-all"
+                    className="inline-flex items-center justify-center gap-2 px-8 py-3 bg-orange-500 text-white rounded-xl font-semibold hover:bg-orange-600 transition-colors"
                   >
                     Get Started Today
                     <FaArrowRight className="w-4 h-4" />
                   </Link>
                   <Link
                     href="/programs"
-                    className="inline-flex items-center justify-center gap-2 px-8 py-4 border-2 border-white text-white rounded-full font-semibold hover:bg-white/10 transition-all"
+                    className="inline-flex items-center justify-center gap-2 px-8 py-3 border border-white/20 text-white rounded-xl font-semibold hover:bg-white/10 transition-colors"
                   >
                     Explore Programs
                   </Link>
                 </div>
-              </motion.div>
+              </div>
             </div>
           </div>
         </section>

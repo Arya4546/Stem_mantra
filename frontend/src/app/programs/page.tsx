@@ -5,27 +5,8 @@ import Link from "next/link";
 import Image from "next/image";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-import {
-  FaRobot,
-  FaFlask,
-  FaBrain,
-  FaCheckCircle,
-} from "react-icons/fa";
-import {
-  GraduationCap,
-  Building2,
-  Globe,
-  Users,
-  ArrowRight,
-  Sparkles,
-  Cpu,
-  Wrench,
-  BookOpen,
-  Zap,
-  Award,
-  Target,
-  Lightbulb
-} from "lucide-react";
+import { FaRobot, FaFlask, FaBrain, FaCheckCircle, FaArrowRight } from "react-icons/fa";
+import { GraduationCap, Building2, Globe, Users, ArrowRight, Target, Lightbulb, Wrench, BookOpen, Zap } from "lucide-react";
 
 const programs = [
   {
@@ -35,8 +16,6 @@ const programs = [
     description:
       "Comprehensive end-to-end assistance in establishing and running Atal Tinkering Labs in schools as per NITI Aayog guidelines. Complete setup, teacher training, and year-long support for fostering innovation and creativity.",
     image: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=800&q=80",
-    color: "from-orange-500 to-orange-600",
-    bgColor: "bg-orange-50",
     features: [
       "Complete lab setup as per NITI Aayog guidelines",
       "Teacher training & certification programs",
@@ -47,6 +26,10 @@ const programs = [
     ],
     href: "/programs/atl-labs",
     icon: FaFlask,
+    accent: "border-l-blue-500",
+    iconBg: "bg-blue-50",
+    iconColor: "text-blue-600",
+    checkColor: "text-blue-500",
   },
   {
     id: "robotics-lab",
@@ -55,8 +38,6 @@ const programs = [
     description:
       "State-of-the-art robotics and AI labs with hands-on learning experiences. Build, program, and innovate with cutting-edge technology including Arduino, Raspberry Pi, and advanced robotics platforms.",
     image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&q=80",
-    color: "from-teal-500 to-teal-600",
-    bgColor: "bg-teal-50",
     features: [
       "Advanced robotics kits & platforms",
       "AI & Machine Learning modules",
@@ -67,6 +48,10 @@ const programs = [
     ],
     href: "/programs/robotics-lab",
     icon: FaRobot,
+    accent: "border-l-orange-500",
+    iconBg: "bg-orange-50",
+    iconColor: "text-orange-600",
+    checkColor: "text-orange-500",
   },
   {
     id: "stem-lab",
@@ -75,8 +60,6 @@ const programs = [
     description:
       "Holistic STEM education combining science, technology, engineering, and mathematics through project-based learning and real-world applications. Develop critical thinking and problem-solving skills.",
     image: "https://images.unsplash.com/photo-1567177662154-dfeb4c93b6ae?w=800&q=80",
-    color: "from-orange-500 to-teal-500",
-    bgColor: "bg-gradient-to-r from-orange-50 to-teal-50",
     features: [
       "Integrated STEM curriculum",
       "Hands-on experiments & projects",
@@ -87,14 +70,18 @@ const programs = [
     ],
     href: "/programs/stem-lab",
     icon: FaBrain,
+    accent: "border-l-teal-500",
+    iconBg: "bg-teal-50",
+    iconColor: "text-teal-600",
+    checkColor: "text-teal-500",
   },
 ];
 
 const stats = [
-  { value: "500+", label: "Schools Partnered", icon: Building2 },
-  { value: "50,000+", label: "Students Trained", icon: GraduationCap },
-  { value: "15+", label: "States Covered", icon: Globe },
-  { value: "200+", label: "Expert Trainers", icon: Users },
+  { value: "500+", label: "Schools Partnered", icon: Building2, color: "text-orange-500" },
+  { value: "50,000+", label: "Students Trained", icon: GraduationCap, color: "text-teal-500" },
+  { value: "15+", label: "States Covered", icon: Globe, color: "text-blue-500" },
+  { value: "200+", label: "Expert Trainers", icon: Users, color: "text-purple-500" },
 ];
 
 const processSteps = [
@@ -109,176 +96,103 @@ export default function ProgramsPage() {
   return (
     <>
       <Header />
-      <main className="min-h-screen bg-gradient-to-br from-orange-50/40 via-white to-teal-50/40">
-        {/* Hero Section */}
-        <section className="relative py-20 lg:py-28 overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-r from-orange-500 via-orange-600 to-teal-600" />
-          <div className="absolute inset-0 bg-[url('/images/grid-pattern.svg')] opacity-10" />
-          {/* Floating Elements */}
-          <motion.div
-            className="absolute top-20 left-10 w-72 h-72 bg-white/10 rounded-full blur-3xl animate-floatSlow"
-            animate={{ scale: [1, 1.1, 1], opacity: [0.3, 0.5, 0.3] }}
-            transition={{ duration: 5, repeat: Infinity }}
-          />
-          <motion.div
-            className="absolute bottom-20 right-10 w-96 h-96 bg-teal-400/20 rounded-full blur-3xl animate-float"
-            animate={{ scale: [1, 1.2, 1], opacity: [0.2, 0.4, 0.2] }}
-            transition={{ duration: 7, repeat: Infinity }}
-          />
-          {/* Floating Icons - subtle, everywhere */}
-          <motion.div
-            className="absolute top-32 left-[15%] text-white/20 hidden md:block"
-            animate={{ y: [0, -20, 0], rotate: [0, 10, 0] }}
-            transition={{ duration: 5, repeat: Infinity }}
-          >
-            <Cpu className="w-14 h-14" />
-          </motion.div>
-          <motion.div
-            className="absolute bottom-32 right-[20%] text-white/20 hidden md:block"
-            animate={{ y: [0, 20, 0], rotate: [0, -10, 0] }}
-            transition={{ duration: 6, repeat: Infinity }}
-          >
-            <FaRobot className="w-12 h-12" />
-          </motion.div>
-
-          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <main className="min-h-screen bg-white">
+        {/* Hero — Left aligned, white bg */}
+        <section className="pt-32 pb-10 px-4">
+          <div className="max-w-6xl mx-auto">
             <motion.div
-              className="text-center text-white"
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
+              transition={{ duration: 0.5 }}
             >
-              <motion.span
-                className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-sm font-medium mb-6"
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                transition={{ delay: 0.2, type: "spring" }}
-              >
-                <GraduationCap className="w-4 h-4" />
+              <span className="inline-block px-4 py-1.5 bg-orange-100 text-orange-600 rounded-full text-sm font-semibold mb-4">
                 NEP 2020 Aligned Programs
-              </motion.span>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+              </span>
+              <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
                 Our{" "}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-200 to-orange-200">
+                <span className="bg-gradient-to-r from-orange-500 to-teal-500 bg-clip-text text-transparent">
                   Programs
                 </span>
               </h1>
-              <p className="text-lg md:text-xl text-orange-100 max-w-3xl mx-auto leading-relaxed">
+              <p className="text-lg text-gray-600 max-w-3xl leading-relaxed">
                 Transforming education through innovative STEM programs that prepare
-                students for the future. From ATL Labs to advanced Robotics & AI, we provide
-                comprehensive solutions for schools across India.
+                students for the future. From ATL Labs to advanced Robotics & AI.
               </p>
+            </motion.div>
+
+            {/* Stats — Inline strip */}
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2, duration: 0.5 }}
+              className="flex flex-wrap items-center gap-8 mt-8 pt-6 border-t border-gray-100"
+            >
+              {stats.map((stat) => (
+                <div key={stat.label} className="flex items-center gap-3">
+                  <stat.icon className={`w-5 h-5 ${stat.color}`} />
+                  <div>
+                    <div className={`text-2xl font-bold ${stat.color}`}>{stat.value}</div>
+                    <div className="text-xs text-gray-500">{stat.label}</div>
+                  </div>
+                </div>
+              ))}
             </motion.div>
           </div>
         </section>
 
-        {/* Stats Section */}
-        <section className="relative -mt-10 z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            className="bg-white rounded-2xl shadow-xl p-6 grid grid-cols-2 md:grid-cols-4 gap-6"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
-          >
-            {stats.map((stat, index) => (
-              <motion.div
-                key={index}
-                className="text-center"
-                whileHover={{ scale: 1.05 }}
-              >
-                <div className="w-12 h-12 mx-auto mb-2 rounded-xl bg-gradient-to-br from-orange-500 to-teal-500 flex items-center justify-center">
-                  <stat.icon className="w-6 h-6 text-white" />
-                </div>
-                <p className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-600 to-teal-600">
-                  {stat.value}
-                </p>
-                <p className="text-sm text-slate-600 mt-1">{stat.label}</p>
-              </motion.div>
-            ))}
-          </motion.div>
-        </section>
-
-        {/* Programs Grid */}
-        <section className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            className="text-center mb-16"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <span className="inline-flex items-center gap-2 px-4 py-2 bg-orange-100 rounded-full text-sm font-semibold text-orange-700 mb-4">
-              <Sparkles className="w-4 h-4" />
-              Choose Your Program
-            </span>
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
-              Comprehensive STEM <span className="text-orange-500">Solutions</span>
-            </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-              Select from our range of comprehensive STEM education programs
-              designed to foster innovation and creativity.
-            </p>
-          </motion.div>
-
-          <div className="space-y-20">
+        {/* Programs — Alternating layout with accent borders */}
+        <section className="py-12 px-4">
+          <div className="max-w-6xl mx-auto space-y-16">
             {programs.map((program, index) => (
               <motion.div
                 key={program.id}
                 className={`flex flex-col ${index % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"
-                  } gap-8 lg:gap-16 items-center`}
-                initial={{ opacity: 0, y: 30 }}
+                  } gap-8 lg:gap-12 items-center`}
+                initial={{ opacity: 0, y: 25 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
               >
                 {/* Image */}
                 <div className="flex-1 w-full">
-                  <motion.div
-                    className="relative aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl group"
-                    whileHover={{ scale: 1.02 }}
-                    transition={{ duration: 0.3 }}
-                  >
+                  <div className="relative aspect-[4/3] rounded-xl overflow-hidden">
                     <Image
                       src={program.image}
                       alt={program.title}
                       fill
-                      className="object-cover group-hover:scale-110 transition-transform duration-500"
+                      className="object-cover"
                     />
-                    <div className={`absolute inset-0 bg-gradient-to-br ${program.color} opacity-30`} />
-                    <div className="absolute top-6 left-6">
-                      <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${program.color} flex items-center justify-center text-white shadow-lg`}>
-                        <program.icon className="w-7 h-7" />
-                      </div>
-                    </div>
-                  </motion.div>
+                  </div>
                 </div>
 
                 {/* Content */}
                 <div className="flex-1">
-                  <span className={`inline-block text-sm font-medium px-3 py-1 rounded-full mb-3 ${program.bgColor} ${index === 0 ? 'text-orange-700' : index === 1 ? 'text-teal-700' : 'text-orange-700'}`}>
-                    {program.subtitle}
-                  </span>
-                  <h3 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
-                    {program.title}
-                  </h3>
-                  <p className="text-lg text-slate-600 leading-relaxed mb-6">
-                    {program.description}
-                  </p>
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className={`w-10 h-10 ${program.iconBg} rounded-lg flex items-center justify-center`}>
+                      <program.icon className={`w-5 h-5 ${program.iconColor}`} />
+                    </div>
+                    <div>
+                      <span className="text-xs text-gray-500 font-medium">{program.subtitle}</span>
+                      <h3 className="text-2xl font-bold text-gray-900">{program.title}</h3>
+                    </div>
+                  </div>
+                  <p className="text-gray-600 leading-relaxed mb-5">{program.description}</p>
 
-                  <ul className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-8">
+                  <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-6">
                     {program.features.map((feature, idx) => (
-                      <li key={idx} className="flex items-center gap-3">
-                        <FaCheckCircle className={`w-5 h-5 flex-shrink-0 ${index === 0 ? 'text-orange-500' : index === 1 ? 'text-teal-500' : 'text-orange-500'}`} />
-                        <span className="text-slate-700 text-sm">{feature}</span>
+                      <li key={idx} className="flex items-center gap-2 text-sm text-gray-700">
+                        <FaCheckCircle className={`w-4 h-4 flex-shrink-0 ${program.checkColor}`} />
+                        {feature}
                       </li>
                     ))}
                   </ul>
 
                   <Link
                     href={program.href}
-                    className={`inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r ${program.color} text-white rounded-xl font-semibold hover:shadow-lg hover:scale-105 transition-all duration-300`}
+                    className={`inline-flex items-center gap-2 ${program.iconColor} font-semibold text-sm hover:underline group`}
                   >
                     Learn More
-                    <ArrowRight className="w-4 h-4" />
+                    <FaArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
                   </Link>
                 </div>
               </motion.div>
@@ -286,92 +200,72 @@ export default function ProgramsPage() {
           </div>
         </section>
 
-        {/* Process Section */}
-        <section className="py-20 bg-gradient-to-br from-gray-50 to-orange-50/30">
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.div
-              className="text-center mb-16"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-            >
-              <span className="inline-flex items-center gap-2 px-4 py-2 bg-teal-100 rounded-full text-sm font-semibold text-teal-700 mb-4">
-                <Zap className="w-4 h-4" />
+        {/* Process — Horizontal step bar */}
+        <section className="py-12 px-4 bg-gray-50">
+          <div className="max-w-6xl mx-auto">
+            <div className="mb-10">
+              <span className="inline-block px-4 py-1.5 bg-teal-100 text-teal-600 rounded-full text-sm font-semibold mb-3">
                 Our Process
               </span>
-              <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+              <h2 className="text-3xl font-bold text-gray-900">
                 How We <span className="text-teal-500">Work</span>
               </h2>
-              <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-                Our streamlined process ensures smooth implementation from consultation to ongoing support
-              </p>
-            </motion.div>
+            </div>
 
-            <div className="grid md:grid-cols-5 gap-6">
-              {processSteps.map((item, index) => (
-                <motion.div
-                  key={index}
-                  className="relative text-center"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                >
-                  {index < processSteps.length - 1 && (
-                    <div className="hidden md:block absolute top-8 left-1/2 w-full h-0.5 bg-gradient-to-r from-orange-300 to-teal-300" />
-                  )}
+            {/* Steps as horizontal bar on desktop, stacked on mobile */}
+            <div className="relative">
+              {/* Connecting line */}
+              <div className="hidden md:block absolute top-6 left-0 right-0 h-px bg-gray-300" />
+              <div className="grid grid-cols-2 md:grid-cols-5 gap-6">
+                {processSteps.map((item, index) => (
                   <motion.div
-                    className={`relative w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br ${index % 2 === 0 ? 'from-orange-500 to-orange-600' : 'from-teal-500 to-teal-600'} flex items-center justify-center shadow-lg`}
-                    whileHover={{ scale: 1.1 }}
+                    key={index}
+                    className="relative text-center"
+                    initial={{ opacity: 0, y: 15 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.08 }}
                   >
-                    <item.icon className="w-7 h-7 text-white" />
+                    <div className="w-12 h-12 mx-auto mb-3 rounded-full bg-white border-2 border-gray-200 flex items-center justify-center relative z-10">
+                      <span className="text-sm font-bold text-gray-900">{item.step}</span>
+                    </div>
+                    <h3 className="font-bold text-gray-900 text-sm mb-1">{item.title}</h3>
+                    <p className="text-xs text-gray-500">{item.desc}</p>
                   </motion.div>
-                  <span className="text-xs font-bold text-gray-400 mb-1 block">{item.step}</span>
-                  <h3 className="font-bold text-gray-900 mb-1">{item.title}</h3>
-                  <p className="text-sm text-gray-600">{item.desc}</p>
-                </motion.div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
         </section>
 
-        {/* CTA Section */}
-        <section className="py-20 bg-gradient-to-r from-orange-500 via-orange-600 to-teal-600 relative overflow-hidden">
-          {/* Background Elements */}
-          <div className="absolute inset-0 opacity-10">
-            <div className="absolute top-10 left-10 w-40 h-40 border-2 border-white rounded-full"></div>
-            <div className="absolute bottom-10 right-10 w-60 h-60 border-2 border-white rounded-full"></div>
-          </div>
-
-          <motion.div
-            className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-              Ready to Transform Your School?
-            </h2>
-            <p className="text-lg text-orange-100 mb-8 max-w-2xl mx-auto">
-              Join hundreds of schools that have already partnered with STEMmantra
-              to bring world-class STEM education to their students.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                href="/contact"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-orange-600 rounded-xl font-semibold hover:shadow-lg hover:scale-105 transition-all duration-300"
-              >
-                Get Started Today
-                <ArrowRight className="w-4 h-4" />
-              </Link>
-              <Link
-                href="/about"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white/10 text-white border border-white/30 rounded-xl font-semibold hover:bg-white/20 transition-all duration-300"
-              >
-                Learn About Us
-              </Link>
+        {/* CTA — Contained card */}
+        <section className="py-12 px-4">
+          <div className="max-w-4xl mx-auto">
+            <div className="bg-gray-900 rounded-2xl p-8 md:p-10 text-center">
+              <h2 className="text-3xl font-bold text-white mb-3">
+                Ready to Transform <span className="text-orange-400">Your School?</span>
+              </h2>
+              <p className="text-gray-300 mb-6 max-w-xl mx-auto">
+                Join hundreds of schools that have already partnered with STEMmantra
+                for world-class STEM education.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center justify-center gap-2 px-8 py-3 bg-orange-500 text-white rounded-xl font-semibold hover:bg-orange-600 transition-colors"
+                >
+                  Get Started Today
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+                <Link
+                  href="/about"
+                  className="inline-flex items-center justify-center gap-2 px-8 py-3 border border-white/20 text-white rounded-xl font-semibold hover:bg-white/10 transition-colors"
+                >
+                  Learn About Us
+                </Link>
+              </div>
             </div>
-          </motion.div>
+          </div>
         </section>
       </main>
       <Footer />

@@ -4,7 +4,6 @@ import { useRef } from "react";
 import Link from "next/link";
 import { motion, useInView } from "framer-motion";
 import { FaCheckCircle, FaArrowRight, FaRobot, FaMicrochip, FaFlask } from "react-icons/fa";
-import SectionFloatingIcons from "@/components/animations/SectionFloatingIcons";
 
 const programs = [
 	{
@@ -20,9 +19,8 @@ const programs = [
 			"Curriculum Development",
 			"Ongoing Support",
 		],
-		gradient: "from-blue-500 to-indigo-600",
-		bgGradient: "from-blue-50 to-indigo-50",
-		iconBg: "bg-blue-100",
+		accentColor: "border-l-blue-500",
+		iconBg: "bg-blue-50",
 		iconColor: "text-blue-600",
 		href: "/programs/atl-labs",
 		stats: { schools: "200+", students: "25,000+" },
@@ -40,9 +38,8 @@ const programs = [
 			"Competition Prep",
 			"Certification Programs",
 		],
-		gradient: "from-orange-500 to-red-500",
-		bgGradient: "from-orange-50 to-red-50",
-		iconBg: "bg-orange-100",
+		accentColor: "border-l-orange-500",
+		iconBg: "bg-orange-50",
 		iconColor: "text-orange-600",
 		href: "/programs/robotics-lab",
 		stats: { schools: "150+", students: "15,000+" },
@@ -60,9 +57,8 @@ const programs = [
 			"Coding & Programming",
 			"Project Workshops",
 		],
-		gradient: "from-teal-500 to-cyan-600",
-		bgGradient: "from-teal-50 to-cyan-50",
-		iconBg: "bg-teal-100",
+		accentColor: "border-l-teal-500",
+		iconBg: "bg-teal-50",
 		iconColor: "text-teal-600",
 		href: "/programs/stem-lab",
 		stats: { schools: "100+", students: "10,000+" },
@@ -76,141 +72,115 @@ export default function ProgramsSection() {
 	return (
 		<section
 			ref={ref}
-			className="relative py-24 lg:py-32 bg-gradient-to-b from-white to-gray-50 overflow-hidden"
+			className="relative py-16 lg:py-20 bg-gray-50 overflow-hidden"
 		>
-			{/* Background Pattern */}
-			<div className="absolute inset-0 opacity-5">
-				<div
-					className="absolute inset-0"
-					style={{
-						backgroundImage: `radial-gradient(circle at 25% 25%, #f97316 1px, transparent 1px),
-                              radial-gradient(circle at 75% 75%, #0891b2 1px, transparent 1px)`,
-						backgroundSize: "40px 40px",
-					}}
-				/>
-			</div>
-			<SectionFloatingIcons count={2} zIndex={1} />
-
 			<div className="container mx-auto px-4 relative z-10">
 				{/* Section Header */}
 				<motion.div
-					initial={{ opacity: 0, y: 30 }}
+					initial={{ opacity: 0, y: 20 }}
 					animate={isInView ? { opacity: 1, y: 0 } : {}}
-					transition={{ duration: 0.6 }}
-					className="text-center max-w-3xl mx-auto mb-16"
+					transition={{ duration: 0.5 }}
+					className="text-center max-w-3xl mx-auto mb-14"
 				>
 					<span className="inline-block px-4 py-1.5 bg-teal-100 text-teal-600 rounded-full text-sm font-semibold mb-4">
 						Our Programs
 					</span>
-					<h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
+					<h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
 						Comprehensive{" "}
 						<span className="bg-gradient-to-r from-orange-500 to-teal-500 bg-clip-text text-transparent">
 							STEM Solutions
 						</span>
 					</h2>
-					<p className="text-lg md:text-xl text-gray-600">
+					<p className="text-lg text-gray-600">
 						From concept to innovation, we provide end-to-end STEM education
 						solutions tailored for schools across India.
 					</p>
 				</motion.div>
 
-				{/* Program Cards */}
-				<div className="grid lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-					{programs.map((program, index) => (
-						<motion.div
-							key={program.id}
-							initial={{ opacity: 0, y: 50 }}
-							animate={isInView ? { opacity: 1, y: 0 } : {}}
-							transition={{ duration: 0.6, delay: index * 0.2 }}
-							className="group relative"
-						>
-							{/* Card Glow Effect */}
-							<div
-								className={`absolute -inset-1 bg-gradient-to-r ${program.gradient} rounded-[2rem] opacity-0 group-hover:opacity-30 blur-xl transition-opacity duration-500`}
-							/>
-
-							<div className="relative bg-white rounded-3xl overflow-hidden border border-gray-100 hover:border-orange-200 shadow-lg hover:shadow-2xl transition-all duration-500 h-full flex flex-col">
-								{/* Top Gradient Bar */}
-								<div className={`h-2 bg-gradient-to-r ${program.gradient}`} />
-
-								{/* Card Content */}
-								<div className="p-8 flex-1 flex flex-col">
-									{/* Icon and Badge */}
-									<div className="flex items-start justify-between mb-6">
-										<div
-											className={`w-16 h-16 ${program.iconBg} rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}
-										>
-											<program.icon
-												className={`w-8 h-8 ${program.iconColor}`}
-											/>
-										</div>
-										<div className="flex gap-2">
-											<span className="px-3 py-1 bg-green-100 text-green-700 text-xs font-semibold rounded-full">
-												{program.stats.schools} Schools
+				{/* Featured card + sidebar stack layout */}
+				<div className="grid lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+					{/* Featured Card — First program (2/3 width) */}
+					<motion.div
+						initial={{ opacity: 0, y: 30 }}
+						animate={isInView ? { opacity: 1, y: 0 } : {}}
+						transition={{ duration: 0.5, delay: 0.1 }}
+						className="lg:col-span-2 group"
+					>
+						<div className={`bg-white rounded-2xl overflow-hidden border border-gray-100 border-l-4 ${programs[0].accentColor} shadow-sm hover:shadow-lg transition-all h-full`}>
+							<div className="p-8">
+								<div className="flex items-start gap-4 mb-6">
+									<div className={`w-14 h-14 ${programs[0].iconBg} rounded-xl flex items-center justify-center`}>
+										{(() => { const Icon = programs[0].icon; return <Icon className={`w-7 h-7 ${programs[0].iconColor}`} />; })()}
+									</div>
+									<div>
+										<div className="flex items-center gap-3 mb-1">
+											<h3 className="text-2xl font-bold text-gray-900">{programs[0].title}</h3>
+											<span className="px-2.5 py-0.5 bg-green-100 text-green-700 text-xs font-semibold rounded-full">
+												{programs[0].stats.schools} Schools
 											</span>
 										</div>
+										<p className="text-sm text-gray-500">{programs[0].subtitle}</p>
 									</div>
+								</div>
+								<p className="text-gray-600 mb-6">{programs[0].description}</p>
+								<ul className="grid sm:grid-cols-2 gap-3 mb-6">
+									{programs[0].features.map((feature, idx) => (
+										<li key={idx} className="flex items-center gap-2 text-sm text-gray-700">
+											<FaCheckCircle className="w-4 h-4 text-blue-500 flex-shrink-0" />
+											{feature}
+										</li>
+									))}
+								</ul>
+								<Link
+									href={programs[0].href}
+									className="inline-flex items-center gap-2 text-blue-600 font-semibold text-sm hover:text-blue-700 transition-colors group/btn"
+								>
+									Learn More
+									<FaArrowRight className="w-3 h-3 group-hover/btn:translate-x-1 transition-transform" />
+								</Link>
+							</div>
+						</div>
+					</motion.div>
 
-									{/* Title */}
-									<div className="mb-4">
-										<h3 className="text-2xl font-bold text-gray-900 group-hover:text-orange-600 transition-colors mb-1">
-											{program.title}
-										</h3>
-										<p className="text-sm text-gray-500">
-											{program.subtitle}
-										</p>
+					{/* Sidebar stack — Remaining programs (1/3 width) */}
+					<div className="space-y-6">
+						{programs.slice(1).map((program, index) => (
+							<motion.div
+								key={program.id}
+								initial={{ opacity: 0, x: 20 }}
+								animate={isInView ? { opacity: 1, x: 0 } : {}}
+								transition={{ duration: 0.4, delay: 0.2 + index * 0.15 }}
+							>
+								<div className={`bg-white rounded-xl p-5 border border-gray-100 border-l-4 ${program.accentColor} shadow-sm hover:shadow-md transition-all`}>
+									<div className="flex items-start gap-3 mb-3">
+										<div className={`w-10 h-10 ${program.iconBg} rounded-lg flex items-center justify-center flex-shrink-0`}>
+											<program.icon className={`w-5 h-5 ${program.iconColor}`} />
+										</div>
+										<div>
+											<h3 className="font-bold text-gray-900 text-sm">{program.title}</h3>
+											<p className="text-xs text-gray-500">{program.subtitle} • {program.stats.schools} Schools</p>
+										</div>
 									</div>
-
-									{/* Description */}
-									<p className="text-gray-600 mb-6 flex-grow">
-										{program.description}
-									</p>
-
-									{/* Features List */}
-									<ul className="space-y-3 mb-8">
-										{program.features.map((feature, idx) => (
-											<motion.li
-												key={idx}
-												initial={{ opacity: 0, x: -10 }}
-												animate={isInView ? { opacity: 1, x: 0 } : {}}
-												transition={{
-													duration: 0.3,
-													delay: index * 0.2 + idx * 0.1,
-												}}
-												className="flex items-center gap-3"
-											>
-												<div
-													className={`w-6 h-6 rounded-full bg-gradient-to-r ${program.gradient} flex items-center justify-center`}
-												>
-													<FaCheckCircle className="w-3 h-3 text-white" />
-												</div>
-												<span className="text-gray-700 text-sm">
-													{feature}
-												</span>
-											</motion.li>
-										))}
-									</ul>
-
-									{/* CTA Button */}
+									<p className="text-sm text-gray-600 mb-3">{program.description}</p>
 									<Link
 										href={program.href}
-										className={`group/btn inline-flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r ${program.gradient} text-white rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.02]`}
+										className="inline-flex items-center gap-1 text-orange-600 font-semibold text-xs hover:text-orange-700 transition-colors group/btn"
 									>
 										Learn More
-										<FaArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+										<FaArrowRight className="w-3 h-3 group-hover/btn:translate-x-1 transition-transform" />
 									</Link>
 								</div>
-							</div>
-						</motion.div>
-					))}
+							</motion.div>
+						))}
+					</div>
 				</div>
 
 				{/* Bottom CTA */}
 				<motion.div
-					initial={{ opacity: 0, y: 30 }}
+					initial={{ opacity: 0, y: 20 }}
 					animate={isInView ? { opacity: 1, y: 0 } : {}}
-					transition={{ duration: 0.6, delay: 0.8 }}
-					className="text-center mt-16"
+					transition={{ duration: 0.5, delay: 0.5 }}
+					className="text-center mt-12"
 				>
 					<Link
 						href="/programs"
