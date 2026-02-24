@@ -131,7 +131,7 @@ const colorClasses = [
 ];
 
 interface FloatingAnimationsProps {
-  variant?: "hero" | "section" | "full";
+  variant?: "hero" | "section" | "full" | "default" | "stem" | "services" | "about";
   density?: "low" | "medium" | "high";
   className?: string;
 }

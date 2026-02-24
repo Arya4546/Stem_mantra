@@ -3,185 +3,131 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import Link from "next/link";
-import {
-    FaRobot,
-    FaMicrochip,
-    FaLaptopCode,
-    FaPrint,
-    FaCheckCircle,
-    FaArrowRight,
-} from "react-icons/fa";
+import { FaArrowRight, FaCheckCircle } from "react-icons/fa";
+import FloatingAnimations from "@/components/animations/FloatingAnimations";
 
-const labTypes = [
+const corePillars = [
     {
-        icon: FaRobot,
-        title: "Robotics Labs",
-        description: "Complete robotics laboratory setup with industrial-grade robots, programming interfaces, and hands-on training modules for students of all ages.",
-        features: ["Arduino & Raspberry Pi", "Industrial Robots", "Sensor Integration", "Programming Courses"],
-        accentColor: "border-l-orange-500",
-        iconBg: "bg-orange-50",
-        iconColor: "text-orange-600",
-        size: "large",
+        title: "National Education Policy (NEP 2020) Alignment",
+        description: "Every curriculum module, from IoT to drone technology, is strictly designed around the NEP 2020 framework. We ensure that your school not only meets government standards but excels in delivering 21st-century skills such as critical thinking, algorithmic reasoning, and collaborative problem-solving."
     },
     {
-        icon: FaMicrochip,
-        title: "AI & ML Labs",
-        description: "State-of-the-art artificial intelligence and machine learning labs equipped with GPU workstations, deep learning frameworks, and real-world project modules.",
-        features: ["TensorFlow & PyTorch", "Computer Vision", "NLP Projects", "GPU Computing"],
-        accentColor: "border-l-teal-500",
-        iconBg: "bg-teal-50",
-        iconColor: "text-teal-600",
-        size: "large",
+        title: "Comprehensive Turnkey Implementation",
+        description: "We eliminate the friction of adopting new technology. STEMmantra handles the entirety of your lab setup—procuring industrial-grade equipment, installing software infrastructure, and providing continuous maintenance so your educators can focus on what they do best: teaching."
     },
     {
-        icon: FaLaptopCode,
-        title: "ATL Labs",
-        description: "Atal Tinkering Labs designed to foster innovation and entrepreneurship among students with 3D printers, IoT devices, and maker tools.",
-        features: ["3D Printing", "IoT Devices", "Electronics Kits", "Innovation Hub"],
-        accentColor: "border-l-blue-500",
-        iconBg: "bg-blue-50",
-        iconColor: "text-blue-600",
-        size: "small",
+        title: "Expert Educator Training and Certification",
+        description: "Technology is only as effective as the educators wielding it. We conduct intensive, multi-modal training programs for your existing staff, supplemented by our own certified STEM trainers. Our goal is to build long-term institutional capacity rather than short-term reliance."
     },
     {
-        icon: FaPrint,
-        title: "STEM Labs",
-        description: "Integrated Science, Technology, Engineering and Mathematics laboratories promoting experiential learning through hands-on experiments.",
-        features: ["Science Kits", "Math Manipulatives", "Engineering Models", "Tech Tools"],
-        accentColor: "border-l-purple-500",
-        iconBg: "bg-purple-50",
-        iconColor: "text-purple-600",
-        size: "small",
-    },
-];
-
-const benefits = [
-    "NEP 2020 aligned curriculum designed by IIT/NIT experts",
-    "Complete turnkey solution - equipment, training, and maintenance",
-    "Certified trainers with 5+ years of teaching experience",
-    "Continuous assessment and progress tracking dashboard",
-    "Competition preparation for national and international olympiads",
-    "Lifetime curriculum updates and technical support",
+        title: "National STEM Competition Readiness",
+        description: "We actively prepare your student body for prestigious national and international robotics, AI, and coding olympiads. Our advanced competitive curriculum ensures your institution stands out as a beacon of academic and technical excellence."
+    }
 ];
 
 export default function WhyChooseUsSection() {
     const ref = useRef(null);
-    const isInView = useInView(ref, { once: true, amount: 0.2 });
+    const isInView = useInView(ref, { once: true, amount: 0.1 });
 
     return (
-        <section ref={ref} className="relative py-16 lg:py-20 bg-white overflow-hidden">
-            <div className="container mx-auto px-4 relative z-10">
-                {/* Section Header — Left aligned */}
+        <section ref={ref} className="relative py-20 lg:py-28 bg-gray-50 overflow-hidden border-t border-gray-100">
+            {/* Keeping floating animations as requested */}
+            <FloatingAnimations variant="about" density="medium" />
+
+            <div className="container mx-auto px-4 relative z-10 max-w-7xl">
+
+                {/* Section Header */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={isInView ? { opacity: 1, y: 0 } : {}}
                     transition={{ duration: 0.5 }}
-                    className="max-w-4xl mb-12"
+                    className="max-w-4xl mb-16"
                 >
-                    <span className="inline-block px-4 py-1.5 bg-orange-100 text-orange-600 rounded-full text-sm font-semibold mb-4">
-                        India&apos;s Most Trusted STEM Partner
-                    </span>
-                    <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                        Why Schools Choose{" "}
-                        <span className="bg-gradient-to-r from-orange-500 to-teal-500 bg-clip-text text-transparent">
-                            STEMmantra
-                        </span>
+                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange-100 border border-orange-200 mb-6">
+                        <span className="w-2 h-2 rounded-full bg-orange-500 animate-pulse"></span>
+                        <span className="text-sm font-bold text-orange-700 uppercase tracking-wider">India&apos;s Academic Partner</span>
+                    </div>
+
+                    <h2 className="text-4xl md:text-5xl lg:text-5xl font-extrabold text-gray-900 mb-6 leading-tight">
+                        Why Top Indian Schools Choose <br className="hidden md:block" />
+                        <span className="text-orange-500">STEMmantra</span>
                     </h2>
-                    <p className="text-lg text-gray-600 leading-relaxed">
-                        <strong>STEMmantra</strong> is India&apos;s leading provider of robotics, artificial intelligence,
-                        and STEM education solutions for schools across the country. With over <strong>10+ years of leadership experience</strong>
-                        {" "}and partnerships with <strong>500+ schools</strong> in <strong>15+ states</strong>.
+
+                    <p className="text-xl text-gray-600 leading-relaxed font-medium">
+                        For over a decade, STEMmantra has been the trusted catalyst for educational transformation.
+                        We don&apos;t just sell equipment; we partner with forward-thinking institutions to architect
+                        comprehensive, future-proof ecosystems in <strong className="text-gray-900">Robotics, Artificial Intelligence, and Applied STEM</strong>.
                     </p>
                 </motion.div>
 
-                {/* Bento Grid — 2 large + 2 small */}
-                <div className="grid md:grid-cols-2 gap-5 mb-12">
-                    {labTypes.map((lab, index) => (
-                        <motion.div
-                            key={lab.title}
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={isInView ? { opacity: 1, y: 0 } : {}}
-                            transition={{ duration: 0.4, delay: index * 0.1 }}
-                            className={`border-l-4 ${lab.accentColor} bg-gray-50 rounded-xl p-6 hover:shadow-md transition-shadow`}
-                        >
-                            <div className="flex items-start gap-4">
-                                <div className={`w-12 h-12 ${lab.iconBg} rounded-lg flex items-center justify-center flex-shrink-0`}>
-                                    <lab.icon className={`w-6 h-6 ${lab.iconColor}`} />
-                                </div>
-                                <div className="flex-1 min-w-0">
-                                    <h3 className="text-lg font-bold text-gray-900 mb-2">{lab.title}</h3>
-                                    <p className="text-sm text-gray-600 mb-3">{lab.description}</p>
-                                    <div className="flex flex-wrap gap-2">
-                                        {lab.features.map((feature) => (
-                                            <span key={feature} className="px-2.5 py-1 bg-white text-gray-600 rounded-md text-xs border border-gray-200">
-                                                {feature}
-                                            </span>
-                                        ))}
-                                    </div>
-                                </div>
-                            </div>
-                        </motion.div>
-                    ))}
-                </div>
+                {/* Content Layout - Split 50/50 without cards */}
+                <div className="grid lg:grid-cols-2 gap-16 items-start">
 
-                {/* Benefits — Side-by-side strip */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={isInView ? { opacity: 1, y: 0 } : {}}
-                    transition={{ duration: 0.5, delay: 0.4 }}
-                    className="grid lg:grid-cols-5 gap-8 items-start bg-gray-50 rounded-2xl p-8"
-                >
-                    <div className="lg:col-span-2">
-                        <h3 className="text-xl font-bold text-gray-900 mb-3">
-                            Complete STEM Education Ecosystem
-                        </h3>
-                        <p className="text-gray-600 text-sm mb-6 leading-relaxed">
-                            We don&apos;t just set up labs – we build complete STEM education ecosystems with continuous support.
-                        </p>
-                        <Link
-                            href="/contact"
-                            className="inline-flex items-center gap-2 px-6 py-3 bg-orange-500 text-white rounded-xl font-semibold text-sm hover:bg-orange-600 transition-colors"
-                        >
-                            Get Started Today
-                            <FaArrowRight className="w-3 h-3" />
-                        </Link>
-                    </div>
-                    <div className="lg:col-span-3 grid sm:grid-cols-2 gap-3">
-                        {benefits.map((benefit, index) => (
+                    {/* Left side: The Pillars (Text heavy) */}
+                    <div className="space-y-12">
+                        {corePillars.map((pillar, index) => (
                             <motion.div
                                 key={index}
-                                initial={{ opacity: 0, x: 10 }}
+                                initial={{ opacity: 0, x: -20 }}
                                 animate={isInView ? { opacity: 1, x: 0 } : {}}
-                                transition={{ duration: 0.3, delay: 0.5 + index * 0.05 }}
-                                className="flex items-start gap-2"
+                                transition={{ duration: 0.5, delay: index * 0.15 }}
+                                className="relative pl-6"
                             >
-                                <FaCheckCircle className="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5" />
-                                <span className="text-sm text-gray-700">{benefit}</span>
+                                <div className="absolute left-0 top-1.5 bottom-0 w-1 bg-gradient-to-b from-orange-400 to-transparent rounded-full"></div>
+                                <h3 className="text-2xl font-bold text-gray-900 mb-3">{pillar.title}</h3>
+                                <p className="text-lg text-gray-600 leading-relaxed">
+                                    {pillar.description}
+                                </p>
                             </motion.div>
                         ))}
                     </div>
-                </motion.div>
 
-                {/* SEO Rich Text */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={isInView ? { opacity: 1, y: 0 } : {}}
-                    transition={{ duration: 0.5, delay: 0.6 }}
-                    className="mt-12 max-w-4xl"
-                >
-                    <div className="prose prose-gray max-w-none text-gray-600 text-sm leading-relaxed">
-                        <p>
-                            Our <strong>robotics education program</strong> covers everything from basic electronics
-                            and programming to advanced topics like computer vision, natural language processing,
-                            and autonomous systems. Students learn by building real projects.
-                        </p>
-                        <p>
-                            With our <strong>Atal Tinkering Lab setup services</strong>, we help schools establish
-                            innovation centers that comply with NITI Aayog guidelines. Our ATL labs come equipped
-                            with 3D printers, laser cutters, electronics workstations, and maker tools.
-                        </p>
-                    </div>
-                </motion.div>
+                    {/* Right side: SEO Text Block & CTA */}
+                    <motion.div
+                        initial={{ opacity: 0, x: 20 }}
+                        animate={isInView ? { opacity: 1, x: 0 } : {}}
+                        transition={{ duration: 0.6, delay: 0.4 }}
+                        className="bg-white p-8 md:p-12 lg:sticky lg:top-32 shadow-xl shadow-orange-900/5 rounded-3xl border border-orange-100/50"
+                    >
+                        <h3 className="text-3xl font-extrabold text-gray-900 mb-6">The STEMmantra Advantage</h3>
+
+                        <div className="prose prose-lg text-gray-600 mb-8 max-w-none">
+                            <p>
+                                Implementing an effectively functioning <strong>Atal Tinkering Lab (ATL)</strong> or
+                                dedicated <strong>Robotics and AI Laboratory</strong> requires specialized pedagogical expertise.
+                                Many schools struggle with underutilized equipment due to a lack of proper curriculum integration.
+                            </p>
+                            <p>
+                                STEMmantra solves this by providing proprietary, grade-level appropriate learning modules
+                                that span from foundational block-based coding to advanced machine learning utilizing Python.
+                                We guarantee that every piece of hardware—from simple Arduino boards to complex industrial drone kits—is
+                                actively utilized in student-led innovation projects.
+                            </p>
+                        </div>
+
+                        <ul className="space-y-4 mb-10">
+                            {[
+                                "Customized curriculum for grades 1 through 12",
+                                "Annual maintenance and hardware replacement contracts",
+                                "Direct mentorship from industry engineers",
+                                "Seamless academic integration with existing subjects"
+                            ].map((item, idx) => (
+                                <li key={idx} className="flex items-start gap-3">
+                                    <FaCheckCircle className="w-5 h-5 text-green-500 mt-1 flex-shrink-0" />
+                                    <span className="text-lg font-medium text-gray-800">{item}</span>
+                                </li>
+                            ))}
+                        </ul>
+
+                        <Link
+                            href="/about"
+                            className="group flex w-full items-center justify-center gap-3 px-8 py-5 bg-orange-600 text-white font-bold rounded-2xl hover:bg-orange-700 transition-all text-lg"
+                        >
+                            Read Our Success Stories <FaArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                        </Link>
+                    </motion.div>
+
+                </div>
             </div>
         </section>
     );

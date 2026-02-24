@@ -3,7 +3,7 @@
 import { useRef } from "react";
 import Link from "next/link";
 import { motion, useInView } from "framer-motion";
-import { FaArrowRight, FaPhone, FaEnvelope } from "react-icons/fa";
+import { FaArrowRight, FaPhone, FaBuilding, FaChalkboardTeacher, FaCheckCircle } from "react-icons/fa";
 import { SITE_CONFIG } from "@/lib/constants";
 
 export default function CTASection() {
@@ -11,79 +11,107 @@ export default function CTASection() {
   const isInView = useInView(ref, { once: true, amount: 0.3 });
 
   return (
-    <section ref={ref} className="py-16 lg:py-20 bg-white">
-      <div className="container mx-auto px-4">
-        {/* Contained card — not full-width gradient */}
+    <section ref={ref} className="py-0 bg-white">
+      {/* Heavy Split Level CTA instead of a weak single floating card */}
+      <div className="container mx-auto px-0 md:px-4">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5 }}
-          className="max-w-4xl mx-auto"
+          className="max-w-7xl mx-auto grid lg:grid-cols-2 shadow-2xl overflow-hidden rounded-none md:rounded-3xl"
         >
-          <div className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl p-8 md:p-12 relative overflow-hidden">
-            {/* Subtle geometric pattern */}
-            <div className="absolute top-0 right-0 w-64 h-64 opacity-5">
-              <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="100" cy="100" r="80" stroke="white" strokeWidth="1" />
-                <circle cx="100" cy="100" r="60" stroke="white" strokeWidth="1" />
-                <circle cx="100" cy="100" r="40" stroke="white" strokeWidth="1" />
-              </svg>
+
+          {/* Left Side: Heavy Text / Action */}
+          <div className="bg-orange-600 p-10 md:p-16 text-white flex flex-col justify-center">
+            <div className="inline-block px-4 py-1.5 bg-black/20 font-black tracking-widest uppercase text-sm mb-6 w-fit">
+              Institutional Partnership
             </div>
 
-            <div className="relative z-10">
-              {/* Content */}
-              <div className="text-center mb-8">
-                <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-                  Ready to Transform{" "}
-                  <span className="text-orange-400">Your School?</span>
-                </h2>
-                <p className="text-lg text-gray-300 max-w-xl mx-auto">
-                  Take the first step towards building future-ready innovators. Schedule a free demo today!
-                </p>
-              </div>
+            <h2 className="text-4xl md:text-5xl font-black mb-6 leading-tight">
+              Establish A World-Class <br className="hidden md:block" />
+              <span className="text-black bg-white px-2 mt-2 inline-block">STEM Laboratory</span>
+            </h2>
 
-              {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
-                <Link
-                  href="/contact"
-                  className="group flex items-center gap-2 px-8 py-4 bg-orange-500 text-white rounded-xl font-semibold hover:bg-orange-600 transition-colors shadow-lg shadow-orange-500/20"
-                >
-                  Schedule a Demo
-                  <FaArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </Link>
-                <a
-                  href={`tel:${SITE_CONFIG.contact.mobile}`}
-                  className="flex items-center gap-2 px-8 py-4 bg-white/10 text-white rounded-xl font-semibold border border-white/20 hover:bg-white/15 transition-colors"
-                >
-                  <FaPhone className="w-4 h-4" />
-                  Call Us Now
-                </a>
-              </div>
+            <p className="text-lg md:text-xl font-medium leading-relaxed mb-10 text-orange-50">
+              Join the 500+ forward-thinking K-12 institutions across India utilizing STEMmantra&apos;s robust
+              <strong> Robotics, AI, Coding, and Atal Tinkering Lab (ATL)</strong> pedagogical frameworks. Prepare your students for the intellectual demands of tomorrow.
+            </p>
 
-              {/* Compact contact info */}
-              <div className="flex flex-wrap items-center justify-center gap-6 text-sm text-gray-400">
-                <a href={`tel:${SITE_CONFIG.contact.mobile}`} className="flex items-center gap-2 hover:text-white transition-colors">
-                  <FaPhone className="w-3 h-3" />
-                  {SITE_CONFIG.contact.mobile}
-                </a>
-                <span className="hidden sm:block w-px h-4 bg-gray-600" />
-                <a href={`mailto:${SITE_CONFIG.contact.email}`} className="flex items-center gap-2 hover:text-white transition-colors">
-                  <FaEnvelope className="w-3 h-3" />
-                  {SITE_CONFIG.contact.email}
-                </a>
-              </div>
+            <div className="flex flex-col sm:flex-row gap-4 mb-10">
+              <Link
+                href="/contact"
+                className="group flex items-center justify-center gap-3 px-8 py-5 bg-black text-white rounded-none font-black hover:bg-gray-900 transition-colors shadow-xl"
+              >
+                Schedule Technical Consultation
+                <FaArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </Link>
+              <a
+                href={`tel:${SITE_CONFIG.contact.mobile}`}
+                className="flex items-center justify-center gap-3 px-8 py-5 bg-orange-700 text-white rounded-none font-bold border-2 border-orange-500 hover:bg-orange-800 transition-colors"
+              >
+                <FaPhone className="w-5 h-5" />
+                {SITE_CONFIG.contact.mobile}
+              </a>
+            </div>
 
-              {/* Trust tags */}
-              <div className="flex flex-wrap items-center justify-center gap-4 mt-6 text-xs text-gray-500">
-                {["Free Demo", "No Obligation", "Expert Consultation", "Response within 24 hrs"].map((tag) => (
-                  <span key={tag} className="flex items-center gap-1.5">
-                    <span className="w-1.5 h-1.5 bg-green-500 rounded-full" />
-                    {tag}
-                  </span>
-                ))}
+            <div className="grid grid-cols-2 gap-4 border-t border-orange-500/50 pt-8 mt-auto">
+              <div className="flex items-center gap-2 font-semibold">
+                <FaCheckCircle className="text-orange-300 w-5 h-5" /> NEP 2020 Aligned
               </div>
+              <div className="flex items-center gap-2 font-semibold">
+                <FaCheckCircle className="text-orange-300 w-5 h-5" /> Turnkey Infrastructure
+              </div>
+              <div className="flex items-center gap-2 font-semibold">
+                <FaCheckCircle className="text-orange-300 w-5 h-5" /> Expert Educator Training
+              </div>
+              <div className="flex items-center gap-2 font-semibold">
+                <FaCheckCircle className="text-orange-300 w-5 h-5" /> NITI Aayog Compliant
+              </div>
+            </div>
+
+          </div>
+
+          {/* Right Side: Informational Contact / Proof (No gradients) */}
+          <div className="bg-gray-900 p-10 md:p-16 text-white flex flex-col justify-center border-l-8 border-orange-500">
+            <h3 className="text-3xl font-extrabold mb-8 text-orange-500">Corporate Headquarters</h3>
+
+            <div className="space-y-8 mb-12">
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 bg-gray-800 flex items-center justify-center rounded-none flex-shrink-0">
+                  <FaBuilding className="text-gray-400 w-5 h-5" />
+                </div>
+                <div>
+                  <div className="font-bold text-lg text-white mb-1">Corporate Address</div>
+                  <div className="text-gray-400 leading-relaxed font-medium">
+                    {SITE_CONFIG.contact.address}
+                  </div>
+                </div>
+              </div>
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 bg-gray-800 flex items-center justify-center rounded-none flex-shrink-0">
+                  <FaChalkboardTeacher className="text-gray-400 w-5 h-5" />
+                </div>
+                <div>
+                  <div className="font-bold text-lg text-white mb-1">Curriculum Support</div>
+                  <div className="text-gray-400 leading-relaxed font-medium">
+                    {SITE_CONFIG.contact.email}
+                    <br />Support Hours: Mon-Sat, 9AM-6PM
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-gray-800 p-6 border-l-4 border-orange-500">
+              <div className="font-black text-xl mb-2">Request RFP Document</div>
+              <p className="text-sm font-medium text-gray-400 leading-relaxed mb-4">
+                Institutions requiring a comprehensive descriptive evaluation for large-scale multi-lab installations can request our official RFP documentation and technical specifications.
+              </p>
+              <Link href="/contact" className="text-orange-500 font-bold hover:text-orange-400 flex items-center gap-2 text-sm uppercase tracking-widest">
+                Submit Request <FaArrowRight className="w-3 h-3" />
+              </Link>
             </div>
           </div>
+
         </motion.div>
       </div>
     </section>

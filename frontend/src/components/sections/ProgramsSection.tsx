@@ -3,67 +3,8 @@
 import { useRef } from "react";
 import Link from "next/link";
 import { motion, useInView } from "framer-motion";
-import { FaCheckCircle, FaArrowRight, FaRobot, FaMicrochip, FaFlask } from "react-icons/fa";
-
-const programs = [
-	{
-		id: "atl-labs",
-		icon: FaFlask,
-		title: "ATL Labs",
-		subtitle: "Atal Tinkering Labs",
-		description:
-			"Complete end-to-end assistance in establishing and running Atal Tinkering Labs with cutting-edge equipment and support.",
-		features: [
-			"Lab Equipment Setup",
-			"Teacher Training",
-			"Curriculum Development",
-			"Ongoing Support",
-		],
-		accentColor: "border-l-blue-500",
-		iconBg: "bg-blue-50",
-		iconColor: "text-blue-600",
-		href: "/programs/atl-labs",
-		stats: { schools: "200+", students: "25,000+" },
-	},
-	{
-		id: "robotics-lab",
-		icon: FaRobot,
-		title: "Robotics & AI Labs",
-		subtitle: "Next-Gen Learning",
-		description:
-			"World-class robotics and AI lab setup with age-appropriate kits, project-based curriculum for grades 1-12.",
-		features: [
-			"Advanced Robotics Kits",
-			"AI/ML Modules",
-			"Competition Prep",
-			"Certification Programs",
-		],
-		accentColor: "border-l-orange-500",
-		iconBg: "bg-orange-50",
-		iconColor: "text-orange-600",
-		href: "/programs/robotics-lab",
-		stats: { schools: "150+", students: "15,000+" },
-	},
-	{
-		id: "stem-lab",
-		icon: FaMicrochip,
-		title: "STEM Innovation Labs",
-		subtitle: "Hands-On Science",
-		description:
-			"Complete STEM laboratory solutions with 3D printers, electronics kits, and comprehensive innovation curriculum.",
-		features: [
-			"3D Printing & Design",
-			"Electronics & Circuits",
-			"Coding & Programming",
-			"Project Workshops",
-		],
-		accentColor: "border-l-teal-500",
-		iconBg: "bg-teal-50",
-		iconColor: "text-teal-600",
-		href: "/programs/stem-lab",
-		stats: { schools: "100+", students: "10,000+" },
-	},
-];
+import { FaCheckCircle, FaArrowRight, FaGraduationCap } from "react-icons/fa";
+import FloatingAnimations from "@/components/animations/FloatingAnimations";
 
 export default function ProgramsSection() {
 	const ref = useRef(null);
@@ -72,124 +13,123 @@ export default function ProgramsSection() {
 	return (
 		<section
 			ref={ref}
-			className="relative py-16 lg:py-20 bg-gray-50 overflow-hidden"
+			className="relative py-20 lg:py-28 bg-white overflow-hidden border-t border-gray-100"
 		>
-			<div className="container mx-auto px-4 relative z-10">
+			<FloatingAnimations variant="services" density="low" />
+
+			<div className="container mx-auto px-4 relative z-10 max-w-6xl">
 				{/* Section Header */}
 				<motion.div
 					initial={{ opacity: 0, y: 20 }}
 					animate={isInView ? { opacity: 1, y: 0 } : {}}
 					transition={{ duration: 0.5 }}
-					className="text-center max-w-3xl mx-auto mb-14"
+					className="text-center md:text-left mb-16"
 				>
-					<span className="inline-block px-4 py-1.5 bg-teal-100 text-teal-600 rounded-full text-sm font-semibold mb-4">
-						Our Programs
+					<span className="inline-block px-5 py-2 bg-blue-50 text-blue-700 rounded-full text-sm font-black uppercase tracking-widest mb-6 border border-blue-100 shadow-sm">
+						Curriculum Offerings
 					</span>
-					<h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-						Comprehensive{" "}
-						<span className="bg-gradient-to-r from-orange-500 to-teal-500 bg-clip-text text-transparent">
-							STEM Solutions
-						</span>
+					<h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-6 leading-tight">
+						Comprehensive <span className="text-orange-500">K-12 Educational Programs</span>
 					</h2>
-					<p className="text-lg text-gray-600">
-						From concept to innovation, we provide end-to-end STEM education
-						solutions tailored for schools across India.
+					<p className="text-xl text-gray-600 max-w-3xl leading-relaxed">
+						At STEMmantra, we deploy meticulously structured learning pathways that evolve with the student.
+						Our programs range from primary level kinetic learning to advanced senior secondary courses in artificial neural networks.
 					</p>
 				</motion.div>
 
-				{/* Featured card + sidebar stack layout */}
-				<div className="grid lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-					{/* Featured Card — First program (2/3 width) */}
-					<motion.div
-						initial={{ opacity: 0, y: 30 }}
-						animate={isInView ? { opacity: 1, y: 0 } : {}}
-						transition={{ duration: 0.5, delay: 0.1 }}
-						className="lg:col-span-2 group"
-					>
-						<div className={`bg-white rounded-2xl overflow-hidden border border-gray-100 border-l-4 ${programs[0].accentColor} shadow-sm hover:shadow-lg transition-all h-full`}>
-							<div className="p-8">
-								<div className="flex items-start gap-4 mb-6">
-									<div className={`w-14 h-14 ${programs[0].iconBg} rounded-xl flex items-center justify-center`}>
-										{(() => { const Icon = programs[0].icon; return <Icon className={`w-7 h-7 ${programs[0].iconColor}`} />; })()}
-									</div>
-									<div>
-										<div className="flex items-center gap-3 mb-1">
-											<h3 className="text-2xl font-bold text-gray-900">{programs[0].title}</h3>
-											<span className="px-2.5 py-0.5 bg-green-100 text-green-700 text-xs font-semibold rounded-full">
-												{programs[0].stats.schools} Schools
-											</span>
-										</div>
-										<p className="text-sm text-gray-500">{programs[0].subtitle}</p>
-									</div>
-								</div>
-								<p className="text-gray-600 mb-6">{programs[0].description}</p>
-								<ul className="grid sm:grid-cols-2 gap-3 mb-6">
-									{programs[0].features.map((feature, idx) => (
-										<li key={idx} className="flex items-center gap-2 text-sm text-gray-700">
-											<FaCheckCircle className="w-4 h-4 text-blue-500 flex-shrink-0" />
-											{feature}
-										</li>
-									))}
-								</ul>
-								<Link
-									href={programs[0].href}
-									className="inline-flex items-center gap-2 text-blue-600 font-semibold text-sm hover:text-blue-700 transition-colors group/btn"
-								>
-									Learn More
-									<FaArrowRight className="w-3 h-3 group-hover/btn:translate-x-1 transition-transform" />
-								</Link>
-							</div>
-						</div>
-					</motion.div>
+				{/* Left Text / Right List Layout (No uniform cards) */}
+				<div className="grid lg:grid-cols-12 gap-16 items-start">
 
-					{/* Sidebar stack — Remaining programs (1/3 width) */}
-					<div className="space-y-6">
-						{programs.slice(1).map((program, index) => (
-							<motion.div
-								key={program.id}
-								initial={{ opacity: 0, x: 20 }}
-								animate={isInView ? { opacity: 1, x: 0 } : {}}
-								transition={{ duration: 0.4, delay: 0.2 + index * 0.15 }}
+					{/* The Narrative Left Column */}
+					<div className="lg:col-span-6 space-y-12">
+						<motion.div
+							initial={{ opacity: 0, x: -20 }}
+							animate={isInView ? { opacity: 1, x: 0 } : {}}
+							transition={{ duration: 0.5, delay: 0.1 }}
+						>
+							<h3 className="text-3xl font-bold text-gray-900 mb-4 flex items-center gap-3">
+								<FaGraduationCap className="text-orange-500 w-8 h-8" />
+								Educational Structure
+							</h3>
+							<div className="prose prose-lg text-gray-600 mb-6 max-w-none text-justify">
+								<p>
+									Our curriculum implementation framework guarantees that every syllabus we offer conforms rigorously to current
+									<strong> Central Board of Secondary Education (CBSE)</strong>, <strong>ICSE</strong>, and international academic standards.
+									We believe that STEM education is not an extracurricular activity, but a fundamental academic necessity.
+								</p>
+								<p>
+									When your institution partners with us for an <strong>Atal Tinkering Lab setups</strong> or an integrated <strong>Robotics Masterclass</strong>,
+									you receive a turnkey pedagogical solution encompassing year-long lesson plans, proprietary workbook materials,
+									and continuous educator evaluation metrics.
+								</p>
+							</div>
+
+							<Link
+								href="/programs"
+								className="inline-flex items-center gap-3 px-8 py-4 bg-gray-900 text-white font-bold rounded-xl hover:bg-black transition-colors"
 							>
-								<div className={`bg-white rounded-xl p-5 border border-gray-100 border-l-4 ${program.accentColor} shadow-sm hover:shadow-md transition-all`}>
-									<div className="flex items-start gap-3 mb-3">
-										<div className={`w-10 h-10 ${program.iconBg} rounded-lg flex items-center justify-center flex-shrink-0`}>
-											<program.icon className={`w-5 h-5 ${program.iconColor}`} />
-										</div>
-										<div>
-											<h3 className="font-bold text-gray-900 text-sm">{program.title}</h3>
-											<p className="text-xs text-gray-500">{program.subtitle} • {program.stats.schools} Schools</p>
-										</div>
-									</div>
-									<p className="text-sm text-gray-600 mb-3">{program.description}</p>
-									<Link
-										href={program.href}
-										className="inline-flex items-center gap-1 text-orange-600 font-semibold text-xs hover:text-orange-700 transition-colors group/btn"
-									>
-										Learn More
-										<FaArrowRight className="w-3 h-3 group-hover/btn:translate-x-1 transition-transform" />
-									</Link>
-								</div>
-							</motion.div>
-						))}
+								View Detailed Course Catalogs
+								<FaArrowRight className="w-4 h-4" />
+							</Link>
+						</motion.div>
+					</div>
+
+					{/* Highly descriptive list Right Column */}
+					<div className="lg:col-span-6 space-y-10">
+
+						{/* ATL Item */}
+						<motion.div
+							initial={{ opacity: 0, y: 30 }}
+							animate={isInView ? { opacity: 1, y: 0 } : {}}
+							transition={{ duration: 0.5, delay: 0.2 }}
+							className="p-8 bg-blue-50/50 border-l-8 border-blue-500 rounded-r-2xl"
+						>
+							<h4 className="text-2xl font-black text-gray-900 mb-3">Atal Tinkering Labs (ATL) Mentorship</h4>
+							<p className="text-gray-700 mb-4 leading-relaxed font-medium">
+								Full compliance lifecycle management for NITI Aayog funded ATL labs. We train students in 3D modeling, intermediate circuitry, and rapid IoT prototyping.
+							</p>
+							<ul className="space-y-2">
+								<li className="flex items-center gap-2"><FaCheckCircle className="text-green-500 w-4 h-4" /> NITI Aayog Dashboard Maintenance</li>
+								<li className="flex items-center gap-2"><FaCheckCircle className="text-green-500 w-4 h-4" /> Tinkering Festival Preparation</li>
+							</ul>
+						</motion.div>
+
+						{/* Robotics Item */}
+						<motion.div
+							initial={{ opacity: 0, y: 30 }}
+							animate={isInView ? { opacity: 1, y: 0 } : {}}
+							transition={{ duration: 0.5, delay: 0.3 }}
+							className="p-8 bg-orange-50/50 border-l-8 border-orange-500 rounded-r-2xl"
+						>
+							<h4 className="text-2xl font-black text-gray-900 mb-3">Applied Robotics & Automation</h4>
+							<p className="text-gray-700 mb-4 leading-relaxed font-medium">
+								From basic gear mechanisms for primary school to inverse kinematics and autonomous navigation protocols for senior secondary students.
+							</p>
+							<ul className="space-y-2">
+								<li className="flex items-center gap-2"><FaCheckCircle className="text-green-500 w-4 h-4" /> Certified Master Trainers</li>
+								<li className="flex items-center gap-2"><FaCheckCircle className="text-green-500 w-4 h-4" /> Industrial Exoskeleton Projects</li>
+							</ul>
+						</motion.div>
+
+						{/* AI Item */}
+						<motion.div
+							initial={{ opacity: 0, y: 30 }}
+							animate={isInView ? { opacity: 1, y: 0 } : {}}
+							transition={{ duration: 0.5, delay: 0.4 }}
+							className="p-8 bg-teal-50/50 border-l-8 border-teal-500 rounded-r-2xl"
+						>
+							<h4 className="text-2xl font-black text-gray-900 mb-3">Artificial Intelligence & Coding</h4>
+							<p className="text-gray-700 mb-4 leading-relaxed font-medium">
+								We utilize visual programming interfaces transitioning strictly into high-level language parsing (Python/C++) for machine learning applications.
+							</p>
+							<ul className="space-y-2">
+								<li className="flex items-center gap-2"><FaCheckCircle className="text-green-500 w-4 h-4" /> Computer Vision Algorithms</li>
+								<li className="flex items-center gap-2"><FaCheckCircle className="text-green-500 w-4 h-4" /> Natural Language Processing</li>
+							</ul>
+						</motion.div>
+
 					</div>
 				</div>
-
-				{/* Bottom CTA */}
-				<motion.div
-					initial={{ opacity: 0, y: 20 }}
-					animate={isInView ? { opacity: 1, y: 0 } : {}}
-					transition={{ duration: 0.5, delay: 0.5 }}
-					className="text-center mt-12"
-				>
-					<Link
-						href="/programs"
-						className="inline-flex items-center gap-2 text-orange-600 font-semibold hover:text-orange-700 transition-colors group"
-					>
-						View All Programs
-						<FaArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-					</Link>
-				</motion.div>
 			</div>
 		</section>
 	);

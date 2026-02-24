@@ -3,13 +3,8 @@
 import { useRef } from "react";
 import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { FaArrowRight, FaPlay, FaRocket, FaUsers, FaAward } from "react-icons/fa";
-
-const stats = [
-  { icon: FaUsers, value: "500+", label: "Schools" },
-  { icon: FaRocket, value: "50,000+", label: "Students" },
-  { icon: FaAward, value: "100+", label: "Awards" },
-];
+import { FaArrowRight, FaPlay } from "react-icons/fa";
+import FloatingAnimations from "@/components/animations/FloatingAnimations";
 
 export default function HeroSection() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -38,65 +33,59 @@ export default function HeroSection() {
         >
           <source src="/videos/home_video.mp4" type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/30" />
+        <div className="absolute inset-0 bg-black/60" />
       </div>
 
-      {/* Subtle geometric accent — top-right */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] opacity-[0.07] hidden md:block">
-        <svg viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="400" cy="100" r="200" stroke="#f97316" strokeWidth="1" />
-          <circle cx="400" cy="100" r="140" stroke="#14b8a6" strokeWidth="1" />
-          <circle cx="400" cy="100" r="80" stroke="#f97316" strokeWidth="1" />
-        </svg>
-      </div>
+      {/* Adding back Floating blobls instead of simple geometry */}
+      <FloatingAnimations variant="about" density="medium" />
 
       {/* Main Content — Left aligned */}
       <motion.div style={{ y, opacity }} className="relative container mx-auto px-4 sm:px-6 lg:px-8 py-20 z-10">
-        <div className="max-w-3xl">
+        <div className="max-w-4xl">
           {/* Badge */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange-500/15 border border-orange-500/30 mb-8"
+            className="inline-flex items-center gap-3 mb-8"
           >
-            <span className="relative flex h-2 w-2">
+            <span className="relative flex h-3 w-3">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+              <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
             </span>
-            <span className="text-sm font-medium text-orange-300">
+            <span className="text-sm font-bold text-orange-400 uppercase tracking-widest bg-orange-900/30 px-4 py-1.5 rounded-full border border-orange-500/20 backdrop-blur-sm">
               India&apos;s #1 STEM Education Provider
             </span>
           </motion.div>
 
-          {/* Main Heading — No typing animation */}
+          {/* Heavy SEO Heading */}
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.1 }}
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] mb-6"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black leading-[1.1] mb-6"
           >
-            <span className="text-white">Master The Skills,</span>
+            <span className="text-white drop-shadow-lg">Transforming Schools With Advanced</span>
             <br />
-            <span className="bg-gradient-to-r from-orange-400 to-teal-400 bg-clip-text text-transparent">
-              Drive Your Future
+            <span className="text-orange-500 drop-shadow-xl text-5xl sm:text-6xl md:text-7xl lg:text-8xl mt-4 block">
+              Robotics & AI Labs
             </span>
           </motion.h1>
 
-          {/* Subheading */}
-          <motion.p
+          {/* SEO rich Subheading */}
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.25 }}
-            className="text-lg md:text-xl text-gray-300 max-w-xl mb-10 leading-relaxed"
+            className="text-lg md:text-xl lg:text-2xl text-gray-200 max-w-3xl mb-12 leading-relaxed font-medium drop-shadow-md"
           >
-            Empowering students with cutting-edge{" "}
-            <span className="text-orange-400 font-semibold">Robotics</span>,{" "}
-            <span className="text-teal-400 font-semibold">AI</span>, and{" "}
-            <span className="text-purple-400 font-semibold">STEM Education</span>
-          </motion.p>
+            <p>
+              Partner with STEMmantra to establish <strong className="text-white border-b-2 border-orange-500 px-1">NEP 2020 Aligned Atal Tinkering Labs (ATL)</strong> and comprehensive K-12 STEM infrastructure.
+              We provide end-to-end curriculum integration, industrial-grade equipment, and expert educator training to domestic and international schools.
+            </p>
+          </motion.div>
 
-          {/* CTA Buttons — Left aligned */}
+          {/* CTA Buttons */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -105,68 +94,44 @@ export default function HeroSection() {
           >
             <Link
               href="/programs"
-              className="group flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-orange-500 to-orange-600 text-white rounded-xl font-semibold text-lg shadow-2xl shadow-orange-500/25 hover:shadow-orange-500/40 hover:translate-y-[-2px] transition-all duration-300"
+              className="group flex items-center justify-center gap-3 px-10 py-5 bg-orange-600 text-white font-black text-lg sm:text-xl rounded-xl hover:bg-orange-700 hover:scale-105 transition-all duration-300 shadow-xl shadow-orange-900/50"
             >
-              Explore Programs
-              <FaArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              Explore Our Curriculums
+              <FaArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Link>
             <Link
               href="/about"
-              className="group flex items-center gap-3 px-8 py-4 bg-white/10 backdrop-blur-sm text-white rounded-xl font-semibold text-lg border border-white/20 hover:bg-white/15 hover:border-white/40 transition-all duration-300"
+              className="group flex items-center justify-center gap-3 px-10 py-5 bg-black/50 backdrop-blur-md text-white font-bold text-lg sm:text-xl border-2 border-white/20 hover:bg-black/80 hover:border-white/40 rounded-xl transition-all duration-300"
             >
-              <FaPlay className="w-4 h-4" />
-              Watch Video
+              <FaPlay className="w-5 h-5 text-orange-400" />
+              Watch Facility Tour
             </Link>
           </motion.div>
 
-          {/* Stats — Small cards in a row */}
+          {/* Stats - Text Only Heavy Style */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.55 }}
-            className="flex flex-wrap gap-4"
+            className="flex flex-wrap gap-x-12 gap-y-8 p-6 bg-black/40 backdrop-blur-sm rounded-2xl border border-white/10"
           >
-            {stats.map((stat, index) => (
-              <div
-                key={index}
-                className="flex items-center gap-3 px-5 py-3 bg-white/[0.08] backdrop-blur-sm rounded-xl border border-white/10"
-              >
-                <stat.icon className="w-5 h-5 text-orange-400" />
-                <div>
-                  <div className="text-xl font-bold text-white leading-tight">{stat.value}</div>
-                  <div className="text-xs text-gray-400 uppercase tracking-wider">{stat.label}</div>
-                </div>
-              </div>
-            ))}
+            <div>
+              <div className="text-4xl font-black text-white leading-none mb-2">500+</div>
+              <div className="text-sm text-gray-400 uppercase font-bold tracking-widest">Partner Schools</div>
+            </div>
+            <div className="w-px bg-white/20 hidden md:block"></div>
+            <div>
+              <div className="text-4xl font-black text-white leading-none mb-2">50,000+</div>
+              <div className="text-sm text-gray-400 uppercase font-bold tracking-widest">Active Students</div>
+            </div>
+            <div className="w-px bg-white/20 hidden md:block"></div>
+            <div>
+              <div className="text-4xl font-black text-white leading-none mb-2">10+ Years</div>
+              <div className="text-sm text-gray-400 uppercase font-bold tracking-widest">Industry Leadership</div>
+            </div>
           </motion.div>
         </div>
       </motion.div>
-
-      {/* Scroll Indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.2 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10"
-      >
-        <motion.div
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 1.5, repeat: Infinity }}
-          className="flex flex-col items-center gap-2 text-white/60"
-        >
-          <span className="text-xs uppercase tracking-widest">Scroll Down</span>
-          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-          </svg>
-        </motion.div>
-      </motion.div>
-
-      {/* Diagonal bottom divider */}
-      <div className="absolute bottom-0 left-0 right-0 z-10">
-        <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full" preserveAspectRatio="none">
-          <path d="M0 80H1440V20L0 80Z" fill="white" />
-        </svg>
-      </div>
     </section>
   );
 }

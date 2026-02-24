@@ -2,15 +2,14 @@
 
 import { useRef, useEffect, useState } from "react";
 import { motion, useInView } from "framer-motion";
-import { FaSchool, FaUsers, FaAward, FaGlobeAsia, FaChalkboardTeacher, FaRobot } from "react-icons/fa";
+import { FaSchool, FaUsers, FaAward, FaGlobeAsia } from "react-icons/fa";
+import FloatingAnimations from "@/components/animations/FloatingAnimations";
 
 const stats = [
-  { icon: FaSchool, value: 500, suffix: "+", label: "Schools", color: "text-orange-500" },
-  { icon: FaUsers, value: 50000, suffix: "+", label: "Students", color: "text-teal-500" },
-  { icon: FaChalkboardTeacher, value: 2000, suffix: "+", label: "Teachers", color: "text-purple-500" },
-  { icon: FaGlobeAsia, value: 15, suffix: "+", label: "States", color: "text-blue-500" },
-  { icon: FaAward, value: 100, suffix: "+", label: "Awards", color: "text-amber-500" },
-  { icon: FaRobot, value: 1000, suffix: "+", label: "Labs", color: "text-rose-500" },
+  { icon: FaSchool, value: 500, suffix: "+", label: "Partner Institutions" },
+  { icon: FaUsers, value: 50000, suffix: "+", label: "Student Innovators" },
+  { icon: FaGlobeAsia, value: 15, suffix: "+", label: "States Impacted" },
+  { icon: FaAward, value: 100, suffix: "+", label: "National Awards" },
 ];
 
 function AnimatedCounter({ value, suffix = "", duration = 2000 }: { value: number; suffix?: string; duration?: number }) {
@@ -60,52 +59,54 @@ export default function StatsSection() {
   const isInView = useInView(ref, { once: true, amount: 0.3 });
 
   return (
-    <section ref={ref} className="py-12 bg-white">
-      <div className="container mx-auto px-4">
-        {/* Compact horizontal strip */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5 }}
-          className="max-w-6xl mx-auto"
-        >
-          {/* Minimal header */}
-          <div className="text-center mb-8">
-            <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
-              Our Impact{" "}
-              <span className="bg-gradient-to-r from-orange-500 to-teal-500 bg-clip-text text-transparent">
-                Across India
-              </span>
-            </h2>
-          </div>
+    <section ref={ref} className="relative py-20 bg-gray-900 border-y-8 border-orange-500 overflow-hidden">
+      <FloatingAnimations variant="stem" density="low" />
+      <div className="container mx-auto px-4 relative z-10">
 
-          {/* Stats in a single row with separators */}
-          <div className="flex flex-wrap justify-center items-center">
+        {/* Massive text block instead of card grid */}
+        <div className="max-w-6xl mx-auto flex flex-col lg:flex-row items-center gap-16">
+
+          {/* The Text Column */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.7 }}
+            className="lg:w-1/2"
+          >
+            <div className="inline-block px-4 py-1.5 bg-gray-800 text-orange-400 font-black tracking-widest uppercase text-sm mb-6 rounded-none">
+              Quantifiable Academic Impact
+            </div>
+            <h2 className="text-4xl lg:text-5xl font-extrabold text-white mb-6 leading-tight">
+              Powering India&apos;s
+              <br />
+              <span className="text-orange-500">STEM Revolution</span>
+            </h2>
+            <p className="text-gray-300 text-lg leading-relaxed mb-6 font-medium">
+              Through comprehensive Robotics labs and Atal Tinkering Lab integrations, we have established a demonstrable track record of elevating pedagogical standards and fostering deep technological literacy on a national scale.
+            </p>
+            <p className="text-gray-400 text-base leading-relaxed">
+              Our data-driven approach to experiential learning ensures measurable outcomes in student engagement, critical thinking assessments, and participation in international coding olympiads.
+            </p>
+          </motion.div>
+
+          {/* The Stats Column */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.7, delay: 0.2 }}
+            className="lg:w-1/2 grid grid-cols-2 gap-8 lg:gap-12"
+          >
             {stats.map((stat, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 15 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.4, delay: index * 0.08 }}
-                className="flex items-center"
-              >
-                <div className="text-center px-6 py-4 md:px-8">
-                  <div className="flex items-center justify-center gap-2 mb-1">
-                    <stat.icon className={`w-4 h-4 ${stat.color}`} />
-                    <span className={`text-2xl md:text-3xl font-bold ${stat.color}`}>
-                      <AnimatedCounter value={stat.value} suffix={stat.suffix} />
-                    </span>
-                  </div>
-                  <div className="text-xs md:text-sm text-gray-500 uppercase tracking-wider">{stat.label}</div>
+              <div key={index} className="flex flex-col border-l-4 border-orange-500 pl-6 py-2 pb-6">
+                <stat.icon className="w-8 h-8 text-orange-500 mb-4 opacity-80" />
+                <div className="text-4xl md:text-5xl font-black text-white mb-2 tracking-tight">
+                  <AnimatedCounter value={stat.value} suffix={stat.suffix} />
                 </div>
-                {/* Separator */}
-                {index < stats.length - 1 && (
-                  <div className="hidden md:block w-px h-10 bg-gray-200" />
-                )}
-              </motion.div>
+                <div className="text-sm font-bold text-gray-400 uppercase tracking-widest">{stat.label}</div>
+              </div>
             ))}
-          </div>
-        </motion.div>
+          </motion.div>
+        </div>
       </div>
     </section>
   );
