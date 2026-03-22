@@ -42,10 +42,10 @@
 **STEMmantra**
 
 ## Tagline
-"Master The Skills 'Drive Your Future...' - A step towards innovation"
+"Master The Skills 'Drive Your Future...'"/A step towards innovation
 
 ## Site Description
-"STEM learning focusing on leveraging technology in the K-12 segment for Robotics, STEM (science, technology, engineering, and mathematics). We provide ATL Labs setup, Robotics Labs, STEM Labs, teacher training, and NEP 2020 aligned curriculum for schools."
+"STEM learning focusing on leveraging technology on K-12 Segment for Robotics,STEM(science, technology, engineering, and mathematics). We provide ATL Labs setup, Robotics Labs, STEM Labs, teacher training, and NEP 2020 aligned curriculum for schools."
 
 ## Contact Information
 - **Phone:** 01203101774
