@@ -29,7 +29,7 @@ const serviceDetails = {
       "3D printing and design equipment",
       "Electronics and circuit labs",
       "Coding and programming stations",
-      "NEP 2020 aligned curriculum",
+      "NEP 2020 & NCF 2023 aligned curriculum",
       "Teacher training programs",
       "Ongoing technical support",
       "Competition preparation",
@@ -142,7 +142,7 @@ export default function LocationServicePage({
               <FaUsers className="w-5 h-5 text-teal-500" />
               <div className="text-sm">
                 <span className="block text-gray-500 uppercase text-[10px] font-bold tracking-wider">Trust</span>
-                <span className="font-bold text-gray-900">500+ Schools Served</span>
+                <span className="font-bold text-gray-900">300+ Schools Served</span>
               </div>
             </div>
             <div className="hidden md:block w-px h-8 bg-gray-200" />
@@ -150,7 +150,7 @@ export default function LocationServicePage({
               <FaCertificate className="w-5 h-5 text-purple-500" />
               <div className="text-sm">
                 <span className="block text-gray-500 uppercase text-[10px] font-bold tracking-wider">Compliance</span>
-                <span className="font-bold text-gray-900">NEP 2020 Aligned</span>
+                <span className="font-bold text-gray-900">NEP 2020 & NCF 2023 Aligned</span>
               </div>
             </div>
           </div>
@@ -204,7 +204,7 @@ export default function LocationServicePage({
               {[
                 { icon: FaGraduationCap, text: "10+ years of dedicated STEM education focus" },
                 { icon: FaCertificate, text: "Official NEP 2020 and Niti Aayog guidelines compliance" },
-                { icon: FaUsers, text: "Successfully trained over 50,000 students nationwide" },
+                { icon: FaUsers, text: "Successfully trained over 1,25,000 students nationwide" },
                 { icon: FaCog, text: "Full turnkey solutions from setup to annual support" },
               ].map((item, index) => (
                 <div key={index} className="flex gap-4">

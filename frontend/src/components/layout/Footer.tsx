@@ -134,8 +134,8 @@ export default function Footer() {
                 />
               </Link>
               <p className="text-gray-400 text-sm leading-relaxed max-w-sm">
-                India&apos;s leading provider of robotics, AI, and STEM education solutions for schools.
-                Transforming education through innovation and hands-on learning.
+                India&apos;s leading provider of robotics, AI, and STEM education solutions for schools. 
+                Transforming education through innovation, NEP 2020 & NCF 2023 aligned curriculum, and hands-on learning for 1.25L+ students.
               </p>
             </div>
 
@@ -378,8 +378,8 @@ export default function Footer() {
           <p className="text-gray-500 text-xs mt-6 text-center max-w-4xl mx-auto">
             <strong className="text-gray-400">STEMmantra</strong> is India&apos;s premier provider of
             robotics labs, AI labs, STEM labs, and Atal Tinkering Labs (ATL) for schools. Complete
-            turnkey lab solutions with equipment, NEP 2020 aligned curriculum, teacher training,
-            and support across 500+ cities.
+            turnkey lab solutions with equipment, NEP 2020 & NCF 2023 aligned curriculum, teacher training,
+            and support across 500+ cities. Training 1.25L+ students nationwide.
           </p>
         </div>
       </div>

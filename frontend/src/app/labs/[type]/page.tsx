@@ -43,7 +43,7 @@ const labTypes: Record<string, {
         longDescription: "STEM Innovation Labs provide a holistic learning environment where students explore the interconnection between Science, Technology, Engineering, and Mathematics. These labs feature hands-on experiments, project-based learning, and real-world problem solving that prepare students for 21st-century challenges.",
         equipment: ["Science Experiment Kits", "Technology Tools", "Engineering Models", "Math Manipulatives", "Robotics Components", "Coding Stations", "Virtual Labs"],
         subjects: ["Physics", "Chemistry", "Biology", "Mathematics", "Engineering Design", "Technology Literacy"],
-        ageGroup: "Class 1 to Class 12", benefits: ["NEP 2020 aligned", "Integrated learning", "Critical thinking", "Problem solving", "Scientific temper", "Holistic development"],
+        ageGroup: "Class 1 to Class 12", benefits: ["NEP 2020 & NCF 2023 aligned", "Integrated learning", "Critical thinking", "Problem solving", "Scientific temper", "Holistic development"],
         investment: "₹8-15 Lakhs",
     },
     coding: {

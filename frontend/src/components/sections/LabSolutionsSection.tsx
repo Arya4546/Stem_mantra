@@ -82,7 +82,7 @@ export default function LabSolutionsSection() {
 
                         <div className="flex flex-wrap gap-4 pt-4 border-t border-gray-100">
                             <div className="flex items-center gap-2">
-                                <span className="text-3xl font-black text-gray-900">500+</span>
+                                <span className="text-3xl font-black text-gray-900">300+</span>
                                 <span className="text-sm font-bold text-gray-500 uppercase leading-tight">Labs<br />Installed</span>
                             </div>
                             <div className="w-px h-10 bg-gray-200 hidden sm:block"></div>

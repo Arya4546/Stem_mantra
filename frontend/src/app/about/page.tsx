@@ -5,7 +5,7 @@ import AboutContent from "./AboutContent";
 export const metadata: Metadata = {
   title: "About Us | STEMmantra - Robotics, AI, ATL Labs & STEM Education",
   description:
-    "Learn about STEMmantra's mission, vision, and impact. India’s leading provider of robotics, AI, and STEM education solutions for schools. ATL Labs setup, teacher training, NEP 2020 aligned curriculum.",
+    "Learn about STEMmantra's mission, vision, and impact. India’s leading provider of robotics, AI, and STEM education solutions for schools. STEAMVERSE Labs setup, teacher training, NEP 2020 & NCF 2023 aligned curriculum.",
   keywords:
     "about STEMmantra, robotics education, STEM learning, ATL labs, AI education, teacher training, NEP 2020, school innovation, STEM curriculum, India",
   openGraph: {

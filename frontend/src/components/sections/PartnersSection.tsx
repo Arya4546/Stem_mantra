@@ -101,7 +101,7 @@ export default function PartnersSection() {
         >
           {[
             { label: "Government Approved", icon: CheckCircle },
-            { label: "NEP 2020 Aligned", icon: BookOpen },
+            { label: "NEP 2020 & NCF 2023 Aligned", icon: BookOpen },
             { label: "ISO Certified", icon: Award },
             { label: "CBSE Recommended", icon: Star },
           ].map((badge, index) => (

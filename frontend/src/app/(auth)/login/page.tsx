@@ -252,9 +252,9 @@ function LoginContent() {
             {/* Stats */}
             <div className="grid grid-cols-3 gap-6 mt-8">
               {[
-                { value: "50K+", label: "Students" },
-                { value: "500+", label: "Schools" },
-                { value: "100+", label: "Courses" },
+                { value: "1.25L+", label: "Students" },
+                { value: "300+", label: "Schools" },
+                { value: "10+ Years", label: "Experience" },
               ].map((stat, i) => (
                 <motion.div
                   key={stat.label}

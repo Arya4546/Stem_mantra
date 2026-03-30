@@ -23,9 +23,9 @@ import {
 import { Target, Eye } from "lucide-react";
 
 const stats = [
-  { number: "10,000+", label: "Students Trained", icon: FaGraduationCap, color: "text-orange-500" },
-  { number: "500+", label: "Schools Partnered", icon: FaSchool, color: "text-teal-500" },
-  { number: "15+", label: "States Covered", icon: FaGlobeAsia, color: "text-blue-500" },
+  { number: "1.25L+", label: "Students Trained", icon: FaGraduationCap, color: "text-orange-500" },
+  { number: "300+", label: "Schools Partnered", icon: FaSchool, color: "text-teal-500" },
+  { number: "18+", label: "States Impacted", icon: FaGlobeAsia, color: "text-blue-500" },
   { number: "200+", label: "Expert Trainers", icon: FaChalkboardTeacher, color: "text-purple-500" },
 ];
 
@@ -72,7 +72,7 @@ const services = [
 ];
 
 const whyChooseUs = [
-  "NEP 2020 aligned curriculum designed by experts",
+  "NEP 2020 & NCF 2023 aligned curriculum designed by experts",
   "Complete turnkey lab solutions",
   "Certified and experienced trainers",
   "Continuous support and maintenance",
@@ -108,9 +108,10 @@ export default function AboutContent() {
                 </span>
               </h1>
               <p className="text-lg text-gray-600 max-w-3xl leading-relaxed">
-                Empowering the next generation of innovators through world-class STEM education,
-                cutting-edge robotics labs, and transformative learning experiences. We are on a mission
-                to make quality STEM education accessible to every student in India.
+                STEMmantra is a leading provider of STEM, Robotics, and AI education solutions,
+                dedicated to fostering curiosity, creativity, and critical thinking in students
+                across India. With a decade of experience, we provide a holistic learning
+                ecosystem for 300+ progressive K-12 institutions.
               </p>
             </motion.div>
 
@@ -170,9 +171,9 @@ export default function AboutContent() {
                   <h2 className="text-xl font-bold text-gray-900">Our Vision</h2>
                 </div>
                 <p className="text-gray-600 leading-relaxed">
-                  To be India&apos;s most trusted partner in STEM education, reaching 1 million students
-                  by 2030. We envision a future where every school has access to cutting-edge
-                  technology labs and every student has the opportunity to become an innovator.
+                  To be the catalyst for an innovation-led India by empowering 100 million students
+                  by 2030 with 21st-century skills and fostering a culture of scientific inquiry and
+                  problem-solving.
                 </p>
               </motion.div>
             </div>
@@ -314,8 +315,9 @@ export default function AboutContent() {
                   Ready to Transform <span className="text-orange-400">Your School?</span>
                 </h2>
                 <p className="text-gray-300 mb-6 max-w-xl mx-auto">
-                  Join 500+ schools that have already partnered with STEMmantra to bring
-                  world-class STEM education to their students.
+                  Join 300+ schools that have already partnered with STEMmantra to bring
+                  world-class STEM education to their students. All programs are strictly
+                  aligned with NEP 2020 & NCF 2023 guidelines.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <Link

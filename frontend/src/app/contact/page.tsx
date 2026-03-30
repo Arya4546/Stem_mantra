@@ -269,6 +269,24 @@ export default function ContactPage() {
                     ))}
                   </div>
                 </div>
+
+                {/* RFP Request — Section 2.11 alignment */}
+                <div className="bg-orange-50 rounded-xl border border-orange-200 p-6">
+                  <h3 className="font-bold text-gray-900 mb-2 text-sm uppercase tracking-wider">Request RFP Document</h3>
+                  <p className="text-[10px] text-gray-600 mb-4 leading-relaxed font-semibold">
+                    Institutions requiring a comprehensive descriptive evaluation for large-scale
+                    multi-lab installations can request our official RFP documentation and technical specifications.
+                  </p>
+                  <button 
+                    onClick={() => {
+                      setFormData(prev => ({ ...prev, interest: "RFP Request", message: "I would like to request the official RFP documentation and technical specifications for our institution." }));
+                      window.scrollTo({ top: 300, behavior: "smooth" });
+                    }}
+                    className="w-full py-2.5 bg-orange-500 text-white rounded-lg text-xs font-bold hover:bg-orange-600 transition-colors flex items-center justify-center gap-2"
+                  >
+                    Submit Request <ArrowRight className="w-3 h-3" />
+                  </button>
+                </div>
               </motion.div>
             </div>
           </div>
@@ -282,7 +300,8 @@ export default function ContactPage() {
                 Ready to Transform <span className="text-orange-400">Your School?</span>
               </h2>
               <p className="text-gray-300 mb-6 max-w-xl mx-auto">
-                Join 500+ schools that have partnered with STEMmantra for world-class STEM education.
+                Join 300+ schools that have partnered with STEMmantra for world-class STEM education.
+                All our labs are NEP 2020 & NCF 2023 aligned.
               </p>
               <div className="flex flex-wrap gap-4 justify-center">
                 <Link href="/programs"

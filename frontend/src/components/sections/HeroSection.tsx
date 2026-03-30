@@ -80,7 +80,7 @@ export default function HeroSection() {
             className="text-lg md:text-xl lg:text-2xl text-gray-200 max-w-3xl mb-12 leading-relaxed font-medium drop-shadow-md"
           >
             <p>
-              Partner with STEMmantra to establish <strong className="text-white border-b-2 border-orange-500 px-1">NEP 2020 Aligned Atal Tinkering Labs (ATL)</strong> and comprehensive K-12 STEM infrastructure.
+              Partner with STEMmantra to establish <strong className="text-white border-b-2 border-orange-500 px-1">NEP 2020 & NCF 2023 Aligned</strong> comprehensive K-12 STEM infrastructure.
               We provide end-to-end curriculum integration, industrial-grade equipment, and expert educator training to domestic and international schools.
             </p>
           </motion.div>
@@ -116,13 +116,13 @@ export default function HeroSection() {
             className="flex flex-wrap gap-x-12 gap-y-8 p-6 bg-black/40 backdrop-blur-sm rounded-2xl border border-white/10"
           >
             <div>
-              <div className="text-4xl font-black text-white leading-none mb-2">500+</div>
+              <div className="text-4xl font-black text-white leading-none mb-2">300+</div>
               <div className="text-sm text-gray-400 uppercase font-bold tracking-widest">Partner Schools</div>
             </div>
             <div className="w-px bg-white/20 hidden md:block"></div>
             <div>
-              <div className="text-4xl font-black text-white leading-none mb-2">50,000+</div>
-              <div className="text-sm text-gray-400 uppercase font-bold tracking-widest">Active Students</div>
+              <div className="text-4xl font-black text-white leading-none mb-2">1.25L+</div>
+              <div className="text-xs uppercase tracking-wider font-bold text-white/60">Students Trained</div>
             </div>
             <div className="w-px bg-white/20 hidden md:block"></div>
             <div>

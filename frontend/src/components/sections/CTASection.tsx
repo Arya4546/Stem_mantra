@@ -33,7 +33,7 @@ export default function CTASection() {
             </h2>
 
             <p className="text-lg md:text-xl font-medium leading-relaxed mb-10 text-orange-50">
-              Join the 500+ forward-thinking K-12 institutions across India utilizing STEMmantra&apos;s robust
+              Join the 300+ forward-thinking K-12 institutions across India utilizing STEMmantra&apos;s robust
               <strong> Robotics, AI, Coding, and Atal Tinkering Lab (ATL)</strong> pedagogical frameworks. Prepare your students for the intellectual demands of tomorrow.
             </p>
 
@@ -56,7 +56,7 @@ export default function CTASection() {
 
             <div className="grid grid-cols-2 gap-4 border-t border-orange-500/50 pt-8 mt-auto">
               <div className="flex items-center gap-2 font-semibold">
-                <FaCheckCircle className="text-orange-300 w-5 h-5" /> NEP 2020 Aligned
+                <FaCheckCircle className="text-orange-300 w-5 h-5" /> NEP 2020 & NCF 2023 Aligned
               </div>
               <div className="flex items-center gap-2 font-semibold">
                 <FaCheckCircle className="text-orange-300 w-5 h-5" /> Turnkey Infrastructure

@@ -19,7 +19,7 @@ const programs = [
     features: [
       "Complete lab setup as per NITI Aayog guidelines",
       "Teacher training & certification programs",
-      "NEP 2020 aligned curriculum",
+      "NEP 2020 & NCF 2023 aligned curriculum",
       "Year-round mentorship and support",
       "Competition preparation",
       "3D printing & electronics equipment",
@@ -78,9 +78,9 @@ const programs = [
 ];
 
 const stats = [
-  { value: "500+", label: "Schools Partnered", icon: Building2, color: "text-orange-500" },
-  { value: "50,000+", label: "Students Trained", icon: GraduationCap, color: "text-teal-500" },
-  { value: "15+", label: "States Covered", icon: Globe, color: "text-blue-500" },
+  { value: "300+", label: "Schools Partnered", icon: Building2, color: "text-orange-500" },
+  { value: "1.25L+", label: "Students Trained", icon: GraduationCap, color: "text-teal-500" },
+  { value: "18+", label: "States Covered", icon: Globe, color: "text-blue-500" },
   { value: "200+", label: "Expert Trainers", icon: Users, color: "text-purple-500" },
 ];
 
@@ -106,7 +106,7 @@ export default function ProgramsPage() {
               transition={{ duration: 0.5 }}
             >
               <span className="inline-block px-4 py-1.5 bg-orange-100 text-orange-600 rounded-full text-sm font-semibold mb-4">
-                NEP 2020 Aligned Programs
+                NEP 2020 & NCF 2023 Aligned Programs
               </span>
               <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
                 Our{" "}

@@ -19,7 +19,7 @@ export const programs: Program[] = [
     features: [
       "Complete ATL lab setup with all required equipment",
       "Comprehensive teacher training programs",
-      "NEP 2020 aligned curriculum development",
+      "NEP 2020 & NCF 2023 aligned curriculum development",
       "Year-long support and mentorship",
       "Regular workshops and competitions",
       "Project-based learning modules",

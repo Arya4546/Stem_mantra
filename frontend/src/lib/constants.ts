@@ -1,8 +1,8 @@
 export const SITE_CONFIG = {
   name: "STEMmantra",
-  tagline: "Master The Skills 'Drive Your Future...' - A step towards innovation",
+  tagline: "Empowering the Next Generation of Innovators",
   description:
-    "STEM learning focusing on leveraging technology in the K-12 segment for Robotics, STEM (science, technology, engineering, and mathematics). We provide ATL Labs setup, Robotics Labs, STEM Labs, teacher training, and NEP 2020 aligned curriculum for schools.",
+    "India's leading provider of Robotics, AI, and STEM education solutions. Transitioning K-12 institutions with NEP 2020 & NCF 2023 aligned pedagogical frameworks.",
   url: "https://www.stemmantra.com",
   ogImage: "https://www.stemmantra.com/og-image.jpg",
   links: {
@@ -38,20 +38,27 @@ export const NAVIGATION = [
   { name: "Contact", href: "/contact" },
 ] as const;
 
+export const STATS_DATA = [
+  { label: "Partner Schools", value: "300+", icon: "School" },
+  { label: "Students Trained", value: "1.25L+", icon: "Users" },
+  { label: "States Impacted", value: "18+", icon: "MapPin" },
+  { label: "Lab Solutions", value: "15+", icon: "Cpu" },
+] as const;
+
 import { Microscope, Bot, Zap } from "lucide-react";
 
 export const PROGRAMS = [
   {
-    id: "atl-labs",
-    title: "ATL Labs (Atal Tinkering Labs)",
-    slug: "atl-labs",
+    id: "steamverse-labs",
+    title: "STEAMVERSE Lab (STEM Innovation)",
+    slug: "steamverse-labs",
     description:
-      "Comprehensive end-to-end assistance in establishing and running Atal Tinkering Labs in schools, providing students with a stimulating environment for exploring STEM, tinkering, IoT, and entrepreneurship.",
+      "Comprehensive STEM lab covering Science, Technology, Engineering, and Mathematics with hands-on kits and 3D printing, aligned with NCF 2023.",
     features: [
-      "Complete lab setup and equipment",
-      "Teacher training programs",
-      "Curriculum development",
-      "Ongoing support and mentorship",
+      "Scientific Inquiry",
+      "Engineering Design",
+      "3D Printing & Prototyping",
+      "NCF 2023 Aligned",
     ],
     icon: Microscope,
   },
@@ -60,26 +67,26 @@ export const PROGRAMS = [
     title: "Robotics & AI Labs",
     slug: "robotics-labs",
     description:
-      "World-class robotics and AI lab setup for schools with age-appropriate kits, project-based learning curriculum, and expert training for grades 1-12.",
+      "Advanced robotics lab setup with AI & Machine Learning modules, focus on autonomous systems and competitive robotics.",
     features: [
-      "Advanced robotics kits",
-      "AI and machine learning modules",
-      "IoT integration",
-      "Competition preparation",
+      "Mechatronics",
+      "AI & Machine Learning",
+      "Computational Thinking",
+      "Competition Prep",
     ],
     icon: Bot,
   },
   {
-    id: "stem-labs",
-    title: "STEM Innovation Labs",
-    slug: "stem-labs",
+    id: "innoverse-labs",
+    title: "INNOVERSE Labs (Advanced Maker Space)",
+    slug: "innoverse-labs",
     description:
-      "Complete STEM laboratory solutions with hands-on learning equipment, 3D printers, electronics kits, and comprehensive curriculum for innovative learning.",
+      "State-of-the-art maker space with IoT, electronics, and rapid fabrication tools for advanced student projects.",
     features: [
-      "3D printing and design",
-      "Electronics and circuits",
-      "Coding and programming",
-      "Project-based workshops",
+      "IoT & Smart Systems",
+      "Advanced Electronics",
+      "Rapid Fabrication",
+      "Innovation & Troubleshooting",
     ],
     icon: Zap,
   },

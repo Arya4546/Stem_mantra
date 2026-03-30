@@ -45,7 +45,7 @@
 "Master The Skills 'Drive Your Future...'"/A step towards innovation
 
 ## Site Description
-"STEM learning focusing on leveraging technology on K-12 Segment for Robotics,STEM(science, technology, engineering, and mathematics). We provide ATL Labs setup, Robotics Labs, STEM Labs, teacher training, and NEP 2020 aligned curriculum for schools."
+"STEM learning focusing on leveraging technology on K-12 Segment for Robotics,STEM(science, technology, engineering, and mathematics). We provide complete end to end solution for ATL , Robotics, STEM/STEAM,IoT,AI & Coding labs, teacher/Students training, and NEP 2020 & NCF 2023 aligned curriculum for schools."
 
 ## Contact Information
 - **Phone:** 01203101774
@@ -75,13 +75,13 @@
 ## 2.1 Hero Section
 
 ### Badge Text
-"India's #1 STEM Education Provider"
+"India's #1 STEM,Robotics,AI & Coding Lab Education Provider"
 
 ### Main Heading
-"Transforming Schools With Advanced Robotics & AI Labs"
+"Transforming Schools With Advanced 21st century skills like Robotics,STEM/STEAM & AI & Coding Labs"
 
 ### Subheading
-"Partner with STEMmantra to establish NEP 2020 Aligned Atal Tinkering Labs (ATL) and comprehensive K-12 STEM infrastructure. We provide end-to-end curriculum integration, industrial-grade equipment, and expert educator training to domestic and international schools."
+"Partner with STEMmantra to establish NEP 2020 & NCF 2023 Aligned Atal Tinkering Labs (ATL) and comprehensive K-12 STEM infrastructure. We provide end-to-end curriculum integration, industrial-grade equipment, and expert educator training to domestic and international schools."
 
 ### CTA Buttons
 1. **Primary:** "Explore Our Curriculums" → Links to /programs
@@ -91,7 +91,7 @@
 | Stat | Value | Label |
 |------|-------|-------|
 | Partner Schools | 500+ | Industry Leadership |
-| Active Students | 50,000+ |  |
+| Active Students | 10,00,000+ |  |
 | Industry Leadership | 10+ Years |  |
 
 ---
@@ -102,24 +102,25 @@
 "Pioneering the Future of Experiential Learning in India"
 
 ### Main Description (Paragraph 1)
-"STEMmantra is universally recognized as the premier educational infrastructure partner across India. We specialize in the holistic development and deployment of advanced Robotics, Artificial Intelligence, and STEM educational laboratories within progressive K-12 academic institutions."
+"STEMmantra is universally recognised as the premier educational infrastructure partner across India. We specialise in the holistic development and deployment of advanced Robotics, Artificial Intelligence & Coding Labs, and STEM/STEAM educational laboratories within progressive K-12 academic institutions."
 
 ### Main Description (Paragraph 2)
-"Traditional rote learning frameworks are fundamentally incompatible with the demands of the modern algorithmic economy. Our organization was established to bridge this critical deficit through rigorous, outcome-based, and heavily hands-on curricula carefully constructed by alumni of India's top engineering institutions (IITs and NITs)."
+"Traditional rote learning frameworks are fundamentally incompatible with the demands of the modern algorithmic economy. Our organization was established to bridge this critical deficit through rigorous, outcome-based, and heavily hands-on curricula carefully constructed by  industry leader having decade of experience."
 
 ### Main Description (Paragraph 3)
-"From foundational introductory tinkering programs utilizing basic circuits to elite-tier competitive robotics geared towards international olympiads, STEMmantra architects learning continuums that scale precisely with student cognitive development and strict National Education Policy (NEP 2020) compliance guidelines."
+"From foundational introductory tinkering programs utilising basic electronics circuits to elite-tier competitive robotics geared towards national/International level of curriculum, STEMmantra architects learning continuum that scale precisely with student cognitive development and strict National Education Policy (NEP 2020) & NCF (National Curriculum framework)2023 compliance guidelines."
 
 ### Core Methodological Philosophy
 
-#### 1. Concept-Based Acquisition
-"Prioritizing deep foundational comprehension of mechanics, physics, and logic over superficial software syntax memorization."
+#### 1. Concept-Based Learning,
+Concept-based learning focuses on building a strong foundation through basic concepts. Students learn these concepts using engaging activities in robotics and coding. This approach makes learning simple, interactive, and easy to understand.
 
-#### 2. Project-Based Application
-"Translating abstract theory into tangible, functional prototypes utilizing industry-grade microcontrollers and rapid prototyping tools."
+#### 2. Project-Based Learning
+Project-based learning is the intermediate stage where students apply their basic knowledge. They progress from concepts to creating simple projects that help solve everyday problems. This hands-on approach strengthens understanding and practical skills.
 
-#### 3. Innovation-Based Evolution
-"Encouraging lateral thinking by challenging student cohorts to engineer novel solutions to local environmental or social constraints."
+#### 3. Innovation-Based Learning,
+Innovation-based learning focuses on solving real-world problems. Students identify challenges and use their basic and intermediate knowledge to develop solutions while learning advanced concepts. This approach promotes creativity, critical thinking, and innovation.
+
 
 ### CTA Let's Connect
 "Connect with our Academic Directors →" Links to /contact
@@ -132,10 +133,10 @@
 "End-to-End Lab Solutions"
 
 ### Main Heading
-"Transform Your School with World-Class STEM Infrastructure"
+"Transform Your School with World-Class STEM/Robotics Infrastructure"
 
 ### Description (Paragraph 1)
-"At STEMmantra, we recognize that practical, hands-on learning is the cornerstone of modern education. Our comprehensive laboratory solutions are engineered to seamlessly integrate into your school's curriculum, providing a robust foundation in Robotics, Artificial Intelligence, Coding, and IoT."
+"At STEMmantra, we recognise that practical, hands-on learning is the cornerstone of modern education. Our comprehensive laboratory solutions are engineered to seamlessly integrate into your school's curriculum, providing a robust foundation in Robotics, Artificial Intelligence, Coding, and IoT,Drone ,3-D Printing”
 
 ### Description (Paragraph 2)
 "We don't just supply equipment; we architect complete learning ecosystems. From initial spatial planning and hardware installation to rigorous teacher training and curriculum alignment with NEP 2020 standards, our turnkey solutions ensure that your institution remains at the forefront of pedagogical innovation."
@@ -149,18 +150,19 @@
 ### Lab Offerings
 
 #### 1. Comprehensive Robotics and AI Laboratories Setup
-**Description:** "Equip your institution with industry-grade robotics kits and AI modules. Our setups are tailored to meet the National Education Policy (NEP) 2020 guidelines, providing students with experiential learning opportunities in automation, machine learning, and hardware engineering."
+**Description:** "Equip your institution with best in class robotics DIY kits ,softwares and AI modules. Our setups are tailored to meet the National Education Policy (NEP) 2020 & National curriculum Framework(NCF)-2023 guidelines, providing students with experiential learning opportunities in automation, machine learning, and hardware engineering."
 **Highlights:**
-- Industrial-grade Arduino and Raspberry Pi kits
-- Advanced sensor modules and motor controllers
-- AI-driven visual programming interfaces
+
+Best in class DIY Kits ,Microcontroller ,
+- Advanced sensor modules and motors
+- AI&ML driven visual programming interfaces
 **Link:** "Explore Setup Requirements →" Links to /services
 
 #### 2. Atal Tinkering Labs (ATL) Implementation
-**Description:** "Transform your school's educational approach with government-approved Atal Tinkering Labs. STEMmantra provides end-to-end guidance from equipment procurement (3D printers, IoT devices) to curriculum implementation and continuous mentor support for national innovation challenges."
+**Description:** "Transform your school's educational approach with government-approved Atal Tinkering Labs. STEMmantra provides end-to-end guidance from equipment procurement (of Package 1,2,3 & 4 including 3D printers) to curriculum implementation and continuous mentor support for national innovation challenges."
 **Highlights:**
 - NITI Aayog compliance and documentation support
-- Complete 3D printing and prototyping equipment
+- End to end setup & execution support.
 - Maker space tools and electronics workbenches
 **Link:** "Explore Setup Requirements →" Links to /services
 
@@ -170,7 +172,7 @@
 "Why Partner With Us for Lab Integration?"
 
 #### Paragraph
-"Building a successful STEM ecosystem requires more than just unpacking boxes of equipment. Our dedicated success team conducts in-depth educator workshops, ensuring teachers are confident in utilizing advanced robotics kits and programming software. We provide continuous technical support, curriculum updates, and targeted training for national STEM olympiads, ensuring your students consistently perform at the highest levels."
+"Building a successful STEM Lab ecosystem requires more than just unpacking boxes of equipment. Our dedicated success team conducts in-depth educator workshops, ensuring teachers are confident in utilizing basic electronics components, block based kits, advanced robotics kits and programming software. We provide continuous technical support, curriculum updates, and targeted training for National/International robotics & STEM based competitions , ensuring your students consistently perform at the highest levels."
 
 #### CTA Button
 "Schedule a Free Lab Consultation" → Links to /contact
@@ -186,21 +188,27 @@
 "Why Top Indian Schools Choose STEMmantra"
 
 ### Main Description
-"For over a decade, STEMmantra has been the trusted catalyst for educational transformation. We don't just sell equipment; we partner with forward-thinking institutions to architect comprehensive, future-proof ecosystems in Robotics, Artificial Intelligence, and Applied STEM."
+"With over a decade experience leadership team, STEMmantra has been the trusted catalyst for educational transformation. We don't just sell equipment; we partner with forward-thinking institutions to architect comprehensive, future-proof ecosystems in Robotics, STEM/STEAM ,Artificial Intelligence & Coding."
 
 ### Core Pillars
 
 #### 1. National Education Policy (NEP 2020) Alignment
-"Every curriculum module, from IoT to drone technology, is strictly designed around the NEP 2020 framework. We ensure that your school not only meets government standards but excels in delivering 21st-century skills such as critical thinking, algorithmic reasoning, and collaborative problem-solving."
+"Every curriculum module, from Basic electronic to robotics,Robotics to IoT, Iot to AI & Coding technology, is strictly designed around the NEP 2020 framework. We ensure that your school not only meets government standards but excels in delivering 21st-century skills such as critical thinking, logical thinking, algorithmic reasoning, and collaborative problem-solving.”
+
+National Curriculum Framework (NCF-2023)
+STEMMANTRA Technologies enables experiential and competency-based learning through Robotics,STEM/STEAM , AI& Coding, and IoT labs.
+Our solutions foster critical thinking, problem-solving, and hands-on learning as recommended by NCF-2023.We provide end-to-end support including lab setup, curriculum integration, and teacher training.
+STEMMANTRA empowers schools to effectively implement next-generation education practices.
+
 
 #### 2. Comprehensive Turnkey Implementation
-"We eliminate the friction of adopting new technology. STEMmantra handles the entirety of your lab setup—procuring industrial-grade equipment, installing software infrastructure, and providing continuous maintenance so your educators can focus on what they do best: teaching."
+"We eliminate the friction of adopting new technology. STEMmantra handles the entirety of your lab setup—procuring equipment, installing software infrastructure, and providing continuous maintenance so your educators can focus on what they do besttraining."
 
 #### 3. Expert Educator Training and Certification
 "Technology is only as effective as the educators wielding it. We conduct intensive, multi-modal training programs for your existing staff, supplemented by our own certified STEM trainers. Our goal is to build long-term institutional capacity rather than short-term reliance."
 
 #### 4. National STEM Competition Readiness
-"We actively prepare your student body for prestigious national and international robotics, AI, and coding olympiads. Our advanced competitive curriculum ensures your institution stands out as a beacon of academic and technical excellence."
+"We actively prepare your student body for prestigious national and international robotics, AI, and coding competitions. Our advanced competitive curriculum ensures your institution stands out as a beacon of academic and technical excellence."
 
 ### The STEMmantra Advantage Section
 
@@ -208,16 +216,17 @@
 "The STEMmantra Advantage"
 
 #### Description (Paragraph 1)
-"Implementing an effectively functioning Atal Tinkering Lab (ATL) or dedicated Robotics and AI Laboratory requires specialized pedagogical expertise. Many schools struggle with underutilized equipment due to a lack of proper curriculum integration."
+"Implementing an effectively functioning Atal Tinkering Lab (ATL) or dedicated Robotics and AI & Coding Laboratory requires specialized pedagogical expertise. Many schools struggle with underutilized equipment due to a lack of proper curriculum integration."
 
 #### Description (Paragraph 2)
-"STEMmantra solves this by providing proprietary, grade-level appropriate learning modules that span from foundational block-based coding to advanced machine learning utilizing Python. We guarantee that every piece of hardware—from simple Arduino boards to complex industrial drone kits—is actively utilized in student-led innovation projects."
+"STEMmantra solves this by providing proprietary, grade-level appropriate learning modules that span from foundational block-based coding to intermediate level to advanced Robotics,AI & machine learning utilizing Python. We guarantee that every piece of hardware—from simple Arduino boards to complex equipment's to drone& #-D printing kits—is actively utilized in student-led innovation projects."
 
 #### Features List
-- Customized curriculum for grades 1 through 12
+- Customised curriculum for grades 3 to 12
 - Annual maintenance and hardware replacement contracts
-- Direct mentorship from industry engineers
+- Direct mentor-ship from industry engineers
 - Seamless academic integration with existing subjects
+- LMS-Learning Managemnt sysytem to support teachers
 
 #### CTA Button
 "Read Our Success Stories →" Links to /about
@@ -233,24 +242,24 @@
 "Comprehensive K-12 Educational Programs"
 
 ### Subheading
-"At STEMmantra, we deploy meticulously structured learning pathways that evolve with the student. Our programs range from primary level kinetic learning to advanced senior secondary courses in artificial neural networks."
+"At STEMmantra, we deploy meticulously structured learning pathways that evolve with the student. Our programs range from primary level kinetic learning to advanced senior secondary courses in Robotics ,STEM/STEAM,artificial Intelligence & Machine learning.”
 
 ### Educational Structure
-"Our curriculum implementation framework guarantees that every syllabus we offer conforms rigorously to current Central Board of Secondary Education (CBSE), ICSE, and international academic standards. We believe that STEM education is not an extracurricular activity, but a fundamental academic necessity."
-"When your institution partners with us for an Atal Tinkering Lab setups or an integrated Robotics Masterclass, you receive a turnkey pedagogical solution encompassing year-long lesson plans, proprietary workbook materials, and continuous educator evaluation metrics."
+"Our curriculum implementation framework guarantees that every syllabus we offer conforms rigorously to current Central Board of Secondary Education (CBSE), ICSE, and international academic standards & State Boards. We believe that STEM education is not an extracurricular activity, but a fundamental academic necessity."
+"When your institution partners with us for an Robotics ,STEM/STEM Labs or AI & Coding lab setups or an integrated Robotics Masterclass, you receive a turnkey pedagogical solution encompassing year-long lesson plans, proprietary workbook materials, and continuous educator evaluation metrics."
 "View Detailed Course Catalogs →" Links to /programs
 
 ### Program Highlights
 
-#### 1. Atal Tinkering Labs (ATL) Mentorship
+#### 1. Atal Tinkering Labs (ATL)
 "Full compliance lifecycle management for NITI Aayog funded ATL labs. We train students in 3D modeling, intermediate circuitry, and rapid IoT prototyping."
 - NITI Aayog Dashboard Maintenance
 - Tinkering Festival Preparation
 
-#### 2. Applied Robotics & Automation
-"From basic gear mechanisms for primary school to inverse kinematics and autonomous navigation protocols for senior secondary students."
+#### 2. STEM/STEAM-Robotics Labs
+"From basic gear mechanisms for primary school to inverse kinematics and autonomous navigation protocols for K-12 students."
 - Certified Master Trainers
-- Industrial Exoskeleton Projects
+- Unique Robotics methodologies
 
 #### 3. Artificial Intelligence & Coding
 "We utilize visual programming interfaces transitioning strictly into high-level language parsing (Python/C++) for machine learning applications."
@@ -268,19 +277,19 @@
 "Powering India's STEM Revolution"
 
 ### Subheading (Paragraph 1)
-"Through comprehensive Robotics labs and Atal Tinkering Lab integrations, we have established a demonstrable track record of elevating pedagogical standards and fostering deep technological literacy on a national scale."
+"Through comprehensive Robotics labs and Atal Tinkering Lab integration, we have established a demonstrable track record of elevating pedagogical standards and fostering deep technological literacy on a national scale."
 
 ### Subheading (Paragraph 2)
-"Our data-driven approach to experiential learning ensures measurable outcomes in student engagement, critical thinking assessments, and participation in international coding olympiads."
+"Our data-driven approach to experiential learning ensures measurable outcomes in student engagement, critical thinking assessments, and participation in national/international coding competition."
 
 ### Statistics
 
 | Value | Label |
 |-------|-------|
-| 500+ | Partner Institutions |
-| 50,000+ | Student Innovators |
-| 15+ | States Impacted |
-| 100+ | National Awards |
+| 300+ | Partner Institutions |
+| 1,25,000+ | Student Innovators |
+| 18+ | States Impacted |
+
 
 ---
 
@@ -293,16 +302,16 @@
 "Validated by Academic Visionaries"
 
 ### Subheading (Paragraph 1)
-"The true measure of an educational infrastructure provider is the sustained success and satisfaction of its institutional partners."
+"The true measure of an educational technology provider is the sustained success and satisfaction of its institutional partners."
 
 ### Subheading (Paragraph 2)
-"Listen to Principals, Trustees, and Academic Directors from prestigious K-12 schools across India discuss the transformational impact of our Robotics Laboratories, AI Curriculums, and Atal Tinkering Labs (ATL) integrations."
+"Listen to Principals& Directors from prestigious K-12 schools across India discuss the transformational impact of our Robotics Laboratories, AI Curriculums, and Atal Tinkering Labs (ATL) integrations."
 
 ### Testimonials
 
 #### Testimonial 1
 - **Name:** Mrs. Vandana Mahajan
-- **Role:** Director Principal
+- **Role:** Principal
 - **School:** MOUNT OLYMPUS SCHOOL, SEC-47, GURUGRAM
 - **Content:** "STEMmantra brings innovation to the classroom in the most engaging and practical ways. Their hands-on approach to STEM learning is truly empowering for both students and educators. A great partner in future-ready education! STEMmantra is doing exceptional work in bridging the gap between theoretical knowledge and real-world application."
 
@@ -314,7 +323,7 @@
 
 #### Testimonial 3
 - **Name:** Mahua Das Gupta
-- **Role:** Principal
+- **Role:** Director Principal
 - **School:** THE TRIBHUVAN SCHOOL PATNA
 - **Content:** "STEMMANTRA Technologies has been an invaluable partner in our quest for innovation and excellence. Their cutting-edge solutions and unwavering commitment to quality have consistently exceeded our expectations. Their expertise has catalyzed our growth and we look forward to a continued, successful partnership in the future."
 
@@ -342,26 +351,26 @@
 #### Q1: What is STEMmantra and what services do you provide?
 **Answer:** "STEMmantra is India's leading provider of robotics, AI, and STEM education solutions for schools. We provide complete turnkey lab solutions including equipment, curriculum, teacher training, and ongoing support. Our services include Robotics Labs, AI/ML Labs, Atal Tinkering Labs (ATL), STEM Labs, coding programs, and innovation workshops."
 
-#### Q2: How is your curriculum aligned with NEP 2020?
-**Answer:** "Our curriculum is designed by experts from IIT and NIT institutions, fully aligned with National Education Policy 2020 guidelines. It emphasizes experiential learning, critical thinking, and 21st-century skills development. We cover all recommended areas including computational thinking, AI, robotics, and hands-on STEM activities."
+#### Q2: How is your curriculum aligned with NEP 2020& NCF 2023?
+**Answer:** "Our curriculum is designed by experts engineers which is fully aligned with National Education Policy 2020 and National Curriculum Framework 2023 guidelines. It emphasizes experiential learning, critical thinking, and 21st-century skills development. We cover all recommended areas including computational thinking, AI, robotics, and hands-on STEM activities."
 
 #### Q3: What equipment comes with your lab setup?
-**Answer:** "Our lab packages include industrial-grade robotics kits (Arduino, Raspberry Pi, sensors, motors), 3D printers, programming workstations, IoT devices, electronics components, maker tools, and safety equipment. All equipment comes with warranties and we provide regular maintenance and upgrades."
+**Answer:** "Our lab packages include best in classBasic Electronics components,Robotics components ,IoT components,DIY(Do It Yourself) Kits, 3D printers, programming Platform, workstations, maker tools, and safety equipment. All equipment comes with warranties and we provide regular maintenance and upgrades (wherever applicable)."
 
 #### Q4: Do you provide teacher training?
-**Answer:** "Yes, comprehensive teacher training is a core part of our offering. We provide initial intensive training sessions (40+ hours), ongoing professional development workshops, access to our online learning platform, lesson plans, and 24/7 technical support. Our trainers are certified educators with 5+ years of experience."
+**Answer:** "Yes, comprehensive teacher training is a core part of our offering. We provide initial intensive training sessions in offline & online modes as per mode of collaboration with organization, ongoing professional development workshops, access to our online learning platform-LMS, lesson plans/curriculum, and 24/7 technical support. Our trainers are certified educators with years of experience."
 
 #### Q5: What grades/age groups do your programs cover?
-**Answer:** "Our programs are designed for students from Class 1 to Class 12. We have age-appropriate curriculum tracks: Junior STEM (Classes 1-5), Middle School Robotics (Classes 6-8), and Advanced AI & Robotics (Classes 9-12). Each track builds progressively on skills learned in previous levels."
+**Answer:** "Our programs are designed for students from Class 3 to Class 12. We have age-appropriate curriculum tracks: Junior STEM (Classes 3-5), Middle School Robotics (Classes 6-8), and Advanced AI & Robotics (Classes 9-12). Each track builds progressively on skills learned in previous levels."
 
 #### Q6: How do you assess student progress?
-**Answer:** "We use a comprehensive assessment system including project-based evaluations, coding challenges, robotics competitions, peer reviews, and portfolio assessments. Schools receive detailed progress reports and analytics through our dashboard, helping identify areas for improvement and tracking skill development."
+**Answer:** "We use a comprehensive assessment system including project-based evaluations, coding challenges, robotics competitions,online assessment. Schools receive detailed progress reports and analytics through our dashboard, helping identify areas for improvement and tracking skill development."
 
 #### Q7: Can you help with ATL (Atal Tinkering Lab) setup?
 **Answer:** "Absolutely! We are specialized partners for Atal Tinkering Lab setup. We help schools with the complete ATL journey - from application assistance to lab design, equipment procurement, mentor training, and running innovation programs. Our ATL labs comply with all NITI Aayog guidelines."
 
 #### Q8: What is the investment required for a robotics lab?
-**Answer:** "Lab investment varies based on school size, equipment selection, and program scope. We offer flexible packages starting from basic setups for smaller schools to advanced labs for larger institutions. Contact us for a customized quote based on your specific requirements and budget."
+**Answer:** "Lab investment varies based on no. of student per class/section, equipment selection, and program scope. We offer flexible packages starting from basic setups for smaller schools to advanced labs for larger institutions which start from 2L to 10-15L. Contact us for a customized quote based on your specific requirements and budget."
 
 ### CTA Text
 "Still have questions? Our team is ready to help you understand how STEMmantra can transform your school's technology education. Contact us today for a free consultation and school assessment."
@@ -410,19 +419,25 @@
 
 ### Partner Schools Listed
 - Kendriya Vidyalaya
+Jawahar Navodaya
+Saraswati Vidya Mandir Schools
+Mount Olympus Group of schools
+
 - Delhi Public School
 - Army Public School
-- DAV Schools
+- DAV Public/Model Schools
 - St. Thomas School
-- Ryan International
-- Amity International
-- Jawahar Navodaya
+- Sadhu Vashwani International Schools
+- CMS World Schools
+- Lakshmipat Singhnia Public School
 
 ### Trust Badges
-- Government Approved
+-GeM Registered
+- Gov Approved Institutions
 - NEP 2020 Aligned
-- ISO Certified
-- CBSE Recommended
+-NCF-2023 Aligned
+- Top Private Schools
+
 
 ### Bottom CTA
 "Want to partner with us? Become a Partner →"
@@ -438,7 +453,7 @@
 "Establish A World-Class STEM Laboratory"
 
 ### Description
-"Join the 500+ forward-thinking K-12 institutions across India utilizing STEMmantra's robust Robotics, AI, Coding, and Atal Tinkering Lab (ATL) pedagogical frameworks. Prepare your students for the intellectual demands of tomorrow."
+"Join the 300+ forward-thinking K-12 institutions across India utilizing STEMmantra's robust Robotics, STEM/STEAM-Robotics ,AI&Coding, and Atal Tinkering Lab (ATL) pedagogical frameworks. Prepare your students for the intellectual demands of tomorrow."
 
 ### CTA Buttons
 1. **Primary:** "Schedule Technical Consultation" → Links to /contact
@@ -474,15 +489,15 @@
 "About STEMMantra"
 
 ### Description
-"Empowering the next generation of innovators through world-class STEM education, cutting-edge robotics labs, and transformative learning experiences. We are on a mission to make quality STEM education accessible to every student in India."
+"Empowering the next generation of innovators through world-class STEM education, cutting-edge Robotics & AI labs, and transformative learning experiences. We are on a mission to make quality STEM education accessible to every student in India."
 
 ### Stats Grid
 | Value | Label |
 |-------|-------|
-| 10,000+ | Students Trained |
+| 1,25,000+ | Students Trained |
 | 500+ | Schools Partnered |
-| 15+ | States Covered |
-| 200+ | Expert Trainers |
+| 18+ | States Covered |
+| 20+ | Expert Trainers |
 
 ---
 
@@ -492,10 +507,10 @@
 "To democratize STEM education by providing schools with world-class robotics labs, AI-powered learning tools, and trained educators. We aim to nurture curiosity, foster innovation, and prepare students for the challenges of tomorrow."
 
 ### Our Vision
-"To be India's most trusted partner in STEM education, reaching 1 million students by 2030. We envision a future where every school has access to cutting-edge technology labs and every student has the opportunity to become an innovator."
+"To be India's most trusted partner in STEM education, reaching 100 million students by 2030. We envision a future where every school has access to cutting-edge technology labs and every student has the opportunity to become an innovator."
 
 ### Experience Badge
-"6+ Years of Excellence"
+"3+ Years of Excellence"
 
 ---
 
@@ -515,7 +530,7 @@
 "Every program is designed with students at the center, ensuring engaging, accessible, and impactful learning experiences."
 
 #### 3. Collaborative Growth
-"We partner with schools, educators, and communities to create sustainable STEM education ecosystems."
+"We partner with schools, educators,NGO’s and communities to create sustainable STEM education ecosystems."
 
 #### 4. Excellence in Delivery
 "Our commitment to quality ensures every workshop, lab setup, and training program meets the highest standards."
@@ -531,17 +546,17 @@
 
 ### Services
 
-#### 1. Robotics Labs
+#### 1. Robotics Labs-STEAMVERSE Lab
 "Complete turnkey robotics lab solutions with curriculum, hardware, and training support."
 
-#### 2. AI & ML Labs
+#### 2. AI-ML & Coding Labs
 "Cutting-edge artificial intelligence and machine learning labs for future-ready students."
 
 #### 3. ATL Labs
 "Atal Tinkering Lab setup, mentorship, and innovation programs aligned with government initiatives."
 
-#### 4. STEM Labs
-"Integrated Science, Technology, Engineering, and Mathematics laboratories for holistic learning."
+#### 4. STEM Labs-INNOVERSE Labs
+"Integrated Science, Technology, Engineering, and Mathematics laboratories for holistic learning ilcudeing Robotics,IoT ,AI & coidng Labs."
 
 ---
 
@@ -574,11 +589,11 @@
 - **Description:** "We don't just set up labs - we build complete STEM education ecosystems with ongoing support, training, and innovation."
 
 ### Differentiators List
-1. "NEP 2020 aligned curriculum designed by experts"
+1. "NEP 2020 & NCF 2023 aligned curriculum designed by experts"
 2. "Complete turnkey lab solutions"
 3. "Certified and experienced trainers"
 4. "Continuous support and maintenance"
-5. "Competition and olympiad preparation"
+5. "National & International Competition preparation"
 6. "Industry partnerships and certifications"
 
 ### Stats Box
@@ -587,7 +602,7 @@
 | School Satisfaction | 100% |
 | Support Available | 24/7 |
 | Awards Won | 50+ |
-| States Covered | 15+ |
+| States Covered | 18+ |
 
 ---
 
@@ -597,7 +612,7 @@
 "Ready to Transform Your School?"
 
 ### Description
-"Join 500+ schools that have already partnered with STEMmantra to bring world-class STEM education to their students."
+"Join 300+ schools that have already partnered with STEMmantra to bring world-class STEM education to their students."
 
 ### CTA Buttons
 1. **Primary:** "Get Started Today"
@@ -610,20 +625,20 @@
 ## 4.1 Hero Section
 
 ### Badge Text
-"NEP 2020 Aligned Programs"
+"NEP 2020 & NCF 2023 Aligned Programs"
 
 ### Main Heading
 "Our Programs"
 
 ### Description
-"Transforming education through innovative STEM programs that prepare students for the future. From ATL Labs to advanced Robotics & AI, we provide comprehensive solutions for schools across India."
+"Transforming education through innovative STEM/STEAM programs that prepare students for the future. From ATL Labs to advanced Robotics & AI, we provide comprehensive solutions for schools across India."
 
 ### Stats Section
 | Value | Label |
 |-------|-------|
-| 500+ | Schools Partnered |
-| 50,000+ | Students Trained |
-| 15+ | States Covered |
+| 300+ | Schools Partnered |
+| 1,50,000+ | Students Trained |
+| 18+ | States Covered |
 | 200+ | Expert Trainers |
 
 ---
@@ -635,27 +650,14 @@
 - **Heading:** "Comprehensive STEM Solutions"
 - **Subheading:** "Select from our range of comprehensive STEM education programs designed to foster innovation and creativity."
 
-### Program 1: ATL Labs
-
-**Subtitle:** "Atal Tinkering Labs"
-
-**Description:** "Comprehensive end-to-end assistance in establishing and running Atal Tinkering Labs in schools as per NITI Aayog guidelines. Complete setup, teacher training, and year-long support for fostering innovation and creativity."
-
-**Features:**
-- Complete lab setup as per NITI Aayog guidelines
-- Teacher training & certification programs
-- NEP 2020 aligned curriculum
-- Year-round mentorship and support
-- Competition preparation
-- 3D printing & electronics equipment
 
 ---
 
-### Program 2: Robotics & AI Lab
+### Program 1: Robotics-STEAMVERSE Lab
 
 **Subtitle:** "Future Technology Education"
 
-**Description:** "State-of-the-art robotics and AI labs with hands-on learning experiences. Build, program, and innovate with cutting-edge technology including Arduino, Raspberry Pi, and advanced robotics platforms."
+**Description:** "State-of-the-art robotics Lab with hands-on learning experiences. Build, program, and innovate with cutting-edge technology including Basic Electronics components ,Micro-controllers (Arduino,ESP),DIY Kits and advanced robotics platforms."
 
 **Features:**
 - Advanced robotics kits & platforms
@@ -665,21 +667,44 @@
 - Industry expert guidance
 - Certification programs
 
+### Program 2:- AI & Coding Labs
+
+### Program 3-Pre-Tinkering Lab
+
+
+
 ---
 
-### Program 3: STEM Innovation Lab
+### Program 4: STEM/STEAM Lab-Innoverse Labs
 
 **Subtitle:** "Integrated STEM Learning"
 
-**Description:** "Holistic STEM education combining science, technology, engineering, and mathematics through project-based learning and real-world applications. Develop critical thinking and problem-solving skills."
+**Description:** "Holistic STEM education combining science, technology, engineering, and mathematics through project-based learning and real-world applications. Develop critical thinking and problem-solving skills.".In this we inclue all the technologies like Robotics,IoT ,AI & Coding,VR.
 
 **Features:**
-- Integrated STEM curriculum
+- Integrated STEM/STEAM curriculum
 - Hands-on experiments & projects
-- 3D design and printing
+- 3D printing
 - Research methodology training
 - Science fair preparation
 - Cross-disciplinary learning
+
+
+
+
+### Program 5: ATL Labs
+
+**Subtitle:** "Atal Tinkering Labs"
+
+**Description:** "Comprehensive end-to-end assistance in establishing and running Atal Tinkering Labs in schools as per NITI Aayog guidelines. Complete setup, teacher training, and year-long support for fostering innovation and creativity."
+
+**Features:**
+- Complete lab setup as per NITI Aayog guidelines
+- Teacher training & certification programs
+- NEP 2020 & NCF 2023 aligned curriculum
+- Year-round mentorship and support
+- Competition preparation
+- Robotics ,IoT(Internet of Things) ,3D printing &Electronics equipment& DIY Kits
 
 ---
 
@@ -730,9 +755,9 @@
 "Let's discuss how we can transform your school with world-class STEM education"
 
 ### Quick Stats
-- 500+ Schools Partnered
+- 300+ Schools Partnered
 - Expert Team of 200+ Trainers
-- NEP 2020 Aligned Curriculum
+- NEP 2020 & NCF 2023 Aligned Curriculum
 - End-to-End Lab Setup Support
 
 ---
@@ -758,13 +783,14 @@
 1. **Full Name** (Required)
 2. **Email Address** (Required)
 3. **Phone Number** (Required)
-4. **School/Organization** (Optional)
+4. **Name of School/Organization** (Optional)
 5. **I'm Interested In** (Required) - Dropdown with options:
-   - ATL Lab Setup
-   - Robotics & AI Lab Setup
-   - STEM Innovation Lab Setup
-   - Teacher Training Programs
-   - Curriculum Design
+-Robotics Lab-STEAMVERSE LAB
+-AI & Coding Lab
+-Pre tinkering Lab
+   - STEAM?STEAM Lab-Innoverse LAB
+   - Atal Tinkering Lab Setup
+   - Teacher Training Programs/Curriculum Design
    - Partnership Opportunity
    - Other Inquiry
 6. **Your Message** (Required)
@@ -818,7 +844,7 @@
 "Ready to Transform Your School?"
 
 ### Description
-"Join 500+ schools that have partnered with STEMmantra to bring world-class STEM education to their students."
+"Join 300+ schools that have partnered with STEMmantra to bring world-class STEM education to their students."
 
 ### CTA Buttons
 1. **Primary:** "Explore Programs"
@@ -1022,7 +1048,7 @@
 - **Equipment:** 3D Printers, Robotics Kits, Electronics Components, IoT Sensors, Microcontrollers, Hand Tools, Workbenches, Computers
 - **Subjects:** Design Thinking, Prototyping, Electronics, Coding, Innovation, Entrepreneurship
 - **Age Group:** Class 6 to Class 12
-- **Investment:** ₹10-20 Lakhs
+- **Investment:** ₹2-15 Lakhs
 - **Benefits:** Government supported initiative, Access to latest technology, Innovation competitions, Mentorship programs, Startup ecosystem exposure, National recognition
 
 ## 9.2 Robotics & AI Labs
@@ -1099,11 +1125,10 @@ Each city page includes: Hero section, Stats, Features, Areas Covered, Benefits,
 - 3D Printing
 
 ### Common Benefits:
-- NEP 2020 aligned curriculum
+- NEP 2020& NCF 2023 aligned curriculum
 - Trained and certified instructors
 - Regular workshops and training
 - Competition preparation support
-- Annual maintenance included
 - Student progress tracking
 - Parent engagement programs
 - Certificate courses for students
@@ -1627,3 +1652,4 @@ Each city page includes: Hero section, Stats, Features, Areas Covered, Benefits,
 ---
 
 *Thank you for reviewing this document!*
+

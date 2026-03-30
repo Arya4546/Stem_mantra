@@ -134,7 +134,7 @@ const features = [
 ];
 
 const benefits = [
-    "NEP 2020 aligned curriculum",
+    "NEP 2020 & NCF 2023 aligned curriculum",
     "Trained and certified instructors",
     "Regular workshops and training",
     "Competition preparation support",

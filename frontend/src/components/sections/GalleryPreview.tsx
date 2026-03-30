@@ -1,10 +1,8 @@
-
 "use client";
 import SectionFloatingIcons from "@/components/animations/SectionFloatingIcons";
 
 import { useRef } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { motion, useInView } from "framer-motion";
 import { FaArrowRight, FaImages } from "react-icons/fa";
 
@@ -150,12 +148,12 @@ export default function GalleryPreview() {
             <div className="text-sm text-gray-500">Events</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl md:text-4xl font-bold text-purple-500">50+</div>
-            <div className="text-sm text-gray-500">Competitions</div>
+            <div className="text-3xl md:text-4xl font-bold text-purple-500">300+</div>
+            <div className="text-sm text-gray-500">Partners</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl md:text-4xl font-bold text-blue-500">15+</div>
-            <div className="text-sm text-gray-500">States</div>
+            <div className="text-3xl md:text-4xl font-bold text-blue-500">1.25L+</div>
+            <div className="text-xs uppercase tracking-widest font-black text-gray-500 mt-1">Students Impacted</div>
           </div>
         </motion.div>
       </div>
