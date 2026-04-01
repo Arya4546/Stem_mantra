@@ -7,13 +7,16 @@ import { BookOpen, CheckCircle, Award, Star } from "lucide-react";
 // Partner schools and organizations
 const partners = [
   { name: "Kendriya Vidyalaya", logo: "/images/partners/kv-logo.png" },
+  { name: "Jawahar Navodaya", logo: "/images/partners/jnv-logo.png" },
+  { name: "Saraswati Vidya Mandir Schools", logo: "/images/partners/svm-logo.png" },
+  { name: "Mount Olympus Group of schools", logo: "/images/partners/mount-logo.png" },
   { name: "Delhi Public School", logo: "/images/partners/dps-logo.png" },
   { name: "Army Public School", logo: "/images/partners/aps-logo.png" },
-  { name: "DAV Schools", logo: "/images/partners/dav-logo.png" },
+  { name: "DAV Public/Model Schools", logo: "/images/partners/dav-logo.png" },
   { name: "St. Thomas School", logo: "/images/partners/st-thomas-logo.png" },
-  { name: "Ryan International", logo: "/images/partners/ryan-logo.png" },
-  { name: "Amity International", logo: "/images/partners/amity-logo.png" },
-  { name: "Jawahar Navodaya", logo: "/images/partners/jnv-logo.png" },
+  { name: "Sadhu Vashwani International Schools", logo: "/images/partners/svis-logo.png" },
+  { name: "CMS World Schools", logo: "/images/partners/cms-logo.png" },
+  { name: "Lakshmipat Singhnia Public School", logo: "/images/partners/lsps-logo.png" },
 ];
 
 // Duplicate for seamless loop
@@ -100,10 +103,11 @@ export default function PartnersSection() {
           className="flex flex-wrap items-center justify-center gap-4 md:gap-8 mt-12"
         >
           {[
-            { label: "Government Approved", icon: CheckCircle },
-            { label: "NEP 2020 & NCF 2023 Aligned", icon: BookOpen },
-            { label: "ISO Certified", icon: Award },
-            { label: "CBSE Recommended", icon: Star },
+            { label: "GeM Registered", icon: CheckCircle },
+            { label: "Gov Approved Institutions", icon: BookOpen },
+            { label: "NEP 2020 Aligned", icon: Award },
+            { label: "NCF-2023 Aligned", icon: Award },
+            { label: "Top Private Schools", icon: Star },
           ].map((badge, index) => (
             <div
               key={index}

@@ -159,7 +159,7 @@ export default function SEOLinksSection() {
                     <p className="text-gray-500 text-xs leading-relaxed text-center max-w-4xl mx-auto">
                         <strong className="text-gray-400">STEMmantra</strong> is India&apos;s leading provider of
                         robotics labs, AI labs, STEM labs, and Atal Tinkering Labs (ATL) for schools. We provide
-                        complete turnkey lab solutions including equipment, NEP 2020 & NCF 2023 aligned curriculum, teacher
+                        complete turnkey lab solutions including equipment, NEP 2020 aligned curriculum, teacher
                         training, and ongoing support across Delhi, Mumbai, Bangalore, Hyderabad, Chennai, Pune,
                         Gurugram, Noida, Kolkata, Jaipur and 500+ cities in India. Our programs cover robotics
                         programming, artificial intelligence, machine learning, 3D printing, IoT, electronics,

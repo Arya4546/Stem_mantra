@@ -169,11 +169,12 @@ export default function ContactPage() {
                         <select id="interest" name="interest" required value={formData.interest} onChange={handleChange}
                           className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-orange-500 focus:ring-1 focus:ring-orange-500 focus:outline-none transition-colors text-sm bg-white">
                           <option value="">Select an option</option>
-                          <option value="ATL Lab Setup">ATL Lab Setup</option>
-                          <option value="Robotics Lab Setup">Robotics & AI Lab Setup</option>
-                          <option value="STEM Lab Setup">STEM Innovation Lab Setup</option>
-                          <option value="Teacher Training">Teacher Training Programs</option>
-                          <option value="Curriculum Design">Curriculum Design</option>
+                          <option value="Robotics Lab-STEAMVERSE LAB">Robotics Lab - STEAMVERSE LAB</option>
+                          <option value="AI & Coding Lab">AI &amp; Coding Lab</option>
+                          <option value="Pre Tinkering Lab">Pre Tinkering Lab</option>
+                          <option value="STEM/STEAM Lab-INNOVERSE LAB">STEM/STEAM Lab - INNOVERSE LAB</option>
+                          <option value="ATL Lab Setup">Atal Tinkering Lab Setup</option>
+                          <option value="Teacher Training/Curriculum Design">Teacher Training Programs / Curriculum Design</option>
                           <option value="Partnership">Partnership Opportunity</option>
                           <option value="Other">Other Inquiry</option>
                         </select>

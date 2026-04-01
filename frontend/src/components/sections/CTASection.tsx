@@ -34,7 +34,7 @@ export default function CTASection() {
 
             <p className="text-lg md:text-xl font-medium leading-relaxed mb-10 text-orange-50">
               Join the 300+ forward-thinking K-12 institutions across India utilizing STEMmantra&apos;s robust
-              <strong> Robotics, AI, Coding, and Atal Tinkering Lab (ATL)</strong> pedagogical frameworks. Prepare your students for the intellectual demands of tomorrow.
+              <strong> Robotics, STEM/STEAM-Robotics, AI &amp; Coding, and Atal Tinkering Lab (ATL)</strong> pedagogical frameworks. Prepare your students for the intellectual demands of tomorrow.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 mb-10">

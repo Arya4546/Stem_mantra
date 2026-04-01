@@ -9,7 +9,6 @@ const stats = [
   { icon: FaSchool, value: 300, suffix: "+", label: "Partner Institutions" },
   { icon: FaUsers, value: 125000, suffix: "+", label: "Student Innovators" },
   { icon: FaGlobeAsia, value: 18, suffix: "+", label: "States Impacted" },
-  { icon: FaAward, value: 100, suffix: "+", label: "National Awards" },
 ];
 
 function AnimatedCounter({ value, suffix = "", duration = 2000 }: { value: number; suffix?: string; duration?: number }) {
@@ -41,10 +40,7 @@ function AnimatedCounter({ value, suffix = "", duration = 2000 }: { value: numbe
   }, [isInView, value, duration]);
 
   const formatNumber = (num: number) => {
-    if (num >= 1000) {
-      return (num / 1000).toFixed(num >= 10000 ? 0 : 1) + "K";
-    }
-    return num.toString();
+    return num.toLocaleString('en-IN');
   };
 
   return (
@@ -85,7 +81,7 @@ export default function StatsSection() {
               Through comprehensive Robotics labs and Atal Tinkering Lab integrations, we have established a demonstrable track record of elevating pedagogical standards and fostering deep technological literacy on a national scale.
             </p>
             <p className="text-gray-400 text-base leading-relaxed">
-              Our data-driven approach to experiential learning ensures measurable outcomes in student engagement, critical thinking assessments, and participation in international coding olympiads.
+              Our data-driven approach to experiential learning ensures measurable outcomes in student engagement, critical thinking assessments, and participation in national/international coding competition.
             </p>
           </motion.div>
 

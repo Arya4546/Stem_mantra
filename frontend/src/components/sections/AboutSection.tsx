@@ -44,19 +44,19 @@ export default function AboutSection() {
             className="prose prose-xl prose-gray md:prose-2xl text-gray-600 max-w-none text-justify md:text-left leading-relaxed font-medium"
           >
             <p className="mb-8">
-              STEMmantra is universally recognized as the premier educational infrastructure partner across India.
-              We specialize in the holistic development and deployment of advanced <strong className="text-gray-900 border-b-2 border-orange-200">Robotics, Artificial Intelligence, and STEM educational laboratories</strong>
+              STEMmantra is universally recognised as the premier educational infrastructure partner across India.
+              We specialise in the holistic development and deployment of advanced <strong className="text-gray-900 border-b-2 border-orange-200">Robotics, Artificial Intelligence &amp; Coding Labs, and STEM/STEAM educational laboratories</strong>
               within progressive K-12 academic institutions.
             </p>
             <p className="mb-8">
               Traditional rote learning frameworks are fundamentally incompatible with the demands of the modern algorithmic economy.
               Our organization was established to bridge this critical deficit through rigorous, outcome-based, and heavily hands-on
-              curricula carefully constructed by alumni of India&apos;s top engineering institutions (IITs and NITs).
+              curricula carefully constructed by industry leader having decade of experience.
             </p>
             <p>
-              From foundational introductory tinkering programs utilizing basic circuits to elite-tier competitive robotics
-              geared towards international olympiads, STEMmantra architects learning continuums that scale precisely
-              with student cognitive development and strict <strong className="text-gray-900 border-b-2 border-orange-200">National Education Policy (NEP 2020)</strong> compliance guidelines.
+              From foundational introductory tinkering programs utilising basic electronics circuits to elite-tier competitive robotics
+              geared towards national/International level of curriculum, STEMmantra architects learning continuum that scale precisely
+              with student cognitive development and strict <strong className="text-gray-900 border-b-2 border-orange-200">National Education Policy (NEP 2020) &amp; NCF (National Curriculum framework)2023</strong> compliance guidelines.
             </p>
           </motion.div>
 
@@ -71,21 +71,21 @@ export default function AboutSection() {
 
             <div className="grid md:grid-cols-3 gap-10">
               <div>
-                <h4 className="text-xl font-bold text-gray-900 mb-3 text-orange-600">Concept-Based Acquisition</h4>
+                <h4 className="text-xl font-bold text-gray-900 mb-3 text-orange-600">Concept-Based Learning</h4>
                 <p className="text-gray-600 leading-relaxed text-lg">
-                  Prioritizing deep foundational comprehension of mechanics, physics, and logic over superficial software syntax memorization.
+                  Concept-based learning focuses on building a strong foundation through basic concepts. Students learn these concepts using engaging activities in robotics and coding. This approach makes learning simple, interactive, and easy to understand.
                 </p>
               </div>
               <div>
-                <h4 className="text-xl font-bold text-gray-900 mb-3 text-orange-600">Project-Based Application</h4>
+                <h4 className="text-xl font-bold text-gray-900 mb-3 text-orange-600">Project-Based Learning</h4>
                 <p className="text-gray-600 leading-relaxed text-lg">
-                  Translating abstract theory into tangible, functional prototypes utilizing industry-grade microcontrollers and rapid prototyping tools.
+                  Project-based learning is the intermediate stage where students apply their basic knowledge. They progress from concepts to creating simple projects that help solve everyday problems. This hands-on approach strengthens understanding and practical skills.
                 </p>
               </div>
               <div>
-                <h4 className="text-xl font-bold text-gray-900 mb-3 text-orange-600">Innovation-Based Evolution</h4>
+                <h4 className="text-xl font-bold text-gray-900 mb-3 text-orange-600">Innovation-Based Learning</h4>
                 <p className="text-gray-600 leading-relaxed text-lg">
-                  Encouraging lateral thinking by challenging student cohorts to engineer novel solutions to local environmental or social constraints.
+                  Innovation-based learning focuses on solving real-world problems. Students identify challenges and use their basic and intermediate knowledge to develop solutions while learning advanced concepts. This approach promotes creativity, critical thinking, and innovation.
                 </p>
               </div>
             </div>

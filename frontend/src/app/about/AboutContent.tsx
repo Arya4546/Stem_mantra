@@ -23,10 +23,10 @@ import {
 import { Target, Eye } from "lucide-react";
 
 const stats = [
-  { number: "1.25L+", label: "Students Trained", icon: FaGraduationCap, color: "text-orange-500" },
-  { number: "300+", label: "Schools Partnered", icon: FaSchool, color: "text-teal-500" },
-  { number: "18+", label: "States Impacted", icon: FaGlobeAsia, color: "text-blue-500" },
-  { number: "200+", label: "Expert Trainers", icon: FaChalkboardTeacher, color: "text-purple-500" },
+  { number: "1,25,000+", label: "Students Trained", icon: FaGraduationCap, color: "text-orange-500" },
+  { number: "500+", label: "Schools Partnered", icon: FaSchool, color: "text-teal-500" },
+  { number: "18+", label: "States Covered", icon: FaGlobeAsia, color: "text-blue-500" },
+  { number: "20+", label: "Expert Trainers", icon: FaChalkboardTeacher, color: "text-purple-500" },
 ];
 
 const coreValues = [
@@ -49,7 +49,7 @@ const coreValues = [
   {
     icon: FaHandshake,
     title: "Collaborative Growth",
-    description: "We partner with schools, educators, and communities to create sustainable STEM education ecosystems.",
+    description: "We partner with schools, educators, NGO's and communities to create sustainable STEM education ecosystems.",
     accent: "border-l-blue-500",
     iconBg: "bg-blue-50",
     iconColor: "text-blue-600",
@@ -65,10 +65,10 @@ const coreValues = [
 ];
 
 const services = [
-  { icon: FaRobot, title: "Robotics Labs", description: "Complete turnkey robotics lab solutions with curriculum, hardware, and training support." },
-  { icon: FaBrain, title: "AI & ML Labs", description: "Cutting-edge artificial intelligence and machine learning labs for future-ready students." },
+  { icon: FaRobot, title: "Robotics Labs - STEAMVERSE Lab", description: "Complete turnkey robotics lab solutions with curriculum, hardware, and training support." },
+  { icon: FaBrain, title: "AI-ML & Coding Labs", description: "Cutting-edge artificial intelligence and machine learning labs for future-ready students." },
   { icon: FaLightbulb, title: "ATL Labs", description: "Atal Tinkering Lab setup, mentorship, and innovation programs aligned with government initiatives." },
-  { icon: FaCogs, title: "STEM Labs", description: "Integrated Science, Technology, Engineering, and Mathematics laboratories for holistic learning." },
+  { icon: FaCogs, title: "STEM Labs - INNOVERSE Labs", description: "Integrated Science, Technology, Engineering, and Mathematics laboratories for holistic learning including Robotics, IoT, AI & Coding Labs." },
 ];
 
 const whyChooseUs = [
@@ -76,7 +76,7 @@ const whyChooseUs = [
   "Complete turnkey lab solutions",
   "Certified and experienced trainers",
   "Continuous support and maintenance",
-  "Competition and olympiad preparation",
+  "National & International Competition preparation",
   "Industry partnerships and certifications",
 ];
 
@@ -171,9 +171,7 @@ export default function AboutContent() {
                   <h2 className="text-xl font-bold text-gray-900">Our Vision</h2>
                 </div>
                 <p className="text-gray-600 leading-relaxed">
-                  To be the catalyst for an innovation-led India by empowering 100 million students
-                  by 2030 with 21st-century skills and fostering a culture of scientific inquiry and
-                  problem-solving.
+                  To be India&apos;s most trusted partner in STEM education, reaching 100 million students by 2030. We envision a future where every school has access to cutting-edge technology labs and every student has the opportunity to become an innovator.
                 </p>
               </motion.div>
             </div>

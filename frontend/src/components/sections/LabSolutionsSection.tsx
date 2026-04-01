@@ -15,11 +15,11 @@ import FloatingAnimations from "@/components/animations/FloatingAnimations";
 const labOfferings = [
     {
         title: "Comprehensive Robotics and AI Laboratories Setup",
-        description: "Equip your institution with industry-grade robotics kits and AI modules. Our setups are tailored to meet the National Education Policy (NEP) 2020 guidelines, providing students with experiential learning opportunities in automation, machine learning, and hardware engineering.",
+        description: "Equip your institution with best in class robotics DIY kits, softwares and AI modules. Our setups are tailored to meet the National Education Policy (NEP) 2020 & National curriculum Framework(NCF)-2023 guidelines, providing students with experiential learning opportunities in automation, machine learning, and hardware engineering.",
         highlights: [
-            "Industrial-grade Arduino and Raspberry Pi kits",
-            "Advanced sensor modules and motor controllers",
-            "AI-driven visual programming interfaces"
+            "Best in class DIY Kits, Microcontroller",
+            "Advanced sensor modules and motors",
+            "AI&ML driven visual programming interfaces"
         ],
         icon: FaTools,
         color: "text-orange-500",
@@ -27,10 +27,10 @@ const labOfferings = [
     },
     {
         title: "Atal Tinkering Labs (ATL) Implementation",
-        description: "Transform your school&apos;s educational approach with government-approved Atal Tinkering Labs. STEMmantra provides end-to-end guidance from equipment procurement (3D printers, IoT devices) to curriculum implementation and continuous mentor support for national innovation challenges.",
+        description: "Transform your school's educational approach with government-approved Atal Tinkering Labs. STEMmantra provides end-to-end guidance from equipment procurement (of Package 1,2,3 & 4 including 3D printers) to curriculum implementation and continuous mentor support for national innovation challenges.",
         highlights: [
             "NITI Aayog compliance and documentation support",
-            "Complete 3D printing and prototyping equipment",
+            "End to end setup & execution support.",
             "Maker space tools and electronics workbenches"
         ],
         icon: FaChalkboardTeacher,
@@ -64,14 +64,14 @@ export default function LabSolutionsSection() {
                         </div>
 
                         <h2 className="text-4xl lg:text-5xl font-extrabold text-gray-900 mb-6 leading-tight">
-                            Transform Your School with <span className="text-orange-500">World-Class STEM Infrastructure</span>
+                            Transform Your School with <span className="text-orange-500">World-Class STEM/Robotics Infrastructure</span>
                         </h2>
 
                         <div className="prose prose-lg text-gray-600 mb-8 max-w-none">
                             <p>
-                                At STEMmantra, we recognize that practical, hands-on learning is the cornerstone of modern education.
+                            At STEMmantra, we recognise that practical, hands-on learning is the cornerstone of modern education.
                                 Our comprehensive laboratory solutions are engineered to seamlessly integrate into your school&apos;s curriculum,
-                                providing a robust foundation in <strong>Robotics, Artificial Intelligence, Coding, and IoT</strong>.
+                                providing a robust foundation in <strong>Robotics, Artificial Intelligence, Coding, and IoT, Drone, 3-D Printing</strong>.
                             </p>
                             <p>
                                 We don&apos;t just supply equipment; we architect complete learning ecosystems. From initial spatial planning and
@@ -82,7 +82,7 @@ export default function LabSolutionsSection() {
 
                         <div className="flex flex-wrap gap-4 pt-4 border-t border-gray-100">
                             <div className="flex items-center gap-2">
-                                <span className="text-3xl font-black text-gray-900">300+</span>
+                                <span className="text-3xl font-black text-gray-900">500+</span>
                                 <span className="text-sm font-bold text-gray-500 uppercase leading-tight">Labs<br />Installed</span>
                             </div>
                             <div className="w-px h-10 bg-gray-200 hidden sm:block"></div>
@@ -148,7 +148,7 @@ export default function LabSolutionsSection() {
                         >
                             <h3 className="text-2xl font-bold text-gray-900 mb-4">Why Partner With Us for Lab Integration?</h3>
                             <p className="text-gray-600 mb-6 leading-relaxed">
-                                Building a successful STEM ecosystem requires more than just unpacking boxes of equipment. Our dedicated success team conducts in-depth educator workshops, ensuring teachers are confident in utilizing advanced robotics kits and programming software. We provide continuous technical support, curriculum updates, and targeted training for national STEM olympiads, ensuring your students consistently perform at the highest levels.
+                                Building a successful STEM Lab ecosystem requires more than just unpacking boxes of equipment. Our dedicated success team conducts in-depth educator workshops, ensuring teachers are confident in utilizing basic electronics components, block based kits, advanced robotics kits and programming software. We provide continuous technical support, curriculum updates, and targeted training for National/International robotics & STEM based competitions, ensuring your students consistently perform at the highest levels.
                             </p>
                             <Link
                                 href="/contact"

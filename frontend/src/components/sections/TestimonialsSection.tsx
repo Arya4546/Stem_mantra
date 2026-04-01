@@ -36,10 +36,10 @@ export default function TestimonialsSection() {
             </h2>
             <div className="prose prose-lg text-gray-600 font-medium leading-relaxed">
               <p>
-                The true measure of an educational infrastructure provider is the sustained success and satisfaction of its institutional partners.
+                The true measure of an educational technology provider is the sustained success and satisfaction of its institutional partners.
               </p>
               <p>
-                Listen to Principals, Trustees, and Academic Directors from prestigious K-12 schools across India discuss the transformational impact of our <strong>Robotics Laboratories, AI Curriculums, and Atal Tinkering Labs (ATL)</strong> integrations.
+                Listen to Principals &amp; Directors from prestigious K-12 schools across India discuss the transformational impact of our <strong>Robotics Laboratories, AI Curriculums, and Atal Tinkering Labs (ATL)</strong> integrations.
               </p>
             </div>
           </motion.div>

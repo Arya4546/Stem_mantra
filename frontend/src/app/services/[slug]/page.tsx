@@ -162,7 +162,7 @@ const locationServices: Record<string, {
     city: "India",
     state: "All States",
     serviceType: "stem-lab",
-    description: "NEP 2020 & NCF 2023 aligned STEM curriculum design with grade-wise content, assessments, and teacher guides.",
+    description: "NEP 2020 aligned STEM curriculum design with grade-wise content, assessments, and teacher guides.",
   },
   "teacher-training": {
     title: "Teacher Training & Certification",

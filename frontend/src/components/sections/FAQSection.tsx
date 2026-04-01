@@ -10,24 +10,24 @@ const faqs = [
         answer: "STEMmantra is India's leading provider of robotics, AI, and STEM education solutions for schools. We provide complete turnkey lab solutions including equipment, curriculum, teacher training, and ongoing support. Our services include Robotics Labs, AI/ML Labs, Atal Tinkering Labs (ATL), STEM Labs, coding programs, and innovation workshops."
     },
     {
-        question: "How is your curriculum aligned with NEP 2020?",
-        answer: "Our curriculum is designed by experts from IIT and NIT institutions, fully aligned with National Education Policy 2020 guidelines. It emphasizes experiential learning, critical thinking, and 21st-century skills development. We cover all recommended areas including computational thinking, AI, robotics, and hands-on STEM activities."
+        question: "How is your curriculum aligned with NEP 2020 & NCF 2023?",
+        answer: "Our curriculum is designed by expert engineers which is fully aligned with National Education Policy 2020 and National Curriculum Framework 2023 guidelines. It emphasizes experiential learning, critical thinking, and 21st-century skills development. We cover all recommended areas including computational thinking, AI, robotics, and hands-on STEM activities."
     },
     {
         question: "What equipment comes with your lab setup?",
-        answer: "Our lab packages include industrial-grade robotics kits (Arduino, Raspberry Pi, sensors, motors), 3D printers, programming workstations, IoT devices, electronics components, maker tools, and safety equipment. All equipment comes with warranties and we provide regular maintenance and upgrades."
+        answer: "Our lab packages include best in class Basic Electronics components, Robotics components, IoT components, DIY (Do It Yourself) Kits, 3D printers, programming platforms, workstations, maker tools, and safety equipment. All equipment comes with warranties and we provide regular maintenance and upgrades (wherever applicable)."
     },
     {
         question: "Do you provide teacher training?",
-        answer: "Yes, comprehensive teacher training is a core part of our offering. We provide initial intensive training sessions (40+ hours), ongoing professional development workshops, access to our online learning platform, lesson plans, and 24/7 technical support. Our trainers are certified educators with 5+ years of experience."
+        answer: "Yes, comprehensive teacher training is a core part of our offering. We provide initial intensive training sessions in offline & online modes as per mode of collaboration with organization, ongoing professional development workshops, access to our online learning platform-LMS, lesson plans/curriculum, and 24/7 technical support. Our trainers are certified educators with years of experience."
     },
     {
         question: "What grades/age groups do your programs cover?",
-        answer: "Our programs are designed for students from Class 1 to Class 12. We have age-appropriate curriculum tracks: Junior STEM (Classes 1-5), Middle School Robotics (Classes 6-8), and Advanced AI & Robotics (Classes 9-12). Each track builds progressively on skills learned in previous levels."
+        answer: "Our programs are designed for students from Class 3 to Class 12. We have age-appropriate curriculum tracks: Junior STEM (Classes 3-5), Middle School Robotics (Classes 6-8), and Advanced AI & Robotics (Classes 9-12). Each track builds progressively on skills learned in previous levels."
     },
     {
         question: "How do you assess student progress?",
-        answer: "We use a comprehensive assessment system including project-based evaluations, coding challenges, robotics competitions, peer reviews, and portfolio assessments. Schools receive detailed progress reports and analytics through our dashboard, helping identify areas for improvement and tracking skill development."
+        answer: "We use a comprehensive assessment system including project-based evaluations, coding challenges, robotics competitions, online assessment. Schools receive detailed progress reports and analytics through our dashboard, helping identify areas for improvement and tracking skill development."
     },
     {
         question: "Can you help with ATL (Atal Tinkering Lab) setup?",
@@ -35,7 +35,7 @@ const faqs = [
     },
     {
         question: "What is the investment required for a robotics lab?",
-        answer: "Lab investment varies based on school size, equipment selection, and program scope. We offer flexible packages starting from basic setups for smaller schools to advanced labs for larger institutions. Contact us for a customized quote based on your specific requirements and budget."
+        answer: "Lab investment varies based on no. of student per class/section, equipment selection, and program scope. We offer flexible packages starting from basic setups for smaller schools to advanced labs for larger institutions which start from 2L to 10-15L. Contact us for a customized quote based on your specific requirements and budget."
     },
 ];
 

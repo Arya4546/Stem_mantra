@@ -24,7 +24,7 @@ const labTypes: Record<string, {
         equipment: ["3D Printers", "Robotics Kits", "Electronics Components", "IoT Sensors", "Microcontrollers", "Hand Tools", "Workbenches", "Computers"],
         subjects: ["Design Thinking", "Prototyping", "Electronics", "Coding", "Innovation", "Entrepreneurship"],
         ageGroup: "Class 6 to Class 12", benefits: ["Government supported initiative", "Access to latest technology", "Innovation competitions", "Mentorship programs", "Startup ecosystem exposure", "National recognition"],
-        investment: "₹10-20 Lakhs",
+        investment: "₹2-15 Lakhs",
     },
     "robotics-ai": {
         name: "Robotics & AI", fullName: "Robotics & Artificial Intelligence Labs", icon: FaRobot,

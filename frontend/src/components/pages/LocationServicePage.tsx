@@ -202,10 +202,10 @@ export default function LocationServicePage({
             <h2 className="text-3xl font-bold text-gray-900 mb-8">Why Schools in {city} <br />Partner With Us?</h2>
             <div className="space-y-6">
               {[
-                { icon: FaGraduationCap, text: "10+ years of dedicated STEM education focus" },
-                { icon: FaCertificate, text: "Official NEP 2020 and Niti Aayog guidelines compliance" },
-                { icon: FaUsers, text: "Successfully trained over 1,25,000 students nationwide" },
-                { icon: FaCog, text: "Full turnkey solutions from setup to annual support" },
+                { icon: FaGraduationCap, text: "10+ years of experience in STEM education" },
+                { icon: FaCertificate, text: "NEP 2020 and Niti Aayog compliant" },
+                { icon: FaUsers, text: "Trained 50,000+ students across India" },
+                { icon: FaCog, text: "End-to-end lab setup and support" },
               ].map((item, index) => (
                 <div key={index} className="flex gap-4">
                   <div className={`w-10 h-10 ${details.bg} rounded-xl flex items-center justify-center flex-shrink-0`}>

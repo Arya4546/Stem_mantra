@@ -9,11 +9,12 @@ import FloatingAnimations from "@/components/animations/FloatingAnimations";
 const corePillars = [
     {
         title: "National Education Policy (NEP 2020) Alignment",
-        description: "Every curriculum module, from IoT to drone technology, is strictly designed around the NEP 2020 framework. We ensure that your school not only meets government standards but excels in delivering 21st-century skills such as critical thinking, algorithmic reasoning, and collaborative problem-solving."
+        description: "Every curriculum module, from Basic electronic to robotics,Robotics to IoT, Iot to AI & Coding technology, is strictly designed around the NEP 2020 framework. We ensure that your school not only meets government standards but excels in delivering 21st-century skills such as critical thinking, logical thinking, algorithmic reasoning, and collaborative problem-solving.",
+        ncf: "STEMMANTRA Technologies enables experiential and competency-based learning through Robotics,STEM/STEAM , AI& Coding, and IoT labs. Our solutions foster critical thinking, problem-solving, and hands-on learning as recommended by NCF-2023. We provide end-to-end support including lab setup, curriculum integration, and teacher training. STEMMANTRA empowers schools to effectively implement next-generation education practices."
     },
     {
         title: "Comprehensive Turnkey Implementation",
-        description: "We eliminate the friction of adopting new technology. STEMmantra handles the entirety of your lab setup—procuring industrial-grade equipment, installing software infrastructure, and providing continuous maintenance so your educators can focus on what they do best: teaching."
+        description: "We eliminate the friction of adopting new technology. STEMmantra handles the entirety of your lab setup—procuring equipment, installing software infrastructure, and providing continuous maintenance so your educators can focus on what they do besttraining."
     },
     {
         title: "Expert Educator Training and Certification",
@@ -21,7 +22,7 @@ const corePillars = [
     },
     {
         title: "National STEM Competition Readiness",
-        description: "We actively prepare your student body for prestigious national and international robotics, AI, and coding olympiads. Our advanced competitive curriculum ensures your institution stands out as a beacon of academic and technical excellence."
+        description: "We actively prepare your student body for prestigious national and international robotics, AI, and coding competitions. Our advanced competitive curriculum ensures your institution stands out as a beacon of academic and technical excellence."
     }
 ];
 
@@ -54,9 +55,9 @@ export default function WhyChooseUsSection() {
                     </h2>
 
                     <p className="text-xl text-gray-600 leading-relaxed font-medium">
-                        For over a decade, STEMmantra has been the trusted catalyst for educational transformation.
+                        With over a decade experience leadership team, STEMmantra has been the trusted catalyst for educational transformation.
                         We don&apos;t just sell equipment; we partner with forward-thinking institutions to architect
-                        comprehensive, future-proof ecosystems in <strong className="text-gray-900">Robotics, Artificial Intelligence, and Applied STEM</strong>.
+                        comprehensive, future-proof ecosystems in <strong className="text-gray-900">Robotics, STEM/STEAM, Artificial Intelligence &amp; Coding</strong>.
                     </p>
                 </motion.div>
 
@@ -74,10 +75,16 @@ export default function WhyChooseUsSection() {
                                 className="relative pl-6"
                             >
                                 <div className="absolute left-0 top-1.5 bottom-0 w-1 bg-gradient-to-b from-orange-400 to-transparent rounded-full"></div>
-                                <h3 className="text-2xl font-bold text-gray-900 mb-3">{pillar.title}</h3>
+                                <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3">{pillar.title}</h3>
                                 <p className="text-lg text-gray-600 leading-relaxed">
                                     {pillar.description}
                                 </p>
+                                {('ncf' in pillar) && (
+                                    <p className="text-lg text-gray-600 leading-relaxed mt-4">
+                                        <strong className="text-gray-900">National Curriculum Framework (NCF-2023)</strong><br />
+                                        {(pillar as { ncf: string }).ncf}
+                                    </p>
+                                )}
                             </motion.div>
                         ))}
                     </div>
@@ -94,23 +101,24 @@ export default function WhyChooseUsSection() {
                         <div className="prose prose-lg text-gray-600 mb-8 max-w-none">
                             <p>
                                 Implementing an effectively functioning <strong>Atal Tinkering Lab (ATL)</strong> or
-                                dedicated <strong>Robotics and AI Laboratory</strong> requires specialized pedagogical expertise.
+                                dedicated <strong>Robotics and AI &amp; Coding Laboratory</strong> requires specialized pedagogical expertise.
                                 Many schools struggle with underutilized equipment due to a lack of proper curriculum integration.
                             </p>
                             <p>
                                 STEMmantra solves this by providing proprietary, grade-level appropriate learning modules
-                                that span from foundational block-based coding to advanced machine learning utilizing Python.
-                                We guarantee that every piece of hardware—from simple Arduino boards to complex industrial drone kits—is
+                                that span from foundational block-based coding to intermediate level to advanced Robotics,AI &amp; machine learning utilizing Python.
+                                We guarantee that every piece of hardware—from simple Arduino boards to complex equipment&apos;s to drone&amp; 3-D printing kits—is
                                 actively utilized in student-led innovation projects.
                             </p>
                         </div>
 
                         <ul className="space-y-4 mb-10">
                             {[
-                                "Customized curriculum for grades 1 through 12",
+                                "Customised curriculum for grades 3 to 12",
                                 "Annual maintenance and hardware replacement contracts",
-                                "Direct mentorship from industry engineers",
-                                "Seamless academic integration with existing subjects"
+                                "Direct mentor-ship from industry engineers",
+                                "Seamless academic integration with existing subjects",
+                                "LMS-Learning Managemnt sysytem to support teachers"
                             ].map((item, idx) => (
                                 <li key={idx} className="flex items-start gap-3">
                                     <FaCheckCircle className="w-5 h-5 text-green-500 mt-1 flex-shrink-0" />

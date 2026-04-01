@@ -33,7 +33,7 @@ export default function ProgramsSection() {
 					</h2>
 					<p className="text-xl text-gray-600 max-w-3xl leading-relaxed">
 						At STEMmantra, we deploy meticulously structured learning pathways that evolve with the student.
-						Our programs range from primary level kinetic learning to advanced senior secondary courses in artificial neural networks.
+						Our programs range from primary level kinetic learning to advanced senior secondary courses in Robotics ,STEM/STEAM,artificial Intelligence &amp; Machine learning.
 					</p>
 				</motion.div>
 
@@ -54,11 +54,11 @@ export default function ProgramsSection() {
 							<div className="prose prose-lg text-gray-600 mb-6 max-w-none text-justify">
 								<p>
 									Our curriculum implementation framework guarantees that every syllabus we offer conforms rigorously to current
-									<strong> Central Board of Secondary Education (CBSE)</strong>, <strong>ICSE</strong>, and international academic standards.
+									<strong> Central Board of Secondary Education (CBSE)</strong>, <strong>ICSE</strong>, and international academic standards &amp; State Boards.
 									We believe that STEM education is not an extracurricular activity, but a fundamental academic necessity.
 								</p>
 								<p>
-									When your institution partners with us for an <strong>Atal Tinkering Lab setups</strong> or an integrated <strong>Robotics Masterclass</strong>,
+									When your institution partners with us for an <strong>Robotics ,STEM/STEM Labs or AI &amp; Coding lab setups</strong> or an integrated <strong>Robotics Masterclass</strong>,
 									you receive a turnkey pedagogical solution encompassing year-long lesson plans, proprietary workbook materials,
 									and continuous educator evaluation metrics.
 								</p>
@@ -84,7 +84,7 @@ export default function ProgramsSection() {
 							transition={{ duration: 0.5, delay: 0.2 }}
 							className="p-8 bg-blue-50/50 border-l-8 border-blue-500 rounded-r-2xl"
 						>
-							<h4 className="text-2xl font-black text-gray-900 mb-3">Atal Tinkering Labs (ATL) Mentorship</h4>
+							<h4 className="text-2xl font-black text-gray-900 mb-3">Atal Tinkering Labs (ATL)</h4>
 							<p className="text-gray-700 mb-4 leading-relaxed font-medium">
 								Full compliance lifecycle management for NITI Aayog funded ATL labs. We train students in 3D modeling, intermediate circuitry, and rapid IoT prototyping.
 							</p>
@@ -101,13 +101,13 @@ export default function ProgramsSection() {
 							transition={{ duration: 0.5, delay: 0.3 }}
 							className="p-8 bg-orange-50/50 border-l-8 border-orange-500 rounded-r-2xl"
 						>
-							<h4 className="text-2xl font-black text-gray-900 mb-3">Applied Robotics & Automation</h4>
+							<h4 className="text-2xl font-black text-gray-900 mb-3">STEM/STEAM-Robotics Labs</h4>
 							<p className="text-gray-700 mb-4 leading-relaxed font-medium">
-								From basic gear mechanisms for primary school to inverse kinematics and autonomous navigation protocols for senior secondary students.
+								From basic gear mechanisms for primary school to inverse kinematics and autonomous navigation protocols for K-12 students.
 							</p>
 							<ul className="space-y-2">
 								<li className="flex items-center gap-2"><FaCheckCircle className="text-green-500 w-4 h-4" /> Certified Master Trainers</li>
-								<li className="flex items-center gap-2"><FaCheckCircle className="text-green-500 w-4 h-4" /> Industrial Exoskeleton Projects</li>
+								<li className="flex items-center gap-2"><FaCheckCircle className="text-green-500 w-4 h-4" /> Unique Robotics methodologies</li>
 							</ul>
 						</motion.div>
 

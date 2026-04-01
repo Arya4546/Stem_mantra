@@ -138,7 +138,6 @@ const benefits = [
     "Trained and certified instructors",
     "Regular workshops and training",
     "Competition preparation support",
-    "Annual maintenance included",
     "Student progress tracking",
     "Parent engagement programs",
     "Certificate courses for students",

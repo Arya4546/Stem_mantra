@@ -1,8 +1,8 @@
 export const SITE_CONFIG = {
   name: "STEMmantra",
-  tagline: "Empowering the Next Generation of Innovators",
+  tagline: "Master The Skills 'Drive Your Future...'/A step towards innovation",
   description:
-    "India's leading provider of Robotics, AI, and STEM education solutions. Transitioning K-12 institutions with NEP 2020 & NCF 2023 aligned pedagogical frameworks.",
+    "STEM learning focusing on leveraging technology on K-12 Segment for Robotics,STEM(science, technology, engineering, and mathematics). We provide complete end to end solution for ATL , Robotics, STEM/STEAM,IoT,AI & Coding labs, teacher/Students training, and NEP 2020 & NCF 2023 aligned curriculum for schools.",
   url: "https://www.stemmantra.com",
   ogImage: "https://www.stemmantra.com/og-image.jpg",
   links: {
@@ -95,20 +95,20 @@ export const PROGRAMS = [
 export const METHODOLOGY = [
   {
     step: "01",
-    title: "Concept Based Learning",
+    title: "Concept-Based Learning",
     description:
-      "Understanding underlying concepts behind technology. Our curriculum is designed so students understand basic concepts with ease.",
+      "Concept-based learning focuses on building a strong foundation through basic concepts. Students learn these concepts using engaging activities in robotics and coding. This approach makes learning simple, interactive, and easy to understand.",
   },
   {
     step: "02",
-    title: "Project Based Learning",
+    title: "Project-Based Learning",
     description:
-      "Learn by making real-world projects. Our PBL method allows students to learn technologies like electronics, 3D printing, IoT, and mechanics.",
+      "Project-based learning is the intermediate stage where students apply their basic knowledge. They progress from concepts to creating simple projects that help solve everyday problems. This hands-on approach strengthens understanding and practical skills.",
   },
   {
     step: "03",
-    title: "Innovation Based Learning",
+    title: "Innovation-Based Learning",
     description:
-      "Apply concepts creatively to solve real-world problems and develop innovative solutions.",
+      "Innovation-based learning focuses on solving real-world problems. Students identify challenges and use their basic and intermediate knowledge to develop solutions while learning advanced concepts. This approach promotes creativity, critical thinking, and innovation.",
   },
 ] as const;

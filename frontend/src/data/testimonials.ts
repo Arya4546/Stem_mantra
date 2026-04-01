@@ -11,7 +11,7 @@ export const testimonials: Testimonial[] = [
   {
     id: "1",
     name: "Mrs. Vandana Mahajan",
-    role: "Director Principal",
+    role: "Principal",
     school: "MOUNT OLYMPUS SCHOOL, SEC-47, GURUGRAM",
     image: "https://stemmantra.com/assets/img/Custom/Mount.jpeg",
     content:
@@ -29,7 +29,7 @@ export const testimonials: Testimonial[] = [
   {
     id: "3",
     name: "Mahua Das Gupta",
-    role: "Principal",
+    role: "Director Principal",
     school: "THE TRIBHUVAN SCHOOL PATNA",
     image: "https://stemmantra.com/assets/img/Custom/mahu.jpg",
     content:
@@ -43,14 +43,5 @@ export const testimonials: Testimonial[] = [
     image: "https://stemmantra.com/assets/img/Custom/Mount.jpeg",
     content:
       "The STEMmantra team has been a great support for our students. Their trainers are knowledgeable and supportive. They followed deductive methodology to explain the complex concepts in simple and step-wise manner. They did not only provide knowledge but also helped the students till the last step of project making. We are extremely satisfied with their services.",
-  },
-  {
-    id: "5",
-    name: "Sarvjeet Singh",
-    role: "Director",
-    school: "SHAHEED AMAR SINGH PUBLIC SCHOOL - GURUGRAM",
-    image: "https://stemmantra.com/assets/img/Custom/Uni.jpg",
-    content:
-      "I am happy and satisfied with the exceptional products and service provided by Stemmantra. Their equipment and kits are reliable and competitively priced. Saurabh and the team are reliable in timely delivery and responsiveness in case of problems encountered by our students. Stemmantra is a valuable partner for any school seeking top-tier supplier for their ATLs.",
   },
 ];

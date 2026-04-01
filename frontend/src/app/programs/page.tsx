@@ -22,7 +22,7 @@ const programs = [
       "NEP 2020 & NCF 2023 aligned curriculum",
       "Year-round mentorship and support",
       "Competition preparation",
-      "3D printing & electronics equipment",
+      "Robotics, IoT (Internet of Things), 3D printing & Electronics equipment & DIY Kits",
     ],
     href: "/programs/atl-labs",
     icon: FaFlask,
@@ -36,7 +36,7 @@ const programs = [
     title: "Robotics & AI Lab",
     subtitle: "Future Technology Education",
     description:
-      "State-of-the-art robotics and AI labs with hands-on learning experiences. Build, program, and innovate with cutting-edge technology including Arduino, Raspberry Pi, and advanced robotics platforms.",
+      "State-of-the-art robotics Lab with hands-on learning experiences. Build, program, and innovate with cutting-edge technology including Basic Electronics components, Micro-controllers (Arduino, ESP), DIY Kits and advanced robotics platforms.",
     image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&q=80",
     features: [
       "Advanced robotics kits & platforms",
@@ -58,12 +58,12 @@ const programs = [
     title: "STEM Innovation Lab",
     subtitle: "Integrated STEM Learning",
     description:
-      "Holistic STEM education combining science, technology, engineering, and mathematics through project-based learning and real-world applications. Develop critical thinking and problem-solving skills.",
+      "Holistic STEM education combining science, technology, engineering, and mathematics through project-based learning and real-world applications. Develop critical thinking and problem-solving skills. In this we include all the technologies like Robotics, IoT, AI & Coding, VR.",
     image: "https://images.unsplash.com/photo-1567177662154-dfeb4c93b6ae?w=800&q=80",
     features: [
-      "Integrated STEM curriculum",
+      "Integrated STEM/STEAM curriculum",
       "Hands-on experiments & projects",
-      "3D design and printing",
+      "3D printing",
       "Research methodology training",
       "Science fair preparation",
       "Cross-disciplinary learning",
@@ -79,7 +79,7 @@ const programs = [
 
 const stats = [
   { value: "300+", label: "Schools Partnered", icon: Building2, color: "text-orange-500" },
-  { value: "1.25L+", label: "Students Trained", icon: GraduationCap, color: "text-teal-500" },
+  { value: "1,50,000+", label: "Students Trained", icon: GraduationCap, color: "text-teal-500" },
   { value: "18+", label: "States Covered", icon: Globe, color: "text-blue-500" },
   { value: "200+", label: "Expert Trainers", icon: Users, color: "text-purple-500" },
 ];
@@ -115,8 +115,8 @@ export default function ProgramsPage() {
                 </span>
               </h1>
               <p className="text-lg text-gray-600 max-w-3xl leading-relaxed">
-                Transforming education through innovative STEM programs that prepare
-                students for the future. From ATL Labs to advanced Robotics & AI.
+                Transforming education through innovative STEM/STEAM programs that prepare
+                students for the future. From ATL Labs to advanced Robotics & AI, we provide comprehensive solutions for schools across India.
               </p>
             </motion.div>
 
