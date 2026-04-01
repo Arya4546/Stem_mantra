@@ -21,9 +21,9 @@ export const SITE_CONFIG = {
   },
   contact: {
     phone: "01203101774",
-    mobile: "+91-6356631515",
+    mobile: "+91-6356631515, +91-8860263301, +91-8595781373",
     email: "sales@stemmantra.com",
-    address: "C-104 2nd Floor, Noida Sec-10, UP – 201301",
+    address: "C-104 2nd Floor, Sector-10, Noida, Uttar Pradesh – 201301",
   },
 } as const;
 
@@ -39,10 +39,9 @@ export const NAVIGATION = [
 ] as const;
 
 export const STATS_DATA = [
-  { label: "Partner Schools", value: "300+", icon: "School" },
-  { label: "Students Trained", value: "1.25L+", icon: "Users" },
+  { label: "Partner Institutions", value: "300+", icon: "School" },
+  { label: "Student Innovators", value: "1,25,000+", icon: "Users" },
   { label: "States Impacted", value: "18+", icon: "MapPin" },
-  { label: "Lab Solutions", value: "15+", icon: "Cpu" },
 ] as const;
 
 import { Microscope, Bot, Zap } from "lucide-react";
