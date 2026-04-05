@@ -30,12 +30,12 @@ const faqs = [
         answer: "We use a comprehensive assessment system including project-based evaluations, coding challenges, robotics competitions, online assessment. Schools receive detailed progress reports and analytics through our dashboard, helping identify areas for improvement and tracking skill development."
     },
     {
-        question: "Can you help with ATL (Atal Tinkering Lab) setup?",
-        answer: "Absolutely! We are specialized partners for Atal Tinkering Lab setup. We help schools with the complete ATL journey - from application assistance to lab design, equipment procurement, mentor training, and running innovation programs. Our ATL labs comply with all NITI Aayog guidelines."
-    },
-    {
         question: "What is the investment required for a robotics lab?",
         answer: "Lab investment varies based on no. of student per class/section, equipment selection, and program scope. We offer flexible packages starting from basic setups for smaller schools to advanced labs for larger institutions which start from 2L to 10-15L. Contact us for a customized quote based on your specific requirements and budget."
+    },
+    {
+        question: "Can you help with ATL (Atal Tinkering Lab) setup?",
+        answer: "Absolutely! We are specialized partners for Atal Tinkering Lab setup. We help schools with the complete ATL journey - from application assistance to lab design, equipment procurement, mentor training, and running innovation programs. Our ATL labs comply with all NITI Aayog guidelines."
     },
 ];
 

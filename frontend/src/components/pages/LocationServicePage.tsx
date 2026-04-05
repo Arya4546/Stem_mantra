@@ -25,7 +25,7 @@ const serviceDetails = {
     bg: "bg-teal-50",
     borderColor: "border-teal-200",
     features: [
-      "Complete lab infrastructure setup",
+      "Complete lab setup",
       "3D printing and design equipment",
       "Electronics and circuit labs",
       "Coding and programming stations",

@@ -81,7 +81,6 @@ const stats = [
   { value: "300+", label: "Schools Partnered", icon: Building2, color: "text-orange-500" },
   { value: "1,50,000+", label: "Students Trained", icon: GraduationCap, color: "text-teal-500" },
   { value: "18+", label: "States Covered", icon: Globe, color: "text-blue-500" },
-  { value: "200+", label: "Expert Trainers", icon: Users, color: "text-purple-500" },
 ];
 
 const processSteps = [
@@ -108,9 +107,9 @@ export default function ProgramsPage() {
               <span className="inline-block px-4 py-1.5 bg-orange-100 text-orange-600 rounded-full text-sm font-semibold mb-4">
                 NEP 2020 & NCF 2023 Aligned Programs
               </span>
-              <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+              <h1 className="text-4xl md:text-6xl lg:text-7xl font-black text-gray-900 mb-6 leading-tight tracking-tight">
                 Our{" "}
-                <span className="bg-gradient-to-r from-orange-500 to-teal-500 bg-clip-text text-transparent">
+                <span className="text-orange-500 underline decoration-orange-200 underline-offset-[12px]">
                   Programs
                 </span>
               </h1>

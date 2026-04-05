@@ -10,38 +10,47 @@ export interface Testimonial {
 export const testimonials: Testimonial[] = [
   {
     id: "1",
-    name: "Mrs. Vandana Mahajan",
-    role: "Principal",
-    school: "MOUNT OLYMPUS SCHOOL, SEC-47, GURUGRAM",
-    image: "https://stemmantra.com/assets/img/Custom/Mount.jpeg",
+    name: "Mr. Rishi Raj",
+    role: "Director",
+    school: "MBLM School, Gurugram",
+    image: "/images/testimonials/rishi-raj.jpg",
     content:
-      "STEMmantra brings innovation to the classroom in the most engaging and practical ways. Their hands-on approach to STEM learning is truly empowering for both students and educators. A great partner in future-ready education! STEMmantra is doing exceptional work in bridging the gap between theoretical knowledge and real-world application.",
+      "I am happy and satisfied with the exceptional products and service provided by STEMmantra. Their equipment and kits are reliable, and competitively priced. Saurabh and the team are reliable in timely delivery and responsiveness in case of problems encountered by our students. STEMmantra is a valuable partner for any school seeking top-tier supplier for their ATLs.",
   },
   {
     id: "2",
-    name: "Rajesh Srivastava",
+    name: "Mr. Rajesh Srivastava",
     role: "Principal",
-    school: "UNIQUE SCIENCE ACADEMY BASTI",
-    image: "https://stemmantra.com/assets/img/Custom/Uni.jpg",
+    school: "Unique Science Academy, Basti",
+    image: "/images/testimonials/rajesh-srivastava.jpg",
     content:
-      "ATL,Robotics,AI=STEMMANTRA. STEMmantra has highly qualified team, we have got excellent service from the Company. I am impressed with their teaching methodology to students & Teachers. I highly recommend STEMMANTRA to schools who are looking for STEM Education, Robotics, AI to their schools.",
+      "ATL, Robotics, AI = STEMMANTRA. STEMMANTRA has highly qualified team, we have got excellent service from the company, I am impressed with their teaching methodology to students & Teachers. I highly recommend STEMmantra to schools who are looking for STEM Education , Robotics, AI to their schools.",
   },
   {
     id: "3",
-    name: "Mahua Das Gupta",
-    role: "Director Principal",
-    school: "THE TRIBHUVAN SCHOOL PATNA",
-    image: "https://stemmantra.com/assets/img/Custom/mahu.jpg",
+    name: "Mrs. Vandana Mahajan",
+    role: "Principal",
+    school: "Mount Olympus School, Gurugram",
+    image: "/images/testimonials/vandana-mahajan.jpg",
     content:
-      "STEMMANTRA Technologies has been an invaluable partner in our quest for innovation and excellence. Their cutting-edge solutions and unwavering commitment to quality have consistently exceeded our expectations. Their expertise has catalyzed our growth and we look forward to a continued, successful partnership in the future.",
+      "STEMmantra brings innovation to the classroom in the most engaging and practical ways. Their hands-on approach to STEM learning is truly empowering for both students and educators. A great partner in future-ready education! STEMmantra is doing exceptional work in bridging the gap between theoretical knowledge and real-world application. Their STEM programs spark curiosity, inspire creativity, and nurture problem-solvers of tomorrow.",
   },
   {
     id: "4",
-    name: "Neha Sethi",
-    role: "ATL Incharge",
-    school: "ST. THOMAS GIRLS SR SEC SCHOOL NEW DELHI, DELHI",
-    image: "https://stemmantra.com/assets/img/Custom/Mount.jpeg",
+    name: "Mrs. Mahua Das Gupta",
+    role: "Principal",
+    school: "The Tribhuvan School, Patna",
+    image: "/images/testimonials/mahua-das-gupta.jpg",
     content:
-      "The STEMmantra team has been a great support for our students. Their trainers are knowledgeable and supportive. They followed deductive methodology to explain the complex concepts in simple and step-wise manner. They did not only provide knowledge but also helped the students till the last step of project making. We are extremely satisfied with their services.",
+      "STEMmantra Technologies has been an invaluable partner in our quest for innovation and excellence. Their cutting-edge solutions and unwavering commitment to quality have consistently exceeded our expectations. Their expertise has catalyzed our growth, and we look forward to a continued, successful partnership in the future.",
+  },
+  {
+    id: "5",
+    name: "Fr. Lawrence Arulsamy",
+    role: "Principal",
+    school: "St. Xavier’s School, Mehsana, Gujarat",
+    image: "/images/testimonials/lawrence-arulsamy.jpg",
+    content:
+      "STEMmantra has always been at the forefront, offering their dedicated services to their customers with great commitment. Their consistent efforts and genuine concern make one feel they are an integral part of the institution’s growth, especially in the development of the ATL Lab. Being associated with STEMmantra is a valuable experience, opening doors to the world of technology and innovation. God bless you and your remarkable work.",
   },
 ];

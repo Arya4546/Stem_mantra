@@ -8,13 +8,8 @@ import FloatingAnimations from "@/components/animations/FloatingAnimations";
 
 const corePillars = [
     {
-        title: "National Education Policy (NEP 2020) Alignment",
-        description: "Every curriculum module, from Basic electronic to robotics,Robotics to IoT, Iot to AI & Coding technology, is strictly designed around the NEP 2020 framework. We ensure that your school not only meets government standards but excels in delivering 21st-century skills such as critical thinking, logical thinking, algorithmic reasoning, and collaborative problem-solving.",
-        ncf: "STEMMANTRA Technologies enables experiential and competency-based learning through Robotics,STEM/STEAM , AI& Coding, and IoT labs. Our solutions foster critical thinking, problem-solving, and hands-on learning as recommended by NCF-2023. We provide end-to-end support including lab setup, curriculum integration, and teacher training. STEMMANTRA empowers schools to effectively implement next-generation education practices."
-    },
-    {
         title: "Comprehensive Turnkey Implementation",
-        description: "We eliminate the friction of adopting new technology. STEMmantra handles the entirety of your lab setup—procuring equipment, installing software infrastructure, and providing continuous maintenance so your educators can focus on what they do besttraining."
+        description: "We eliminate the friction of adopting new technology. STEMmantra handles the entirety of your lab setup—procuring equipment, installing lab software, and providing continuous maintenance so your educators can focus on what they do best training."
     },
     {
         title: "Expert Educator Training and Certification",
@@ -23,6 +18,11 @@ const corePillars = [
     {
         title: "National STEM Competition Readiness",
         description: "We actively prepare your student body for prestigious national and international robotics, AI, and coding competitions. Our advanced competitive curriculum ensures your institution stands out as a beacon of academic and technical excellence."
+    },
+    {
+        title: "National Education Policy (NEP 2020) Alignment",
+        description: "Every curriculum module, from Basic electronic to robotics,Robotics to IoT, Iot to AI & Coding technology, is strictly designed around the NEP 2020 framework. We ensure that your school not only meets government standards but excels in delivering 21st-century skills such as critical thinking, logical thinking, algorithmic reasoning, and collaborative problem-solving.",
+        ncf: "STEMMANTRA Technologies enables experiential and competency-based learning through Robotics,STEM/STEAM , AI& Coding, and IoT labs. Our solutions foster critical thinking, problem-solving, and hands-on learning as recommended by NCF-2023. We provide end-to-end support including lab setup, curriculum integration, and teacher training. STEMMANTRA empowers schools to effectively implement next-generation education practices."
     }
 ];
 
@@ -49,9 +49,8 @@ export default function WhyChooseUsSection() {
                         <span className="text-sm font-bold text-orange-700 uppercase tracking-wider">India&apos;s Academic Partner</span>
                     </div>
 
-                    <h2 className="text-4xl md:text-5xl lg:text-5xl font-extrabold text-gray-900 mb-6 leading-tight">
-                        Why Top Indian Schools Choose <br className="hidden md:block" />
-                        <span className="text-orange-500">STEMmantra</span>
+                    <h2 className="text-4xl md:text-6xl lg:text-7xl font-black text-gray-900 mb-6 leading-tight tracking-tight">
+                        Why Top Indian Schools <br className="hidden md:block" /> Choose <span className="text-orange-500 underline decoration-orange-200 underline-offset-8">STEMmantra</span>
                     </h2>
 
                     <p className="text-xl text-gray-600 leading-relaxed font-medium">
@@ -75,7 +74,7 @@ export default function WhyChooseUsSection() {
                                 className="relative pl-6"
                             >
                                 <div className="absolute left-0 top-1.5 bottom-0 w-1 bg-gradient-to-b from-orange-400 to-transparent rounded-full"></div>
-                                <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3">{pillar.title}</h3>
+                                <h3 className="text-2xl md:text-3xl font-black text-orange-600 mb-3 tracking-tight">{pillar.title}</h3>
                                 <p className="text-lg text-gray-600 leading-relaxed">
                                     {pillar.description}
                                 </p>

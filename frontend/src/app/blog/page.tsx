@@ -144,8 +144,8 @@ export default function BlogPage() {
                                 <div className="w-16 h-16 mx-auto mb-4 bg-orange-100 rounded-full flex items-center justify-center">
                                     <FaRobot className="w-8 h-8 text-orange-500" />
                                 </div>
-                                <h3 className="text-lg font-semibold text-gray-900 mb-2">No posts found</h3>
-                                <p className="text-gray-500 mb-4 text-sm">Try adjusting your search or check back later.</p>
+                                <h3 className="text-lg font-semibold text-gray-900 mb-2">No blog posts available yet</h3>
+                                <p className="text-gray-600 mb-4">Check back soon for new insights into STEM, Robotics, and AI!</p>
                                 <button
                                     onClick={() => { setSearchQuery(""); setSelectedCategory("all"); }}
                                     className="px-5 py-2 bg-orange-500 text-white rounded-lg text-sm font-medium hover:bg-orange-600 transition-colors"

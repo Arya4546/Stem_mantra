@@ -27,9 +27,9 @@ export default function AboutSection() {
             transition={{ duration: 0.6 }}
             className="text-center"
           >
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-8 leading-tight tracking-tight">
+            <h2 className="text-4xl md:text-6xl lg:text-7xl font-black text-gray-900 mb-8 leading-tight tracking-tighter">
               Pioneering the Future of <br className="hidden md:block" />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-orange-400">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-600 via-orange-500 to-orange-400 drop-shadow-sm">
                 Experiential Learning in India
               </span>
             </h2>
@@ -44,7 +44,7 @@ export default function AboutSection() {
             className="prose prose-xl prose-gray md:prose-2xl text-gray-600 max-w-none text-justify md:text-left leading-relaxed font-medium"
           >
             <p className="mb-8">
-              STEMmantra is universally recognised as the premier educational infrastructure partner across India.
+              STEMmantra is universally recognised as the premier educational lab partner across India.
               We specialise in the holistic development and deployment of advanced <strong className="text-gray-900 border-b-2 border-orange-200">Robotics, Artificial Intelligence &amp; Coding Labs, and STEM/STEAM educational laboratories</strong>
               within progressive K-12 academic institutions.
             </p>
@@ -53,10 +53,13 @@ export default function AboutSection() {
               Our organization was established to bridge this critical deficit through rigorous, outcome-based, and heavily hands-on
               curricula carefully constructed by industry leader having decade of experience.
             </p>
-            <p>
+            <p className="mb-8">
               From foundational introductory tinkering programs utilising basic electronics circuits to elite-tier competitive robotics
               geared towards national/International level of curriculum, STEMmantra architects learning continuum that scale precisely
               with student cognitive development and strict <strong className="text-gray-900 border-b-2 border-orange-200">National Education Policy (NEP 2020) &amp; NCF (National Curriculum framework)2023</strong> compliance guidelines.
+            </p>
+            <p className="text-2xl font-bold text-orange-600 italic border-l-4 border-orange-500 pl-6 my-10">
+              &quot;Our aim is to reach 1 million students within the next 3 years, empowering the next generation of innovators.&quot;
             </p>
           </motion.div>
 

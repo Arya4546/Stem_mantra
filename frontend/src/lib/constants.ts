@@ -20,8 +20,8 @@ export const SITE_CONFIG = {
     instagram: "https://www.instagram.com/stemmantra/",
   },
   contact: {
-    phone: "01203101774",
-    mobile: "+91-6356631515, +91-8860263301, +91-8595781373",
+    phone: "+91-6356631515",
+    mobile: "+91-6356631515",
     email: "sales@stemmantra.com",
     address: "C-104 2nd Floor, Sector-10, Noida, Uttar Pradesh – 201301",
   },
@@ -31,17 +31,17 @@ export const NAVIGATION = [
   { name: "Home", href: "/" },
   { name: "About Us", href: "/about" },
   { name: "Programs", href: "/programs" },
-  { name: "ATL Labs", href: "/programs/atl-labs" },
   { name: "Robotics Labs", href: "/programs/robotics-labs" },
   { name: "STEM Labs", href: "/programs/stem-labs" },
+  { name: "ATL Labs", href: "/programs/atl-labs" },
   { name: "Gallery", href: "/gallery" },
   { name: "Contact", href: "/contact" },
 ] as const;
 
 export const STATS_DATA = [
-  { label: "Partner Institutions", value: "300+", icon: "School" },
+  { label: "Partner Institutions", value: "500+", icon: "School" },
   { label: "Student Innovators", value: "1,25,000+", icon: "Users" },
-  { label: "States Impacted", value: "18+", icon: "MapPin" },
+  { label: "States Impacted", value: "16+", icon: "MapPin" },
 ] as const;
 
 import { Microscope, Bot, Zap } from "lucide-react";

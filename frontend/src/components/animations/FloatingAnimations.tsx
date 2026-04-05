@@ -157,7 +157,7 @@ export default function FloatingAnimations({
         id: i,
         icon: icons[i % icons.length],
         size: 20 + Math.random() * 40,
-        x: Math.random() * 100,
+        x: Math.random() < 0.5 ? Math.random() * 15 : 85 + Math.random() * 15,
         y: Math.random() * 100,
         delay: Math.random() * 5,
         duration: 8 + Math.random() * 8,
@@ -191,7 +191,7 @@ export default function FloatingAnimations({
 
   return (
     <div
-      className={`absolute inset-0 overflow-hidden pointer-events-none ${className}`}
+      className={`absolute inset-0 overflow-hidden pointer-events-none z-10 ${className}`}
       aria-hidden="true"
     >
       {elements.map((element) => {

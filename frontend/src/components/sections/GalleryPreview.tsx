@@ -148,11 +148,7 @@ export default function GalleryPreview() {
             <div className="text-sm text-gray-500">Events</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl md:text-4xl font-bold text-purple-500">50+</div>
-            <div className="text-sm text-gray-500">Competitions</div>
-          </div>
-          <div className="text-center">
-            <div className="text-3xl md:text-4xl font-bold text-blue-500">15+</div>
+            <div className="text-3xl md:text-4xl font-bold text-blue-500">16+</div>
             <div className="text-xs uppercase tracking-widest font-black text-gray-500 mt-1">States</div>
           </div>
         </motion.div>

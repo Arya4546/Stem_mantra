@@ -274,7 +274,6 @@ export default function AboutContent() {
                   {[
                     { value: "100%", label: "Satisfaction", color: "text-orange-500" },
                     { value: "24/7", label: "Support", color: "text-teal-500" },
-                    { value: "50+", label: "Awards", color: "text-blue-500" },
                   ].map((s) => (
                     <div key={s.label}>
                       <div className={`text-2xl font-bold ${s.color}`}>{s.value}</div>

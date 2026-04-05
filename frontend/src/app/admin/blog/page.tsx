@@ -387,8 +387,10 @@ export default function AdminBlogPage() {
         {posts.length === 0 ? (
           <div className="bg-white rounded-2xl p-12 text-center border border-slate-100">
             <FileText className="w-12 h-12 text-slate-300 mx-auto mb-4" />
-            <h3 className="text-lg font-semibold text-slate-900 mb-2">No posts found</h3>
-            <p className="text-slate-500 mb-4">Try adjusting your search or filters</p>
+            <h3 className="text-lg font-semibold text-slate-900 mb-2">No blog posts yet</h3>
+            <p className="text-slate-500 mb-6 max-w-xs mx-auto">
+              Start sharing your STEM insights by creating your first blog post.
+            </p>
             <Link
               href="/admin/blog/new"
               className="inline-flex items-center gap-2 px-4 py-2 bg-indigo-600 text-white rounded-lg font-medium hover:bg-orange-600 transition-colors"

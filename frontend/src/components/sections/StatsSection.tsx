@@ -6,9 +6,9 @@ import { FaSchool, FaUsers, FaAward, FaGlobeAsia } from "react-icons/fa";
 import FloatingAnimations from "@/components/animations/FloatingAnimations";
 
 const stats = [
-  { icon: FaSchool, value: 300, suffix: "+", label: "Partner Institutions" },
+  { icon: FaSchool, value: 500, suffix: "+", label: "Partner Institutions" },
   { icon: FaUsers, value: 125000, suffix: "+", label: "Student Innovators" },
-  { icon: FaGlobeAsia, value: 18, suffix: "+", label: "States Impacted" },
+  { icon: FaGlobeAsia, value: 16, suffix: "+", label: "States Impacted" },
 ];
 
 function AnimatedCounter({ value, suffix = "", duration = 2000 }: { value: number; suffix?: string; duration?: number }) {

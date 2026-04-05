@@ -81,7 +81,7 @@
 "Transforming Schools With Advanced 21st century skills like Robotics,STEM/STEAM & AI & Coding Labs"
 
 ### Subheading
-"Partner with STEMmantra to establish NEP 2020 & NCF 2023 Aligned Atal Tinkering Labs (ATL) and comprehensive K-12 STEM infrastructure. We provide end-to-end curriculum integration, industrial-grade equipment, and expert educator training to domestic and international schools."
+"Partner with STEMmantra to establish NEP 2020 & NCF 2023 Aligned Atal Tinkering Labs (ATL) and comprehensive K-12 STEM labs. We provide end-to-end curriculum integration, industrial-grade equipment, and expert educator training to domestic and international schools."
 
 ### CTA Buttons
 1. **Primary:** "Explore Our Curriculums" → Links to /programs
@@ -102,7 +102,7 @@
 "Pioneering the Future of Experiential Learning in India"
 
 ### Main Description (Paragraph 1)
-"STEMmantra is universally recognised as the premier educational infrastructure partner across India. We specialise in the holistic development and deployment of advanced Robotics, Artificial Intelligence & Coding Labs, and STEM/STEAM educational laboratories within progressive K-12 academic institutions."
+"STEMmantra is universally recognised as the premier educational lab partner across India. We specialise in the holistic development and deployment of advanced Robotics, Artificial Intelligence & Coding Labs, and STEM/STEAM educational laboratories within progressive K-12 academic institutions."
 
 ### Main Description (Paragraph 2)
 "Traditional rote learning frameworks are fundamentally incompatible with the demands of the modern algorithmic economy. Our organization was established to bridge this critical deficit through rigorous, outcome-based, and heavily hands-on curricula carefully constructed by  industry leader having decade of experience."
@@ -133,7 +133,7 @@ Innovation-based learning focuses on solving real-world problems. Students ident
 "End-to-End Lab Solutions"
 
 ### Main Heading
-"Transform Your School with World-Class STEM/Robotics Infrastructure"
+"Transform Your School with World-Class STEM/Robotics Labs"
 
 ### Description (Paragraph 1)
 "At STEMmantra, we recognise that practical, hands-on learning is the cornerstone of modern education. Our comprehensive laboratory solutions are engineered to seamlessly integrate into your school's curriculum, providing a robust foundation in Robotics, Artificial Intelligence, Coding, and IoT,Drone ,3-D Printing”
@@ -202,7 +202,7 @@ STEMMANTRA empowers schools to effectively implement next-generation education p
 
 
 #### 2. Comprehensive Turnkey Implementation
-"We eliminate the friction of adopting new technology. STEMmantra handles the entirety of your lab setup—procuring equipment, installing software infrastructure, and providing continuous maintenance so your educators can focus on what they do besttraining."
+"We eliminate the friction of adopting new technology. STEMmantra handles the entirety of your lab setup—procuring equipment, installing lab software, and providing continuous maintenance so your educators can focus on what they do best training."
 
 #### 3. Expert Educator Training and Certification
 "Technology is only as effective as the educators wielding it. We conduct intensive, multi-modal training programs for your existing staff, supplemented by our own certified STEM trainers. Our goal is to build long-term institutional capacity rather than short-term reliance."
@@ -461,7 +461,7 @@ Mount Olympus Group of schools
 
 ### Features Highlights
 - NEP 2020 Aligned
-- Turnkey Infrastructure
+- Turnkey Lab Solutions
 - Expert Educator Training
 - NITI Aayog Compliant
 
@@ -601,8 +601,7 @@ Mount Olympus Group of schools
 |------|-------|
 | School Satisfaction | 100% |
 | Support Available | 24/7 |
-| Awards Won | 50+ |
-| States Covered | 18+ |
+| States Covered | 16+ |
 
 ---
 

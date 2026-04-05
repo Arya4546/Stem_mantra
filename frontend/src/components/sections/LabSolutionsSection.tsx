@@ -64,7 +64,7 @@ export default function LabSolutionsSection() {
                         </div>
 
                         <h2 className="text-4xl lg:text-5xl font-extrabold text-gray-900 mb-6 leading-tight">
-                            Transform Your School with <span className="text-orange-500">World-Class STEM/Robotics Infrastructure</span>
+                            Transform Your School with <span className="text-orange-500">World-Class STEM/Robotics Labs</span>
                         </h2>
 
                         <div className="prose prose-lg text-gray-600 mb-8 max-w-none">

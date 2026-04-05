@@ -59,7 +59,7 @@ export default function CTASection() {
                 <FaCheckCircle className="text-orange-300 w-5 h-5" /> NEP 2020 & NCF 2023 Aligned
               </div>
               <div className="flex items-center gap-2 font-semibold">
-                <FaCheckCircle className="text-orange-300 w-5 h-5" /> Turnkey Infrastructure
+                <FaCheckCircle className="text-orange-300 w-5 h-5" /> Turnkey Lab Solutions
               </div>
               <div className="flex items-center gap-2 font-semibold">
                 <FaCheckCircle className="text-orange-300 w-5 h-5" /> Expert Educator Training

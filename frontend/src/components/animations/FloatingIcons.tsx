@@ -3,13 +3,13 @@ import { motion } from "framer-motion";
 import { Cpu, Sparkles, Award, Users, Bot, Zap, Microscope } from "lucide-react";
 
 const ICONS = [
-  { icon: Cpu, color: "text-orange-500/20", size: "w-14 h-14", duration: 5, x: "left-[10%]", y: "top-40" },
-  { icon: Sparkles, color: "text-teal-500/20", size: "w-10 h-10", duration: 6, x: "right-[15%]", y: "top-60" },
-  { icon: Award, color: "text-orange-500/10", size: "w-12 h-12", duration: 7, x: "left-[20%]", y: "bottom-20" },
+  { icon: Cpu, color: "text-orange-500/20", size: "w-14 h-14", duration: 5, x: "left-[5%]", y: "top-40" },
+  { icon: Sparkles, color: "text-teal-500/20", size: "w-10 h-10", duration: 6, x: "right-[5%]", y: "top-60" },
+  { icon: Award, color: "text-orange-500/10", size: "w-12 h-12", duration: 7, x: "left-[10%]", y: "bottom-20" },
   { icon: Users, color: "text-teal-500/10", size: "w-10 h-10", duration: 8, x: "right-[10%]", y: "bottom-32" },
-  { icon: Bot, color: "text-orange-500/10", size: "w-12 h-12", duration: 6, x: "left-[30%]", y: "bottom-40" },
-  { icon: Microscope, color: "text-teal-500/10", size: "w-10 h-10", duration: 7, x: "right-[25%]", y: "top-80" },
-  { icon: Zap, color: "text-orange-500/10", size: "w-10 h-10", duration: 5, x: "left-[40%]", y: "top-96" },
+  { icon: Bot, color: "text-orange-500/10", size: "w-12 h-12", duration: 6, x: "left-[15%]", y: "bottom-40" },
+  { icon: Microscope, color: "text-teal-500/10", size: "w-10 h-10", duration: 7, x: "right-[15%]", y: "top-80" },
+  { icon: Zap, color: "text-orange-500/10", size: "w-10 h-10", duration: 5, x: "left-[20%]", y: "top-96" },
 ];
 
 export default function FloatingIcons({

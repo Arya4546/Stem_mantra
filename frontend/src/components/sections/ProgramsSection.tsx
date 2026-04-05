@@ -28,8 +28,8 @@ export default function ProgramsSection() {
 					<span className="inline-block px-5 py-2 bg-blue-50 text-blue-700 rounded-full text-sm font-black uppercase tracking-widest mb-6 border border-blue-100 shadow-sm">
 						Curriculum Offerings
 					</span>
-					<h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-6 leading-tight">
-						Comprehensive <span className="text-orange-500">K-12 Educational Programs</span>
+					<h2 className="text-4xl md:text-6xl lg:text-7xl font-black text-gray-900 mb-6 leading-tight tracking-tight">
+						Comprehensive <span className="text-orange-500 underline decoration-orange-200 underline-offset-8">K-12 Educational Programs</span>
 					</h2>
 					<p className="text-xl text-gray-600 max-w-3xl leading-relaxed">
 						At STEMmantra, we deploy meticulously structured learning pathways that evolve with the student.
@@ -47,8 +47,8 @@ export default function ProgramsSection() {
 							animate={isInView ? { opacity: 1, x: 0 } : {}}
 							transition={{ duration: 0.5, delay: 0.1 }}
 						>
-							<h3 className="text-3xl font-bold text-gray-900 mb-4 flex items-center gap-3">
-								<FaGraduationCap className="text-orange-500 w-8 h-8" />
+							<h3 className="text-3xl lg:text-4xl font-black text-gray-900 mb-4 flex items-center gap-3">
+								<FaGraduationCap className="text-orange-500 w-10 h-10" />
 								Educational Structure
 							</h3>
 							<div className="prose prose-lg text-gray-600 mb-6 max-w-none text-justify">
@@ -77,31 +77,14 @@ export default function ProgramsSection() {
 					{/* Highly descriptive list Right Column */}
 					<div className="lg:col-span-6 space-y-10">
 
-						{/* ATL Item */}
-						<motion.div
-							initial={{ opacity: 0, y: 30 }}
-							animate={isInView ? { opacity: 1, y: 0 } : {}}
-							transition={{ duration: 0.5, delay: 0.2 }}
-							className="p-8 bg-blue-50/50 border-l-8 border-blue-500 rounded-r-2xl"
-						>
-							<h4 className="text-2xl font-black text-gray-900 mb-3">Atal Tinkering Labs (ATL)</h4>
-							<p className="text-gray-700 mb-4 leading-relaxed font-medium">
-								Full compliance lifecycle management for NITI Aayog funded ATL labs. We train students in 3D modeling, intermediate circuitry, and rapid IoT prototyping.
-							</p>
-							<ul className="space-y-2">
-								<li className="flex items-center gap-2"><FaCheckCircle className="text-green-500 w-4 h-4" /> NITI Aayog Dashboard Maintenance</li>
-								<li className="flex items-center gap-2"><FaCheckCircle className="text-green-500 w-4 h-4" /> Tinkering Festival Preparation</li>
-							</ul>
-						</motion.div>
-
 						{/* Robotics Item */}
 						<motion.div
 							initial={{ opacity: 0, y: 30 }}
 							animate={isInView ? { opacity: 1, y: 0 } : {}}
-							transition={{ duration: 0.5, delay: 0.3 }}
+							transition={{ duration: 0.5, delay: 0.2 }}
 							className="p-8 bg-orange-50/50 border-l-8 border-orange-500 rounded-r-2xl"
 						>
-							<h4 className="text-2xl font-black text-gray-900 mb-3">STEM/STEAM-Robotics Labs</h4>
+							<h4 className="text-2xl md:text-3xl font-black text-orange-600 mb-3 tracking-tight">STEM/STEAM-Robotics Labs</h4>
 							<p className="text-gray-700 mb-4 leading-relaxed font-medium">
 								From basic gear mechanisms for primary school to inverse kinematics and autonomous navigation protocols for K-12 students.
 							</p>
@@ -115,16 +98,33 @@ export default function ProgramsSection() {
 						<motion.div
 							initial={{ opacity: 0, y: 30 }}
 							animate={isInView ? { opacity: 1, y: 0 } : {}}
-							transition={{ duration: 0.5, delay: 0.4 }}
+							transition={{ duration: 0.5, delay: 0.3 }}
 							className="p-8 bg-teal-50/50 border-l-8 border-teal-500 rounded-r-2xl"
 						>
-							<h4 className="text-2xl font-black text-gray-900 mb-3">Artificial Intelligence & Coding</h4>
+							<h4 className="text-2xl md:text-3xl font-black text-teal-600 mb-3 tracking-tight">Artificial Intelligence & Coding</h4>
 							<p className="text-gray-700 mb-4 leading-relaxed font-medium">
 								We utilize visual programming interfaces transitioning strictly into high-level language parsing (Python/C++) for machine learning applications.
 							</p>
 							<ul className="space-y-2">
 								<li className="flex items-center gap-2"><FaCheckCircle className="text-green-500 w-4 h-4" /> Computer Vision Algorithms</li>
 								<li className="flex items-center gap-2"><FaCheckCircle className="text-green-500 w-4 h-4" /> Natural Language Processing</li>
+							</ul>
+						</motion.div>
+
+						{/* ATL Item */}
+						<motion.div
+							initial={{ opacity: 0, y: 30 }}
+							animate={isInView ? { opacity: 1, y: 0 } : {}}
+							transition={{ duration: 0.5, delay: 0.4 }}
+							className="p-8 bg-blue-50/50 border-l-8 border-blue-500 rounded-r-2xl"
+						>
+							<h4 className="text-2xl md:text-3xl font-black text-blue-600 mb-3 tracking-tight">Atal Tinkering Labs (ATL)</h4>
+							<p className="text-gray-700 mb-4 leading-relaxed font-medium">
+								Full compliance lifecycle management for NITI Aayog funded ATL labs. We train students in 3D modeling, intermediate circuitry, and rapid IoT prototyping.
+							</p>
+							<ul className="space-y-2">
+								<li className="flex items-center gap-2"><FaCheckCircle className="text-green-500 w-4 h-4" /> NITI Aayog Dashboard Maintenance</li>
+								<li className="flex items-center gap-2"><FaCheckCircle className="text-green-500 w-4 h-4" /> Tinkering Festival Preparation</li>
 							</ul>
 						</motion.div>
 

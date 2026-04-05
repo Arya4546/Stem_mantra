@@ -398,7 +398,6 @@ STEMMANTRA Technologies enables experiential and competency-based learning throu
 |------|-------|
 | Photos | 1,000+ |
 | Events | 500+ |
-| Competitions | 50+ |
 | States | 18+ |
 
 ---

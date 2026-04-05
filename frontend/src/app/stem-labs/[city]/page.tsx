@@ -71,7 +71,7 @@ const cityData: Record<string, {
     gurugram: {
         name: "Gurugram",
         state: "Haryana",
-        description: "Gurugram, the millennium city, hosts many international and premium schools. Our STEM labs in Gurugram are designed to meet international standards with advanced robotics, AI, and coding infrastructure.",
+        description: "Gurugram, the millennium city, hosts many international and premium schools. Our STEM labs in Gurugram are designed to meet international standards with advanced robotics, AI, and coding labs.",
         highlights: ["DLF schools", "Sector 14 schools", "Sector 47 schools", "Sohna Road schools", "Golf Course Road schools"],
         schools: 45,
         students: 13500,
