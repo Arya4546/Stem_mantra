@@ -23,7 +23,7 @@ import {
 import { Target, Eye } from "lucide-react";
 
 const stats = [
-  { number: "1,25,000+", label: "Students Trained", icon: FaGraduationCap, color: "text-orange-500" },
+  { number: "1,50,000+", label: "Students Trained", icon: FaGraduationCap, color: "text-orange-500" },
   { number: "500+", label: "Schools Partnered", icon: FaSchool, color: "text-teal-500" },
   { number: "18+", label: "States Covered", icon: FaGlobeAsia, color: "text-blue-500" },
   { number: "20+", label: "Expert Trainers", icon: FaChalkboardTeacher, color: "text-purple-500" },
@@ -91,8 +91,8 @@ export default function AboutContent() {
       <Header />
       <main className="min-h-screen bg-white">
         {/* Hero Section — Left aligned, no floating blobs */}
-        <section className="pt-32 pb-12 px-4">
-          <div className="max-w-6xl mx-auto">
+        <section className="pt-32 pb-12">
+          <div className="site-container">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -136,8 +136,8 @@ export default function AboutContent() {
         </section>
 
         {/* Mission & Vision — Stacked cards, no gradient blobs */}
-        <section ref={missionRef} className="py-12 px-4 bg-gray-50">
-          <div className="max-w-6xl mx-auto">
+        <section ref={missionRef} className="py-12 bg-gray-50">
+          <div className="site-container">
             <div className="grid lg:grid-cols-2 gap-8">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -179,8 +179,8 @@ export default function AboutContent() {
         </section>
 
         {/* Core Values — 2x2 bento with left accent borders */}
-        <section ref={valuesRef} className="py-12 px-4">
-          <div className="max-w-6xl mx-auto">
+        <section ref={valuesRef} className="py-12">
+          <div className="site-container">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={isValuesInView ? { opacity: 1, y: 0 } : {}}
@@ -217,8 +217,8 @@ export default function AboutContent() {
         </section>
 
         {/* Services — White bg, alternating list items */}
-        <section className="py-12 px-4 bg-gray-50">
-          <div className="max-w-6xl mx-auto">
+        <section className="py-12 bg-gray-50">
+          <div className="site-container">
             <div className="mb-10">
               <span className="inline-block px-4 py-1.5 bg-orange-100 text-orange-600 rounded-full text-sm font-semibold mb-3">
                 Our Solutions
@@ -254,8 +254,8 @@ export default function AboutContent() {
         </section>
 
         {/* Why Choose Us — Numbered steps instead of checklist */}
-        <section className="py-12 px-4">
-          <div className="max-w-6xl mx-auto">
+        <section className="py-12">
+          <div className="site-container">
             <div className="grid lg:grid-cols-5 gap-10 items-start">
               <div className="lg:col-span-2">
                 <span className="inline-block px-4 py-1.5 bg-orange-100 text-orange-600 rounded-full text-sm font-semibold mb-3">
@@ -304,7 +304,7 @@ export default function AboutContent() {
         </section>
 
         {/* CTA — Contained card */}
-        <section className="py-12 px-4">
+        <section className="py-12">
           <div className="max-w-4xl mx-auto">
             <div className="bg-gray-900 rounded-2xl p-8 md:p-10 text-center relative overflow-hidden">
               <div className="relative z-10">

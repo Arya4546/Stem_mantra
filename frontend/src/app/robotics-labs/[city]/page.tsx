@@ -146,7 +146,7 @@ export default function RoboticsLabCityPage() {
             <>
                 <Header />
                 <main className="min-h-screen bg-white pt-32 pb-16">
-                    <div className="container mx-auto px-4 text-center">
+                    <div className="site-container text-center">
                         <h1 className="text-3xl font-bold text-gray-900 mb-4">City Not Found</h1>
                         <p className="text-gray-600 mb-8">We couldn&apos;t find robotics lab information for this city.</p>
                         <Link href="/" className="text-orange-500 hover:underline">
@@ -165,7 +165,7 @@ export default function RoboticsLabCityPage() {
             <main className="min-h-screen bg-white">
                 {/* Hero Section — Left aligned, white bg */}
                 <section className="relative pt-32 pb-12 overflow-hidden">
-                    <div className="container mx-auto px-4">
+                    <div className="site-container">
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
@@ -206,7 +206,7 @@ export default function RoboticsLabCityPage() {
 
                 {/* Stats — Horizontal Strip */}
                 <section className="py-8 bg-gray-50 border-y border-gray-100">
-                    <div className="container mx-auto px-4">
+                    <div className="site-container">
                         <div className="flex flex-wrap justify-between items-center gap-6 max-w-6xl mx-auto">
                             <div className="flex items-center gap-3">
                                 <div className="text-3xl font-bold text-gray-900">{data.labs}+</div>
@@ -233,7 +233,7 @@ export default function RoboticsLabCityPage() {
 
                 {/* Robot Types — Clean Grid */}
                 <section className="py-20 bg-white">
-                    <div className="container mx-auto px-4">
+                    <div className="site-container">
                         <div className="mb-12">
                             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
                                 Future-Ready <span className="text-purple-600">Robotics</span>
@@ -265,7 +265,7 @@ export default function RoboticsLabCityPage() {
 
                 {/* Specialties — Tags */}
                 <section className="py-12 bg-gray-50">
-                    <div className="container mx-auto px-4">
+                    <div className="site-container">
                         <div className="flex flex-col md:flex-row items-center gap-8 max-w-6xl mx-auto">
                             <h2 className="text-2xl font-bold text-gray-900 flex-shrink-0">
                                 Specialized <br /> Modules
@@ -286,7 +286,7 @@ export default function RoboticsLabCityPage() {
 
                 {/* Curriculum & Competition — Split Section */}
                 <section className="py-20 bg-white">
-                    <div className="container mx-auto px-4">
+                    <div className="site-container">
                         <div className="grid lg:grid-cols-2 gap-16 items-start">
                             <motion.div
                                 initial={{ opacity: 0, x: -20 }}
@@ -338,7 +338,7 @@ export default function RoboticsLabCityPage() {
 
                 {/* CTA — Boxed Dark Card */}
                 <section className="py-20 border-t border-gray-100">
-                    <div className="container mx-auto px-4">
+                    <div className="site-container">
                         <div className="max-w-5xl mx-auto bg-gray-900 rounded-[2.5rem] p-12 md:p-16 text-center relative overflow-hidden">
                             <div className="relative z-10">
                                 <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">

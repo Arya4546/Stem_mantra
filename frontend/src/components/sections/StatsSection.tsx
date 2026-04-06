@@ -7,7 +7,7 @@ import FloatingAnimations from "@/components/animations/FloatingAnimations";
 
 const stats = [
   { icon: FaSchool, value: 500, suffix: "+", label: "Partner Institutions" },
-  { icon: FaUsers, value: 125000, suffix: "+", label: "Student Innovators" },
+  { icon: FaUsers, value: 150000, suffix: "+", label: "Student Innovators" },
   { icon: FaGlobeAsia, value: 16, suffix: "+", label: "States Impacted" },
 ];
 
@@ -55,12 +55,12 @@ export default function StatsSection() {
   const isInView = useInView(ref, { once: true, amount: 0.3 });
 
   return (
-    <section ref={ref} className="relative py-20 bg-gray-900 border-y-8 border-orange-500 overflow-hidden">
+    <section ref={ref} className="relative py-16 lg:py-20 bg-gray-900 border-y-8 border-orange-500 overflow-hidden">
       <FloatingAnimations variant="stem" density="low" />
-      <div className="container mx-auto px-4 relative z-10">
+      <div className="site-container relative z-10">
 
         {/* Massive text block instead of card grid */}
-        <div className="max-w-6xl mx-auto flex flex-col lg:flex-row items-center gap-16">
+        <div className="flex flex-col lg:flex-row items-start lg:items-center gap-12 lg:gap-16">
 
           {/* The Text Column */}
           <motion.div
@@ -72,7 +72,7 @@ export default function StatsSection() {
             <div className="inline-block px-4 py-1.5 bg-gray-800 text-orange-400 font-black tracking-widest uppercase text-sm mb-6 rounded-none">
               Quantifiable Academic Impact
             </div>
-            <h2 className="text-4xl lg:text-5xl font-extrabold text-white mb-6 leading-tight">
+            <h2 className="text-3xl md:text-5xl lg:text-6xl font-black text-white mb-6 leading-tight tracking-tight">
               Powering India&apos;s
               <br />
               <span className="text-orange-500">STEM Revolution</span>
@@ -90,7 +90,7 @@ export default function StatsSection() {
             initial={{ opacity: 0, x: 30 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="lg:w-1/2 grid grid-cols-2 gap-8 lg:gap-12"
+            className="lg:w-1/2 grid grid-cols-1 sm:grid-cols-2 gap-6 lg:gap-8 w-full"
           >
             {stats.map((stat, index) => (
               <div key={index} className="flex flex-col border-l-4 border-orange-500 pl-6 py-2 pb-6">

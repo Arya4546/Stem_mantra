@@ -94,15 +94,15 @@ export default function LocationServicePage({
   return (
     <div className="bg-white">
       {/* Hero Section — Left Aligned, White BG */}
-      <section className="pt-32 pb-12 px-4">
-        <div className="max-w-6xl mx-auto">
+      <section className="pt-32 pb-12">
+        <div className="site-container">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
             <div className="flex items-center gap-3 mb-6">
               <div className={`w-12 h-12 ${details.bg} rounded-xl flex items-center justify-center`}>
                 <IconComponent className={`w-6 h-6 ${details.accent}`} />
               </div>
               <span className={`px-4 py-1.5 ${details.bg} ${details.accent} rounded-full text-sm font-bold`}>
-                📍 Local Service Specialist
+                Local Service Specialist
               </span>
             </div>
 
@@ -128,7 +128,7 @@ export default function LocationServicePage({
 
       {/* Info Strip */}
       <section className="py-8 border-y border-gray-100 bg-gray-50/50">
-        <div className="max-w-6xl mx-auto px-4">
+        <div className="site-container">
           <div className="flex flex-wrap justify-center md:justify-start gap-10">
             <div className="flex items-center gap-3">
               <FaMapMarkerAlt className="w-5 h-5 text-orange-500" />
@@ -158,8 +158,8 @@ export default function LocationServicePage({
       </section>
 
       {/* Offerings Section */}
-      <section className="py-20 px-4">
-        <div className="max-w-6xl mx-auto">
+      <section className="py-16 lg:py-20">
+        <div className="site-container">
           <div className="mb-12">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">What We Offer in {city}</h2>
             <p className="text-gray-600 max-w-2xl">Tailored laboratory solutions designed for the educational landscape of {city}.</p>
@@ -177,8 +177,8 @@ export default function LocationServicePage({
       </section>
 
       {/* Equipment Section */}
-      <section className="py-20 px-4 bg-gray-50">
-        <div className="max-w-6xl mx-auto">
+      <section className="py-16 lg:py-20 bg-gray-50">
+        <div className="site-container">
           <div className="mb-12 text-center">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">State-of-the-art Equipment</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">We provide industry-standard tools and machines to ensure the best learning experience.</p>
@@ -196,8 +196,8 @@ export default function LocationServicePage({
       </section>
 
       {/* Why Choose Us & Info Card */}
-      <section className="py-20 px-4 bg-white">
-        <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
+      <section className="py-16 lg:py-20 bg-white">
+        <div className="site-container grid lg:grid-cols-2 gap-16 items-center">
           <div>
             <h2 className="text-3xl font-bold text-gray-900 mb-8">Why Schools in {city} <br />Partner With Us?</h2>
             <div className="space-y-6">
@@ -237,8 +237,8 @@ export default function LocationServicePage({
       </section>
 
       {/* CTA — Contained Card */}
-      <section className="py-12 px-4 mb-20">
-        <div className="max-w-4xl mx-auto bg-gray-900 rounded-[2.5rem] p-10 md:p-16 text-center text-white relative overflow-hidden">
+      <section className="py-12 mb-20">
+        <div className="site-container max-w-4xl bg-gray-900 rounded-[2.5rem] p-10 md:p-16 text-center text-white relative overflow-hidden">
           <div className="relative z-10">
             <h2 className="text-3xl md:text-5xl font-bold mb-6">Elevate Education Standards</h2>
             <p className="text-gray-400 text-lg mb-10 max-w-xl mx-auto">Join the revolution of practical learning in {city}. Partner with India&apos;s leading STEM laboratory provider.</p>

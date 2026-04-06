@@ -36,6 +36,9 @@
   --brand-green: #22c55e;
   --brand-purple: #8b5cf6;
   --brand-yellow: #fbbf24;
+  --layout-max-width: 1520px;
+  --layout-wide-max-width: 1680px;
+  --content-max-width: 760px;
 }
 
 html {
@@ -50,12 +53,74 @@ body {
   overflow-x: hidden;
   min-height: 100vh;
   background-color: #ffffff;
+  color: #111827;
+  line-height: 1.6;
 }
 
 /* Ensure main content is always visible */
 main {
   background-color: #ffffff;
   min-height: 100vh;
+}
+
+/* Shared layout system */
+.container,
+.site-container {
+  width: 100%;
+  max-width: var(--layout-max-width);
+  margin-inline: auto;
+  padding-inline: 0.875rem;
+}
+
+.site-container-wide {
+  width: 100%;
+  max-width: var(--layout-wide-max-width);
+  margin-inline: auto;
+  padding-inline: 0.875rem;
+}
+
+.site-content {
+  width: 100%;
+  max-width: var(--content-max-width);
+}
+
+.section-shell {
+  padding-block: 4.5rem;
+}
+
+.section-title {
+  font-family: var(--font-poppins), sans-serif;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+@media (min-width: 640px) {
+  .container,
+  .site-container,
+  .site-container-wide {
+    padding-inline: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container,
+  .site-container,
+  .site-container-wide {
+    padding-inline: 2rem;
+  }
+
+  .section-shell {
+    padding-block: 6rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .site-container .max-w-4xl,
+  .site-container .max-w-5xl,
+  .site-container .max-w-6xl,
+  .site-container .max-w-7xl {
+    max-width: 100%;
+  }
 }
 
 /* Fix for sections that might not be visible on mobile due to animations */
@@ -681,7 +746,7 @@ a[href^="#"] {
 }
 
 .section-subheading {
-  @apply text-lg md:text-xl text-gray-600 max-w-3xl mx-auto;
+  @apply text-lg md:text-xl text-gray-600 max-w-3xl;
 }
 
 /* ==================== VIDEO BACKGROUND ==================== */

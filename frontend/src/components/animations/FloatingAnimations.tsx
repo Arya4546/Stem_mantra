@@ -100,9 +100,40 @@ const AtomIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
+const RocketIcon = ({ className }: { className?: string }) => (
+  <svg className={className} viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M32 8C32 8 20 20 20 40H44C44 20 32 8 32 8Z" fill="currentColor" />
+    <path d="M20 40L16 48H24L22 40" fill="currentColor" opacity="0.7" />
+    <path d="M44 40L48 48H40L42 40" fill="currentColor" opacity="0.7" />
+    <rect x="28" y="40" width="8" height="6" fill="#f97316" />
+    <circle cx="32" cy="24" r="4" fill="white" opacity="0.4" />
+  </svg>
+);
+
+const SatelliteIcon = ({ className }: { className?: string }) => (
+  <svg className={className} viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect x="26" y="26" width="12" height="12" rx="2" fill="currentColor" />
+    <rect x="8" y="30" width="16" height="4" rx="1" fill="currentColor" opacity="0.6" />
+    <rect x="40" y="30" width="16" height="4" rx="1" fill="currentColor" opacity="0.6" />
+    <path d="M32 26V16M32 38V48" stroke="currentColor" strokeWidth="2" />
+    <circle cx="32" cy="14" r="3" fill="#22c55e" />
+  </svg>
+);
+
+const CpuIcon = ({ className }: { className?: string }) => (
+  <svg className={className} viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect x="16" y="16" width="32" height="32" rx="4" stroke="currentColor" strokeWidth="3" />
+    <rect x="24" y="24" width="16" height="16" rx="2" fill="currentColor" />
+    <path d="M16 24H8M16 32H8M16 40H8" stroke="currentColor" strokeWidth="2" />
+    <path d="M48 24H56M48 32H56M48 40H56" stroke="currentColor" strokeWidth="2" />
+    <path d="M24 16V8M32 16V8M40 16V8" stroke="currentColor" strokeWidth="2" />
+    <path d="M24 48V56M32 48V56M40 48V56" stroke="currentColor" strokeWidth="2" />
+  </svg>
+);
+
 interface FloatingElement {
   id: number;
-  icon: "drone" | "robot" | "gear" | "circuit" | "bulb" | "atom";
+  icon: "drone" | "robot" | "gear" | "circuit" | "bulb" | "atom" | "rocket" | "satellite" | "cpu";
   size: number;
   x: number;
   y: number;
@@ -119,6 +150,9 @@ const iconComponents = {
   circuit: CircuitIcon,
   bulb: BulbIcon,
   atom: AtomIcon,
+  rocket: RocketIcon,
+  satellite: SatelliteIcon,
+  cpu: CpuIcon,
 };
 
 const colorClasses = [
@@ -147,8 +181,8 @@ export default function FloatingAnimations({
   useEffect(() => {
     setIsClient(true);
 
-    const elementCount = density === "low" ? 2 : density === "medium" ? 4 : 6;
-    const icons: FloatingElement["icon"][] = ["drone", "robot", "gear", "circuit", "bulb", "atom"];
+    const elementCount = density === "low" ? 4 : density === "medium" ? 8 : 15;
+    const icons: FloatingElement["icon"][] = ["drone", "robot", "gear", "circuit", "bulb", "atom", "rocket", "satellite", "cpu"];
 
     const newElements: FloatingElement[] = [];
 
@@ -156,13 +190,13 @@ export default function FloatingAnimations({
       newElements.push({
         id: i,
         icon: icons[i % icons.length],
-        size: 20 + Math.random() * 40,
-        x: Math.random() < 0.5 ? Math.random() * 15 : 85 + Math.random() * 15,
+        size: 30 + Math.random() * 50,
+        x: Math.random() * 100,
         y: Math.random() * 100,
         delay: Math.random() * 5,
-        duration: 8 + Math.random() * 8,
+        duration: 12 + Math.random() * 15,
         color: colorClasses[Math.floor(Math.random() * colorClasses.length)],
-        opacity: 0.15 + Math.random() * 0.25,
+        opacity: 0.2 + Math.random() * 0.4,
       });
     }
 
@@ -185,6 +219,7 @@ export default function FloatingAnimations({
     if (element.icon === "drone") return "animate-fly";
     if (element.icon === "robot") return "animate-bounce-subtle";
     if (element.icon === "atom") return "animate-spin-reverse";
+    if (element.icon === "rocket") return "animate-fly-diagonal";
 
     return animations[Math.floor(Math.random() * animations.length)];
   };

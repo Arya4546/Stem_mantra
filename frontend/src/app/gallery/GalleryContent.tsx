@@ -9,7 +9,7 @@ export default function GalleryContent() {
 
   return (
     <main className="min-h-screen bg-white pt-32">
-      <article ref={ref} className="container mx-auto px-4 pb-16">
+      <article ref={ref} className="site-container pb-16">
         {/* Section Header — Left aligned */}
         <motion.header
           initial={{ opacity: 0, y: 20 }}

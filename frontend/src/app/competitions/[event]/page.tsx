@@ -252,7 +252,7 @@ export default function CompetitionPage() {
             <>
                 <Header />
                 <main className="min-h-screen bg-white pt-32 pb-16">
-                    <div className="container mx-auto px-4 text-center">
+                    <div className="site-container text-center">
                         <h1 className="text-3xl font-bold text-gray-900 mb-4">Competition Not Found</h1>
                         <p className="text-gray-600 mb-8">We couldn&apos;t find this competition.</p>
                         <Link href="/" className="text-orange-500 hover:underline">

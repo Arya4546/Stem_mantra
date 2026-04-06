@@ -73,8 +73,8 @@ export default function ContactPage() {
       <Header />
       <main className="min-h-screen bg-white">
         {/* Hero — Left aligned, no floating icons */}
-        <section className="pt-32 pb-10 px-4">
-          <div className="max-w-6xl mx-auto">
+        <section className="pt-32 pb-10">
+          <div className="site-container">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -94,8 +94,8 @@ export default function ContactPage() {
         </section>
 
         {/* Contact cards — 2x2 with accent border */}
-        <section className="py-6 px-4">
-          <div className="max-w-6xl mx-auto">
+        <section className="py-6">
+          <div className="site-container">
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
               {contactInfo.map((info, index) => (
                 <motion.a
@@ -122,8 +122,8 @@ export default function ContactPage() {
         </section>
 
         {/* Form + Sidebar */}
-        <section className="py-12 px-4">
-          <div className="max-w-6xl mx-auto">
+        <section className="py-12">
+          <div className="site-container">
             <div className="grid lg:grid-cols-3 gap-8">
               {/* Form — Flat bordered with colored left sidebar */}
               <motion.div
@@ -294,7 +294,7 @@ export default function ContactPage() {
         </section>
 
         {/* CTA — Contained card */}
-        <section className="py-12 px-4">
+        <section className="py-12">
           <div className="max-w-4xl mx-auto">
             <div className="bg-gray-900 rounded-2xl p-8 md:p-10 text-center">
               <h2 className="text-3xl font-bold text-white mb-3">

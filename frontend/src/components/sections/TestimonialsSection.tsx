@@ -45,11 +45,11 @@ export default function TestimonialsSection() {
   };
 
   return (
-    <section ref={ref} className="relative py-24 bg-gray-50 overflow-hidden">
+    <section ref={ref} className="relative py-16 lg:py-24 bg-gray-50 overflow-hidden">
       <FloatingAnimations variant="about" density="medium" />
 
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="max-w-4xl mx-auto text-center mb-16">
+      <div className="site-container relative z-10">
+        <div className="max-w-5xl mb-12 lg:mb-14">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -62,7 +62,7 @@ export default function TestimonialsSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.1 }}
-            className="text-4xl md:text-5xl font-black text-gray-900 mb-6 leading-tight"
+            className="text-3xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-6 leading-tight tracking-tight"
           >
             Validated by <span className="text-orange-500">Academic Visionaries</span>
           </motion.h2>
@@ -70,13 +70,13 @@ export default function TestimonialsSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.2 }}
-            className="text-xl text-gray-600 font-medium leading-relaxed"
+            className="text-lg md:text-xl text-gray-600 font-medium leading-relaxed max-w-4xl"
           >
             Listen to Principals & Directors from prestigious K-12 schools across India discuss the transformational impact of our Robotics Laboratories, AI Curriculums, and STEM integrations.
           </motion.p>
         </div>
 
-        <div className="relative max-w-5xl mx-auto px-4 md:px-12">
+        <div className="relative max-w-7xl mx-auto md:px-8">
           <div className="relative h-[500px] md:h-[400px]">
             <AnimatePresence initial={false} custom={direction}>
               <motion.div
@@ -96,7 +96,7 @@ export default function TestimonialsSection() {
                   {/* Left Side: Quote & Content */}
                   <div className="flex-1 space-y-6">
                     <FaQuoteLeft className="w-12 h-12 text-orange-100 group-hover:text-orange-200 transition-colors" />
-                    <p className="text-gray-700 text-lg md:text-xl leading-relaxed font-semibold italic text-justify">
+                    <p className="text-gray-700 text-lg md:text-xl leading-relaxed font-semibold italic">
                       &ldquo;{testimonials[activeIndex].content}&rdquo;
                     </p>
                     <div className="flex gap-1">

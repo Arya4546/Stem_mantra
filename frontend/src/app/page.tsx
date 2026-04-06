@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-import FloatingDemoButton from "@/components/ui/FloatingDemoButton";
 import HeroSection from "@/components/sections/HeroSection";
 import AboutSection from "@/components/sections/AboutSection";
 import LabSolutionsSection from "@/components/sections/LabSolutionsSection";
@@ -88,7 +87,6 @@ export default function HomePage() {
         <CTASection />
       </main>
       <Footer />
-      <FloatingDemoButton />
     </>
   );
 }

@@ -81,8 +81,8 @@ export default function BlogPage() {
             <Header />
             <main className="min-h-screen bg-white">
                 {/* Hero — Left aligned, no gradient banner */}
-                <section className="pt-32 pb-8 px-4">
-                    <div className="max-w-6xl mx-auto">
+                <section className="pt-32 pb-8">
+                    <div className="site-container">
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
@@ -106,8 +106,8 @@ export default function BlogPage() {
                 </section>
 
                 {/* Search & Filter — Flat bar */}
-                <section className="px-4 pb-8">
-                    <div className="max-w-6xl mx-auto">
+                <section className="pb-8">
+                    <div className="site-container">
                         <div className="flex flex-col md:flex-row gap-3 p-4 bg-gray-50 rounded-xl border border-gray-100">
                             <div className="flex-1 relative">
                                 <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
@@ -133,8 +133,8 @@ export default function BlogPage() {
                 </section>
 
                 {/* Blog Posts Grid */}
-                <section className="pb-16 px-4">
-                    <div className="max-w-6xl mx-auto">
+                <section className="pb-16">
+                    <div className="site-container">
                         {loading ? (
                             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                                 {[...Array(6)].map((_, i) => <BlogCardSkeleton key={i} />)}

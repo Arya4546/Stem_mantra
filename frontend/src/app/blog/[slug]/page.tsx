@@ -57,7 +57,7 @@ interface BlogPost {
 // Skeleton Loading
 function BlogPostSkeleton() {
     return (
-        <div className="max-w-4xl mx-auto px-4 py-16 space-y-8">
+        <div className="site-container py-16 space-y-8 max-w-4xl">
             <div className="h-6 w-32 bg-gray-200 rounded animate-pulse" />
             <div className="space-y-4">
                 <div className="h-10 w-3/4 bg-gray-200 rounded animate-pulse" />
@@ -180,8 +180,8 @@ export default function BlogPostPage() {
                     )}
 
                     {/* Content overlay */}
-                    <div className="absolute bottom-0 left-0 right-0 pb-8 px-4">
-                        <div className="max-w-4xl mx-auto">
+                    <div className="absolute bottom-0 left-0 right-0 pb-8">
+                        <div className="site-container max-w-4xl">
                             <motion.div
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
@@ -247,7 +247,7 @@ export default function BlogPostPage() {
 
                 {/* Content */}
                 <section className="py-12">
-                    <div className="max-w-4xl mx-auto px-4">
+                    <div className="site-container max-w-4xl">
                         <div className="grid lg:grid-cols-4 gap-8">
                             {/* Main Content */}
                             <article className="lg:col-span-3">
