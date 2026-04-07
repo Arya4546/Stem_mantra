@@ -44,12 +44,12 @@ export default function LabSolutionsSection() {
     const isInView = useInView(ref, { once: true, amount: 0.1 });
 
     return (
-        <section ref={ref} className="relative py-16 lg:py-24 bg-white overflow-hidden border-t border-gray-100">
+        <section ref={ref} className="relative py-20 lg:py-28 bg-white overflow-hidden border-t border-gray-100">
             {/* Keeping floating animations as requested */}
             <FloatingAnimations variant="stem" density="low" />
 
-            <div className="site-container relative z-10">
-                <div className="grid lg:grid-cols-12 gap-12 xl:gap-20 items-start">
+            <div className="container mx-auto px-4 relative z-10">
+                <div className="grid lg:grid-cols-12 gap-16 items-start">
 
                     {/* Left Column: Heavy SEO Text & Intro */}
                     <motion.div
@@ -63,9 +63,8 @@ export default function LabSolutionsSection() {
                             <span className="text-sm font-bold text-teal-700 uppercase tracking-wider">End-to-End Lab Solutions</span>
                         </div>
 
-                        <h2 className="text-3xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-8 leading-tight tracking-tight">
-                            Transform Your School with <br className="hidden xl:block" />
-                            <span className="text-orange-500">World-Class STEM/Robotics Labs</span>
+                        <h2 className="text-4xl lg:text-5xl font-extrabold text-gray-900 mb-6 leading-tight">
+                            Transform Your School with <span className="text-orange-500">World-Class STEM/Robotics Labs</span>
                         </h2>
 
                         <div className="prose prose-lg text-gray-600 mb-8 max-w-none">

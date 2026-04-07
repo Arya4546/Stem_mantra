@@ -23,9 +23,9 @@ export default function Section({
   return (
     <section
       id={id}
-      className={cn("section-shell", backgrounds[background], className)}
+      className={cn("py-24 px-4", backgrounds[background], className)}
     >
-      <div className="site-container">{children}</div>
+      {children}
     </section>
   );
 }

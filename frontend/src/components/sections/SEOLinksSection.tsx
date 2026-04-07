@@ -99,7 +99,7 @@ export default function SEOLinksSection() {
                 />
             </div>
 
-            <div className="site-container relative z-10">
+            <div className="container mx-auto px-4 relative z-10">
                 {/* Section Header */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}

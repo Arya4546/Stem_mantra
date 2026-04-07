@@ -208,7 +208,7 @@ export default function ProgramPage() {
       <>
         <Header />
         <main className="min-h-screen bg-white pt-32 pb-16">
-          <div className="site-container text-center">
+          <div className="container mx-auto px-4 text-center">
             <h1 className="text-3xl font-bold text-gray-900 mb-4">Program Not Found</h1>
             <p className="text-gray-600 mb-8">We couldn&apos;t find this program.</p>
             <Link href="/programs" className="text-orange-500 hover:underline">Return to Programs</Link>
@@ -235,8 +235,8 @@ export default function ProgramPage() {
       <Header />
       <main className="min-h-screen bg-white">
         {/* Hero Section — Left Aligned, White Background */}
-        <section className="pt-32 pb-12">
-          <div className="site-container">
+        <section className="pt-32 pb-12 px-4">
+          <div className="max-w-6xl mx-auto">
             <Link href="/programs" className="inline-flex items-center gap-2 text-sm text-gray-500 hover:text-orange-500 mb-8 transition-colors">
               <FaArrowLeft className="w-3 h-3" /> Back to All Programs
             </Link>
@@ -291,7 +291,7 @@ export default function ProgramPage() {
 
         {/* Info Strip */}
         <section className="py-8 border-y border-gray-100 bg-gray-50/50">
-          <div className="site-container">
+          <div className="max-w-6xl mx-auto px-4">
             <div className="flex flex-wrap justify-between items-center gap-8">
               <div className="flex items-center gap-4">
                 <div className="w-10 h-10 rounded-xl bg-orange-100 flex items-center justify-center">
@@ -327,8 +327,8 @@ export default function ProgramPage() {
         </section>
 
         {/* Features & Outcomes — Clean Cards */}
-        <section className="py-16 lg:py-20">
-          <div className="site-container">
+        <section className="py-20 px-4">
+          <div className="max-w-6xl mx-auto">
             <div className="grid md:grid-cols-2 gap-10">
               {/* Features */}
               <div className="bg-white rounded-3xl p-8 border border-gray-100 shadow-sm">
@@ -372,8 +372,8 @@ export default function ProgramPage() {
         </section>
 
         {/* Curriculum — Simple Numbered Grid */}
-        <section className="py-16 lg:py-20 bg-gray-50">
-          <div className="site-container">
+        <section className="py-20 px-4 bg-gray-50">
+          <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Curriculum Modules</h2>
               <p className="text-gray-600 max-w-2xl mx-auto">A structured pathway designed to take students from basics to advanced proficiency.</p>
@@ -392,7 +392,7 @@ export default function ProgramPage() {
         </section>
 
         {/* CTA — Boxed Dark Card */}
-        <section className="py-16 lg:py-20">
+        <section className="py-20 px-4">
           <div className="max-w-4xl mx-auto">
             <div className="bg-gray-900 rounded-[2.5rem] p-10 md:p-16 text-center text-white relative overflow-hidden">
               <div className="relative z-10">
@@ -405,7 +405,7 @@ export default function ProgramPage() {
                   <Link href="/contact" className="px-10 py-4 bg-orange-500 text-white rounded-2xl font-bold hover:bg-orange-600 transition-all shadow-lg">
                     Register Now
                   </Link>
-                  <a href="tel:+916356631515" className="inline-flex items-center gap-2 px-10 py-4 bg-white/5 border border-white/10 text-white rounded-2xl font-bold hover:bg-white/10 transition-all">
+                  <a href="tel:+916356631515" className="px-10 py-4 bg-white/5 border border-white/10 text-white rounded-2xl font-bold hover:bg-white/10 transition-all">
                     <FaPhone className="w-3 h-3" /> +91 6356631515
                   </a>
                 </div>

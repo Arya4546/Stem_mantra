@@ -31,29 +31,29 @@ export default function WhyChooseUsSection() {
     const isInView = useInView(ref, { once: true, amount: 0.1 });
 
     return (
-        <section ref={ref} className="relative py-16 lg:py-24 bg-gray-50 overflow-hidden border-t border-gray-100">
+        <section ref={ref} className="relative py-20 lg:py-28 bg-gray-50 overflow-hidden border-t border-gray-100">
             {/* Keeping floating animations as requested */}
             <FloatingAnimations variant="about" density="medium" />
 
-            <div className="site-container relative z-10">
+            <div className="container mx-auto px-4 relative z-10 max-w-7xl">
 
                 {/* Section Header */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={isInView ? { opacity: 1, y: 0 } : {}}
                     transition={{ duration: 0.5 }}
-                    className="max-w-6xl ml-0 mb-14"
+                    className="max-w-4xl mb-16"
                 >
                     <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange-100 border border-orange-200 mb-6">
                         <span className="w-2 h-2 rounded-full bg-orange-500 animate-pulse"></span>
                         <span className="text-sm font-bold text-orange-700 uppercase tracking-wider">India&apos;s Academic Partner</span>
                     </div>
 
-                    <h2 className="text-3xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-6 leading-tight tracking-tight">
+                    <h2 className="text-4xl md:text-6xl lg:text-7xl font-black text-gray-900 mb-6 leading-tight tracking-tight">
                         Why Top Indian Schools <br className="hidden md:block" /> Choose <span className="text-orange-500 underline decoration-orange-200 underline-offset-8">STEMmantra</span>
                     </h2>
 
-                    <p className="text-lg md:text-xl text-gray-600 leading-relaxed font-medium max-w-4xl">
+                    <p className="text-xl text-gray-600 leading-relaxed font-medium">
                         With over a decade experience leadership team, STEMmantra has been the trusted catalyst for educational transformation.
                         We don&apos;t just sell equipment; we partner with forward-thinking institutions to architect
                         comprehensive, future-proof ecosystems in <strong className="text-gray-900">Robotics, STEM/STEAM, Artificial Intelligence &amp; Coding</strong>.
@@ -61,7 +61,7 @@ export default function WhyChooseUsSection() {
                 </motion.div>
 
                 {/* Content Layout - Split 50/50 without cards */}
-                <div className="grid lg:grid-cols-2 gap-12 xl:gap-16 items-start">
+                <div className="grid lg:grid-cols-2 gap-16 items-start">
 
                     {/* Left side: The Pillars (Text heavy) */}
                     <div className="space-y-12">
@@ -75,18 +75,14 @@ export default function WhyChooseUsSection() {
                             >
                                 <div className="absolute left-0 top-1.5 bottom-0 w-1 bg-gradient-to-b from-orange-400 to-transparent rounded-full"></div>
                                 <h3 className="text-2xl md:text-3xl font-black text-orange-600 mb-3 tracking-tight">{pillar.title}</h3>
-                                <p className="text-base md:text-lg text-gray-600 leading-relaxed">
+                                <p className="text-lg text-gray-600 leading-relaxed">
                                     {pillar.description}
                                 </p>
                                 {('ncf' in pillar) && (
-                                    <div className="mt-5">
-                                        <h4 className="text-2xl md:text-3xl font-black text-orange-600 mb-3 tracking-tight">
-                                            National Curriculum Framework (NCF-2023)
-                                        </h4>
-                                        <p className="text-base md:text-lg text-gray-600 leading-relaxed">
-                                            {(pillar as { ncf: string }).ncf}
-                                        </p>
-                                    </div>
+                                    <p className="text-lg text-gray-600 leading-relaxed mt-4">
+                                        <strong className="text-gray-900">National Curriculum Framework (NCF-2023)</strong><br />
+                                        {(pillar as { ncf: string }).ncf}
+                                    </p>
                                 )}
                             </motion.div>
                         ))}
@@ -97,7 +93,7 @@ export default function WhyChooseUsSection() {
                         initial={{ opacity: 0, x: 20 }}
                         animate={isInView ? { opacity: 1, x: 0 } : {}}
                         transition={{ duration: 0.6, delay: 0.4 }}
-                        className="bg-white p-8 md:p-10 lg:sticky lg:top-32 shadow-xl shadow-orange-900/5 rounded-3xl border border-orange-100/50"
+                        className="bg-white p-8 md:p-12 lg:sticky lg:top-32 shadow-xl shadow-orange-900/5 rounded-3xl border border-orange-100/50"
                     >
                         <h3 className="text-3xl font-extrabold text-gray-900 mb-6">The STEMmantra Advantage</h3>
 

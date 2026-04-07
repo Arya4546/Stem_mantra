@@ -50,7 +50,7 @@ export default function GalleryPreview() {
   const isInView = useInView(ref, { once: true, amount: 0.2 });
 
   return (
-    <section ref={ref} className="relative py-16 lg:py-24 bg-white overflow-hidden">
+    <section ref={ref} className="relative py-24 lg:py-32 bg-white overflow-hidden">
       {/* Floating Icons Animation */}
       <SectionFloatingIcons count={2} zIndex={1} />
       {/* Background Pattern */}
@@ -64,31 +64,31 @@ export default function GalleryPreview() {
         />
       </div>
 
-      <div className="site-container relative z-10">
+      <div className="container mx-auto px-4 relative z-10">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10"
+          className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12"
         >
           <div>
             <span className="inline-block px-4 py-1.5 bg-orange-100 text-orange-600 rounded-full text-sm font-semibold mb-4">
               Gallery
             </span>
-            <h2 className="text-3xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-6 leading-tight tracking-tight">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
               Moments of{" "}
               <span className="bg-gradient-to-r from-orange-500 to-teal-500 bg-clip-text text-transparent">
                 Innovation
               </span>
             </h2>
-            <p className="text-lg md:text-xl text-gray-600 max-w-3xl font-medium leading-relaxed">
+            <p className="text-lg text-gray-600 max-w-xl">
               Capturing the journey of young innovators as they explore, create, and transform ideas into reality.
             </p>
           </div>
           <Link
             href="/gallery"
-            className="inline-flex items-center gap-3 px-8 py-4 bg-orange-500 hover:bg-orange-600 text-white rounded-2xl font-black text-lg transition-transform hover:scale-105 group shadow-xl shadow-orange-500/20"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-orange-500 hover:bg-orange-600 text-white rounded-full font-semibold transition-colors group"
           >
             <FaImages className="w-4 h-4" />
             View Full Gallery
@@ -137,7 +137,7 @@ export default function GalleryPreview() {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.6 }}
-          className="flex flex-wrap items-center justify-start gap-8 md:gap-16 mt-12 pt-10 border-t border-gray-100"
+          className="flex flex-wrap items-center justify-center gap-8 md:gap-16 mt-12 pt-12 border-t border-gray-100"
         >
           <div className="text-center">
             <div className="text-3xl md:text-4xl font-bold text-orange-500">1000+</div>

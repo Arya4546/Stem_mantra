@@ -13,26 +13,26 @@ export default function CTASection() {
   return (
     <section ref={ref} className="py-0 bg-white">
       {/* Heavy Split Level CTA instead of a weak single floating card */}
-      <div className="site-container-wide px-0 md:px-4">
+      <div className="container mx-auto px-0 md:px-4">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5 }}
-          className="grid lg:grid-cols-2 shadow-[0_50px_100px_rgba(0,0,0,0.1)] overflow-hidden rounded-none md:rounded-[3rem]"
+          className="max-w-7xl mx-auto grid lg:grid-cols-2 shadow-2xl overflow-hidden rounded-none md:rounded-3xl"
         >
 
           {/* Left Side: Heavy Text / Action */}
-          <div className="bg-orange-600 p-8 md:p-12 lg:p-14 text-white flex flex-col justify-center">
+          <div className="bg-orange-600 p-10 md:p-16 text-white flex flex-col justify-center">
             <div className="inline-block px-4 py-1.5 bg-black/20 font-black tracking-widest uppercase text-sm mb-6 w-fit">
               Institutional Partnership
             </div>
 
-            <h2 className="text-3xl md:text-5xl lg:text-6xl font-black mb-6 leading-tight tracking-tight">
+            <h2 className="text-4xl md:text-5xl font-black mb-6 leading-tight">
               Establish A World-Class <br className="hidden md:block" />
-              <span className="text-black bg-white px-3 py-1 mt-2 inline-block">STEM Laboratory</span>
+              <span className="text-black bg-white px-2 mt-2 inline-block">STEM Laboratory</span>
             </h2>
 
-            <p className="text-lg md:text-xl font-medium leading-relaxed mb-8 text-orange-50">
+            <p className="text-lg md:text-xl font-medium leading-relaxed mb-10 text-orange-50">
               Join the 300+ forward-thinking K-12 institutions across India utilizing STEMmantra&apos;s robust
               <strong> Robotics, STEM/STEAM-Robotics, AI &amp; Coding, and Atal Tinkering Lab (ATL)</strong> pedagogical frameworks. Prepare your students for the intellectual demands of tomorrow.
             </p>
@@ -72,7 +72,7 @@ export default function CTASection() {
           </div>
 
           {/* Right Side: Informational Contact / Proof (No gradients) */}
-          <div className="bg-gray-900 p-8 md:p-12 lg:p-14 text-white flex flex-col justify-center border-l-8 border-orange-500">
+          <div className="bg-gray-900 p-10 md:p-16 text-white flex flex-col justify-center border-l-8 border-orange-500">
             <h3 className="text-3xl font-extrabold mb-8 text-orange-500">Corporate Headquarters</h3>
 
             <div className="space-y-8 mb-12">

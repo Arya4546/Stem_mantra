@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaPhone } from "react-icons/fa";
+import { FaRobot, FaPhone } from "react-icons/fa";
 import { LogOut, User, Settings, LayoutDashboard, ChevronDown, Menu, X, Microscope, Bot, Zap } from "lucide-react";
 import { SITE_CONFIG } from "@/lib/constants";
 import { useAuth } from "@/providers/auth-provider";
@@ -13,7 +13,6 @@ export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isProgramsOpen, setIsProgramsOpen] = useState(false);
-  const [isMobileProgramsOpen, setIsMobileProgramsOpen] = useState(false);
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
   const pathname = usePathname();
   const { user, isAuthenticated, logout } = useAuth();
@@ -30,8 +29,6 @@ export default function Header() {
   // Close mobile menu on route change
   useEffect(() => {
     setIsMobileMenuOpen(false);
-    setIsProgramsOpen(false);
-    setIsMobileProgramsOpen(false);
   }, [pathname]);
 
   const programs = [
@@ -55,12 +52,17 @@ export default function Header() {
     },
   ];
 
+  // Determine if on landing page
+  const isHome = pathname === "/";
   let headerBg = "";
+  let textColor = "text-gray-700";
   if (isScrolled) {
     headerBg = "bg-white/95 backdrop-blur-lg shadow-lg border-b border-gray-100";
+    textColor = "text-gray-700";
   } else {
     // Always white header on all pages including home
     headerBg = "bg-white shadow-md border-b border-gray-100";
+    textColor = "text-gray-700";
   }
   return (
     <header
@@ -71,7 +73,7 @@ export default function Header() {
         className={`hidden lg:block bg-gradient-to-r from-orange-500 to-orange-600 text-white transition-all duration-300 ${isScrolled ? "h-0 opacity-0 overflow-hidden" : "h-10"
           }`}
       >
-        <div className="site-container h-full flex items-center justify-between text-sm">
+        <div className="container mx-auto px-4 h-full flex items-center justify-between text-sm">
           <div className="flex items-center gap-6">
             <a href={`tel:${SITE_CONFIG.contact.mobile}`} className="flex items-center gap-2 hover:text-orange-100 transition-colors">
               <FaPhone className="w-3 h-3" />
@@ -87,10 +89,10 @@ export default function Header() {
         </div>
       </div>
 
-      <nav className="site-container">
+      <nav className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link href="/" className="flex items-center group relative z-50">
+          <Link href="/" className="flex items-center group relative z-50 -ml-40">
             <motion.div
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
@@ -114,58 +116,13 @@ export default function Header() {
               About
             </NavLink>
 
-            <div
-              className="relative"
-              onMouseEnter={() => setIsProgramsOpen(true)}
-              onMouseLeave={() => setIsProgramsOpen(false)}
-            >
-              <button
-                className={`px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 inline-flex items-center gap-1.5 ${
-                  pathname.startsWith("/programs")
-                    ? "text-orange-600 bg-orange-50"
-                    : "text-gray-700 hover:text-orange-600 hover:bg-orange-50"
-                }`}
-                aria-expanded={isProgramsOpen}
-                aria-haspopup="menu"
-                onClick={() => setIsProgramsOpen((prev) => !prev)}
-              >
-                Programs
-                <ChevronDown className={`w-4 h-4 transition-transform ${isProgramsOpen ? "rotate-180" : ""}`} />
-              </button>
+            {/* Programs Link */}
+            <NavLink href="/programs" active={pathname.startsWith("/programs")} isScrolled={isScrolled} textClass="text-gray-700 hover:text-orange-600">
+              Programs
+            </NavLink>
 
-              <AnimatePresence>
-                {isProgramsOpen && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 8, scale: 0.98 }}
-                    animate={{ opacity: 1, y: 0, scale: 1 }}
-                    exit={{ opacity: 0, y: 8, scale: 0.98 }}
-                    className="absolute left-0 top-full mt-2 w-80 z-50"
-                  >
-                    <div className="rounded-2xl border border-gray-100 bg-white shadow-2xl p-2">
-                      {programs.map((program) => (
-                        <Link
-                          key={program.href}
-                          href={program.href}
-                          className="flex items-start gap-3 rounded-xl px-3 py-3 hover:bg-orange-50 transition-colors"
-                        >
-                          <div className="mt-0.5">{program.icon}</div>
-                          <div>
-                            <div className="text-sm font-semibold text-gray-900">{program.title}</div>
-                            <div className="text-xs text-gray-500 mt-0.5">{program.description}</div>
-                          </div>
-                        </Link>
-                      ))}
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
-
-            <ExternalNavLink href="https://learn.stemmantra.com/" textClass="text-gray-700 hover:text-orange-600">
-              Learn
-            </ExternalNavLink>
-            <NavLink href="/careers" active={pathname.startsWith("/careers")} isScrolled={isScrolled} textClass="text-gray-700 hover:text-orange-600">
-              Careers
+            <NavLink href="/blog" active={pathname.startsWith("/blog")} isScrolled={isScrolled} textClass="text-gray-700 hover:text-orange-600">
+              Blog
             </NavLink>
             <NavLink href="/gallery" active={pathname === "/gallery"} isScrolled={isScrolled} textClass="text-gray-700 hover:text-orange-600">
               Gallery
@@ -284,36 +241,11 @@ export default function Header() {
                 <MobileNavLink href="/about" onClick={() => setIsMobileMenuOpen(false)}>
                   About
                 </MobileNavLink>
-                <div className="mx-2">
-                  <button
-                    onClick={() => setIsMobileProgramsOpen((prev) => !prev)}
-                    className="w-full px-4 py-3 text-left text-gray-700 hover:bg-orange-50 hover:text-orange-600 transition-colors rounded-xl font-medium flex items-center justify-between"
-                  >
-                    Programs
-                    <ChevronDown className={`w-4 h-4 transition-transform ${isMobileProgramsOpen ? "rotate-180" : ""}`} />
-                  </button>
-                  <AnimatePresence>
-                    {isMobileProgramsOpen && (
-                      <motion.div
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: "auto" }}
-                        exit={{ opacity: 0, height: 0 }}
-                        className="overflow-hidden pl-4 pr-2 pb-2"
-                      >
-                        {programs.map((program) => (
-                          <MobileNavLink key={program.href} href={program.href} onClick={() => setIsMobileMenuOpen(false)}>
-                            {program.title}
-                          </MobileNavLink>
-                        ))}
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
-                <MobileExternalNavLink href="https://learn.stemmantra.com/" onClick={() => setIsMobileMenuOpen(false)}>
-                  Learn
-                </MobileExternalNavLink>
-                <MobileNavLink href="/careers" onClick={() => setIsMobileMenuOpen(false)}>
-                  Careers
+                <MobileNavLink href="/programs" onClick={() => setIsMobileMenuOpen(false)}>
+                  Programs
+                </MobileNavLink>
+                <MobileNavLink href="/blog" onClick={() => setIsMobileMenuOpen(false)}>
+                  Blog
                 </MobileNavLink>
                 <MobileNavLink href="/gallery" onClick={() => setIsMobileMenuOpen(false)}>
                   Gallery
@@ -409,27 +341,6 @@ function NavLink({ href, active, children, isScrolled, textClass }: NavLinkProps
   );
 }
 
-function ExternalNavLink({
-  href,
-  children,
-  textClass,
-}: {
-  href: string;
-  children: React.ReactNode;
-  textClass?: string;
-}) {
-  return (
-    <a
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer"
-      className={`px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 ${textClass || "text-gray-700 hover:text-orange-600 hover:bg-orange-50"}`}
-    >
-      {children}
-    </a>
-  );
-}
-
 function MobileNavLink({
   href,
   onClick,
@@ -447,27 +358,5 @@ function MobileNavLink({
     >
       {children}
     </Link>
-  );
-}
-
-function MobileExternalNavLink({
-  href,
-  onClick,
-  children,
-}: {
-  href: string;
-  onClick: () => void;
-  children: React.ReactNode;
-}) {
-  return (
-    <a
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer"
-      onClick={onClick}
-      className="block px-4 py-3 text-gray-700 hover:bg-orange-50 hover:text-orange-600 transition-colors rounded-xl mx-2 font-medium"
-    >
-      {children}
-    </a>
   );
 }

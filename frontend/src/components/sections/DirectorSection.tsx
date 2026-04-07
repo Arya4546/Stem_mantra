@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
@@ -10,12 +10,12 @@ export default function DirectorSection() {
   const isInView = useInView(ref, { once: true, amount: 0.1 });
 
   return (
-    <section ref={ref} id="director-section" className="relative py-16 lg:py-24 bg-white overflow-hidden z-20">
+    <section ref={ref} id="director-section" className="relative py-24 lg:py-32 bg-white overflow-hidden z-20">
       {/* Floating animations pushed to sides */}
       <FloatingAnimations variant="about" density="low" />
 
-      <div className="site-container relative z-10">
-        <div>
+      <div className="container mx-auto px-4 relative z-10">
+        <div className="max-w-6xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             
             {/* Image Column with requested cropping logic */}
@@ -62,11 +62,11 @@ export default function DirectorSection() {
                 Visionary Leadership
               </span>
               
-              <h2 className="text-3xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-6 leading-tight tracking-tight">
+              <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-8 leading-tight">
                 About the <span className="text-orange-500">Director</span>
               </h2>
 
-              <div className="space-y-6 text-lg text-gray-600 leading-relaxed mb-10">
+              <div className="space-y-6 text-lg text-gray-600 leading-relaxed text-justify mb-10">
                 <p>
                   <strong className="text-gray-900 font-bold text-xl">Saurabh Agrahari</strong>, director of STEMMANTRA, leads the education technology company with visionary expertise in both education and technology.
                 </p>
@@ -79,14 +79,14 @@ export default function DirectorSection() {
               </div>
 
               {/* Inspiration Quote Section from Brochure */}
-              <div className="relative p-8 md:p-10 bg-white rounded-3xl border border-gray-100 shadow-sm overflow-hidden group">
+              <div className="relative p-10 bg-white rounded-3xl border border-gray-100 shadow-sm overflow-hidden group">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-orange-50 rounded-full -mr-16 -mt-16 transition-transform group-hover:scale-110" />
                 <FaQuoteLeft className="text-orange-200 w-12 h-12 mb-4" />
-                <blockquote className="text-xl md:text-2xl font-bold text-gray-900 mb-4 italic leading-relaxed relative z-10">
+                <blockquote className="text-xl md:text-2xl font-bold text-gray-900 mb-6 italic leading-relaxed relative z-10">
                   &quot;STEM is not just a collection of subjects. It is a philosophy, a way of thinking, and a way of approaching the world. It&apos;s about innovation, creativity, and problem-solving.&quot;
                 </blockquote>
-                <cite className="block w-fit ml-auto text-right text-gray-500 font-bold not-italic tracking-wider uppercase text-sm">
-                  - Mae Jemison
+                <cite className="block text-gray-500 font-bold not-italic tracking-wider uppercase text-sm">
+                  — Mae Jemison
                 </cite>
               </div>
             </motion.div>
@@ -97,4 +97,3 @@ export default function DirectorSection() {
     </section>
   );
 }
-

@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { FaFacebookF, FaTwitter, FaLinkedinIn, FaYoutube, FaInstagram, FaPhone, FaEnvelope, FaMapMarkerAlt, FaChevronRight, FaWhatsapp } from "react-icons/fa";
+import { FaFacebookF, FaTwitter, FaLinkedinIn, FaYoutube, FaInstagram, FaPhone, FaEnvelope, FaMapMarkerAlt, FaRobot, FaChevronRight, FaWhatsapp } from "react-icons/fa";
 import { SITE_CONFIG } from "@/lib/constants";
 
 // Location-based service pages - using the dynamic routes
@@ -120,7 +120,7 @@ export default function Footer() {
       </div>
 
       {/* Main Footer Content */}
-      <div className="relative site-container py-16">
+      <div className="relative container mx-auto px-4 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-12 mb-12">
           {/* Brand Section */}
           <div className="lg:col-span-2 space-y-6">
@@ -183,23 +183,6 @@ export default function Footer() {
                 <span className="text-sm">{SITE_CONFIG.contact.address}</span>
               </div>
             </div>
-
-            <div className="flex flex-wrap gap-3 pt-2">
-              <a
-                href="https://learn.stemmantra.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-4 py-2 rounded-lg bg-orange-500 text-white text-sm font-semibold hover:bg-orange-600 transition-colors"
-              >
-                Learn
-              </a>
-              <Link
-                href="/careers"
-                className="px-4 py-2 rounded-lg border border-gray-700 text-gray-200 text-sm font-semibold hover:border-orange-500 hover:text-orange-400 transition-colors"
-              >
-                Careers
-              </Link>
-            </div>
           </div>
 
           {/* Quick Links */}
@@ -213,31 +196,18 @@ export default function Footer() {
                 { label: "Home", href: "/" },
                 { label: "About Us", href: "/about" },
                 { label: "Programs", href: "/programs" },
-                { label: "Learn", href: "https://learn.stemmantra.com/", external: true },
-                { label: "Careers", href: "/careers" },
+                { label: "Blog", href: "/blog" },
                 { label: "Gallery", href: "/gallery" },
                 { label: "Contact", href: "/contact" },
               ].map((link, index) => (
                 <li key={index}>
-                  {link.external ? (
-                    <a
-                      href={link.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-gray-400 hover:text-orange-500 transition-colors duration-200 text-sm flex items-center group"
-                    >
-                      <FaChevronRight className="w-2 h-2 mr-2 opacity-0 group-hover:opacity-100 transition-opacity text-orange-500" />
-                      {link.label}
-                    </a>
-                  ) : (
-                    <Link
-                      href={link.href}
-                      className="text-gray-400 hover:text-orange-500 transition-colors duration-200 text-sm flex items-center group"
-                    >
-                      <FaChevronRight className="w-2 h-2 mr-2 opacity-0 group-hover:opacity-100 transition-opacity text-orange-500" />
-                      {link.label}
-                    </Link>
-                  )}
+                  <Link
+                    href={link.href}
+                    className="text-gray-400 hover:text-orange-500 transition-colors duration-200 text-sm flex items-center group"
+                  >
+                    <FaChevronRight className="w-2 h-2 mr-2 opacity-0 group-hover:opacity-100 transition-opacity text-orange-500" />
+                    {link.label}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -374,7 +344,7 @@ export default function Footer() {
 
       {/* SEO Links Section - After Main Footer */}
       <div className="relative bg-gray-950 py-10 border-t border-gray-800">
-        <div className="site-container">
+        <div className="container mx-auto px-4">
           <h2 className="text-xl font-bold text-white mb-6 text-center">
             Explore STEM Education{" "}
             <span className="bg-gradient-to-r from-orange-500 to-teal-500 bg-clip-text text-transparent">

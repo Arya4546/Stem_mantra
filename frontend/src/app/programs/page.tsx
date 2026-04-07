@@ -97,8 +97,8 @@ export default function ProgramsPage() {
       <Header />
       <main className="min-h-screen bg-white">
         {/* Hero — Left aligned, white bg */}
-        <section className="pt-32 pb-10">
-          <div className="site-container">
+        <section className="pt-32 pb-10 px-4">
+          <div className="max-w-6xl mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -107,7 +107,7 @@ export default function ProgramsPage() {
               <span className="inline-block px-4 py-1.5 bg-orange-100 text-orange-600 rounded-full text-sm font-semibold mb-4">
                 NEP 2020 & NCF 2023 Aligned Programs
               </span>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-6 leading-tight tracking-tight">
+              <h1 className="text-4xl md:text-6xl lg:text-7xl font-black text-gray-900 mb-6 leading-tight tracking-tight">
                 Our{" "}
                 <span className="text-orange-500 underline decoration-orange-200 underline-offset-[12px]">
                   Programs
@@ -140,8 +140,8 @@ export default function ProgramsPage() {
         </section>
 
         {/* Programs — Alternating layout with accent borders */}
-        <section className="py-12">
-          <div className="site-container space-y-16">
+        <section className="py-12 px-4">
+          <div className="max-w-6xl mx-auto space-y-16">
             {programs.map((program, index) => (
               <motion.div
                 key={program.id}
@@ -200,8 +200,8 @@ export default function ProgramsPage() {
         </section>
 
         {/* Process — Horizontal step bar */}
-        <section className="py-12 bg-gray-50">
-          <div className="site-container">
+        <section className="py-12 px-4 bg-gray-50">
+          <div className="max-w-6xl mx-auto">
             <div className="mb-10">
               <span className="inline-block px-4 py-1.5 bg-teal-100 text-teal-600 rounded-full text-sm font-semibold mb-3">
                 Our Process
@@ -238,7 +238,7 @@ export default function ProgramsPage() {
         </section>
 
         {/* CTA — Contained card */}
-        <section className="py-12">
+        <section className="py-12 px-4">
           <div className="max-w-4xl mx-auto">
             <div className="bg-gray-900 rounded-2xl p-8 md:p-10 text-center">
               <h2 className="text-3xl font-bold text-white mb-3">
