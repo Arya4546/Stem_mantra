@@ -23,7 +23,7 @@ export default function HeroSection() {
       className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 pt-24"
     >
       {/* Video Background */}
-      <div className="absolute top-20 left-0 right-0 bottom-0 z-0">
+      <div className="absolute top-12 left-0 right-0 bottom-0 z-0">
         <video
           autoPlay
           muted
@@ -40,8 +40,8 @@ export default function HeroSection() {
       <FloatingAnimations variant="about" density="medium" />
 
       {/* Main Content — Left aligned */}
-      <motion.div style={{ y, opacity }} className="relative container mx-auto px-4 sm:px-6 lg:px-8 py-20 z-10">
-        <div className="max-w-4xl">
+      <motion.div style={{ y, opacity }} className="relative container mx-auto px-4 sm:px-6 lg:px-8 py-20 z-10 w-full">
+        <div className="max-w-7xl">
           {/* Badge */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -63,13 +63,9 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.1 }}
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black leading-[1.1] mb-6"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black leading-[1.1] mb-6 text-white drop-shadow-2xl [text-shadow:_0_4px_8px_rgba(0,0,0,0.5)]"
           >
-            <span className="text-white drop-shadow-2xl [text-shadow:_0_4px_8px_rgba(0,0,0,0.5)]">Transforming Schools With Advanced 21st Century Skills Like</span>
-            <br />
-            <span className="text-orange-500 drop-shadow-2xl [text-shadow:_0_4px_12px_rgba(249,115,22,0.3)] text-5xl sm:text-6xl md:text-7xl lg:text-8xl mt-4 block font-black">
-              Robotics, STEM/STEAM &amp; AI &amp; Coding Labs
-            </span>
+            Transforming Schools With Advanced 21st Century Skills Like <span className="text-orange-500 drop-shadow-2xl [text-shadow:_0_4px_12px_rgba(249,115,22,0.3)] block mt-2">Robotics, STEM/STEAM &amp; AI &amp; Coding Labs</span>
           </motion.h1>
 
           {/* SEO rich Subheading */}
@@ -77,7 +73,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.25 }}
-            className="text-lg md:text-xl lg:text-2xl text-gray-200 max-w-3xl mb-12 leading-relaxed font-medium drop-shadow-md"
+            className="text-lg md:text-xl lg:text-2xl text-gray-200 max-w-5xl mb-12 leading-relaxed font-medium drop-shadow-md"
           >
             <p>
               Partner with STEMmantra to establish <strong className="text-white border-b-2 border-orange-500 px-1">NEP 2020 &amp; NCF 2023 Aligned</strong> Atal Tinkering Labs (ATL) and comprehensive K-12 STEM labs.
@@ -122,7 +118,7 @@ export default function HeroSection() {
             <div className="w-px bg-white/20 hidden md:block"></div>
             <div>
               <div className="text-4xl font-black text-white leading-none mb-2">1,25,000+</div>
-              <div className="text-xs uppercase tracking-wider font-bold text-white/60">Active Students</div>
+              <div className="text-sm text-gray-400 uppercase font-bold tracking-widest">Active Students</div>
             </div>
             <div className="w-px bg-white/20 hidden md:block"></div>
             <div>

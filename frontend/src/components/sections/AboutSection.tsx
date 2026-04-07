@@ -9,16 +9,13 @@ import FloatingAnimations from "@/components/animations/FloatingAnimations";
 export default function AboutSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
-
   return (
     <section ref={ref} className="relative py-20 lg:py-28 bg-white overflow-hidden">
       {/* Keeping floating animations as requested */}
       <FloatingAnimations variant="default" density="high" />
 
       <div className="container mx-auto px-4 relative z-10">
-
-        {/* Massive Text Layout for SEO */}
-        <div className="max-w-5xl mx-auto space-y-16">
+        <div className="max-w-7xl mx-auto space-y-16">
 
           {/* Intro Header */}
           <motion.div
@@ -28,10 +25,7 @@ export default function AboutSection() {
             className="text-center"
           >
             <h2 className="text-4xl md:text-6xl lg:text-7xl font-black text-gray-900 mb-8 leading-tight tracking-tighter">
-              Pioneering the Future of <br className="hidden md:block" />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-600 via-orange-500 to-orange-400 drop-shadow-sm">
-                Experiential Learning in India
-              </span>
+              Pioneering the Future of <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-600 via-orange-500 to-orange-400 drop-shadow-sm">Experiential Learning in India</span>
             </h2>
             <div className="w-24 h-2 bg-orange-500 mx-auto rounded-full mb-8"></div>
           </motion.div>
@@ -63,43 +57,83 @@ export default function AboutSection() {
             </p>
           </motion.div>
 
-          {/* Flat Call Out Block (No Cards) */}
+          {/* Complete Lab Solutions — Brand New Section */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="p-10 md:p-14 bg-gray-50 border-l-8 border-orange-500"
+            transition={{ duration: 0.6, delay: 0.5 }}
+            className="pt-16 border-t border-gray-100"
           >
-            <h3 className="text-3xl font-extrabold text-gray-900 mb-6">Our Core Methodological Philosophy</h3>
-
-            <div className="grid md:grid-cols-3 gap-10">
-              <div>
-                <h4 className="text-xl font-bold text-gray-900 mb-3 text-orange-600">Concept-Based Learning</h4>
-                <p className="text-gray-600 leading-relaxed text-lg">
-                  Concept-based learning focuses on building a strong foundation through basic concepts. Students learn these concepts using engaging activities in robotics and coding. This approach makes learning simple, interactive, and easy to understand.
-                </p>
-              </div>
-              <div>
-                <h4 className="text-xl font-bold text-gray-900 mb-3 text-orange-600">Project-Based Learning</h4>
-                <p className="text-gray-600 leading-relaxed text-lg">
-                  Project-based learning is the intermediate stage where students apply their basic knowledge. They progress from concepts to creating simple projects that help solve everyday problems. This hands-on approach strengthens understanding and practical skills.
-                </p>
-              </div>
-              <div>
-                <h4 className="text-xl font-bold text-gray-900 mb-3 text-orange-600">Innovation-Based Learning</h4>
-                <p className="text-gray-600 leading-relaxed text-lg">
-                  Innovation-based learning focuses on solving real-world problems. Students identify challenges and use their basic and intermediate knowledge to develop solutions while learning advanced concepts. This approach promotes creativity, critical thinking, and innovation.
-                </p>
-              </div>
+            <div className="text-center mb-16">
+              <h3 className="text-4xl md:text-5xl font-black text-gray-900 mb-6">Complete Lab Solutions</h3>
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                We provide end-to-end turnkey solutions for schools looking to establish world-class innovation centers and technology laboratories.
+              </p>
             </div>
 
-            <div className="mt-12 pt-10 border-t border-gray-200 flex justify-end">
-              <Link href="/contact" className="inline-flex items-center gap-3 text-gray-900 text-xl font-bold hover:text-orange-600 transition-colors">
-                Connect with our Academic Directors <FaArrowRight className="w-5 h-5" />
-              </Link>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+              {[
+                {
+                  title: "Robotics & AI Lab",
+                  desc: "Comprehensive setup with DIY robotics kits, autonomous systems, and advanced AI & Machine Learning modules for deep technical exploration."
+                },
+                {
+                  title: "STEM/STEAM Lab",
+                  desc: "Integrated learning spaces focusing on Science, Tech, Engineering, Art, and Math through inquiry-based projects and rapid prototyping."
+                },
+                {
+                  title: "Coding & AI Labs",
+                  desc: "Digital centers focused on computational thinking, algorithmic reasoning, and software development using industry-standard tools."
+                },
+                {
+                  title: "ATL Lab Setup",
+                  desc: "Seamless implementation of Atal Tinkering Labs with NITI Aayog compliance, specialized equipment, and continuous mentorship."
+                },
+                {
+                  title: "IoT & Drone Lab",
+                  desc: "Exploring the world of connected devices and aerial robotics through specialized sensor kits and flight-tech hardware."
+                },
+                {
+                  title: "3-D Printing Lab",
+                  desc: "Empowering students to turn ideas into physical reality with high-precision fabrication tools and additive manufacturing technology."
+                }
+              ].map((solution, idx) => (
+                <div key={idx} className="p-8 bg-gray-50 rounded-3xl border border-gray-100 hover:shadow-xl transition-all group">
+                  <h4 className="text-2xl font-black text-gray-900 mb-4 group-hover:text-orange-600 transition-colors">{solution.title}</h4>
+                  <p className="text-gray-600 leading-relaxed text-lg">
+                    {solution.desc}
+                  </p>
+                </div>
+              ))}
+            </div>
+
+            <div className="bg-orange-600 rounded-[3rem] p-10 md:p-16 text-white relative overflow-hidden">
+              {/* Subtle SVG Background Pattern */}
+              <svg className="absolute inset-0 w-full h-full opacity-10" viewBox="0 0 100 100" preserveAspectRatio="none">
+                <path d="M0 0 L100 0 L100 100 L0 100 Z" fill="none" stroke="currentColor" strokeWidth="0.5" strokeDasharray="5,5" />
+                <circle cx="50" cy="50" r="40" stroke="currentColor" strokeWidth="0.5" fill="none" />
+                <path d="M10 10 L90 90 M90 10 L10 90" stroke="currentColor" strokeWidth="0.5" />
+              </svg>
+
+              <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-10 text-center md:text-left">
+                <div className="max-w-xl">
+                  <h4 className="text-3xl md:text-4xl font-black mb-4">Ready to Transform Your School?</h4>
+                  <p className="text-xl text-orange-100 italic">
+                    Join 500+ progressive institutions already pioneering experiential education with STEMmantra.
+                  </p>
+                </div>
+                <Link href="/contact" className="px-10 py-5 bg-white text-orange-600 font-black text-xl rounded-2xl hover:scale-105 transition-all shadow-2xl">
+                  Get a Free Consultation
+                </Link>
+              </div>
             </div>
           </motion.div>
 
+          <div className="mt-12 pt-10 border-t border-gray-200 flex justify-end">
+            <Link href="/contact" className="inline-flex items-center gap-3 text-gray-900 text-xl font-bold hover:text-orange-600 transition-colors">
+              Connect with our Academic Directors <FaArrowRight className="w-5 h-5" />
+            </Link>
+          </div>
         </div>
       </div>
     </section>
