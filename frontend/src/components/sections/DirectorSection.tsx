@@ -15,7 +15,7 @@ export default function DirectorSection() {
       <FloatingAnimations variant="about" density="low" />
 
       <div className="container mx-auto px-4 relative z-10">
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             
             {/* Image Column with requested cropping logic */}
@@ -62,7 +62,7 @@ export default function DirectorSection() {
                 Visionary Leadership
               </span>
               
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-8 leading-tight">
+              <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-8 leading-tight">
                 About the <span className="text-orange-500">Director</span>
               </h2>
 
@@ -85,7 +85,7 @@ export default function DirectorSection() {
                 <blockquote className="text-xl md:text-2xl font-bold text-gray-900 mb-6 italic leading-relaxed relative z-10">
                   &quot;STEM is not just a collection of subjects. It is a philosophy, a way of thinking, and a way of approaching the world. It&apos;s about innovation, creativity, and problem-solving.&quot;
                 </blockquote>
-                <cite className="block text-gray-500 font-bold not-italic tracking-wider uppercase text-sm text-right">
+                <cite className="block text-gray-500 font-bold not-italic tracking-wider uppercase text-sm">
                   — Mae Jemison
                 </cite>
               </div>

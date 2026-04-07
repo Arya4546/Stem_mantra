@@ -92,7 +92,7 @@ export default function Header() {
       <nav className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link href="/" className="flex items-center group relative z-50 lg:-ml-32">
+          <Link href="/" className="flex items-center group relative z-50 -ml-40">
             <motion.div
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
@@ -116,73 +116,20 @@ export default function Header() {
               About
             </NavLink>
 
-            {/* Programs Dropdown */}
-            <div
-              className="relative"
-              onMouseEnter={() => setIsProgramsOpen(true)}
-              onMouseLeave={() => setIsProgramsOpen(false)}
-            >
-              <NavLink
-                href="/programs"
-                active={pathname.startsWith("/programs")}
-                isScrolled={isScrolled}
-                textClass="text-gray-700 hover:text-orange-600 flex items-center gap-1"
-              >
-                Programs <ChevronDown className={`w-4 h-4 transition-transform ${isProgramsOpen ? "rotate-180" : ""}`} />
-              </NavLink>
+            {/* Programs Link */}
+            <NavLink href="/programs" active={pathname.startsWith("/programs")} isScrolled={isScrolled} textClass="text-gray-700 hover:text-orange-600">
+              Programs
+            </NavLink>
 
-              <AnimatePresence>
-                {isProgramsOpen && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 10 }}
-                    className="absolute top-full left-0 mt-2 w-64 bg-white rounded-xl shadow-xl border border-gray-100 overflow-hidden z-[60]"
-                  >
-                    <div className="p-2">
-                      {programs.map((program) => (
-                        <Link
-                          key={program.title}
-                          href={program.href}
-                          className="flex items-center gap-4 p-3 rounded-lg hover:bg-orange-50 transition-colors group"
-                        >
-                          <div className="w-10 h-10 rounded-lg bg-gray-50 flex items-center justify-center group-hover:bg-white transition-colors">
-                            {program.icon}
-                          </div>
-                          <div>
-                            <div className="text-sm font-bold text-gray-900">{program.title}</div>
-                            <div className="text-xs text-gray-500 leading-tight">{program.description}</div>
-                          </div>
-                        </Link>
-                      ))}
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
-
-            {/* <NavLink href="/blog" active={pathname.startsWith("/blog")} isScrolled={isScrolled} textClass="text-gray-700 hover:text-orange-600">
+            <NavLink href="/blog" active={pathname.startsWith("/blog")} isScrolled={isScrolled} textClass="text-gray-700 hover:text-orange-600">
               Blog
-            </NavLink> */}
+            </NavLink>
             <NavLink href="/gallery" active={pathname === "/gallery"} isScrolled={isScrolled} textClass="text-gray-700 hover:text-orange-600">
               Gallery
-            </NavLink>
-            <NavLink href="/career" active={pathname === "/career"} isScrolled={isScrolled} textClass="text-gray-700 hover:text-orange-600">
-              Career
             </NavLink>
             <NavLink href="/contact" active={pathname === "/contact"} isScrolled={isScrolled} textClass="text-gray-700 hover:text-orange-600">
               Contact
             </NavLink>
-
-            {/* Learn Button */}
-            <a
-              href="https://learn.stemmantra.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="ml-4 px-6 py-2.5 bg-orange-600 text-white text-sm font-bold rounded-full hover:bg-orange-700 transition-all shadow-md hover:shadow-lg active:scale-95"
-            >
-              Learn
-            </a>
 
             {/* Auth Section - Only shown when authenticated */}
             {isAuthenticated && (
@@ -294,68 +241,18 @@ export default function Header() {
                 <MobileNavLink href="/about" onClick={() => setIsMobileMenuOpen(false)}>
                   About
                 </MobileNavLink>
-
-                {/* Mobile Programs with Submenu */}
-                <div className="space-y-1">
-                  <button
-                    onClick={() => setIsProgramsOpen(!isProgramsOpen)}
-                    className="flex w-full items-center justify-between px-4 py-3 text-gray-700 hover:bg-orange-50 hover:text-orange-600 transition-colors rounded-xl mx-2 font-medium"
-                  >
-                    Programs
-                    <ChevronDown className={`w-4 h-4 transition-transform ${isProgramsOpen ? "rotate-180" : ""}`} />
-                  </button>
-
-                  <AnimatePresence>
-                    {isProgramsOpen && (
-                      <motion.div
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: "auto" }}
-                        exit={{ opacity: 0, height: 0 }}
-                        className="pl-8 pr-4 space-y-1 overflow-hidden"
-                      >
-                        {programs.map((program) => (
-                          <Link
-                            key={program.title}
-                            href={program.href}
-                            onClick={() => {
-                              setIsMobileMenuOpen(false);
-                              setIsProgramsOpen(false);
-                            }}
-                            className="block p-3 rounded-xl hover:bg-orange-50 transition-colors"
-                          >
-                            <div className="text-sm font-bold text-gray-900">{program.title}</div>
-                            <div className="text-xs text-gray-500">{program.description}</div>
-                          </Link>
-                        ))}
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
-
-                {/* <MobileNavLink href="/blog" onClick={() => setIsMobileMenuOpen(false)}>
+                <MobileNavLink href="/programs" onClick={() => setIsMobileMenuOpen(false)}>
+                  Programs
+                </MobileNavLink>
+                <MobileNavLink href="/blog" onClick={() => setIsMobileMenuOpen(false)}>
                   Blog
-                </MobileNavLink> */}
+                </MobileNavLink>
                 <MobileNavLink href="/gallery" onClick={() => setIsMobileMenuOpen(false)}>
                   Gallery
-                </MobileNavLink>
-                <MobileNavLink href="/career" onClick={() => setIsMobileMenuOpen(false)}>
-                  Career
                 </MobileNavLink>
                 <MobileNavLink href="/contact" onClick={() => setIsMobileMenuOpen(false)}>
                   Contact
                 </MobileNavLink>
-
-                {/* Mobile Learn Button */}
-                <div className="px-4 pt-2">
-                  <a
-                    href="https://learn.stemmantra.com/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center justify-center w-full px-6 py-3 bg-orange-600 text-white font-bold rounded-xl shadow-md"
-                  >
-                    Learn Now
-                  </a>
-                </div>
 
                 {/* Mobile Auth Section - Only shown when authenticated */}
                 {isAuthenticated && (

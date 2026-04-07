@@ -42,7 +42,7 @@ export default function WhyChooseUsSection() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={isInView ? { opacity: 1, y: 0 } : {}}
                     transition={{ duration: 0.5 }}
-                    className="max-w-7xl mb-16"
+                    className="max-w-4xl mb-16"
                 >
                     <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange-100 border border-orange-200 mb-6">
                         <span className="w-2 h-2 rounded-full bg-orange-500 animate-pulse"></span>
@@ -50,10 +50,10 @@ export default function WhyChooseUsSection() {
                     </div>
 
                     <h2 className="text-4xl md:text-6xl lg:text-7xl font-black text-gray-900 mb-6 leading-tight tracking-tight">
-                        Why Top Indian Schools Choose <span className="text-orange-500 underline decoration-orange-200 underline-offset-8">STEMmantra</span>
+                        Why Top Indian Schools <br className="hidden md:block" /> Choose <span className="text-orange-500 underline decoration-orange-200 underline-offset-8">STEMmantra</span>
                     </h2>
 
-                    <p className="text-xl text-gray-600 leading-relaxed font-medium max-w-4xl">
+                    <p className="text-xl text-gray-600 leading-relaxed font-medium">
                         With over a decade experience leadership team, STEMmantra has been the trusted catalyst for educational transformation.
                         We don&apos;t just sell equipment; we partner with forward-thinking institutions to architect
                         comprehensive, future-proof ecosystems in <strong className="text-gray-900">Robotics, STEM/STEAM, Artificial Intelligence &amp; Coding</strong>.
@@ -80,7 +80,7 @@ export default function WhyChooseUsSection() {
                                 </p>
                                 {('ncf' in pillar) && (
                                     <p className="text-lg text-gray-600 leading-relaxed mt-4">
-                                        <strong className="text-gray-900">National Education Policy (NEP 2020) Alignment</strong><br />
+                                        <strong className="text-gray-900">National Curriculum Framework (NCF-2023)</strong><br />
                                         {(pillar as { ncf: string }).ncf}
                                     </p>
                                 )}
