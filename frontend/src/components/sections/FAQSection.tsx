@@ -3,6 +3,7 @@
 import { useRef, useState } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import { ChevronDown, HelpCircle } from "lucide-react";
+import FloatingAnimations from "@/components/animations/FloatingAnimations";
 
 const faqs = [
     {
@@ -46,6 +47,7 @@ export default function FAQSection() {
 
     return (
         <section ref={ref} className="relative py-16 lg:py-20 bg-gradient-to-br from-orange-50/50 via-white to-teal-50/50 overflow-hidden">
+            <FloatingAnimations variant="section" density="low" />
             <div className="container mx-auto px-4 relative z-10">
                 {/* Section Header */}
                 <motion.div

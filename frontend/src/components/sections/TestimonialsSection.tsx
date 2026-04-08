@@ -46,7 +46,7 @@ export default function TestimonialsSection() {
 
   return (
     <section ref={ref} className="relative py-24 bg-gray-50 overflow-hidden">
-      <FloatingAnimations variant="about" density="medium" />
+      <FloatingAnimations variant="about" density="low" />
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-4xl mx-auto text-center mb-16">

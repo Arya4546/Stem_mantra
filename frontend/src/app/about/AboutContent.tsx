@@ -21,6 +21,7 @@ import {
   FaBrain,
 } from "react-icons/fa";
 import { Target, Eye } from "lucide-react";
+import FloatingAnimations from "@/components/animations/FloatingAnimations";
 
 const stats = [
   { number: "1,50,000+", label: "Students Trained", icon: FaGraduationCap, color: "text-orange-500" },
@@ -65,10 +66,10 @@ const coreValues = [
 ];
 
 const services = [
-  { icon: FaRobot, title: "Robotics Labs - STEAMVERSE Lab", description: "Complete turnkey robotics lab solutions with curriculum, hardware, and training support." },
-  { icon: FaBrain, title: "AI-ML & Coding Labs", description: "Cutting-edge artificial intelligence and machine learning labs for future-ready students." },
-  { icon: FaLightbulb, title: "ATL Labs", description: "Atal Tinkering Lab setup, mentorship, and innovation programs aligned with government initiatives." },
-  { icon: FaCogs, title: "STEM Labs - INNOVERSE Labs", description: "Integrated Science, Technology, Engineering, and Mathematics laboratories for holistic learning including Robotics, IoT, AI & Coding Labs." },
+  { icon: FaRobot, title: "Robotics Labs - STEAMVERSE Lab", description: "Complete turnkey robotics lab solutions designed to build computational thinking. Includes premium hardware kits, structured age-appropriate curriculum, and full teacher training support to ensure successful implementation." },
+  { icon: FaBrain, title: "AI-ML & Coding Labs", description: "Cutting-edge artificial intelligence and machine learning labs to prepare future-ready students. We provide specialized software environments and hardware to teach real-world automation, data analysis, and advanced coding." },
+  { icon: FaCogs, title: "STEM Labs - INNOVERSE Labs", description: "Integrated Science, Technology, Engineering, and Mathematics laboratories for holistic, interactive learning. These spaces combine IoT, Electronics, DIY projects, and 3D printing to encourage collaborative cross-disciplinary student projects." },
+  { icon: FaLightbulb, title: "ATL Labs", description: "Comprehensive Atal Tinkering Lab setup strictly adhering to NITI Aayog's guidelines. We provide specialized 3D printing tools, advanced mentorship, competition preparation, and continuous year-round support to foster innovation." },
 ];
 
 const whyChooseUs = [
@@ -137,7 +138,8 @@ export default function AboutContent() {
 
         {/* Mission & Vision — Stacked cards, no gradient blobs */}
         <section ref={missionRef} className="py-12 px-4 bg-gray-50">
-          <div className="max-w-6xl mx-auto">
+          <div className="max-w-6xl mx-auto relative overflow-hidden">
+            <FloatingAnimations variant="section" density="low" />
             <div className="grid lg:grid-cols-2 gap-8">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}

@@ -3,6 +3,7 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { BookOpen, CheckCircle, Award, Star } from "lucide-react";
+import FloatingAnimations from "@/components/animations/FloatingAnimations";
 
 // Partner schools and organizations
 const partners = [
@@ -28,6 +29,7 @@ export default function PartnersSection() {
 
   return (
     <section ref={ref} className="relative py-20 lg:py-24 bg-gradient-to-b from-gray-50 to-white overflow-hidden">
+      <FloatingAnimations variant="section" density="low" />
       <div className="container mx-auto px-4 relative z-10">
         {/* Section Header */}
         <motion.div

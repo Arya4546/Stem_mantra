@@ -33,12 +33,6 @@ export default function Header() {
 
   const programs = [
     {
-      title: "ATL Labs",
-      href: "/programs/atl-labs",
-      description: "Atal Tinkering Labs setup & support",
-      icon: <Microscope className="w-6 h-6 text-orange-500" />,
-    },
-    {
       title: "Robotics & AI Labs",
       href: "/programs/robotics-lab",
       description: "Advanced robotics and AI education",
@@ -49,6 +43,12 @@ export default function Header() {
       href: "/programs/stem-lab",
       description: "Complete STEM learning solutions",
       icon: <Zap className="w-6 h-6 text-orange-500" />,
+    },
+    {
+      title: "ATL Labs",
+      href: "/programs/atl-labs",
+      description: "Atal Tinkering Labs setup & support",
+      icon: <Microscope className="w-6 h-6 text-orange-500" />,
     },
   ];
 
@@ -116,14 +116,68 @@ export default function Header() {
               About
             </NavLink>
 
-            {/* Programs Link */}
-            <NavLink href="/programs" active={pathname.startsWith("/programs")} isScrolled={isScrolled} textClass="text-gray-700 hover:text-orange-600">
-              Programs
-            </NavLink>
+            {/* Programs Link with Dropdown */}
+            <div
+              className="relative"
+              onMouseEnter={() => setIsProgramsOpen(true)}
+              onMouseLeave={() => setIsProgramsOpen(false)}
+            >
+              <Link
+                href="/programs"
+                className={`px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 flex items-center gap-1 ${
+                  pathname.startsWith("/programs")
+                    ? "text-orange-600 bg-orange-50"
+                    : isScrolled
+                    ? "text-gray-700 hover:text-orange-600 hover:bg-orange-50"
+                    : "text-gray-800 hover:text-orange-600 hover:bg-white/50"
+                }`}
+              >
+                Programs
+                <ChevronDown className={`w-4 h-4 transition-transform ${isProgramsOpen ? "rotate-180" : ""}`} />
+              </Link>
+              <AnimatePresence>
+                {isProgramsOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                    className="absolute top-full left-0 mt-2 w-80"
+                  >
+                    <div className="bg-white rounded-xl shadow-2xl border border-gray-100 p-2 overflow-hidden">
+                      {programs.map((prog, idx) => (
+                        <Link
+                          key={idx}
+                          href={prog.href}
+                          className="flex items-start gap-3 p-3 rounded-lg hover:bg-orange-50 transition-colors group"
+                        >
+                          <div className="p-2 bg-orange-50 rounded-lg group-hover:bg-white transition-colors">
+                            {prog.icon}
+                          </div>
+                          <div>
+                            <div className="text-sm font-bold text-gray-900 group-hover:text-orange-600">{prog.title}</div>
+                            <div className="text-xs text-gray-500 mt-0.5">{prog.description}</div>
+                          </div>
+                        </Link>
+                      ))}
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
 
-            <NavLink href="/blog" active={pathname.startsWith("/blog")} isScrolled={isScrolled} textClass="text-gray-700 hover:text-orange-600">
-              Blog
+            <NavLink href="/career" active={pathname === "/career"} isScrolled={isScrolled} textClass="text-gray-700 hover:text-orange-600">
+              Career
             </NavLink>
+            <a
+              href="https://learn.stemmantra.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 ${
+                isScrolled ? 'text-gray-700 hover:text-orange-600 hover:bg-orange-50' : 'text-gray-800 hover:text-orange-600 hover:bg-white/50'
+              }`}
+            >
+              Learn
+            </a>
             <NavLink href="/gallery" active={pathname === "/gallery"} isScrolled={isScrolled} textClass="text-gray-700 hover:text-orange-600">
               Gallery
             </NavLink>
@@ -244,9 +298,18 @@ export default function Header() {
                 <MobileNavLink href="/programs" onClick={() => setIsMobileMenuOpen(false)}>
                   Programs
                 </MobileNavLink>
-                <MobileNavLink href="/blog" onClick={() => setIsMobileMenuOpen(false)}>
-                  Blog
+                <MobileNavLink href="/career" onClick={() => setIsMobileMenuOpen(false)}>
+                  Career
                 </MobileNavLink>
+                <a
+                  href="https://learn.stemmantra.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="block px-4 py-3 text-gray-700 hover:bg-orange-50 hover:text-orange-600 transition-colors rounded-xl mx-2 font-medium"
+                >
+                  Learn
+                </a>
                 <MobileNavLink href="/gallery" onClick={() => setIsMobileMenuOpen(false)}>
                   Gallery
                 </MobileNavLink>

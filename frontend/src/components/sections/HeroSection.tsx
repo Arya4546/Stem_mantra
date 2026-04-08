@@ -37,7 +37,7 @@ export default function HeroSection() {
       </div>
 
       {/* Adding back Floating blobls instead of simple geometry */}
-      <FloatingAnimations variant="about" density="medium" />
+      <FloatingAnimations variant="about" density="low" />
 
       {/* Main Content — Left aligned */}
       <motion.div style={{ y, opacity }} className="relative container mx-auto px-4 sm:px-6 lg:px-8 py-20 z-10">

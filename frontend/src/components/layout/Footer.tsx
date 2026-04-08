@@ -196,18 +196,31 @@ export default function Footer() {
                 { label: "Home", href: "/" },
                 { label: "About Us", href: "/about" },
                 { label: "Programs", href: "/programs" },
-                { label: "Blog", href: "/blog" },
+                { label: "Career", href: "/career" },
+                { label: "Learn", href: "https://learn.stemmantra.com/", external: true },
                 { label: "Gallery", href: "/gallery" },
                 { label: "Contact", href: "/contact" },
               ].map((link, index) => (
                 <li key={index}>
-                  <Link
-                    href={link.href}
-                    className="text-gray-400 hover:text-orange-500 transition-colors duration-200 text-sm flex items-center group"
-                  >
-                    <FaChevronRight className="w-2 h-2 mr-2 opacity-0 group-hover:opacity-100 transition-opacity text-orange-500" />
-                    {link.label}
-                  </Link>
+                  {link.external ? (
+                    <a
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-gray-400 hover:text-orange-500 transition-colors duration-200 text-sm flex items-center group"
+                    >
+                      <FaChevronRight className="w-2 h-2 mr-2 opacity-0 group-hover:opacity-100 transition-opacity text-orange-500" />
+                      {link.label}
+                    </a>
+                  ) : (
+                    <Link
+                      href={link.href}
+                      className="text-gray-400 hover:text-orange-500 transition-colors duration-200 text-sm flex items-center group"
+                    >
+                      <FaChevronRight className="w-2 h-2 mr-2 opacity-0 group-hover:opacity-100 transition-opacity text-orange-500" />
+                      {link.label}
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>

@@ -17,7 +17,7 @@ export default function DirectorSection() {
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-6xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
-            
+
             {/* Image Column with requested cropping logic */}
             <motion.div
               initial={{ opacity: 0, x: -50 }}
@@ -35,17 +35,17 @@ export default function DirectorSection() {
                   alt="Saurabh Agrahari - Director of STEMmantra"
                   className="w-full h-full object-cover scale-110 object-top transition-transform duration-700 group-hover:scale-115"
                 />
-                
+
                 {/* Decorative overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                
+
                 {/* Floating badge */}
                 <div className="absolute bottom-6 left-6 right-6 p-6 bg-white/90 backdrop-blur-md rounded-2xl border border-white/20 shadow-xl transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
                   <div className="text-xl font-black text-gray-900">Saurabh Agrahari</div>
                   <div className="text-orange-600 font-bold text-sm uppercase tracking-widest">Director, STEMmantra</div>
                 </div>
               </div>
-              
+
               {/* Background accent */}
               <div className="absolute -top-10 -left-10 w-40 h-40 bg-orange-100 rounded-full -z-10 mix-blend-multiply filter blur-2xl opacity-70 animate-pulse" />
               <div className="absolute -bottom-10 -right-10 w-60 h-60 bg-teal-100 rounded-full -z-10 mix-blend-multiply filter blur-3xl opacity-70 animate-pulse delay-700" />
@@ -61,7 +61,7 @@ export default function DirectorSection() {
               <span className="inline-block px-4 py-1.5 bg-orange-100 text-orange-600 rounded-full text-sm font-black uppercase tracking-widest mb-6 w-fit">
                 Visionary Leadership
               </span>
-              
+
               <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-8 leading-tight">
                 About the <span className="text-orange-500">Director</span>
               </h2>
@@ -85,7 +85,7 @@ export default function DirectorSection() {
                 <blockquote className="text-xl md:text-2xl font-bold text-gray-900 mb-6 italic leading-relaxed relative z-10">
                   &quot;STEM is not just a collection of subjects. It is a philosophy, a way of thinking, and a way of approaching the world. It&apos;s about innovation, creativity, and problem-solving.&quot;
                 </blockquote>
-                <cite className="block text-gray-500 font-bold not-italic tracking-wider uppercase text-sm">
+                <cite className="block text-right text-gray-500 font-bold not-italic tracking-wider uppercase text-sm">
                   — Mae Jemison
                 </cite>
               </div>

@@ -13,14 +13,14 @@ export default function AboutSection() {
   return (
     <section ref={ref} className="relative py-20 lg:py-28 bg-white overflow-hidden">
       {/* Keeping floating animations as requested */}
-      <FloatingAnimations variant="default" density="high" />
+      <FloatingAnimations variant="default" density="low" />
 
       <div className="container mx-auto px-4 relative z-10">
 
-        {/* Massive Text Layout for SEO */}
-        <div className="max-w-5xl mx-auto space-y-16">
+        {/* Spacing optimization: Wider container to reduce side bars */}
+        <div className="max-w-7xl mx-auto space-y-16 lg:space-y-24">
 
-          {/* Intro Header */}
+          {/* Intro Header - Kept at top as requested */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}

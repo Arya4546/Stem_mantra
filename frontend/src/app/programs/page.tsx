@@ -7,30 +7,9 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { FaRobot, FaFlask, FaBrain, FaCheckCircle, FaArrowRight } from "react-icons/fa";
 import { GraduationCap, Building2, Globe, Users, ArrowRight, Target, Lightbulb, Wrench, BookOpen, Zap } from "lucide-react";
+import FloatingAnimations from "@/components/animations/FloatingAnimations";
 
 const programs = [
-  {
-    id: "atl-labs",
-    title: "ATL Labs",
-    subtitle: "Atal Tinkering Labs",
-    description:
-      "Comprehensive end-to-end assistance in establishing and running Atal Tinkering Labs in schools as per NITI Aayog guidelines. Complete setup, teacher training, and year-long support for fostering innovation and creativity.",
-    image: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=800&q=80",
-    features: [
-      "Complete lab setup as per NITI Aayog guidelines",
-      "Teacher training & certification programs",
-      "NEP 2020 & NCF 2023 aligned curriculum",
-      "Year-round mentorship and support",
-      "Competition preparation",
-      "Robotics, IoT (Internet of Things), 3D printing & Electronics equipment & DIY Kits",
-    ],
-    href: "/programs/atl-labs",
-    icon: FaFlask,
-    accent: "border-l-blue-500",
-    iconBg: "bg-blue-50",
-    iconColor: "text-blue-600",
-    checkColor: "text-blue-500",
-  },
   {
     id: "robotics-lab",
     title: "Robotics & AI Lab",
@@ -74,6 +53,28 @@ const programs = [
     iconBg: "bg-teal-50",
     iconColor: "text-teal-600",
     checkColor: "text-teal-500",
+  },
+  {
+    id: "atl-labs",
+    title: "ATL Labs",
+    subtitle: "Atal Tinkering Labs",
+    description:
+      "Comprehensive end-to-end assistance in establishing and running Atal Tinkering Labs in schools as per NITI Aayog guidelines. Complete setup, teacher training, and year-long support for fostering innovation and creativity.",
+    image: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=800&q=80",
+    features: [
+      "Complete lab setup as per NITI Aayog guidelines",
+      "Teacher training & certification programs",
+      "NEP 2020 & NCF 2023 aligned curriculum",
+      "Year-round mentorship and support",
+      "Competition preparation",
+      "Robotics, IoT (Internet of Things), 3D printing & Electronics equipment & DIY Kits",
+    ],
+    href: "/programs/atl-labs",
+    icon: FaFlask,
+    accent: "border-l-blue-500",
+    iconBg: "bg-blue-50",
+    iconColor: "text-blue-600",
+    checkColor: "text-blue-500",
   },
 ];
 
@@ -140,8 +141,9 @@ export default function ProgramsPage() {
         </section>
 
         {/* Programs — Alternating layout with accent borders */}
-        <section className="py-12 px-4">
-          <div className="max-w-6xl mx-auto space-y-16">
+        <section className="relative py-12 px-4 overflow-hidden">
+          <FloatingAnimations variant="section" density="low" />
+          <div className="max-w-6xl mx-auto space-y-16 relative z-10">
             {programs.map((program, index) => (
               <motion.div
                 key={program.id}
