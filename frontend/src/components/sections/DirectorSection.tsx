@@ -66,7 +66,7 @@ export default function DirectorSection() {
                 About the <span className="text-orange-500">Director</span>
               </h2>
 
-              <div className="space-y-6 text-lg text-gray-600 leading-relaxed text-justify mb-10">
+              <div className="space-y-6 text-lg text-gray-600 leading-relaxed text-left md:text-justify mb-10">
                 <p>
                   <strong className="text-gray-900 font-bold text-xl">Saurabh Agrahari</strong>, director of STEMMANTRA, leads the education technology company with visionary expertise in both education and technology.
                 </p>

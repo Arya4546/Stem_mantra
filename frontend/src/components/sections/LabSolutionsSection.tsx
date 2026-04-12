@@ -139,27 +139,28 @@ export default function LabSolutionsSection() {
                             </motion.div>
                         ))}
 
-                        {/* Additional SEO Text Block without any borders/cards */}
-                        <motion.div
-                            initial={{ opacity: 0, y: 30 }}
-                            animate={isInView ? { opacity: 1, y: 0 } : {}}
-                            transition={{ duration: 0.6, delay: 0.6 }}
-                            className="pt-10 border-t border-gray-100"
-                        >
-                            <h3 className="text-2xl font-bold text-gray-900 mb-4">Why Partner With Us for Lab Integration?</h3>
-                            <p className="text-gray-600 mb-6 leading-relaxed">
-                                Building a successful STEM Lab ecosystem requires more than just unpacking boxes of equipment. Our dedicated success team conducts in-depth educator workshops, ensuring teachers are confident in utilizing basic electronics components, block based kits, advanced robotics kits and programming software. We provide continuous technical support, curriculum updates, and targeted training for National/International robotics & STEM based competitions, ensuring your students consistently perform at the highest levels.
-                            </p>
-                            <Link
-                                href="/contact"
-                                className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-gray-900 text-white font-bold rounded-xl hover:bg-black transition-colors"
-                            >
-                                Schedule a Free Lab Consultation
-                            </Link>
-                        </motion.div>
                     </div>
 
                 </div>
+
+                {/* Additional SEO Text Block properly full width at bottom */}
+                <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={isInView ? { opacity: 1, y: 0 } : {}}
+                    transition={{ duration: 0.6, delay: 0.6 }}
+                    className="mt-10 pt-10 border-t border-gray-100 w-full"
+                >
+                    <h3 className="text-3xl font-bold text-gray-900 mb-6">Why Partner With Us for Lab Integration?</h3>
+                    <p className="text-gray-600 mb-10 leading-relaxed text-lg text-left md:text-justify">
+                        Building a successful STEM Lab ecosystem requires more than just unpacking boxes of equipment. Our dedicated success team conducts in-depth educator workshops, ensuring teachers are confident in utilizing basic electronics components, block based kits, advanced robotics kits and programming software. We provide continuous technical support, curriculum updates, and targeted training for National/International robotics & STEM based competitions, ensuring your students consistently perform at the highest levels.
+                    </p>
+                    <Link
+                        href="/contact"
+                        className="inline-flex items-center justify-center gap-3 px-10 py-5 bg-gray-900 text-white font-bold rounded-xl hover:bg-black transition-transform hover:scale-105"
+                    >
+                        Schedule a Free Lab Consultation
+                    </Link>
+                </motion.div>
             </div>
         </section>
     );

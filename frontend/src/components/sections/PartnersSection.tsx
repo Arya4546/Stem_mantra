@@ -5,19 +5,20 @@ import { motion, useInView } from "framer-motion";
 import { BookOpen, CheckCircle, Award, Star } from "lucide-react";
 import FloatingAnimations from "@/components/animations/FloatingAnimations";
 
-// Partner schools and organizations
+// Partner schools and organizations - real logos from STEMmantra brochure
 const partners = [
-  { name: "Kendriya Vidyalaya", logo: "/images/partners/kv-logo.png" },
-  { name: "Jawahar Navodaya", logo: "/images/partners/jnv-logo.png" },
-  { name: "Saraswati Vidya Mandir Schools", logo: "/images/partners/svm-logo.png" },
-  { name: "Mount Olympus Group of schools", logo: "/images/partners/mount-logo.png" },
-  { name: "Delhi Public School", logo: "/images/partners/dps-logo.png" },
-  { name: "Army Public School", logo: "/images/partners/aps-logo.png" },
-  { name: "DAV Public/Model Schools", logo: "/images/partners/dav-logo.png" },
-  { name: "St. Thomas School", logo: "/images/partners/st-thomas-logo.png" },
-  { name: "Sadhu Vashwani International Schools", logo: "/images/partners/svis-logo.png" },
-  { name: "CMS World Schools", logo: "/images/partners/cms-logo.png" },
-  { name: "Lakshmipat Singhnia Public School", logo: "/images/partners/lsps-logo.png" },
+  { name: "St. Thomas School", logo: "/images/partners/partner-1.png" },
+  { name: "Shaheed Amar Singh Public School", logo: "/images/partners/partner-2.png" },
+  { name: "Unique Global Academy", logo: "/images/partners/partner-3.png" },
+  { name: "MBLM School", logo: "/images/partners/partner-4.png" },
+  { name: "GD Goenka Signature School", logo: "/images/partners/partner-5.png" },
+  { name: "Education Partner", logo: "/images/partners/partner-6.png" },
+  { name: "Muslim Education Society", logo: "/images/partners/partner-7.png" },
+  { name: "Prabhakar Sr. Sec. School", logo: "/images/partners/partner-8.png" },
+  { name: "Partner School", logo: "/images/partners/partner-9.png" },
+  { name: "Army School", logo: "/images/partners/partner-10.png" },
+  { name: "Partner Institution", logo: "/images/partners/partner-11.png" },
+  { name: "Mount Olympus School", logo: "/images/partners/partner-12.png" },
 ];
 
 // Duplicate for seamless loop

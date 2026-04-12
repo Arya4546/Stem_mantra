@@ -16,7 +16,7 @@ const programs = [
     subtitle: "Future Technology Education",
     description:
       "State-of-the-art robotics Lab with hands-on learning experiences. Build, program, and innovate with cutting-edge technology including Basic Electronics components, Micro-controllers (Arduino, ESP), DIY Kits and advanced robotics platforms.",
-    image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&q=80",
+    image: "/images/student-robotics.png",
     features: [
       "Advanced robotics kits & platforms",
       "AI & Machine Learning modules",
@@ -38,7 +38,7 @@ const programs = [
     subtitle: "Integrated STEM Learning",
     description:
       "Holistic STEM education combining science, technology, engineering, and mathematics through project-based learning and real-world applications. Develop critical thinking and problem-solving skills. In this we include all the technologies like Robotics, IoT, AI & Coding, VR.",
-    image: "https://images.unsplash.com/photo-1567177662154-dfeb4c93b6ae?w=800&q=80",
+    image: "/images/stem-education-banner.png",
     features: [
       "Integrated STEM/STEAM curriculum",
       "Hands-on experiments & projects",
@@ -60,7 +60,7 @@ const programs = [
     subtitle: "Atal Tinkering Labs",
     description:
       "Comprehensive end-to-end assistance in establishing and running Atal Tinkering Labs in schools as per NITI Aayog guidelines. Complete setup, teacher training, and year-long support for fostering innovation and creativity.",
-    image: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=800&q=80",
+    image: "/images/gallery/session-1.png",
     features: [
       "Complete lab setup as per NITI Aayog guidelines",
       "Teacher training & certification programs",
@@ -156,12 +156,12 @@ export default function ProgramsPage() {
               >
                 {/* Image */}
                 <div className="flex-1 w-full">
-                  <div className="relative aspect-[4/3] rounded-xl overflow-hidden">
+                  <div className="relative aspect-[4/3] rounded-xl overflow-hidden bg-gray-50/50">
                     <Image
                       src={program.image}
                       alt={program.title}
                       fill
-                      className="object-cover"
+                      className="object-contain p-2"
                     />
                   </div>
                 </div>

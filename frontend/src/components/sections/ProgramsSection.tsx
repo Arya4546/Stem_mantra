@@ -51,7 +51,7 @@ export default function ProgramsSection() {
 								<FaGraduationCap className="text-orange-500 w-10 h-10" />
 								Educational Structure
 							</h3>
-							<div className="prose prose-lg text-gray-600 mb-6 max-w-none text-justify">
+							<div className="prose prose-lg text-gray-600 mb-6 max-w-none text-left md:text-justify">
 								<p>
 									Our curriculum implementation framework guarantees that every syllabus we offer conforms rigorously to current
 									<strong> Central Board of Secondary Education (CBSE)</strong>, <strong>ICSE</strong>, and international academic standards &amp; State Boards.

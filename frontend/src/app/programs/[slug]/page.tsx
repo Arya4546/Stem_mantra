@@ -55,6 +55,8 @@ const staticPrograms: Record<string, Program> = {
     learningOutcomes: ["Scientific curiosity", "Basic logical thinking", "Motor skill development", "Teamwork skills"],
     curriculum: ["Discover Science", "Basic Coding", "Simple Machines", "Creative Building"],
     isFeatured: true,
+    image: "/images/kids-learning-robotics.png",
+    thumbnail: "/images/kids-learning-robotics.png",
   },
   "class-4-5": {
     id: "seo-class-4-5",
@@ -69,6 +71,8 @@ const staticPrograms: Record<string, Program> = {
     learningOutcomes: ["Scientific method understanding", "Coding fundamentals", "Basic robotics skills", "Critical thinking"],
     curriculum: ["Science Experiments", "Visual Programming", "Basic Robotics", "Math & Logic"],
     isFeatured: true,
+    image: "/images/student-robotics.png",
+    thumbnail: "/images/student-robotics.png",
   },
   "class-6-8": {
     id: "seo-class-6-8",
@@ -83,6 +87,8 @@ const staticPrograms: Record<string, Program> = {
     learningOutcomes: ["Python proficiency", "Advanced robotics", "Electronics basics", "Competition readiness"],
     curriculum: ["Python Programming", "Advanced Robotics", "Electronics", "3D Design"],
     isFeatured: true,
+    image: "/images/kits/robotics-car-kit.png",
+    thumbnail: "/images/kits/robotics-car-kit.png",
   },
   "class-9-10": {
     id: "seo-class-9-10",
@@ -97,6 +103,8 @@ const staticPrograms: Record<string, Program> = {
     learningOutcomes: ["AI/ML foundations", "Advanced programming", "IoT project skills", "Career preparation"],
     curriculum: ["AI & Machine Learning", "Advanced Python", "IoT Development", "Web Development"],
     isFeatured: true,
+    image: "/images/ai-ml-kids.png",
+    thumbnail: "/images/ai-ml-kids.png",
   },
   "class-11-12": {
     id: "seo-class-11-12",
@@ -111,6 +119,8 @@ const staticPrograms: Record<string, Program> = {
     learningOutcomes: ["Research skills", "Advanced AI/ML", "Autonomous systems", "University readiness"],
     curriculum: ["Autonomous Systems", "Deep Learning", "Research Methods", "Competition Prep"],
     isFeatured: true,
+    image: "/images/kits/tank-robot-kit.png",
+    thumbnail: "/images/kits/tank-robot-kit.png",
   },
   "teacher-training": {
     id: "seo-teacher-training",
@@ -125,6 +135,8 @@ const staticPrograms: Record<string, Program> = {
     learningOutcomes: ["STEM teaching skills", "Lab management expertise", "Student mentoring", "Certification"],
     curriculum: ["STEM Pedagogy", "Robotics Training", "Coding Instruction", "Lab Management"],
     isFeatured: true,
+    image: "/images/innovation-teamwork.png",
+    thumbnail: "/images/innovation-teamwork.png",
   },
   "atl-labs": {
     id: "seo-atl-labs",
@@ -139,6 +151,8 @@ const staticPrograms: Record<string, Program> = {
     learningOutcomes: ["Innovation mindset", "Design thinking", "Prototyping skills", "Problem-solving"],
     curriculum: ["Design Thinking", "Tinkering Basics", "Innovation Projects", "Entrepreneurship"],
     isFeatured: true,
+    image: "/images/gallery/session-1.png",
+    thumbnail: "/images/gallery/session-1.png",
   },
   "robotics-lab": {
     id: "seo-robotics-lab",
@@ -153,6 +167,8 @@ const staticPrograms: Record<string, Program> = {
     learningOutcomes: ["Robot building skills", "Programming proficiency", "AI basics", "Competition readiness"],
     curriculum: ["Robot Building", "Programming", "AI Integration", "Competition Training"],
     isFeatured: true,
+    image: "/images/gallery/session-3.png",
+    thumbnail: "/images/gallery/session-3.png",
   },
   "stem-lab": {
     id: "seo-stem-lab",
@@ -167,6 +183,8 @@ const staticPrograms: Record<string, Program> = {
     learningOutcomes: ["Scientific inquiry", "Tech literacy", "Engineering mindset", "Critical thinking"],
     curriculum: ["Science Exploration", "Technology Literacy", "Engineering Design", "Mathematical Thinking"],
     isFeatured: true,
+    image: "/images/stem-education-banner.png",
+    thumbnail: "/images/stem-education-banner.png",
   },
   "coding": {
     id: "seo-coding",
@@ -181,6 +199,8 @@ const staticPrograms: Record<string, Program> = {
     learningOutcomes: ["Computational thinking", "Multiple languages", "Web development", "Problem-solving"],
     curriculum: ["Block Coding", "Python Programming", "Web Development", "Advanced Topics"],
     isFeatured: true,
+    image: "/images/gallery/session-4.png",
+    thumbnail: "/images/gallery/session-4.png",
   },
   "summer-camps": {
     id: "seo-summer-camps",
@@ -195,6 +215,8 @@ const staticPrograms: Record<string, Program> = {
     learningOutcomes: ["Skill acceleration", "Project completion", "New friendships", "Fun learning"],
     curriculum: ["Robotics Bootcamp", "Coding Marathon", "Science Adventure", "Innovation Week"],
     isFeatured: true,
+    image: "/images/gallery/session-8.png",
+    thumbnail: "/images/gallery/session-8.png",
   },
 };
 

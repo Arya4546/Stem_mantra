@@ -11,13 +11,11 @@ const stats = [
   { icon: FaGlobeAsia, value: 16, suffix: "+", label: "States Impacted" },
 ];
 
-function AnimatedCounter({ value, suffix = "", duration = 2000 }: { value: number; suffix?: string; duration?: number }) {
+function AnimatedCounter({ value, suffix = "", duration = 2000, trigger = true }: { value: number; suffix?: string; duration?: number; trigger?: boolean }) {
   const [count, setCount] = useState(0);
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true });
 
   useEffect(() => {
-    if (!isInView) return;
+    if (!trigger) return;
 
     let startTime: number;
     let animationFrame: number;
@@ -37,14 +35,14 @@ function AnimatedCounter({ value, suffix = "", duration = 2000 }: { value: numbe
 
     animationFrame = requestAnimationFrame(animate);
     return () => cancelAnimationFrame(animationFrame);
-  }, [isInView, value, duration]);
+  }, [trigger, value, duration]);
 
   const formatNumber = (num: number) => {
     return num.toLocaleString('en-IN');
   };
 
   return (
-    <span ref={ref}>
+    <span>
       {formatNumber(count)}{suffix}
     </span>
   );
@@ -88,13 +86,13 @@ export default function StatsSection() {
             initial={{ opacity: 0, x: 30 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="lg:w-1/2 grid grid-cols-2 gap-8 lg:gap-12"
+            className="lg:w-1/2 grid grid-cols-2 gap-4 sm:gap-8 lg:gap-12"
           >
             {stats.map((stat, index) => (
               <div key={index} className="flex flex-col border-l-4 border-orange-500 pl-6 py-2 pb-6">
                 <stat.icon className="w-8 h-8 text-orange-500 mb-4 opacity-80" />
-                <div className="text-4xl md:text-5xl font-black text-white mb-2 tracking-tight">
-                  <AnimatedCounter value={stat.value} suffix={stat.suffix} />
+                <div className="text-3xl sm:text-4xl md:text-5xl font-black text-white mb-2 tracking-tight break-words">
+                  <AnimatedCounter value={stat.value} trigger={isInView} suffix={stat.suffix} />
                 </div>
                 <div className="text-sm font-bold text-gray-400 uppercase tracking-widest">{stat.label}</div>
               </div>

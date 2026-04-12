@@ -39,9 +39,9 @@ export default function HeroSection() {
       {/* Adding back Floating blobls instead of simple geometry */}
       <FloatingAnimations variant="about" density="low" />
 
-      {/* Main Content — Left aligned */}
-      <motion.div style={{ y, opacity }} className="relative container mx-auto px-4 sm:px-6 lg:px-8 py-20 z-10">
-        <div className="max-w-4xl">
+      {/* Main Content — Responsive Flex Layout */}
+      <motion.div style={{ y, opacity }} className="relative container mx-auto px-4 sm:px-6 lg:px-8 py-20 pb-48 z-10 flex flex-col xl:flex-row xl:items-end justify-between gap-12">
+        <div className="max-w-4xl flex-1">
           {/* Badge */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -77,37 +77,37 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.25 }}
-            className="text-lg md:text-xl lg:text-2xl text-gray-200 max-w-3xl mb-12 leading-relaxed font-medium drop-shadow-md"
+            className="text-lg md:text-xl lg:text-2xl text-gray-200 max-w-3xl mb-12 xl:mb-0 leading-relaxed font-medium drop-shadow-md"
           >
             <p>
               Partner with STEMmantra to establish <strong className="text-white border-b-2 border-orange-500 px-1">NEP 2020 &amp; NCF 2023 Aligned</strong> Atal Tinkering Labs (ATL) and comprehensive K-12 STEM labs.
               We provide end-to-end curriculum integration, industrial-grade equipment, and expert educator training to domestic and international schools.
             </p>
           </motion.div>
-
-          {/* CTA Buttons */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.4 }}
-            className="flex flex-col sm:flex-row items-start gap-4"
-          >
-            <Link
-              href="/programs"
-              className="group flex items-center justify-center gap-3 px-10 py-5 bg-orange-600 text-white font-black text-lg sm:text-xl rounded-xl hover:bg-orange-700 hover:scale-105 transition-all duration-300 shadow-xl shadow-orange-900/50"
-            >
-              Explore Our Curriculums
-              <FaArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </Link>
-            <Link
-              href="/about"
-              className="group flex items-center justify-center gap-3 px-10 py-5 bg-black/50 backdrop-blur-md text-white font-bold text-lg sm:text-xl border-2 border-white/20 hover:bg-black/80 hover:border-white/40 rounded-xl transition-all duration-300"
-            >
-              <FaPlay className="w-5 h-5 text-orange-400" />
-              Watch Facility Tour
-            </Link>
-          </motion.div>
         </div>
+
+        {/* CTA Buttons - Firmly on the right side */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.4 }}
+          className="flex flex-col sm:flex-row xl:flex-col items-center xl:items-stretch justify-end w-full xl:w-fit flex-shrink-0 gap-4 mt-8 pb-32 xl:pb-0"
+        >
+          <Link
+            href="/programs"
+            className="group flex items-center justify-center gap-4 px-10 py-5 bg-orange-600 text-white font-black text-lg xl:text-xl rounded-xl hover:bg-orange-700 hover:scale-105 transition-all duration-300 shadow-xl shadow-orange-900/50 whitespace-nowrap w-full sm:w-auto"
+          >
+            Explore Our Curriculums
+            <FaArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+          </Link>
+          <Link
+            href="/about"
+            className="group flex items-center justify-center gap-4 px-10 py-5 bg-black/50 backdrop-blur-md text-white font-bold text-lg xl:text-xl border-2 border-white/20 hover:bg-black/80 hover:border-white/40 rounded-xl transition-all duration-300 whitespace-nowrap w-full sm:w-auto"
+          >
+            <FaPlay className="w-5 h-5 text-orange-400" />
+            Watch Facility Tour
+          </Link>
+        </motion.div>
       </motion.div>
 
       {/* Stats - Separated from parallax so it stays visible */}

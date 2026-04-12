@@ -39,7 +39,7 @@ export default function AboutSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="prose prose-xl prose-gray md:prose-2xl text-gray-600 max-w-none text-justify md:text-left leading-relaxed font-medium"
+            className="prose prose-xl prose-gray md:prose-2xl text-gray-600 max-w-none text-left md:text-justify leading-relaxed font-medium"
           >
             <p className="mb-8">
               STEMmantra is universally recognised as the premier educational lab partner across India.

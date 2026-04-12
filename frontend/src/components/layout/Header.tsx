@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaRobot, FaPhone } from "react-icons/fa";
+import { FaRobot, FaPhone, FaChevronRight } from "react-icons/fa";
 import { LogOut, User, Settings, LayoutDashboard, ChevronDown, Menu, X, Microscope, Bot, Zap } from "lucide-react";
 import { SITE_CONFIG } from "@/lib/constants";
 import { useAuth } from "@/providers/auth-provider";
@@ -92,7 +92,7 @@ export default function Header() {
       <nav className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link href="/" className="flex items-center group relative z-50 -ml-40">
+          <Link href="/" className="flex items-center group relative z-50">
             <motion.div
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
@@ -295,9 +295,27 @@ export default function Header() {
                 <MobileNavLink href="/about" onClick={() => setIsMobileMenuOpen(false)}>
                   About
                 </MobileNavLink>
-                <MobileNavLink href="/programs" onClick={() => setIsMobileMenuOpen(false)}>
-                  Programs
-                </MobileNavLink>
+                <div className="mx-2 mb-2 bg-gray-50 rounded-2xl overflow-hidden pb-1 border border-gray-100">
+                  <div className="px-4 pt-3 pb-2 text-xs font-bold text-gray-400 uppercase tracking-wider">Our Programs</div>
+                  {programs.map((prog, idx) => (
+                    <Link
+                      key={idx}
+                      href={prog.href}
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className="flex items-center gap-3 px-4 py-3 text-gray-700 hover:bg-orange-50 hover:text-orange-600 transition-colors"
+                    >
+                      <div className="p-1.5 bg-white border border-gray-100 rounded-lg shadow-sm text-orange-500">
+                        {prog.icon}
+                      </div>
+                      <div className="font-semibold text-sm">{prog.title}</div>
+                    </Link>
+                  ))}
+                  <div className="border-t border-gray-100 mt-1">
+                    <MobileNavLink href="/programs" onClick={() => setIsMobileMenuOpen(false)}>
+                      View All Programs <FaChevronRight className="w-3 h-3 inline ml-1 opacity-50" />
+                    </MobileNavLink>
+                  </div>
+                </div>
                 <MobileNavLink href="/career" onClick={() => setIsMobileMenuOpen(false)}>
                   Career
                 </MobileNavLink>
