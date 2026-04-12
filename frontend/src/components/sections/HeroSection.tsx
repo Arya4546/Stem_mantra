@@ -90,7 +90,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.4 }}
-            className="flex flex-col sm:flex-row items-start gap-4 mb-16"
+            className="flex flex-col sm:flex-row items-start gap-4"
           >
             <Link
               href="/programs"
@@ -107,29 +107,31 @@ export default function HeroSection() {
               Watch Facility Tour
             </Link>
           </motion.div>
+        </div>
+      </motion.div>
 
-          {/* Stats - Text Only Heavy Style */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.55 }}
-            className="flex flex-wrap gap-x-12 gap-y-8 p-6 bg-black/40 backdrop-blur-sm rounded-2xl border border-white/10"
-          >
-            <div>
-              <div className="text-4xl font-black text-white leading-none mb-2">500+</div>
-              <div className="text-sm text-gray-400 uppercase font-bold tracking-widest">Partner Schools</div>
-            </div>
-            <div className="w-px bg-white/20 hidden md:block"></div>
-            <div>
-              <div className="text-4xl font-black text-white leading-none mb-2">1,25,000+</div>
-              <div className="text-xs uppercase tracking-wider font-bold text-white/60">Active Students</div>
-            </div>
-            <div className="w-px bg-white/20 hidden md:block"></div>
-            <div>
-              <div className="text-4xl font-black text-white leading-none mb-2">10+ Years</div>
-              <div className="text-sm text-gray-400 uppercase font-bold tracking-widest">Industry Leadership</div>
-            </div>
-          </motion.div>
+      {/* Stats - Separated from parallax so it stays visible */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7, delay: 0.55 }}
+        className="absolute bottom-8 left-0 right-0 z-20 container mx-auto px-4 sm:px-6 lg:px-8"
+      >
+        <div className="flex flex-wrap gap-x-12 gap-y-6 p-6 bg-black/60 backdrop-blur-md rounded-2xl border border-white/10 max-w-4xl">
+          <div>
+            <div className="text-4xl font-black text-white leading-none mb-2">500+</div>
+            <div className="text-sm text-gray-400 uppercase font-bold tracking-widest">Partner Schools</div>
+          </div>
+          <div className="w-px bg-white/20 hidden md:block"></div>
+          <div>
+            <div className="text-4xl font-black text-white leading-none mb-2">1,25,000+</div>
+            <div className="text-xs uppercase tracking-wider font-bold text-white/60">Active Students</div>
+          </div>
+          <div className="w-px bg-white/20 hidden md:block"></div>
+          <div>
+            <div className="text-4xl font-black text-white leading-none mb-2">10+ Years</div>
+            <div className="text-sm text-gray-400 uppercase font-bold tracking-widest">Industry Leadership</div>
+          </div>
         </div>
       </motion.div>
     </section>

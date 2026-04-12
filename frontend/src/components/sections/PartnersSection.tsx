@@ -30,7 +30,7 @@ export default function PartnersSection() {
   return (
     <section ref={ref} className="relative py-20 lg:py-24 bg-gradient-to-b from-gray-50 to-white overflow-hidden">
       <FloatingAnimations variant="section" density="low" />
-      <div className="container mx-auto px-4 relative z-10">
+      <div className="mx-auto px-4 md:px-8 lg:px-16 relative z-10">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}

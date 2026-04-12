@@ -48,7 +48,7 @@ export default function LabSolutionsSection() {
             {/* Keeping floating animations as requested */}
             <FloatingAnimations variant="stem" density="low" />
 
-            <div className="container mx-auto px-4 relative z-10">
+            <div className="mx-auto px-4 md:px-8 lg:px-16 relative z-10">
                 <div className="grid lg:grid-cols-12 gap-16 items-start">
 
                     {/* Left Column: Heavy SEO Text & Intro */}

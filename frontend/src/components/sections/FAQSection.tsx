@@ -48,13 +48,13 @@ export default function FAQSection() {
     return (
         <section ref={ref} className="relative py-16 lg:py-20 bg-gradient-to-br from-orange-50/50 via-white to-teal-50/50 overflow-hidden">
             <FloatingAnimations variant="section" density="low" />
-            <div className="container mx-auto px-4 relative z-10">
+            <div className="mx-auto px-4 md:px-8 lg:px-16 relative z-10">
                 {/* Section Header */}
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     animate={isInView ? { opacity: 1, y: 0 } : {}}
                     transition={{ duration: 0.6 }}
-                    className="text-center max-w-3xl mx-auto mb-12"
+                    className="text-center max-w-5xl mx-auto mb-12"
                 >
                     <span className="inline-flex items-center gap-2 px-4 py-1.5 bg-teal-100 text-teal-600 rounded-full text-sm font-semibold mb-4">
                         <HelpCircle className="w-4 h-4" />
@@ -72,7 +72,7 @@ export default function FAQSection() {
                 </motion.div>
 
                 {/* FAQ Accordion */}
-                <div className="max-w-3xl mx-auto">
+                <div className="max-w-5xl mx-auto">
                     {faqs.map((faq, index) => (
                         <motion.div
                             key={index}

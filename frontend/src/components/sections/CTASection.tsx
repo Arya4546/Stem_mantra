@@ -13,12 +13,12 @@ export default function CTASection() {
   return (
     <section ref={ref} className="py-0 bg-white">
       {/* Heavy Split Level CTA instead of a weak single floating card */}
-      <div className="container mx-auto px-0 md:px-4">
+      <div className="mx-auto px-0 md:px-8 lg:px-16">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5 }}
-          className="max-w-7xl mx-auto grid lg:grid-cols-2 shadow-2xl overflow-hidden rounded-none md:rounded-3xl"
+          className="mx-auto grid lg:grid-cols-2 shadow-2xl overflow-hidden rounded-none md:rounded-3xl"
         >
 
           {/* Left Side: Heavy Text / Action */}

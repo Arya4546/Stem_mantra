@@ -14,18 +14,18 @@ export default function DirectorSection() {
       {/* Floating animations pushed to sides */}
       <FloatingAnimations variant="about" density="low" />
 
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+      <div className="mx-auto px-4 md:px-8 lg:px-16 relative z-10">
+        <div className="mx-auto">
+          <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
 
             {/* Image Column with requested cropping logic */}
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               animate={isInView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.8, ease: "easeOut" }}
-              className="relative"
+              className="relative lg:col-span-5"
             >
-              <div className="relative aspect-[4/5] md:aspect-[3/4] rounded-3xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.1)] group">
+              <div className="relative aspect-[4/5] rounded-3xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.1)] group">
                 {/* 
                    The 'scale-110' and 'object-top' are used to "cut just a little" from the edges 
                    as requested to fix the "white analyze" issue.
@@ -56,7 +56,7 @@ export default function DirectorSection() {
               initial={{ opacity: 0, x: 50 }}
               animate={isInView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-              className="flex flex-col"
+              className="flex flex-col lg:col-span-7"
             >
               <span className="inline-block px-4 py-1.5 bg-orange-100 text-orange-600 rounded-full text-sm font-black uppercase tracking-widest mb-6 w-fit">
                 Visionary Leadership

@@ -48,7 +48,7 @@ export default function TestimonialsSection() {
     <section ref={ref} className="relative py-24 bg-gray-50 overflow-hidden">
       <FloatingAnimations variant="about" density="low" />
 
-      <div className="container mx-auto px-4 relative z-10">
+      <div className="mx-auto px-4 md:px-8 lg:px-16 relative z-10">
         <div className="max-w-4xl mx-auto text-center mb-16">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

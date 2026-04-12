@@ -17,7 +17,7 @@ export default function ProgramsSection() {
 		>
 			<FloatingAnimations variant="services" density="low" />
 
-			<div className="container mx-auto px-4 relative z-10 max-w-6xl">
+			<div className="mx-auto px-4 md:px-8 lg:px-16 relative z-10">
 				{/* Section Header */}
 				<motion.div
 					initial={{ opacity: 0, y: 20 }}

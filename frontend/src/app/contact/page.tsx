@@ -278,7 +278,7 @@ export default function ContactPage() {
                     Institutions requiring a comprehensive descriptive evaluation for large-scale
                     multi-lab installations can request our official RFP documentation and technical specifications.
                   </p>
-                  <button 
+                  <button
                     onClick={() => {
                       setFormData(prev => ({ ...prev, interest: "RFP Request", message: "I would like to request the official RFP documentation and technical specifications for our institution." }));
                       window.scrollTo({ top: 300, behavior: "smooth" });

@@ -15,10 +15,8 @@ export default function AboutSection() {
       {/* Keeping floating animations as requested */}
       <FloatingAnimations variant="default" density="low" />
 
-      <div className="container mx-auto px-4 relative z-10">
-
-        {/* Spacing optimization: Wider container to reduce side bars */}
-        <div className="max-w-7xl mx-auto space-y-16 lg:space-y-24">
+      <div className="mx-auto px-4 md:px-8 lg:px-16 relative z-10">
+        <div className="space-y-16 lg:space-y-24">
 
           {/* Intro Header - Kept at top as requested */}
           <motion.div

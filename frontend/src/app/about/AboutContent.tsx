@@ -66,10 +66,10 @@ const coreValues = [
 ];
 
 const services = [
-  { icon: FaRobot, title: "Robotics Labs - STEAMVERSE Lab", description: "Complete turnkey robotics lab solutions designed to build computational thinking. Includes premium hardware kits, structured age-appropriate curriculum, and full teacher training support to ensure successful implementation." },
-  { icon: FaBrain, title: "AI-ML & Coding Labs", description: "Cutting-edge artificial intelligence and machine learning labs to prepare future-ready students. We provide specialized software environments and hardware to teach real-world automation, data analysis, and advanced coding." },
-  { icon: FaCogs, title: "STEM Labs - INNOVERSE Labs", description: "Integrated Science, Technology, Engineering, and Mathematics laboratories for holistic, interactive learning. These spaces combine IoT, Electronics, DIY projects, and 3D printing to encourage collaborative cross-disciplinary student projects." },
-  { icon: FaLightbulb, title: "ATL Labs", description: "Comprehensive Atal Tinkering Lab setup strictly adhering to NITI Aayog's guidelines. We provide specialized 3D printing tools, advanced mentorship, competition preparation, and continuous year-round support to foster innovation." },
+  { icon: FaRobot, title: "Robotics Labs - STEAMVERSE Lab", description: "Complete turnkey robotics lab solutions designed to build computational thinking and problem-solving skills from the ground up. Our STEAMVERSE Labs include premium hardware kits (Arduino, Raspberry Pi, servo-based robot arms), structured age-appropriate curriculum spanning Classes 3–12, detailed lesson plans with workbooks, and full teacher training certification. We also provide ongoing maintenance, annual curriculum upgrades, and national-level competition preparation support." },
+  { icon: FaBrain, title: "AI-ML & Coding Labs", description: "Cutting-edge artificial intelligence and machine learning labs engineered to prepare future-ready students for the digital economy. Each lab comes equipped with specialized software environments (Python, TensorFlow, Scratch, Blockly), dedicated hardware for computer vision and NLP experiments, and a progressive curriculum covering visual programming for juniors through advanced deep learning for seniors. Students gain hands-on experience with real-world automation, data analysis, chatbot development, and image recognition projects." },
+  { icon: FaCogs, title: "STEM Labs - INNOVERSE Labs", description: "Integrated Science, Technology, Engineering, and Mathematics laboratories for holistic, project-based learning. INNOVERSE Labs combine IoT sensor kits, basic and intermediate electronics, 3D printing stations, and rapid prototyping tools under one roof. The curriculum encourages collaborative cross-disciplinary projects — from smart agriculture systems to weather monitoring stations — fostering creativity, teamwork, and scientific inquiry across all grade levels." },
+  { icon: FaLightbulb, title: "ATL Labs", description: "Comprehensive Atal Tinkering Lab setup strictly adhering to NITI Aayog guidelines and AIM (Atal Innovation Mission) standards. We handle end-to-end lab design, procurement of approved equipment (3D printers, robotics kits, micro-controllers, sensors), mentor training, and NITI Aayog portal/dashboard maintenance. Additionally, we prepare students for national Tinkering Festivals, ATL Marathon, and innovation challenges with year-round mentorship and dedicated innovation hours." },
 ];
 
 const whyChooseUs = [
@@ -93,7 +93,7 @@ export default function AboutContent() {
       <main className="min-h-screen bg-white">
         {/* Hero Section — Left aligned, no floating blobs */}
         <section className="pt-32 pb-12 px-4">
-          <div className="max-w-6xl mx-auto">
+          <div className="mx-auto px-4 md:px-8 lg:px-16">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -108,7 +108,7 @@ export default function AboutContent() {
                   STEMmantra
                 </span>
               </h1>
-              <p className="text-lg text-gray-600 max-w-3xl leading-relaxed">
+              <p className="text-lg text-gray-600 leading-relaxed">
                 STEMmantra is a leading provider of STEM, Robotics, and AI education solutions,
                 dedicated to fostering curiosity, creativity, and critical thinking in students
                 across India. With a decade of experience, we provide a holistic learning
@@ -138,7 +138,7 @@ export default function AboutContent() {
 
         {/* Mission & Vision — Stacked cards, no gradient blobs */}
         <section ref={missionRef} className="py-12 px-4 bg-gray-50">
-          <div className="max-w-6xl mx-auto relative overflow-hidden">
+          <div className="mx-auto px-4 md:px-8 lg:px-16 relative overflow-hidden">
             <FloatingAnimations variant="section" density="low" />
             <div className="grid lg:grid-cols-2 gap-8">
               <motion.div
@@ -182,7 +182,7 @@ export default function AboutContent() {
 
         {/* Core Values — 2x2 bento with left accent borders */}
         <section ref={valuesRef} className="py-12 px-4">
-          <div className="max-w-6xl mx-auto">
+          <div className="mx-auto px-4 md:px-8 lg:px-16">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={isValuesInView ? { opacity: 1, y: 0 } : {}}
@@ -220,7 +220,7 @@ export default function AboutContent() {
 
         {/* Services — White bg, alternating list items */}
         <section className="py-12 px-4 bg-gray-50">
-          <div className="max-w-6xl mx-auto">
+          <div className="mx-auto px-4 md:px-8 lg:px-16">
             <div className="mb-10">
               <span className="inline-block px-4 py-1.5 bg-orange-100 text-orange-600 rounded-full text-sm font-semibold mb-3">
                 Our Solutions
@@ -257,7 +257,7 @@ export default function AboutContent() {
 
         {/* Why Choose Us — Numbered steps instead of checklist */}
         <section className="py-12 px-4">
-          <div className="max-w-6xl mx-auto">
+          <div className="mx-auto px-4 md:px-8 lg:px-16">
             <div className="grid lg:grid-cols-5 gap-10 items-start">
               <div className="lg:col-span-2">
                 <span className="inline-block px-4 py-1.5 bg-orange-100 text-orange-600 rounded-full text-sm font-semibold mb-3">
@@ -307,7 +307,7 @@ export default function AboutContent() {
 
         {/* CTA — Contained card */}
         <section className="py-12 px-4">
-          <div className="max-w-4xl mx-auto">
+          <div className="mx-auto px-4 md:px-8 lg:px-16">
             <div className="bg-gray-900 rounded-2xl p-8 md:p-10 text-center relative overflow-hidden">
               <div className="relative z-10">
                 <h2 className="text-3xl font-bold text-white mb-3">

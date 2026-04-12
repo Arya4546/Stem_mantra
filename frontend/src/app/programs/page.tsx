@@ -99,7 +99,7 @@ export default function ProgramsPage() {
       <main className="min-h-screen bg-white">
         {/* Hero — Left aligned, white bg */}
         <section className="pt-32 pb-10 px-4">
-          <div className="max-w-6xl mx-auto">
+          <div className="mx-auto px-4 md:px-8 lg:px-16">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -114,7 +114,7 @@ export default function ProgramsPage() {
                   Programs
                 </span>
               </h1>
-              <p className="text-lg text-gray-600 max-w-3xl leading-relaxed">
+              <p className="text-lg text-gray-600 leading-relaxed">
                 Transforming education through innovative STEM/STEAM programs that prepare
                 students for the future. From ATL Labs to advanced Robotics & AI, we provide comprehensive solutions for schools across India.
               </p>
@@ -143,7 +143,7 @@ export default function ProgramsPage() {
         {/* Programs — Alternating layout with accent borders */}
         <section className="relative py-12 px-4 overflow-hidden">
           <FloatingAnimations variant="section" density="low" />
-          <div className="max-w-6xl mx-auto space-y-16 relative z-10">
+          <div className="mx-auto px-4 md:px-8 lg:px-16 space-y-16 relative z-10">
             {programs.map((program, index) => (
               <motion.div
                 key={program.id}
@@ -203,7 +203,7 @@ export default function ProgramsPage() {
 
         {/* Process — Horizontal step bar */}
         <section className="py-12 px-4 bg-gray-50">
-          <div className="max-w-6xl mx-auto">
+          <div className="mx-auto px-4 md:px-8 lg:px-16">
             <div className="mb-10">
               <span className="inline-block px-4 py-1.5 bg-teal-100 text-teal-600 rounded-full text-sm font-semibold mb-3">
                 Our Process
@@ -241,7 +241,7 @@ export default function ProgramsPage() {
 
         {/* CTA — Contained card */}
         <section className="py-12 px-4">
-          <div className="max-w-4xl mx-auto">
+          <div className="mx-auto px-4 md:px-8 lg:px-16">
             <div className="bg-gray-900 rounded-2xl p-8 md:p-10 text-center">
               <h2 className="text-3xl font-bold text-white mb-3">
                 Ready to Transform <span className="text-orange-400">Your School?</span>

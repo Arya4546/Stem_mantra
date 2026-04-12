@@ -38,14 +38,14 @@ export default function WhyChooseUsSection() {
             {/* Keeping floating animations as requested */}
             <FloatingAnimations variant="about" density="low" />
 
-            <div className="container mx-auto px-4 relative z-10 max-w-7xl">
+            <div className="mx-auto px-4 md:px-8 lg:px-16 relative z-10">
 
                 {/* Section Header */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={isInView ? { opacity: 1, y: 0 } : {}}
                     transition={{ duration: 0.5 }}
-                    className="max-w-4xl mb-16"
+                    className="mb-16"
                 >
                     <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange-100 border border-orange-200 mb-6">
                         <span className="w-2 h-2 rounded-full bg-orange-500 animate-pulse"></span>
@@ -53,7 +53,7 @@ export default function WhyChooseUsSection() {
                     </div>
 
                     <h2 className="text-4xl md:text-6xl lg:text-7xl font-black text-gray-900 mb-6 leading-tight tracking-tight">
-                        Why Top Indian Schools <br className="hidden md:block" /> Choose <span className="text-orange-500 underline decoration-orange-200 underline-offset-8">STEMmantra</span>
+                        Why Top Indian Schools Choose <span className="text-orange-500 underline decoration-orange-200 underline-offset-8">STEMmantra</span>
                     </h2>
 
                     <p className="text-xl text-gray-600 leading-relaxed font-medium">

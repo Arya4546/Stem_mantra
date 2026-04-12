@@ -57,10 +57,8 @@ export default function StatsSection() {
   return (
     <section ref={ref} className="relative py-20 bg-gray-900 border-y-8 border-orange-500 overflow-hidden">
       <FloatingAnimations variant="stem" density="low" />
-      <div className="container mx-auto px-4 relative z-10">
-
-        {/* Massive text block instead of card grid */}
-        <div className="max-w-6xl mx-auto flex flex-col lg:flex-row items-center gap-16">
+      <div className="mx-auto px-4 md:px-8 lg:px-16 relative z-10">
+        <div className="mx-auto flex flex-col lg:flex-row items-center gap-16">
 
           {/* The Text Column */}
           <motion.div

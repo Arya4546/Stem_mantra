@@ -16,7 +16,7 @@ export default function GalleryContent() {
 
   return (
     <main className="min-h-screen bg-white pt-32">
-      <article ref={ref} className="container mx-auto px-4 pb-16">
+      <article ref={ref} className="mx-auto px-4 md:px-8 lg:px-16 pb-16">
         {/* Section Header — Left aligned */}
         <motion.header
           initial={{ opacity: 0, y: 20 }}
@@ -34,7 +34,7 @@ export default function GalleryContent() {
               Innovation
             </span>
           </h1>
-          <p className="text-lg text-gray-600 max-w-2xl">
+          <p className="text-lg text-gray-600">
             Explore our gallery to see real students, teachers, and schools in action—building, learning, and innovating with STEMmantra. Every photo is a testament to hands-on learning, creativity, and achievement in STEM education.
           </p>
         </motion.header>
