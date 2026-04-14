@@ -356,6 +356,7 @@ export default function Footer() {
       </div>
 
       {/* SEO Links Section - After Main Footer */}
+      {/* 
       <div className="relative bg-gray-950 pt-10 pb-24 md:pb-10 border-t border-gray-800">
         <div className="container mx-auto px-4">
           <h2 className="text-xl font-bold text-white mb-6 text-center">
@@ -396,6 +397,7 @@ export default function Footer() {
           </p>
         </div>
       </div>
+      */}
     </footer>
   );
 }

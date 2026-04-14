@@ -71,7 +71,7 @@ export default function DirectorSection() {
                   <strong className="text-gray-900 font-bold text-xl">Saurabh Agrahari</strong>, director of STEMMANTRA, leads the education technology company with visionary expertise in both education and technology.
                 </p>
                 <p>
-                  He has successfully facilitated more than <strong className="text-orange-600">500+ schools</strong> in establishing state-of-the-art laboratories across <strong className="text-orange-600">16+ states</strong> in India. Under his guidance, STEMMANTRA develops innovative STEM learning tools that make science, technology, engineering, and mathematics engaging and accessible for all students.
+                  He has successfully facilitated more than <strong className="text-orange-600">300+ schools</strong> in establishing state-of-the-art laboratories across <strong className="text-orange-600">16+ states</strong> in India. Under his guidance, STEMMANTRA develops innovative STEM learning tools that make science, technology, engineering, and mathematics engaging and accessible for all students.
                 </p>
                 <p>
                   Committed to excellence and inclusivity, Saurabh champions diversity in STEM education and fosters strategic partnerships with schools and institutions. His leadership ensures STEMMANTRA remains at the forefront of Ed-tech, creating interactive and immersive learning experiences that inspire and empower the next generation of learners.

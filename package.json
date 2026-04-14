@@ -56,5 +56,10 @@
     "typescript",
     "prisma",
     "monorepo"
-  ]
+  ],
+  "dependencies": {
+    "pdf-lib": "^1.17.1",
+    "pdf-poppler": "^0.2.3",
+    "sharp": "^0.34.5"
+  }
 }

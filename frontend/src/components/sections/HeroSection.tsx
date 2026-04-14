@@ -119,7 +119,7 @@ export default function HeroSection() {
       >
         <div className="flex flex-wrap gap-x-12 gap-y-6 p-6 bg-black/60 backdrop-blur-md rounded-2xl border border-white/10 max-w-4xl">
           <div>
-            <div className="text-4xl font-black text-white leading-none mb-2">500+</div>
+            <div className="text-4xl font-black text-white leading-none mb-2">300+</div>
             <div className="text-sm text-gray-400 uppercase font-bold tracking-widest">Partner Schools</div>
           </div>
           <div className="w-px bg-white/20 hidden md:block"></div>

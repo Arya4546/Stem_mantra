@@ -143,10 +143,7 @@ export default function GalleryPreview() {
             <div className="text-3xl md:text-4xl font-bold text-orange-500">1000+</div>
             <div className="text-sm text-gray-500">Photos</div>
           </div>
-          <div className="text-center">
-            <div className="text-3xl md:text-4xl font-bold text-teal-500">500+</div>
-            <div className="text-sm text-gray-500">Events</div>
-          </div>
+
           <div className="text-center">
             <div className="text-3xl md:text-4xl font-bold text-blue-500">16+</div>
             <div className="text-xs uppercase tracking-widest font-black text-gray-500 mt-1">States</div>

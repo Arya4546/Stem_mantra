@@ -3,8 +3,10 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import { FaArrowRight } from "react-icons/fa";
 import FloatingAnimations from "@/components/animations/FloatingAnimations";
+
 
 export default function AboutSection() {
   const ref = useRef(null);
@@ -61,36 +63,68 @@ export default function AboutSection() {
             </p>
           </motion.div>
 
-          {/* Flat Call Out Block (No Cards) */}
+          {/* Our Core Methodological Philosophy — Redesigned with brochure images */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="p-10 md:p-14 bg-gray-50 border-l-8 border-orange-500"
           >
-            <h3 className="text-3xl font-extrabold text-gray-900 mb-6">Our Core Methodological Philosophy</h3>
+            {/* Section header - centered to match previous section header */}
+            <div className="mb-12 text-center flex flex-col items-center">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange-100 border border-orange-200 mb-6 mx-auto">
+                <span className="w-2 h-2 rounded-full bg-orange-500 animate-pulse"></span>
+                <span className="text-sm font-bold text-orange-700 uppercase tracking-wider">Our Methodology</span>
+              </div>
+              <h2 className="text-4xl md:text-6xl lg:text-7xl font-black text-gray-900 mb-6 leading-tight tracking-tight text-center">
+                Our Core Methodological <span className="text-orange-500 underline decoration-orange-200 underline-offset-8">Philosophy</span>
+              </h2>
+              <p className="text-xl text-gray-600 leading-relaxed font-medium max-w-4xl mx-auto text-center">
+                A progressive learning journey that transforms students from curious users to confident innovators through three proven frameworks — CBL, PBL, and IBL.
+              </p>
+            </div>
 
+            {/* Methodology Cycle Image - centered */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={isInView ? { opacity: 1, scale: 1 } : {}}
+              transition={{ duration: 0.7, delay: 0.5 }}
+              className="relative mb-16 flex justify-center"
+            >
+              <div className="w-full max-w-4xl mx-auto flex justify-center">
+                <Image
+                  src="/images/methodology/image.png"
+                  alt="STEMmantra Methodology Cycle - CBL, PBL, IBL learning progression from User to Maker to Creator to Innovator"
+                  width={1049}
+                  height={822}
+                  className="w-full h-auto object-contain"
+                  sizes="(max-width: 1024px) 100vw, 896px"
+                />
+              </div>
+            </motion.div>
+
+            {/* Three methodology descriptions */}
             <div className="grid md:grid-cols-3 gap-10">
               <div>
-                <h4 className="text-xl font-bold text-gray-900 mb-3 text-orange-600">Concept-Based Learning</h4>
+                <h4 className="text-xl font-bold mb-3 text-orange-600">Concept-Based Learning</h4>
                 <p className="text-gray-600 leading-relaxed text-lg">
                   Concept-based learning focuses on building a strong foundation through basic concepts. Students learn these concepts using engaging activities in robotics and coding. This approach makes learning simple, interactive, and easy to understand.
                 </p>
               </div>
               <div>
-                <h4 className="text-xl font-bold text-gray-900 mb-3 text-orange-600">Project-Based Learning</h4>
+                <h4 className="text-xl font-bold mb-3 text-orange-600">Project-Based Learning</h4>
                 <p className="text-gray-600 leading-relaxed text-lg">
                   Project-based learning is the intermediate stage where students apply their basic knowledge. They progress from concepts to creating simple projects that help solve everyday problems. This hands-on approach strengthens understanding and practical skills.
                 </p>
               </div>
               <div>
-                <h4 className="text-xl font-bold text-gray-900 mb-3 text-orange-600">Innovation-Based Learning</h4>
+                <h4 className="text-xl font-bold mb-3 text-orange-600">Innovation-Based Learning</h4>
                 <p className="text-gray-600 leading-relaxed text-lg">
                   Innovation-based learning focuses on solving real-world problems. Students identify challenges and use their basic and intermediate knowledge to develop solutions while learning advanced concepts. This approach promotes creativity, critical thinking, and innovation.
                 </p>
               </div>
             </div>
 
+            {/* Bottom CTA */}
             <div className="mt-12 pt-10 border-t border-gray-200 flex justify-end">
               <Link href="/contact" className="inline-flex items-center gap-3 text-gray-900 text-xl font-bold hover:text-orange-600 transition-colors">
                 Connect with our Academic Directors <FaArrowRight className="w-5 h-5" />

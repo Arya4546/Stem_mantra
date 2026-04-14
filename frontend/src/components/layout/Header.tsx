@@ -33,22 +33,34 @@ export default function Header() {
 
   const programs = [
     {
-      title: "Robotics & AI Labs",
-      href: "/programs/robotics-lab",
-      description: "Advanced robotics and AI education",
-      icon: <Bot className="w-6 h-6 text-teal-500" />,
-    },
-    {
-      title: "STEM Innovation Labs",
-      href: "/programs/stem-lab",
-      description: "Complete STEM learning solutions",
-      icon: <Zap className="w-6 h-6 text-orange-500" />,
-    },
-    {
-      title: "ATL Labs",
-      href: "/programs/atl-labs",
-      description: "Atal Tinkering Labs setup & support",
+      title: "Pre Tinkering Lab",
+      href: "/programs/pre-tinkering-lab",
+      description: "Grades 3-5 foundation learning",
       icon: <Microscope className="w-6 h-6 text-orange-500" />,
+    },
+    {
+      title: "STEAMVERSE Lab",
+      href: "/programs/steamverse-lab",
+      description: "Complete STEM & Robotics setup",
+      icon: <Zap className="w-6 h-6 text-teal-500" />,
+    },
+    {
+      title: "AI & Coding Lab",
+      href: "/programs/ai-coding-lab",
+      description: "Python, AI & Computer Vision",
+      icon: <Bot className="w-6 h-6 text-blue-500" />,
+    },
+    {
+      title: "INNOVERSE Lab",
+      href: "/programs/innoverse-lab",
+      description: "One-stop IoT & Tech solution",
+      icon: <LayoutDashboard className="w-6 h-6 text-purple-500" />,
+    },
+    {
+      title: "ATL Lab",
+      href: "/programs/atl-lab",
+      description: "NITI Aayog compliance & setup",
+      icon: <Microscope className="w-6 h-6 text-indigo-500" />,
     },
   ];
 

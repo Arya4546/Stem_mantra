@@ -9,7 +9,6 @@ import WhyChooseUsSection from "@/components/sections/WhyChooseUsSection";
 import ProgramsSection from "@/components/sections/ProgramsSection";
 import StatsSection from "@/components/sections/StatsSection";
 import TestimonialsSection from "@/components/sections/TestimonialsSection";
-import DirectorSection from "@/components/sections/DirectorSection";
 import FAQSection from "@/components/sections/FAQSection";
 import GalleryPreview from "@/components/sections/GalleryPreview";
 import PartnersSection from "@/components/sections/PartnersSection";
@@ -56,9 +55,6 @@ export default function HomePage() {
 
         {/* About Section */}
         <AboutSection />
-
-        {/* About Director Section */}
-        <DirectorSection />
 
         {/* Lab Solutions Section */}
         <LabSolutionsSection />

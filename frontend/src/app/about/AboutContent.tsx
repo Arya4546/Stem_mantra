@@ -22,10 +22,11 @@ import {
 } from "react-icons/fa";
 import { Target, Eye } from "lucide-react";
 import FloatingAnimations from "@/components/animations/FloatingAnimations";
+import DirectorSection from "@/components/sections/DirectorSection";
 
 const stats = [
   { number: "1,50,000+", label: "Students Trained", icon: FaGraduationCap, color: "text-orange-500" },
-  { number: "500+", label: "Schools Partnered", icon: FaSchool, color: "text-teal-500" },
+  { number: "300+", label: "Schools Partnered", icon: FaSchool, color: "text-teal-500" },
   { number: "18+", label: "States Covered", icon: FaGlobeAsia, color: "text-blue-500" },
   { number: "20+", label: "Expert Trainers", icon: FaChalkboardTeacher, color: "text-purple-500" },
 ];
@@ -179,6 +180,9 @@ export default function AboutContent() {
             </div>
           </div>
         </section>
+
+        {/* About Director Section */}
+        <DirectorSection />
 
         {/* Core Values — 2x2 bento with left accent borders */}
         <section ref={valuesRef} className="py-12 px-4">

@@ -6,6 +6,63 @@ import { motion, useInView } from "framer-motion";
 import { FaCheckCircle, FaArrowRight, FaGraduationCap } from "react-icons/fa";
 import FloatingAnimations from "@/components/animations/FloatingAnimations";
 
+const offeredLabs = [
+	{
+		title: "PRE TINKERING LAB",
+		description: "Focuses on leveraging technology in education from grade 3 to 5th.",
+		highlights: [
+			"It includes building blocks, puzzles, arts, simple machines, basic electronic concepts and nature exploration tools.",
+			"Our curriculum is full of \"learning with fun\" activities."
+		],
+		bg: "bg-orange-50/50",
+		border: "border-orange-500",
+		textColor: "text-orange-600",
+	},
+	{
+		title: "STEAMVERSE LAB",
+		description: "Exciting STEM, Robotics, IoT activities for grades 3-12, fostering hands-on learning.",
+		highlights: [
+			"It also includes 3-D Printing, Drones, etc.",
+			"Curriculum around 5+ micro-Controllers, 40+ sensors, 10+ DIY Kits."
+		],
+		bg: "bg-teal-50/50",
+		border: "border-teal-500",
+		textColor: "text-teal-600",
+	},
+	{
+		title: "AI (Artificial Intelligence) & Coding Lab",
+		description: "Concept of Python, Machine learning, Artificial Intelligence & computer vision for grade 5-12th.",
+		highlights: [
+			"Over & above of schools academic curriculum.",
+			"State of the art software for implementation of AI & Coding."
+		],
+		bg: "bg-blue-50/50",
+		border: "border-blue-500",
+		textColor: "text-blue-600",
+	},
+	{
+		title: "INNOVERSE LAB",
+		description: "Hands-on activities for grade 3-12th.",
+		highlights: [
+			"One stop solution for the school's all technological needs.",
+			"Progressive curriculum and individualized learning cater to diverse skill levels, encouraging exploration and growth."
+		],
+		bg: "bg-purple-50/50",
+		border: "border-purple-500",
+		textColor: "text-purple-600",
+	},
+	{
+		title: "ATL Lab (ATAL TINKERING LAB)",
+		description: "Complete end to end solution for ATL lab from providing equipment to training, to competition.",
+		highlights: [
+			"Ownership for all the compliance which is compulsory by AIM."
+		],
+		bg: "bg-indigo-50/50",
+		border: "border-indigo-500",
+		textColor: "text-indigo-600",
+	}
+];
+
 export default function ProgramsSection() {
 	const ref = useRef(null);
 	const isInView = useInView(ref, { once: true, amount: 0.1 });
@@ -76,58 +133,28 @@ export default function ProgramsSection() {
 
 					{/* Highly descriptive list Right Column */}
 					<div className="lg:col-span-6 space-y-10">
-
-						{/* Robotics Item */}
-						<motion.div
-							initial={{ opacity: 0, y: 30 }}
-							animate={isInView ? { opacity: 1, y: 0 } : {}}
-							transition={{ duration: 0.5, delay: 0.2 }}
-							className="p-8 bg-orange-50/50 border-l-8 border-orange-500 rounded-r-2xl"
-						>
-							<h4 className="text-2xl md:text-3xl font-black text-orange-600 mb-3 tracking-tight">STEM/STEAM-Robotics Labs</h4>
-							<p className="text-gray-700 mb-4 leading-relaxed font-medium">
-								From basic gear mechanisms for primary school to inverse kinematics and autonomous navigation protocols for K-12 students.
-							</p>
-							<ul className="space-y-2">
-								<li className="flex items-center gap-2"><FaCheckCircle className="text-green-500 w-4 h-4" /> Certified Master Trainers</li>
-								<li className="flex items-center gap-2"><FaCheckCircle className="text-green-500 w-4 h-4" /> Unique Robotics methodologies</li>
-							</ul>
-						</motion.div>
-
-						{/* AI Item */}
-						<motion.div
-							initial={{ opacity: 0, y: 30 }}
-							animate={isInView ? { opacity: 1, y: 0 } : {}}
-							transition={{ duration: 0.5, delay: 0.3 }}
-							className="p-8 bg-teal-50/50 border-l-8 border-teal-500 rounded-r-2xl"
-						>
-							<h4 className="text-2xl md:text-3xl font-black text-teal-600 mb-3 tracking-tight">Artificial Intelligence & Coding</h4>
-							<p className="text-gray-700 mb-4 leading-relaxed font-medium">
-								We utilize visual programming interfaces transitioning strictly into high-level language parsing (Python/C++) for machine learning applications.
-							</p>
-							<ul className="space-y-2">
-								<li className="flex items-center gap-2"><FaCheckCircle className="text-green-500 w-4 h-4" /> Computer Vision Algorithms</li>
-								<li className="flex items-center gap-2"><FaCheckCircle className="text-green-500 w-4 h-4" /> Natural Language Processing</li>
-							</ul>
-						</motion.div>
-
-						{/* ATL Item */}
-						<motion.div
-							initial={{ opacity: 0, y: 30 }}
-							animate={isInView ? { opacity: 1, y: 0 } : {}}
-							transition={{ duration: 0.5, delay: 0.4 }}
-							className="p-8 bg-blue-50/50 border-l-8 border-blue-500 rounded-r-2xl"
-						>
-							<h4 className="text-2xl md:text-3xl font-black text-blue-600 mb-3 tracking-tight">Atal Tinkering Labs (ATL)</h4>
-							<p className="text-gray-700 mb-4 leading-relaxed font-medium">
-								Full compliance lifecycle management for NITI Aayog funded ATL labs. We train students in 3D modeling, intermediate circuitry, and rapid IoT prototyping.
-							</p>
-							<ul className="space-y-2">
-								<li className="flex items-center gap-2"><FaCheckCircle className="text-green-500 w-4 h-4" /> NITI Aayog Dashboard Maintenance</li>
-								<li className="flex items-center gap-2"><FaCheckCircle className="text-green-500 w-4 h-4" /> Tinkering Festival Preparation</li>
-							</ul>
-						</motion.div>
-
+						{offeredLabs.map((lab, index) => (
+							<motion.div
+								key={index}
+								initial={{ opacity: 0, y: 30 }}
+								animate={isInView ? { opacity: 1, y: 0 } : {}}
+								transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
+								className={`p-8 ${lab.bg} border-l-8 ${lab.border} rounded-r-2xl`}
+							>
+								<h4 className={`text-2xl md:text-3xl font-black ${lab.textColor} mb-3 tracking-tight`}>{lab.title}</h4>
+								<p className="text-gray-700 mb-4 leading-relaxed font-medium">
+									{lab.description}
+								</p>
+								<ul className="space-y-2">
+									{lab.highlights.map((highlight, idx) => (
+										<li key={idx} className="flex items-start gap-2">
+											<FaCheckCircle className="text-green-500 w-4 h-4 mt-1 flex-shrink-0" />
+											<span className="text-gray-700">{highlight}</span>
+										</li>
+									))}
+								</ul>
+							</motion.div>
+						))}
 					</div>
 				</div>
 			</div>
