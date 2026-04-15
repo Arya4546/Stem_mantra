@@ -66,11 +66,13 @@ export default function WhyChooseUsSection() {
                         Why Top Indian Schools Choose <span className="text-orange-500 underline decoration-orange-200 underline-offset-8">STEMmantra</span>
                     </h2>
 
-                    <p className="text-xl text-gray-600 leading-relaxed font-medium max-w-4xl mx-auto text-center">
-                        With over a decade experience leadership team, STEMmantra has been the trusted catalyst for educational transformation.
-                        We don&apos;t just sell equipment; we partner with forward-thinking institutions to architect
-                        comprehensive, future-proof ecosystems in <strong className="text-gray-900">Robotics, STEM/STEAM, Artificial Intelligence &amp; Coding</strong>.
-                    </p>
+                    <div className="prose prose-xl prose-gray md:prose-2xl text-gray-600 max-w-none text-left md:text-justify leading-relaxed font-medium mt-10 mb-10 mx-auto">
+                        <p className="mb-8">
+                            With over a decade experience leadership team, STEMmantra has been the trusted catalyst for educational transformation.
+                            We don&apos;t just sell equipment; we partner with forward-thinking institutions to architect
+                            comprehensive, future-proof ecosystems in <strong className="text-gray-900 border-b-2 border-orange-200">Robotics, STEM/STEAM, Artificial Intelligence &amp; Coding</strong>.
+                        </p>
+                    </div>
                 </motion.div>
 
                 {/* Content Layout - Split 50/50 without cards */}

@@ -11,71 +11,105 @@ import FloatingAnimations from "@/components/animations/FloatingAnimations";
 
 const programs = [
   {
-    id: "robotics-lab",
-    title: "Robotics & AI Lab",
-    subtitle: "Future Technology Education",
-    description:
-      "State-of-the-art robotics Lab with hands-on learning experiences. Build, program, and innovate with cutting-edge technology including Basic Electronics components, Micro-controllers (Arduino, ESP), DIY Kits and advanced robotics platforms.",
-    image: "/images/student-robotics.png",
+    id: "pre-tinkering-lab",
+    title: "Pre Tinkering Lab",
+    subtitle: "Grades 3-5 Foundation",
+    description: "Our Pre Tinkering curriculum uniquely focuses on leveraging foundational technology in education for primary grades (3rd to 5th). We believe in introducing young minds to innovation early. Filled with 'learning with fun' activities, this program transforms basic curiosity into actual tactile creation by incorporating introductory electronics, simple mechanical engineering play, and nature exploration kits.",
+    image: "/images/stem-education-banner.png",
     features: [
-      "Advanced robotics kits & platforms",
-      "AI & Machine Learning modules",
-      "IoT and automation systems",
-      "Competition preparation & mentorship",
-      "Industry expert guidance",
-      "Certification programs",
+      "Building blocks",
+      "Puzzles and arts",
+      "Simple machines",
+      "Basic electronic concepts",
+      "Nature exploration tools"
     ],
-    href: "/programs/robotics-lab",
-    icon: FaRobot,
+    href: "/programs/pre-tinkering-lab",
+    icon: Wrench,
     accent: "border-l-orange-500",
     iconBg: "bg-orange-50",
     iconColor: "text-orange-600",
     checkColor: "text-orange-500",
   },
   {
-    id: "stem-lab",
-    title: "STEM Innovation Lab",
-    subtitle: "Integrated STEM Learning",
-    description:
-      "Holistic STEM education combining science, technology, engineering, and mathematics through project-based learning and real-world applications. Develop critical thinking and problem-solving skills. In this we include all the technologies like Robotics, IoT, AI & Coding, VR.",
-    image: "/images/stem-education-banner.png",
+    id: "steamverse-lab",
+    title: "STEAMVERSE Lab",
+    subtitle: "Robotics & STEM Setup",
+    description: "An incredibly exciting and comprehensive ecosystem covering STEM, advanced Robotics, and dynamic IoT activities tailored for grades 3-12. This flagship program fosters deep hands-on learning outside traditional boundaries. We push students to explore structural engineering, complex circuitry, 3-D Printing architectures, and autonomous drone coding to become tomorrow's innovators.",
+    image: "/images/kits/robotics-car-kit.png",
     features: [
-      "Integrated STEM/STEAM curriculum",
-      "Hands-on experiments & projects",
-      "3D printing",
-      "Research methodology training",
-      "Science fair preparation",
-      "Cross-disciplinary learning",
+      "5+ Micro-controllers & 40+ Sensors",
+      "10+ DIY Kits",
+      "3D Printing",
+      "Drone technology",
+      "IoT applications"
     ],
-    href: "/programs/stem-lab",
-    icon: FaBrain,
+    href: "/programs/steamverse-lab",
+    icon: Zap,
     accent: "border-l-teal-500",
     iconBg: "bg-teal-50",
     iconColor: "text-teal-600",
     checkColor: "text-teal-500",
   },
   {
-    id: "atl-labs",
-    title: "ATL Labs",
-    subtitle: "Atal Tinkering Labs",
-    description:
-      "Comprehensive end-to-end assistance in establishing and running Atal Tinkering Labs in schools as per NITI Aayog guidelines. Complete setup, teacher training, and year-long support for fostering innovation and creativity.",
-    image: "/images/gallery/session-1.png",
+    id: "ai-coding-lab",
+    title: "AI & Coding Lab",
+    subtitle: "Python, AI & Computer Vision",
+    description: "Take your students beyond standard academics with our highly technical coding program. We comprehensively teach the concepts of Python programming, Machine Learning, computational logic, Artificial Intelligence, and Computer Vision for grades 5-12. Utilizing state-of-the-art software, students will design their own software loops and visual processing logic.",
+    image: "/images/ai-ml-kids.png",
     features: [
-      "Complete lab setup as per NITI Aayog guidelines",
-      "Teacher training & certification programs",
-      "NEP 2020 & NCF 2023 aligned curriculum",
-      "Year-round mentorship and support",
-      "Competition preparation",
-      "Robotics, IoT (Internet of Things), 3D printing & Electronics equipment & DIY Kits",
+      "Python programming",
+      "Machine learning basics",
+      "Computer vision",
+      "State of the art AI software",
+      "Real-world problem solving"
     ],
-    href: "/programs/atl-labs",
-    icon: FaFlask,
+    href: "/programs/ai-coding-lab",
+    icon: FaBrain,
     accent: "border-l-blue-500",
     iconBg: "bg-blue-50",
     iconColor: "text-blue-600",
     checkColor: "text-blue-500",
   },
+  {
+    id: "innoverse-lab",
+    title: "INNOVERSE Lab",
+    subtitle: "One-stop IoT & Tech solution",
+    description: "The ultimate hands-on, one-stop technological solution for a modern institution. INNOVERSE is designed to fulfill all of a school's digital and experimental needs. With a highly progressive curriculum that adapts to individualized learning paths, it seamlessly caters to diverse skill levels across grades 3-12, encouraging continuous exploration, rapid skill development, and design thinking.",
+    image: "/images/student-robotics.png",
+    features: [
+      "One stop IoT & Tech solution",
+      "Progressive curriculum",
+      "Individualized learning path",
+      "Diverse skill level support",
+      "Design thinking methodology"
+    ],
+    href: "/programs/innoverse-lab",
+    icon: Target,
+    accent: "border-l-purple-500",
+    iconBg: "bg-purple-50",
+    iconColor: "text-purple-600",
+    checkColor: "text-purple-500",
+  },
+  {
+    id: "atl-lab",
+    title: "ATL Lab",
+    subtitle: "Atal Tinkering Labs",
+    description: "A comprehensive end-to-end framework for establishing and maintaining Atal Tinkering Labs (ATL) strictly aligned with NITI Aayog guidelines. From initial equipment procurement to intense teacher training, and ongoing student mentorship for national innovation challenges, we handle everything. Ensure your institution is fully AIM compliant and consistently competitive.",
+    image: "/images/gallery/session-1.png",
+    features: [
+      "AIM strict compliance",
+      "End to end equipment setup",
+      "Teacher & Student training",
+      "Competition readiness prep",
+      "Robotics, IoT & 3D printing equipment"
+    ],
+    href: "/programs/atl-lab",
+    icon: FaFlask,
+    accent: "border-l-indigo-500",
+    iconBg: "bg-indigo-50",
+    iconColor: "text-indigo-600",
+    checkColor: "text-indigo-500",
+  }
 ];
 
 const stats = [
@@ -156,7 +190,7 @@ export default function ProgramsPage() {
               >
                 {/* Image */}
                 <div className="flex-1 w-full">
-                  <div className="relative aspect-[4/3] rounded-xl overflow-hidden bg-gray-50/50">
+                  <div className="relative aspect-[4/3] rounded-xl overflow-hidden bg-gray-50/50 border border-gray-100 shadow-sm">
                     <Image
                       src={program.image}
                       alt={program.title}

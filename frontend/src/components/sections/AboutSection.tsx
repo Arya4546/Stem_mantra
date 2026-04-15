@@ -59,7 +59,7 @@ export default function AboutSection() {
               with student cognitive development and strict <strong className="text-gray-900 border-b-2 border-orange-200">National Education Policy (NEP 2020) &amp; NCF (National Curriculum framework)2023</strong> compliance guidelines.
             </p>
             <p className="text-2xl font-bold text-orange-600 italic border-l-4 border-orange-500 pl-6 my-10">
-              &quot;Our aim is to reach 1 million students within the next 3 years, empowering the next generation of innovators.&quot;
+              &quot;Our aim is to reach 10 million+ students within the next 3 years, empowering the next generation of innovators.&quot;
             </p>
           </motion.div>
 

@@ -80,15 +80,15 @@ export default function ProgramsSection() {
 					initial={{ opacity: 0, y: 20 }}
 					animate={isInView ? { opacity: 1, y: 0 } : {}}
 					transition={{ duration: 0.5 }}
-					className="text-center md:text-left mb-16"
+					className="text-center mb-16 flex flex-col items-center"
 				>
-					<span className="inline-block px-5 py-2 bg-blue-50 text-blue-700 rounded-full text-sm font-black uppercase tracking-widest mb-6 border border-blue-100 shadow-sm">
+					<span className="inline-block px-5 py-2 bg-blue-50 text-blue-700 rounded-full text-sm font-black uppercase tracking-widest mb-6 border border-blue-100 shadow-sm mx-auto">
 						Curriculum Offerings
 					</span>
-					<h2 className="text-4xl md:text-6xl lg:text-7xl font-black text-gray-900 mb-6 leading-tight tracking-tight">
+					<h2 className="text-4xl md:text-6xl lg:text-7xl font-black text-gray-900 mb-6 leading-tight tracking-tight text-center">
 						Comprehensive <span className="text-orange-500 underline decoration-orange-200 underline-offset-8">K-12 Educational Programs</span>
 					</h2>
-					<p className="text-xl text-gray-600 max-w-3xl leading-relaxed">
+					<p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed text-center">
 						At STEMmantra, we deploy meticulously structured learning pathways that evolve with the student.
 						Our programs range from primary level kinetic learning to advanced senior secondary courses in Robotics ,STEM/STEAM,artificial Intelligence &amp; Machine learning.
 					</p>

@@ -49,7 +49,7 @@ export default function LabSolutionsSection() {
             <FloatingAnimations variant="stem" density="low" />
 
             <div className="mx-auto px-4 md:px-8 lg:px-16 relative z-10">
-                <div className="max-w-4xl mx-auto items-center mt-12">
+                <div className="items-center mt-12">
                     {/* Centered Heavy SEO Text & Intro */}
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
@@ -66,13 +66,13 @@ export default function LabSolutionsSection() {
                             Transform Your School with <span className="text-orange-500">World-Class STEM/Robotics Labs</span>
                         </h2>
 
-                        <div className="prose prose-lg text-gray-600 mb-10 max-w-none mx-auto text-center md:text-center">
-                            <p className="mb-6">
+                        <div className="prose prose-xl prose-gray md:prose-2xl text-gray-600 max-w-none text-left md:text-justify leading-relaxed font-medium mt-10 mb-10 mx-auto">
+                            <p className="mb-8">
                                 At STEMmantra, we recognise that practical, hands-on learning is the cornerstone of modern education.
                                 Our comprehensive laboratory solutions are engineered to seamlessly integrate into your school&apos;s curriculum,
                                 providing a robust foundation in <strong>Robotics, Artificial Intelligence, Coding, and IoT, Drone, 3-D Printing</strong>.
                             </p>
-                            <p>
+                            <p className="mb-8">
                                 We don&apos;t just supply equipment; we architect complete learning ecosystems. From initial spatial planning and
                                 hardware installation to rigorous teacher training and curriculum alignment with <strong>NEP 2020</strong>
                                 standards, our turnkey solutions ensure that your institution remains at the forefront of pedagogical innovation.
@@ -109,9 +109,11 @@ export default function LabSolutionsSection() {
                         Why <span className="text-orange-500">Partner With Us</span> for Lab Integration?
                     </h2>
 
-                    <p className="text-gray-600 mb-10 leading-relaxed text-lg max-w-4xl mx-auto md:text-center">
-                        Building a successful STEM Lab ecosystem requires more than just unpacking boxes of equipment. Our dedicated success team conducts in-depth educator workshops, ensuring teachers are confident in utilizing basic electronics components, block based kits, advanced robotics kits and programming software. We provide continuous technical support, curriculum updates, and targeted training for National/International robotics & STEM based competitions, ensuring your students consistently perform at the highest levels.
-                    </p>
+                    <div className="prose prose-xl prose-gray md:prose-2xl text-gray-600 max-w-none text-left md:text-justify leading-relaxed font-medium mt-10 mb-10 mx-auto">
+                        <p className="mb-8">
+                            Building a successful STEM Lab ecosystem requires more than just unpacking boxes of equipment. Our dedicated success team conducts in-depth educator workshops, ensuring teachers are confident in utilizing basic electronics components, block based kits, advanced robotics kits and programming software. We provide continuous technical support, curriculum updates, and targeted training for National/International robotics & STEM based competitions, ensuring your students consistently perform at the highest levels.
+                        </p>
+                    </div>
 
                     <Link
                         href="/contact"
