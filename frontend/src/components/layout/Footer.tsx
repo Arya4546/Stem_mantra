@@ -199,6 +199,7 @@ export default function Footer() {
                 { label: "Career", href: "/career" },
                 { label: "Learn", href: "https://learn.stemmantra.com/", external: true },
                 { label: "Gallery", href: "/gallery" },
+                { label: "Our Clients", href: "/clients" },
                 { label: "Contact", href: "/contact" },
               ].map((link, index) => (
                 <li key={index}>

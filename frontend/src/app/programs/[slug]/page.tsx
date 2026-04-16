@@ -337,13 +337,13 @@ export default function ProgramPage() {
       <Header />
       <main className="min-h-screen bg-white">
         {/* Hero Section — Left Aligned, White Background */}
-        <section className="pt-32 pb-12 px-4">
-          <div className="max-w-6xl mx-auto">
+        <section className="pt-32 pb-12 px-4 md:px-8 lg:px-16">
+          <div className="w-full mx-auto">
             <Link href="/programs" className="inline-flex items-center gap-2 text-sm text-gray-500 hover:text-orange-500 mb-8 transition-colors">
               <FaArrowLeft className="w-3 h-3" /> Back to All Programs
             </Link>
 
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="grid lg:grid-cols-2 gap-12 lg:gap-24 items-center">
               <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }}>
                 <div className="flex flex-wrap gap-2 mb-6">
                   {program.isFeatured && (
@@ -360,7 +360,7 @@ export default function ProgramPage() {
                   {program.name}
                 </h1>
 
-                <p className="text-lg md:text-xl text-gray-600 mb-10 leading-relaxed max-w-2xl">
+                <p className="text-lg md:text-xl text-gray-600 mb-10 leading-relaxed">
                   {program.description}
                 </p>
 
@@ -374,13 +374,13 @@ export default function ProgramPage() {
                 </div>
               </motion.div>
 
-              <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="relative">
-                <div className="relative h-[300px] md:h-[400px] rounded-3xl overflow-hidden shadow-xl border border-gray-100">
+              <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="relative w-full">
+                <div className="relative aspect-video w-full rounded-3xl overflow-hidden shadow-xl border border-gray-100 bg-white">
                   <Image
                     src={program.thumbnail || program.image || "/images/programs/placeholder.jpg"}
                     alt={program.name}
                     fill
-                    className="object-cover"
+                    className="object-contain"
                     priority
                   />
                 </div>
@@ -392,8 +392,8 @@ export default function ProgramPage() {
         </section>
 
         {/* Info Strip */}
-        <section className="py-8 border-y border-gray-100 bg-gray-50/50">
-          <div className="max-w-6xl mx-auto px-4">
+        <section className="py-8 border-y border-gray-100 bg-gray-50/50 px-4 md:px-8 lg:px-16">
+          <div className="w-full mx-auto">
             <div className="flex flex-wrap justify-between items-center gap-8">
               <div className="flex items-center gap-4">
                 <div className="w-10 h-10 rounded-xl bg-orange-100 flex items-center justify-center">
@@ -429,11 +429,11 @@ export default function ProgramPage() {
         </section>
 
         {/* Features & Outcomes — Clean Cards */}
-        <section className="py-20 px-4">
-          <div className="max-w-6xl mx-auto">
+        <section className="py-20 px-4 md:px-8 lg:px-16">
+          <div className="w-full mx-auto">
             <div className="grid md:grid-cols-2 gap-10">
               {/* Features */}
-              <div className="bg-white rounded-3xl p-8 border border-gray-100 shadow-sm">
+              <div className="bg-white rounded-3xl p-8 border border-gray-100 shadow-sm w-full">
                 <div className="flex items-center gap-3 mb-8">
                   <div className="w-12 h-12 rounded-2xl bg-orange-50 flex items-center justify-center">
                     <FaRocket className="w-6 h-6 text-orange-500" />
@@ -451,7 +451,7 @@ export default function ProgramPage() {
               </div>
 
               {/* Outcomes */}
-              <div className="bg-white rounded-3xl p-8 border border-gray-100 shadow-sm">
+              <div className="bg-white rounded-3xl p-8 border border-gray-100 shadow-sm w-full">
                 <div className="flex items-center gap-3 mb-8">
                   <div className="w-12 h-12 rounded-2xl bg-teal-50 flex items-center justify-center">
                     <FaLightbulb className="w-6 h-6 text-teal-500" />
@@ -474,13 +474,13 @@ export default function ProgramPage() {
         </section>
 
         {/* Curriculum — Simple Numbered Grid */}
-        <section className="py-20 px-4 bg-gray-50">
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-16">
+        <section className="py-20 px-4 md:px-8 lg:px-16 bg-gray-50">
+          <div className="w-full mx-auto">
+            <div className="text-center mb-16 w-full">
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Curriculum Modules</h2>
-              <p className="text-gray-600 max-w-2xl mx-auto">A structured pathway designed to take students from basics to advanced proficiency.</p>
+              <p className="text-gray-600 w-full">A structured pathway designed to take students from basics to advanced proficiency.</p>
             </div>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 w-full">
               {program.curriculum?.map((item, index) => (
                 <div key={index} className="bg-white p-6 rounded-2xl border border-gray-100 hover:border-orange-200 transition-colors shadow-sm text-center">
                   <div className="w-12 h-12 bg-gray-50 rounded-full flex items-center justify-center mx-auto mb-4 border border-gray-100">
@@ -494,21 +494,22 @@ export default function ProgramPage() {
         </section>
 
         {/* CTA — Boxed Dark Card */}
-        <section className="py-20 px-4">
-          <div className="max-w-4xl mx-auto">
-            <div className="bg-gray-900 rounded-[2.5rem] p-10 md:p-16 text-center text-white relative overflow-hidden">
-              <div className="relative z-10">
+        <section className="py-20 px-4 md:px-8 lg:px-16">
+          <div className="w-full mx-auto">
+            <div className="bg-gray-900 rounded-[2.5rem] p-10 md:p-16 text-center text-white relative overflow-hidden w-full">
+              <div className="relative z-10 w-full">
                 <h2 className="text-3xl md:text-5xl font-bold mb-6">Ready to Get Started?</h2>
-                <p className="text-gray-400 text-lg mb-10 max-w-xl mx-auto">
+                <p className="text-gray-400 text-lg mb-10 w-full">
                   Enroll your child or partner with us to bring this program to your school.
                   Our experts are ready to guide you.
                 </p>
-                <div className="flex flex-wrap justify-center gap-4">
-                  <Link href="/contact" className="px-10 py-4 bg-orange-500 text-white rounded-2xl font-bold hover:bg-orange-600 transition-all shadow-lg">
+                <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-4">
+                  <Link href="/contact" className="inline-flex items-center justify-center px-10 py-4 bg-orange-500 text-white rounded-xl font-bold hover:bg-orange-600 transition-all shadow-lg w-full sm:w-auto">
                     Register Now
                   </Link>
-                  <a href="tel:+916356631515" className="px-10 py-4 bg-white/5 border border-white/10 text-white rounded-2xl font-bold hover:bg-white/10 transition-all">
-                    <FaPhone className="w-3 h-3" /> +91 6356631515
+                  <a href="tel:+916356631515" className="inline-flex items-center justify-center gap-3 px-10 py-4 bg-white/5 border border-white/10 text-white rounded-xl font-bold hover:bg-white/10 transition-all w-full sm:w-auto">
+                    <FaPhone className="w-4 h-4" /> 
+                    <span>+91 6356631515</span>
                   </a>
                 </div>
               </div>

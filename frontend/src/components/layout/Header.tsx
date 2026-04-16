@@ -85,7 +85,7 @@ export default function Header() {
         className={`hidden lg:block bg-gradient-to-r from-orange-500 to-orange-600 text-white transition-all duration-300 ${isScrolled ? "h-0 opacity-0 overflow-hidden" : "h-10"
           }`}
       >
-        <div className="container mx-auto px-4 h-full flex items-center justify-between text-sm">
+        <div className="w-full mx-auto px-4 md:px-8 lg:px-16 h-full flex items-center justify-between text-sm">
           <div className="flex items-center gap-6">
             <a href={`tel:${SITE_CONFIG.contact.mobile}`} className="flex items-center gap-2 hover:text-orange-100 transition-colors">
               <FaPhone className="w-3 h-3" />
@@ -101,7 +101,7 @@ export default function Header() {
         </div>
       </div>
 
-      <nav className="container mx-auto px-4">
+      <nav className="w-full mx-auto px-4 md:px-8 lg:px-16">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center group relative z-50">
@@ -192,6 +192,9 @@ export default function Header() {
             </a>
             <NavLink href="/gallery" active={pathname === "/gallery"} isScrolled={isScrolled} textClass="text-gray-700 hover:text-orange-600">
               Gallery
+            </NavLink>
+            <NavLink href="/clients" active={pathname === "/clients"} isScrolled={isScrolled} textClass="text-gray-700 hover:text-orange-600">
+              Clients
             </NavLink>
             <NavLink href="/contact" active={pathname === "/contact"} isScrolled={isScrolled} textClass="text-gray-700 hover:text-orange-600">
               Contact
@@ -342,6 +345,9 @@ export default function Header() {
                 </a>
                 <MobileNavLink href="/gallery" onClick={() => setIsMobileMenuOpen(false)}>
                   Gallery
+                </MobileNavLink>
+                <MobileNavLink href="/clients" onClick={() => setIsMobileMenuOpen(false)}>
+                  Clients
                 </MobileNavLink>
                 <MobileNavLink href="/contact" onClick={() => setIsMobileMenuOpen(false)}>
                   Contact

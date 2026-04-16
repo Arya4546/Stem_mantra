@@ -92,7 +92,7 @@ export default function AboutSection() {
             >
               <div className="w-full max-w-4xl mx-auto flex justify-center">
                 <Image
-                  src="/images/methodology/image.png"
+                  src="/images/methodology/imagee4.jpeg"
                   alt="STEMmantra Methodology Cycle - CBL, PBL, IBL learning progression from User to Maker to Creator to Innovator"
                   width={1049}
                   height={822}

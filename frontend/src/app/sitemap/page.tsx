@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-import { FaHome, FaInfoCircle, FaFlask, FaImages, FaEnvelope, FaBriefcase, FaShieldAlt, FaFileContract, FaUndo, FaRobot, FaBrain } from "react-icons/fa";
+import { FaHome, FaInfoCircle, FaFlask, FaImages, FaEnvelope, FaBriefcase, FaShieldAlt, FaFileContract, FaUndo, FaRobot, FaBrain, FaHandshake } from "react-icons/fa";
 import { BookOpen } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -20,6 +20,7 @@ const siteLinks = [
       { name: "About Us", href: "/about", icon: FaInfoCircle, desc: "Learn about STEMmantra's mission, vision, core values, and leadership" },
       { name: "Our Programs", href: "/programs", icon: FaFlask, desc: "Explore Robotics, STEM/STEAM, AI & Coding, and ATL lab programs" },
       { name: "Gallery", href: "/gallery", icon: FaImages, desc: "View sessions in action, exhibitions, and media coverage" },
+      { name: "Our Clients", href: "/clients", icon: FaHandshake, desc: "See the schools and educational institutions we partner with across India" },
       { name: "Contact Us", href: "/contact", icon: FaEnvelope, desc: "Get in touch for lab setup inquiries, demo requests, and partnerships" },
       { name: "Careers", href: "/career", icon: FaBriefcase, desc: "Join STEMmantra's team of educators and innovators" },
     ],
