@@ -83,7 +83,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} ${poppins.variable}`}>
-      <body className="font-sans antialiased w-full overflow-x-hidden">
+      <body className="font-sans antialiased w-full">
         <Providers>
           <SmoothScroll />
           {children}

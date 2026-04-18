@@ -23,10 +23,11 @@ import {
 import { Target, Eye } from "lucide-react";
 import FloatingAnimations from "@/components/animations/FloatingAnimations";
 import DirectorSection from "@/components/sections/DirectorSection";
+import WhatIsStemSection from "@/components/sections/WhatIsStemSection";
 
 const stats = [
-  { number: "1,50,000+", label: "Students Trained", icon: FaGraduationCap, color: "text-orange-500" },
-  { number: "300+", label: "Schools Partnered", icon: FaSchool, color: "text-teal-500" },
+  { number: "1,25,000+", label: "Students Trained", icon: FaGraduationCap, color: "text-orange-500" },
+  { number: "500+", label: "Schools Partnered", icon: FaSchool, color: "text-teal-500" },
   { number: "18+", label: "States Covered", icon: FaGlobeAsia, color: "text-blue-500" },
   { number: "20+", label: "Expert Trainers", icon: FaChalkboardTeacher, color: "text-purple-500" },
 ];
@@ -180,6 +181,9 @@ export default function AboutContent() {
             </div>
           </div>
         </section>
+
+        {/* What is STEM? + Benefits of STEM Education */}
+        <WhatIsStemSection />
 
         {/* About Director Section */}
         <DirectorSection />

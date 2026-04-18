@@ -11,14 +11,15 @@ const GalleryImage = ({ image, className, customStyle = {} }: { image: any, clas
     animate={{ opacity: 1, scale: 1 }}
     exit={{ opacity: 0, scale: 0.95 }}
     transition={{ duration: 0.4 }}
-    className={`relative group overflow-hidden bg-gray-100 shadow-sm ${className}`}
+    className={`relative group overflow-hidden bg-gray-100 rounded-3xl shadow-sm break-inside-avoid ${className}`}
     style={customStyle}
     itemProp="associatedMedia" itemScope itemType="https://schema.org/ImageObject"
   >
     <img
       src={image.src}
       alt={image.alt}
-      className="absolute inset-0 w-full h-full object-contain p-4 group-hover:scale-105 transition-transform duration-700 ease-out"
+      className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+      loading="lazy"
     />
   </motion.figure>
 );
@@ -37,32 +38,15 @@ const SessionSection = ({ images }: { images: any[] }) => {
         <p className="text-lg text-gray-600 max-w-2xl">Witness the sheer joy of hands-on learning as our students actively build, code, and explore real-world robotics and IoT applications.</p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6 auto-rows-[200px]">
+      <div className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-4 md:gap-6 space-y-4 md:space-y-6">
         <AnimatePresence mode="popLayout">
-          {displayImages.map((image, index) => {
-            // Create a pseudo-masonry/bento asymmetrical block dynamically
-            let colSpanOffset = "md:col-span-4";
-            let rowSpanOffset = "md:row-span-1";
-            
-            if (index === 0) { colSpanOffset = "md:col-span-8"; rowSpanOffset = "md:row-span-2"; }
-            else if (index === 1 || index === 2) { colSpanOffset = "md:col-span-4"; rowSpanOffset = "md:row-span-1"; }
-            else if (index === 3) { colSpanOffset = "md:col-span-6"; rowSpanOffset = "md:row-span-2"; }
-            else if (index === 4) { colSpanOffset = "md:col-span-6"; rowSpanOffset = "md:row-span-2"; }
-            else {
-              const cycle = index % 4;
-              if (cycle === 0) { colSpanOffset = "md:col-span-8"; rowSpanOffset = "md:row-span-2"; }
-              else if (cycle === 1 || cycle === 2) { colSpanOffset = "md:col-span-4"; rowSpanOffset = "md:row-span-1"; }
-              else { colSpanOffset = "md:col-span-12"; rowSpanOffset = "md:row-span-2"; } // Wide pano
-            }
-
-            return (
-              <GalleryImage 
-                key={image.id} 
-                image={image} 
-                className={`${colSpanOffset} ${rowSpanOffset} rounded-[2rem]`} 
-              />
-            );
-          })}
+          {displayImages.map((image) => (
+            <GalleryImage 
+              key={image.id} 
+              image={image} 
+              className="w-full" 
+            />
+          ))}
         </AnimatePresence>
       </div>
 
@@ -89,19 +73,16 @@ const ExhibitionSection = ({ images }: { images: any[] }) => {
         <p className="text-lg text-gray-600 max-w-2xl">A spotlight on major academic showcases, fairs, and competitions where our young inventors proudly present their robust technological creations.</p>
       </div>
 
-      {/* Different grid structure - Wide Panoramas and split screens */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mt-8">
+      {/* Masonry Layout for Exhibitions */}
+      <div className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-4 md:gap-6 space-y-4 md:space-y-6 mt-8">
          <AnimatePresence mode="popLayout">
-          {displayImages.map((image, index) => {
-            const isWide = index % 3 === 0; // Every 3rd image is wide
-            return (
-               <GalleryImage 
-                key={image.id} 
-                image={image} 
-                className={`${isWide ? "md:col-span-2 aspect-[21/9]" : "md:col-span-1 aspect-[4/3]"} rounded-3xl`} 
-              />
-            );
-          })}
+          {displayImages.map((image) => (
+             <GalleryImage 
+              key={image.id} 
+              image={image} 
+              className="w-full" 
+            />
+          ))}
         </AnimatePresence>
       </div>
 
@@ -131,13 +112,13 @@ const MediaSection = ({ images }: { images: any[] }) => {
       </div>
 
       {/* Structured Magazine Grid layout */}
-      <div className="columns-1 sm:columns-2 md:columns-3 gap-4 md:gap-6 space-y-4 md:space-y-6">
+      <div className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-4 md:gap-6 space-y-4 md:space-y-6">
         <AnimatePresence mode="popLayout">
-          {displayImages.map((image, index) => (
+          {displayImages.map((image) => (
              <GalleryImage 
               key={image.id} 
               image={image} 
-              className={`w-full rounded-2xl aspect-auto min-h-[250px] inline-block ${index % 2 === 0 ? "h-64" : "h-96"}`} 
+              className="w-full" 
             />
           ))}
         </AnimatePresence>

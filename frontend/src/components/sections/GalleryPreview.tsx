@@ -6,32 +6,11 @@ import Link from "next/link";
 import { motion, useInView } from "framer-motion";
 import { FaArrowRight, FaImages } from "react-icons/fa";
 
-const sessionImages = [
-  {
-    id: 1,
-    src: "/images/gallery/session-1.png",
-    alt: "Students collaborating on STEM building project in lab",
-    category: "Session in Action",
-  },
-  {
-    id: 2,
-    src: "/images/gallery/session-4.png",
-    alt: "Students working on electronics experiments with LEDs",
-    category: "Session in Action",
-  },
-  {
-    id: 3,
-    src: "/images/gallery/session-5.png",
-    alt: "Teacher guiding students during hands-on STEM activity",
-    category: "Session in Action",
-  },
-  {
-    id: 4,
-    src: "/images/gallery/session-2.png",
-    alt: "Students engaged in electronics and circuit building",
-    category: "Session in Action",
-  },
-];
+import { galleryImages } from "@/data/gallery";
+
+const sessionImages = galleryImages
+  .filter(img => img.category === "Session in Action")
+  .slice(0, 7);
 
 export default function GalleryPreview() {
   const ref = useRef(null);
@@ -84,67 +63,24 @@ export default function GalleryPreview() {
           </Link>
         </motion.div>
 
-        {/* Premium Bento Grid - Session in Action */}
-        <div className="grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-4 md:gap-6 h-auto md:h-[600px]">
-          {/* Main Large Image (Left Col) */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={isInView ? { opacity: 1, scale: 1 } : {}}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="md:col-span-2 md:row-span-2 relative group overflow-hidden rounded-[2rem] shadow-sm bg-gray-100 min-h-[300px] md:min-h-0"
-          >
-            <img
-              src={sessionImages[0].src}
-              alt={sessionImages[0].alt}
-              className="absolute inset-0 w-full h-full object-contain p-4 group-hover:scale-105 transition-transform duration-700 ease-out"
-            />
-
-          </motion.div>
-
-          {/* Top Right Small Image 1 */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={isInView ? { opacity: 1, scale: 1 } : {}}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="md:col-span-1 md:row-span-1 relative group overflow-hidden rounded-3xl shadow-sm bg-gray-100 min-h-[250px] md:min-h-0"
-          >
-            <img
-              src={sessionImages[1].src}
-              alt={sessionImages[1].alt}
-              className="absolute inset-0 w-full h-full object-contain p-4 group-hover:scale-105 transition-transform duration-700 ease-out"
-            />
-
-          </motion.div>
-
-          {/* Top Right Small Image 2 */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={isInView ? { opacity: 1, scale: 1 } : {}}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            className="md:col-span-1 md:row-span-1 relative group overflow-hidden rounded-3xl shadow-sm bg-gray-100 min-h-[250px] md:min-h-0"
-          >
-            <img
-              src={sessionImages[2].src}
-              alt={sessionImages[2].alt}
-              className="absolute inset-0 w-full h-full object-contain p-4 group-hover:scale-105 transition-transform duration-700 ease-out"
-            />
-
-          </motion.div>
-
-          {/* Bottom Right Wide Image */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={isInView ? { opacity: 1, scale: 1 } : {}}
-            transition={{ duration: 0.5, delay: 0.4 }}
-            className="md:col-span-2 md:row-span-1 relative group overflow-hidden rounded-3xl shadow-sm bg-gray-100 min-h-[250px] md:min-h-0 flex items-center justify-center p-8 bg-gradient-to-br from-indigo-50 to-blue-50"
-          >
-            <img
-              src={sessionImages[3].src}
-              alt={sessionImages[3].alt}
-              className="absolute inset-0 w-full h-full object-contain p-4 group-hover:scale-105 transition-transform duration-700 ease-out opacity-90"
-            />
-
-          </motion.div>
+        {/* Premium Masonry Grid - Session in Action */}
+        <div className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-4 md:gap-6 space-y-4 md:space-y-6">
+          {sessionImages.map((image, i) => (
+            <motion.div
+              key={image.id}
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5, delay: i * 0.1 }}
+              className="relative group overflow-hidden rounded-3xl shadow-sm bg-gray-100 w-full break-inside-avoid"
+            >
+              <img
+                src={image.src}
+                alt={image.alt}
+                className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                loading="lazy"
+              />
+            </motion.div>
+          ))}
         </div>
 
         {/* Bottom Stats */}

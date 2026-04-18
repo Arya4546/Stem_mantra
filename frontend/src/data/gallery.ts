@@ -1,6 +1,237 @@
 export const galleryImages = [
   // Session in Action
   {
+    id: 38,
+    src: "/images/gallery/IMG-20260218-WA0011.jpeg",
+    alt: "STEMmantra session in action",
+    category: "Session in Action",
+    description: "Engaging and hands on learning during our active sessions."
+  },
+  {
+    id: 39,
+    src: "/images/gallery/IMG-20260316-WA0022.jpg",
+    alt: "STEMmantra session in action",
+    category: "Session in Action",
+    description: "Engaging and hands on learning during our active sessions."
+  },
+  {
+    id: 40,
+    src: "/images/gallery/IMG-20260316-WA0028.jpg",
+    alt: "STEMmantra session in action",
+    category: "Session in Action",
+    description: "Engaging and hands on learning during our active sessions."
+  },
+  {
+    id: 41,
+    src: "/images/gallery/IMG20251216122918.jpg",
+    alt: "STEMmantra session in action",
+    category: "Session in Action",
+    description: "Engaging and hands on learning during our active sessions."
+  },
+  {
+    id: 42,
+    src: "/images/gallery/IMG20251218122750.jpg",
+    alt: "STEMmantra session in action",
+    category: "Session in Action",
+    description: "Engaging and hands on learning during our active sessions."
+  },
+  {
+    id: 43,
+    src: "/images/gallery/IMG20260106122325.jpg",
+    alt: "STEMmantra session in action",
+    category: "Session in Action",
+    description: "Engaging and hands on learning during our active sessions."
+  },
+  {
+    id: 44,
+    src: "/images/gallery/IMG20260106122328.jpg",
+    alt: "STEMmantra session in action",
+    category: "Session in Action",
+    description: "Engaging and hands on learning during our active sessions."
+  },
+  {
+    id: 45,
+    src: "/images/gallery/IMG20260127124805.jpg",
+    alt: "STEMmantra session in action",
+    category: "Session in Action",
+    description: "Engaging and hands on learning during our active sessions."
+  },
+  {
+    id: 46,
+    src: "/images/gallery/IMG_20260101_120808704_MP.jpg",
+    alt: "STEMmantra session in action",
+    category: "Session in Action",
+    description: "Engaging and hands on learning during our active sessions."
+  },
+  {
+    id: 47,
+    src: "/images/gallery/IMG_20260102_154708657_HDR.jpg",
+    alt: "STEMmantra session in action",
+    category: "Session in Action",
+    description: "Engaging and hands on learning during our active sessions."
+  },
+  {
+    id: 48,
+    src: "/images/gallery/IMG_20260127_112625979_HDR.jpg",
+    alt: "STEMmantra session in action",
+    category: "Session in Action",
+    description: "Engaging and hands on learning during our active sessions."
+  },
+  {
+    id: 49,
+    src: "/images/gallery/IMG_20260209_094646373_MP.jpg",
+    alt: "STEMmantra session in action",
+    category: "Session in Action",
+    description: "Engaging and hands on learning during our active sessions."
+  },
+  {
+    id: 50,
+    src: "/images/gallery/IMG_20260216_094118657_HDR.jpg",
+    alt: "STEMmantra session in action",
+    category: "Session in Action",
+    description: "Engaging and hands on learning during our active sessions."
+  },
+  {
+    id: 51,
+    src: "/images/gallery/IMG_20260216_104730057_HDR.jpg",
+    alt: "STEMmantra session in action",
+    category: "Session in Action",
+    description: "Engaging and hands on learning during our active sessions."
+  },
+  {
+    id: 52,
+    src: "/images/gallery/IMG_20260218_094617988_MP.jpg",
+    alt: "STEMmantra session in action",
+    category: "Session in Action",
+    description: "Engaging and hands on learning during our active sessions."
+  },
+  {
+    id: 53,
+    src: "/images/gallery/IMG_20260218_103754561_MP.jpg",
+    alt: "STEMmantra session in action",
+    category: "Session in Action",
+    description: "Engaging and hands on learning during our active sessions."
+  },
+  {
+    id: 54,
+    src: "/images/gallery/IMG_20260218_125600365_HDR.jpg",
+    alt: "STEMmantra session in action",
+    category: "Session in Action",
+    description: "Engaging and hands on learning during our active sessions."
+  },
+  {
+    id: 55,
+    src: "/images/gallery/IMG_20260218_125723328_MP.jpg",
+    alt: "STEMmantra session in action",
+    category: "Session in Action",
+    description: "Engaging and hands on learning during our active sessions."
+  },
+  {
+    id: 56,
+    src: "/images/gallery/IMG_20260218_125732870_HDR.jpg",
+    alt: "STEMmantra session in action",
+    category: "Session in Action",
+    description: "Engaging and hands on learning during our active sessions."
+  },
+  {
+    id: 57,
+    src: "/images/gallery/IMG_20260302_133502029_HDR.jpg",
+    alt: "STEMmantra session in action",
+    category: "Session in Action",
+    description: "Engaging and hands on learning during our active sessions."
+  },
+  {
+    id: 58,
+    src: "/images/gallery/IMG_20260302_145006991_MP.jpg",
+    alt: "STEMmantra session in action",
+    category: "Session in Action",
+    description: "Engaging and hands on learning during our active sessions."
+  },
+  {
+    id: 59,
+    src: "/images/gallery/IMG_20260306_110445360_MP.jpg",
+    alt: "STEMmantra session in action",
+    category: "Session in Action",
+    description: "Engaging and hands on learning during our active sessions."
+  },
+  {
+    id: 60,
+    src: "/images/gallery/IMG_20260306_110447737_MP.jpg",
+    alt: "STEMmantra session in action",
+    category: "Session in Action",
+    description: "Engaging and hands on learning during our active sessions."
+  },
+  {
+    id: 61,
+    src: "/images/gallery/IMG_20260306_110517377_HDR.jpg",
+    alt: "STEMmantra session in action",
+    category: "Session in Action",
+    description: "Engaging and hands on learning during our active sessions."
+  },
+  {
+    id: 62,
+    src: "/images/gallery/IMG_20260306_110603737_MP.jpg",
+    alt: "STEMmantra session in action",
+    category: "Session in Action",
+    description: "Engaging and hands on learning during our active sessions."
+  },
+  {
+    id: 63,
+    src: "/images/gallery/IMG_20260324_092801873.jpg",
+    alt: "STEMmantra session in action",
+    category: "Session in Action",
+    description: "Engaging and hands on learning during our active sessions."
+  },
+  {
+    id: 64,
+    src: "/images/gallery/IMG_20260324_111131179_HDR.jpg",
+    alt: "STEMmantra session in action",
+    category: "Session in Action",
+    description: "Engaging and hands on learning during our active sessions."
+  },
+  {
+    id: 65,
+    src: "/images/gallery/IMG_20260325_125021473_MP.jpg",
+    alt: "STEMmantra session in action",
+    category: "Session in Action",
+    description: "Engaging and hands on learning during our active sessions."
+  },
+  {
+    id: 66,
+    src: "/images/gallery/IMG_20260402_103950643.jpg",
+    alt: "STEMmantra session in action",
+    category: "Session in Action",
+    description: "Engaging and hands on learning during our active sessions."
+  },
+  {
+    id: 67,
+    src: "/images/gallery/IMG_20260402_104030542_MP.jpg",
+    alt: "STEMmantra session in action",
+    category: "Session in Action",
+    description: "Engaging and hands on learning during our active sessions."
+  },
+  {
+    id: 68,
+    src: "/images/gallery/IMG_20260402_115238687_HDR.jpg",
+    alt: "STEMmantra session in action",
+    category: "Session in Action",
+    description: "Engaging and hands on learning during our active sessions."
+  },
+  {
+    id: 69,
+    src: "/images/gallery/PXL_20260218_054450479.jpg",
+    alt: "STEMmantra session in action",
+    category: "Session in Action",
+    description: "Engaging and hands on learning during our active sessions."
+  },
+  {
+    id: 70,
+    src: "/images/gallery/PXL_20260224_064423909.PORTRAIT.jpg",
+    alt: "STEMmantra session in action",
+    category: "Session in Action",
+    description: "Engaging and hands on learning during our active sessions."
+  },
+  {
     id: 1,
     src: "/images/gallery/session-1.png",
     alt: "Students collaborating on a STEM building project in the classroom lab session at STEMmantra.",
@@ -65,6 +296,62 @@ export const galleryImages = [
   },
 
   // STEMmantra Exhibition
+  {
+    id: 30,
+    src: "/images/gallery/IMG-20260131-WA0002.jpg",
+    alt: "STEMmantra exhibition moment",
+    category: "STEMmantra Exhibition",
+    description: "Students showcasing their wonderful projects."
+  },
+  {
+    id: 31,
+    src: "/images/gallery/IMG-20260131-WA0010.jpg",
+    alt: "STEMmantra exhibition moment",
+    category: "STEMmantra Exhibition",
+    description: "Students showcasing their wonderful projects."
+  },
+  {
+    id: 32,
+    src: "/images/gallery/IMG-20260131-WA0012.jpg",
+    alt: "STEMmantra exhibition moment",
+    category: "STEMmantra Exhibition",
+    description: "Students showcasing their wonderful projects."
+  },
+  {
+    id: 33,
+    src: "/images/gallery/IMG_20260131_111922079_HDR.jpg",
+    alt: "STEMmantra exhibition moment",
+    category: "STEMmantra Exhibition",
+    description: "Students showcasing their wonderful projects."
+  },
+  {
+    id: 34,
+    src: "/images/gallery/IMG_20260131_113641586_MP.jpg",
+    alt: "STEMmantra exhibition moment",
+    category: "STEMmantra Exhibition",
+    description: "Students showcasing their wonderful projects."
+  },
+  {
+    id: 35,
+    src: "/images/gallery/IMG_20260131_113644981_HDR.jpg",
+    alt: "STEMmantra exhibition moment",
+    category: "STEMmantra Exhibition",
+    description: "Students showcasing their wonderful projects."
+  },
+  {
+    id: 36,
+    src: "/images/gallery/IMG_20260131_113853957_MP.jpg",
+    alt: "STEMmantra exhibition moment",
+    category: "STEMmantra Exhibition",
+    description: "Students showcasing their wonderful projects."
+  },
+  {
+    id: 37,
+    src: "/images/gallery/IMG_20260131_120259606_MP.jpg",
+    alt: "STEMmantra exhibition moment",
+    category: "STEMmantra Exhibition",
+    description: "Students showcasing their wonderful projects."
+  },
   {
     id: 10,
     src: "/images/gallery/exhibition-1.png",

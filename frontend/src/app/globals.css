@@ -40,14 +40,12 @@
 
 html {
   scroll-behavior: smooth;
-  overflow-x: hidden;
   scroll-padding-top: 80px;
 }
 
 body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
   min-height: 100vh;
   background-color: #ffffff;
 }

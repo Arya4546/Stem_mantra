@@ -115,13 +115,13 @@ export default function TestimonialsSection() {
 
                   {/* Right Side: Identity */}
                   <div className="w-full md:w-64 flex flex-col items-center text-center border-t md:border-t-0 md:border-l border-gray-100 pt-6 md:pt-0 md:pl-8 flex-shrink-0 md:h-full justify-center">
-                    <div className="relative w-20 h-20 md:w-28 md:h-28 rounded-2xl bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center mb-4 transform group-hover:rotate-6 transition-transform shadow-md overflow-hidden">
+                    <div className="relative w-24 h-24 md:w-32 md:h-32 rounded-2xl bg-white flex items-center justify-center mb-4 transform group-hover:rotate-6 transition-transform shadow-md overflow-hidden">
                       {testimonials[activeIndex].image ? (
                         <Image 
                           src={testimonials[activeIndex].image} 
                           alt={testimonials[activeIndex].name} 
                           fill
-                          className="object-cover"
+                          className="object-cover scale-[1.25]"
                         />
                       ) : (
                         <span className="text-3xl font-black text-white">
@@ -142,7 +142,7 @@ export default function TestimonialsSection() {
           </div>
 
           {/* Navigation Controls */}
-          <div className="flex justify-center gap-6 mt-8">
+          <div className="flex justify-center gap-6 mt-8 relative z-[100] pointer-events-auto">
             <button
               onClick={prevSlide}
               className="w-14 h-14 rounded-full bg-white border border-gray-100 shadow-lg flex items-center justify-center text-gray-900 hover:bg-orange-500 hover:text-white hover:border-orange-500 transition-all active:scale-95"

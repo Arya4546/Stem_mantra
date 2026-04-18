@@ -35,7 +35,7 @@ export default function ClientsPage() {
                 Trusted by Top Educational Institutions <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-teal-400">Across India</span>
               </h1>
               <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto leading-relaxed">
-                We take pride in partnering with the nation's most forward-thinking schools to deploy state-of-the-art STEM, Robotics, and AI laboratories.
+                We take pride in partnering with the nation&apos;s most forward-thinking schools to deploy state-of-the-art STEM, Robotics, and AI laboratories.
               </p>
             </motion.div>
 
@@ -129,7 +129,7 @@ export default function ClientsPage() {
                <div className="relative z-10 max-w-3xl mx-auto">
                  <h2 className="text-3xl md:text-5xl font-bold text-white mb-8">Join the Next Generation of Educational Leaders</h2>
                  <p className="text-xl text-gray-300 mb-10">
-                   Transform your school's curriculum with our custom-built ATL, Robotics, and STEM laboratories today.
+                   Transform your school&apos;s curriculum with our custom-built ATL, Robotics, and STEM laboratories today.
                  </p>
                  <div className="flex flex-col sm:flex-row justify-center gap-4">
                    <a href="/contact" className="px-8 py-4 bg-orange-500 hover:bg-orange-600 text-white font-bold rounded-xl shadow-lg shadow-orange-500/30 transition-all">

@@ -13,6 +13,8 @@ import FAQSection from "@/components/sections/FAQSection";
 import GalleryPreview from "@/components/sections/GalleryPreview";
 import PartnersSection from "@/components/sections/PartnersSection";
 import CTASection from "@/components/sections/CTASection";
+import ExecutionModeSection from "@/components/sections/ExecutionModeSection";
+import ImplementationJourneySection from "@/components/sections/ImplementationJourneySection";
 
 export const metadata: Metadata = {
   title: "STEMmantra - Master The Skills, Drive Your Future | Robotics & AI Education",
@@ -49,7 +51,7 @@ export default function HomePage() {
   return (
     <>
       <Header />
-      <main className="min-h-screen overflow-hidden">
+      <main className="min-h-screen">
         {/* Hero Section with Video Background */}
         <HeroSection />
 
@@ -62,8 +64,14 @@ export default function HomePage() {
         {/* Why Choose Us - SEO Rich Content */}
         <WhyChooseUsSection />
 
+        {/* Mode of Execution Section */}
+        <ExecutionModeSection />
+
         {/* Programs Section */}
         <ProgramsSection />
+
+        {/* Partnership / Implementation Journey Section */}
+        <ImplementationJourneySection />
 
         {/* Stats Counter Section */}
         <StatsSection />
