@@ -124,7 +124,7 @@ export default function HeroSection() {
           </div>
           <div className="w-px bg-white/20 hidden md:block"></div>
           <div>
-            <div className="text-4xl font-black text-white leading-none mb-2">1,25,000+</div>
+            <div className="text-4xl font-black text-white leading-none mb-2">1,50,000+</div>
             <div className="text-xs uppercase tracking-wider font-bold text-white/60">Active Students</div>
           </div>
           <div className="w-px bg-white/20 hidden md:block"></div>

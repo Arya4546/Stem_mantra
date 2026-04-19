@@ -39,8 +39,8 @@ export const NAVIGATION = [
 ] as const;
 
 export const STATS_DATA = [
-  { label: "Partner Institutions", value: "500+", icon: "School" },
-  { label: "Student Innovators", value: "1,25,000+", icon: "Users" },
+  { label: "Partner Institutions", value: "300+", icon: "School" },
+  { label: "Student Innovators", value: "1,50,000+", icon: "Users" },
   { label: "States Impacted", value: "16+", icon: "MapPin" },
 ] as const;
 

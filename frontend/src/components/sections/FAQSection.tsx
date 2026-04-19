@@ -46,7 +46,7 @@ export default function FAQSection() {
     const [openIndex, setOpenIndex] = useState<number | null>(0);
 
     return (
-        <section ref={ref} className="relative py-16 lg:py-20 bg-gradient-to-br from-orange-50/50 via-white to-teal-50/50 overflow-hidden">
+        <section ref={ref} className="relative pt-12 pb-16 lg:pb-20 bg-gradient-to-br from-orange-50/50 via-white to-teal-50/50 overflow-hidden">
             <FloatingAnimations variant="section" density="low" />
             <div className="mx-auto px-4 md:px-8 lg:px-16 relative z-10">
                 {/* Section Header */}

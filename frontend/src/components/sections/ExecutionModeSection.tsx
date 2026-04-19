@@ -68,7 +68,7 @@ export default function ExecutionModeSection() {
   return (
     <section
       ref={ref}
-      className="w-full pt-16 lg:pt-24 pb-8 lg:pb-12 bg-white overflow-hidden"
+      className="w-full pt-8 lg:pt-12 pb-0 bg-white overflow-hidden"
     >
       <div className="mx-auto px-2 md:px-8 lg:px-16 max-w-6xl">
 
@@ -77,7 +77,7 @@ export default function ExecutionModeSection() {
           initial={{ opacity: 0, y: 15 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.4 }}
-          className="text-3xl md:text-4xl font-black text-orange-500 mb-12 tracking-tight pl-2"
+          className="text-3xl md:text-4xl font-black text-orange-500 mb-12 tracking-tight text-center"
           style={{
             textDecoration: "underline",
             textDecorationColor: "#f97316",

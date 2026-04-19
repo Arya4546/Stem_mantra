@@ -29,7 +29,7 @@ export default function PartnersSection() {
   const isInView = useInView(ref, { once: true, amount: 0.3 });
 
   return (
-    <section ref={ref} className="relative py-20 lg:py-24 bg-gradient-to-b from-gray-50 to-white overflow-hidden">
+    <section ref={ref} className="relative pt-8 pb-16 bg-gradient-to-b from-gray-50 to-white overflow-hidden">
       <FloatingAnimations variant="section" density="low" />
       <div className="mx-auto px-4 md:px-8 lg:px-16 relative z-10">
         {/* Section Header */}

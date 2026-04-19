@@ -424,4 +424,34 @@ export const galleryImages = [
     category: "STEMmantra In Media",
     description: "STEMmantra's engaging and fun-filled approach to robotics education covered in national media.",
   },
+
+  // Our Labs
+  {
+    id: 101,
+    src: "/images/gallery/session-1.png",
+    alt: "STEMmantra Innovation Lab setup with robotics kits and workstations.",
+    category: "Our Labs",
+    description: "A state-of-the-art STEM lab facility equipped with modern robotics and IoT training kits.",
+  },
+  {
+    id: 102,
+    src: "/images/stem-education-banner.png",
+    alt: "Comprehensive STEM lab environment featuring collaborative learning zones.",
+    category: "Our Labs",
+    description: "Our integrated labs foster an environment of curiosity and hands-on technological exploration.",
+  },
+  {
+    id: 103,
+    src: "/images/gallery/session-3.png",
+    alt: "Robotics and AI dedicated lab space with competition-grade equipment.",
+    category: "Our Labs",
+    description: "Specialized zones for advanced robotics programming and AI project development.",
+  },
+  {
+    id: 104,
+    src: "/images/gallery/exhibition-2.png",
+    alt: "Electronics and IoT lab workstations with sensors and micro-controllers.",
+    category: "Our Labs",
+    description: "Equipped with industry-standard sensors and controllers to bring IoT concepts to life.",
+  },
 ];

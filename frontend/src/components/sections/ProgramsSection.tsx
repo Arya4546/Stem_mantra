@@ -75,7 +75,7 @@ export default function ProgramsSection() {
 	return (
 		<section
 			ref={ref}
-			className="relative py-20 lg:py-28 bg-white overflow-hidden border-t border-gray-100"
+			className="relative pt-12 lg:pt-16 pb-12 bg-white overflow-hidden border-t border-gray-100"
 		>
 			<FloatingAnimations variant="services" density="low" />
 

@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     template: "%s | STEMmantra",
   },
   description:
-    "STEMmantra provides world-class robotics, AI, and STEM education solutions for schools. Setup STEAMVERSE Labs, Robotics Labs with expert training, NEP 2020 & NCF 2023 aligned curriculum, and innovative project-based learning. Training 1.25L+ students.",
+    "STEMmantra provides world-class robotics, AI, and STEM education solutions for schools. Setup STEAMVERSE Labs, Robotics Labs with expert training, NEP 2020 & NCF 2023 aligned curriculum, and innovative project-based learning. Training 1.5L+ students.",
   keywords: [
     "robotics education",
     "STEM learning",
@@ -50,7 +50,7 @@ export const metadata: Metadata = {
     url: "https://www.stemmantra.com",
     title: "STEMmantra - Robotics & AI Education for Schools",
     description:
-      "Master The Skills, Drive Your Future - Leading provider of robotics, AI, and STEM education solutions with ATL Labs setup and expert training. Training 1.25L+ students nationwide.",
+      "Master The Skills, Drive Your Future - Leading provider of robotics, AI, and STEM education solutions with ATL Labs setup and expert training. Training 1.5L+ students nationwide.",
     siteName: "STEMmantra",
   },
   twitter: {

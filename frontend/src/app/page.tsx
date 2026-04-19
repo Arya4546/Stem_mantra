@@ -19,7 +19,7 @@ import ImplementationJourneySection from "@/components/sections/ImplementationJo
 export const metadata: Metadata = {
   title: "STEMmantra - Master The Skills, Drive Your Future | Robotics & AI Education",
   description:
-    "India's leading provider of robotics, AI, and STEM education solutions for schools. STEAMVERSE Labs setup, teacher training, NEP 2020 & NCF 2023 aligned curriculum. Training 1.25L+ students.",
+    "India's leading provider of robotics, AI, and STEM education solutions for schools. STEAMVERSE Labs setup, teacher training, NEP 2020 & NCF 2023 aligned curriculum. Training 1.5L+ students.",
   keywords: [
     "STEM education",
     "robotics education India",

@@ -17,46 +17,57 @@ const retentionData = [
 ];
 
 function PremiumChart({ animate }: { animate: boolean }) {
-  // Use horizontal layout for a more modern data-viz feel
   return (
-    <div className="relative w-full max-w-lg mx-auto flex flex-col gap-4 mt-8">
-      {retentionData.map((d, i) => (
-        <div key={d.label} className="relative w-full flex items-center group">
-          {/* Label */}
-          <div className="w-24 md:w-32 flex-shrink-0 text-right pr-4">
-            <span className="text-xs md:text-sm font-semibold text-gray-700 block line-clamp-1">{d.label}</span>
-          </div>
-
-          {/* Track and Bar */}
-          <div className="flex-1 relative h-6 md:h-8 rounded-full bg-gray-100 overflow-hidden shadow-inner">
-            <motion.div
-              initial={{ width: 0 }}
-              animate={animate ? { width: `${d.value}%` } : {}}
-              transition={{ delay: 0.2 + i * 0.1, duration: 0.8, ease: "easeOut" }}
-              className="absolute top-0 left-0 h-full rounded-full"
-              style={{
-                background: `linear-gradient(90deg, ${d.color1} 0%, ${d.color2} 100%)`,
-                boxShadow: `0 2px 10px ${d.color2}55`
-              }}
-            />
-          </div>
-
-          {/* Percentage Value */}
+    <div className="relative w-full h-[350px] md:h-[450px] flex flex-col mt-8">
+      {/* 1. Percentages Row - Perfectly Aligned Top Baseline */}
+      <div className="flex items-center justify-between gap-2 md:gap-4 mb-4">
+        {retentionData.map((d, i) => (
           <motion.div
-            initial={{ opacity: 0, x: -10 }}
-            animate={animate ? { opacity: 1, x: 0 } : {}}
+            key={`pct-${i}`}
+            initial={{ opacity: 0, y: 5 }}
+            animate={animate ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.8 + i * 0.1, duration: 0.4 }}
-            className="w-12 md:w-16 flex-shrink-0 pl-3 md:pl-4"
+            className="flex-1 text-center"
           >
-            <span className="text-xs md:text-sm font-bold" style={{ color: d.textColor }}>
+            <span className="text-[10px] md:text-sm font-black" style={{ color: d.textColor }}>
               {d.value}%
             </span>
           </motion.div>
-        </div>
-      ))}
+        ))}
+      </div>
 
-      {/* Axis Line */}
-      <div className="absolute left-[6rem] md:left-[8rem] top-0 bottom-0 w-px bg-gray-200" />
+      {/* 2. Bars Row - The Graph Area */}
+      <div className="flex-1 flex items-end justify-between gap-2 md:gap-4 relative px-1">
+        {retentionData.map((d, i) => (
+          <div key={`bar-${i}`} className="flex-1 h-full flex flex-col justify-end group">
+            <div className="w-full max-w-[45px] mx-auto relative h-full bg-gray-50 rounded-t-2xl overflow-hidden shadow-inner border border-gray-100/10">
+              <motion.div
+                initial={{ height: 0 }}
+                animate={animate ? { height: `${d.value}%` } : {}}
+                transition={{ delay: 0.2 + i * 0.1, duration: 1.2, ease: [0.34, 1.56, 0.64, 1] }} 
+                className="absolute bottom-0 left-0 w-full rounded-t-2xl"
+                style={{
+                  background: `linear-gradient(0deg, ${d.color1} 0%, ${d.color2} 100%)`,
+                  boxShadow: `0 -4px 15px ${d.color2}33`
+                }}
+              />
+            </div>
+          </div>
+        ))}
+        {/* Horizontal Baseline */}
+        <div className="absolute bottom-0 left-0 right-0 h-px bg-gray-200 z-0" />
+      </div>
+
+      {/* 3. Labels Row - Perfectly Aligned Bottom Baseline */}
+      <div className="flex items-start justify-between gap-2 md:gap-4 mt-6">
+        {retentionData.map((d, i) => (
+          <div key={`lbl-${i}`} className="flex-1 text-center">
+            <span className="text-[9px] md:text-xs font-bold text-gray-700 leading-tight block">
+              {d.label}
+            </span>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
@@ -95,7 +106,7 @@ export default function WhatIsStemSection() {
       {/* ═══════════════════════════════════
           SECTION 1: What is STEM? - Sleek overlapping design
           ═══════════════════════════════════ */}
-      <section ref={stemRef} className="relative py-16 lg:py-24 px-4 overflow-hidden bg-white">
+      <section ref={stemRef} className="relative pt-4 pb-16 lg:pt-6 lg:pb-24 px-4 overflow-hidden bg-white">
         {/* Subtle decorative background */}
         <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-gradient-to-br from-orange-50 to-transparent rounded-full blur-3xl opacity-50 -translate-y-1/2 translate-x-1/3 pointer-events-none" />
 
@@ -122,10 +133,10 @@ export default function WhatIsStemSection() {
               <div className="space-y-6 mt-10">
                 <div className="pl-6 border-l-4 border-orange-500">
                   <span className="block text-3xl md:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-orange-600 to-orange-400 mb-3">
-                    What is STEM?
+                    What is STEM/STEAM?
                   </span>
                   <p className="text-gray-600 text-lg md:text-xl leading-relaxed font-medium">
-                    It stands for Science, Technology, Engineering, and Mathematics. 
+                    It stands for Science, Technology, Engineering, Arts, and Mathematics. 
                     But beyond the acronym, it is a revolutionary interdisciplinary approach to learning.
                   </p>
                 </div>
@@ -174,9 +185,9 @@ export default function WhatIsStemSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={isBenefitInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6 }}
-              className="text-3xl md:text-5xl lg:text-6xl font-black mb-6 tracking-tight text-white"
+              className="text-3xl md:text-5xl lg:text-6xl font-black mb-6 tracking-tight text-white max-w-4xl mx-auto"
             >
-              The Science of <span className="text-teal-400">Retention</span>
+              Benefit of <span className="text-teal-400">STEM Education</span> / <br /> Hands-On Learning
             </motion.h2>
             <motion.p 
               initial={{ opacity: 0, y: 20 }}
@@ -195,13 +206,13 @@ export default function WhatIsStemSection() {
               initial={{ opacity: 0, x: -30 }}
               animate={isBenefitInView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.7 }}
-              className="bg-white/5 backdrop-blur-md rounded-2xl p-6 md:p-10 border border-white/10 shadow-2xl relative"
+              className="bg-white/5 backdrop-blur-md rounded-2xl p-4 md:p-10 border border-white/10 shadow-2xl relative"
             >
               <div className="absolute -top-4 -left-4 w-20 h-20 bg-teal-500/30 blur-2xl rounded-full" />
               <h3 className="text-xl font-bold text-white mb-2 text-center">Learning Retention Rates</h3>
               <p className="text-sm text-gray-400 text-center mb-8">Comparison of instructional methodologies</p>
               
-              <div className="bg-white rounded-xl p-4 md:p-6 shadow-inner">
+              <div className="bg-white rounded-xl p-4 md:p-8 shadow-inner overflow-hidden">
                 <PremiumChart animate={isBenefitInView} />
               </div>
             </motion.div>

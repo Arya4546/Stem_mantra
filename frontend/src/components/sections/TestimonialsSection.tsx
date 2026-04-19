@@ -47,7 +47,7 @@ export default function TestimonialsSection() {
   };
 
   return (
-    <section ref={ref} className="relative py-24 bg-gray-50 overflow-hidden">
+    <section ref={ref} className="relative pt-16 pb-12 bg-gray-50 overflow-hidden">
       <FloatingAnimations variant="about" density="low" />
 
       <div className="mx-auto px-4 md:px-8 lg:px-16 relative z-10">
@@ -78,8 +78,8 @@ export default function TestimonialsSection() {
           </motion.p>
         </div>
 
-        <div className="relative max-w-5xl mx-auto px-4 md:px-12">
-          <div className="relative h-[750px] sm:h-[600px] md:h-[550px] lg:h-[480px]">
+        <div className="relative max-w-7xl mx-auto px-4 md:px-12">
+        <div className="relative h-[650px] sm:h-[550px] md:h-[480px] lg:h-[420px]">
             <AnimatePresence initial={false} custom={direction}>
               <motion.div
                 key={activeIndex}
@@ -94,7 +94,7 @@ export default function TestimonialsSection() {
                 }}
                 className="absolute w-full h-full"
               >
-                <div className="bg-white p-6 sm:p-8 md:p-12 rounded-3xl border border-gray-100 shadow-2xl h-full flex flex-col md:flex-row gap-6 md:gap-8 items-center md:items-start group overflow-hidden">
+                <div className="bg-white p-6 sm:p-8 md:p-12 rounded-3xl border border-gray-100 shadow-2xl h-full flex flex-col md:flex-row gap-6 md:gap-10 items-center justify-center lg:items-center group overflow-hidden">
                   {/* Left Side: Quote & Content */}
                   <div className="flex-1 flex flex-col w-full h-full">
                     <div>
@@ -105,8 +105,8 @@ export default function TestimonialsSection() {
                         </p>
                       </div>
                     </div>
-                    {/* Stars anchored to bottom */}
-                    <div className="flex gap-1 mt-auto pt-6 pb-4 md:pb-0">
+                    {/* Stars */}
+                    <div className="flex gap-1 pt-6 pb-4 md:pb-0">
                       {[...Array(5)].map((_, i) => (
                         <FaStar key={i} className="w-4 h-4 text-orange-400" />
                       ))}
@@ -131,9 +131,9 @@ export default function TestimonialsSection() {
                       )}
                     </div>
                     <div>
-                      <div className="font-extrabold text-gray-900 text-xl mb-1">{testimonials[activeIndex].name}</div>
-                      <div className="text-orange-600 font-bold text-sm uppercase tracking-widest mb-2">{testimonials[activeIndex].role}</div>
-                      <div className="text-gray-500 font-medium text-sm leading-tight">{testimonials[activeIndex].school}</div>
+                      <div className="font-extrabold text-gray-900 text-xl lg:text-2xl mb-1">{testimonials[activeIndex].name}</div>
+                      <div className="text-orange-600 font-bold text-sm lg:text-base uppercase tracking-widest mb-2">{testimonials[activeIndex].role}</div>
+                      <div className="text-gray-500 font-medium text-sm lg:text-base leading-tight">{testimonials[activeIndex].school}</div>
                     </div>
                   </div>
                 </div>

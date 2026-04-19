@@ -8,8 +8,9 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import {
   FaCheckCircle, FaGraduationCap, FaClock, FaUsers,
-  FaArrowLeft, FaStar, FaRocket, FaLightbulb, FaPhone, FaArrowRight
+  FaArrowLeft, FaStar, FaRocket, FaLightbulb, FaPhone, FaArrowRight, FaBolt, FaCogs
 } from "react-icons/fa";
+import ExecutionModeSection from "@/components/sections/ExecutionModeSection";
 
 // ============================================
 // Types
@@ -392,36 +393,26 @@ export default function ProgramPage() {
         </section>
 
         {/* Info Strip */}
-        <section className="py-8 border-y border-gray-100 bg-gray-50/50 px-4 md:px-8 lg:px-16">
-          <div className="w-full mx-auto">
-            <div className="flex flex-wrap justify-between items-center gap-8">
+        <section className="py-8 border-y border-gray-100 bg-gray-50/20 px-4 md:px-8 lg:px-16">
+          <div className="w-full mx-auto max-w-4xl">
+            <div className="flex flex-wrap justify-center items-center gap-12 md:gap-24">
               <div className="flex items-center gap-4">
-                <div className="w-10 h-10 rounded-xl bg-orange-100 flex items-center justify-center">
-                  <FaClock className="w-5 h-5 text-orange-500" />
+                <div className="w-12 h-12 rounded-2xl bg-orange-100 flex items-center justify-center shadow-inner">
+                  <FaClock className="w-6 h-6 text-orange-500" />
                 </div>
                 <div>
-                  <span className="block text-[10px] uppercase tracking-wider text-gray-500 font-bold">Duration</span>
-                  <span className="font-bold text-gray-900">{program.duration}</span>
+                  <span className="block text-[10px] uppercase tracking-widest text-gray-500 font-black">Duration</span>
+                  <span className="text-lg font-bold text-gray-900">{program.duration}</span>
                 </div>
               </div>
-              <div className="hidden md:block w-px h-8 bg-gray-200" />
+              <div className="w-px h-10 bg-gray-200 hidden sm:block" />
               <div className="flex items-center gap-4">
-                <div className="w-10 h-10 rounded-xl bg-blue-100 flex items-center justify-center">
-                  <FaGraduationCap className="w-5 h-5 text-blue-500" />
+                <div className="w-12 h-12 rounded-2xl bg-blue-100 flex items-center justify-center shadow-inner">
+                  <FaGraduationCap className="w-6 h-6 text-blue-500" />
                 </div>
                 <div>
-                  <span className="block text-[10px] uppercase tracking-wider text-gray-500 font-bold">Grade Level</span>
-                  <span className="font-bold text-gray-900">{program.gradeLevel}</span>
-                </div>
-              </div>
-              <div className="hidden md:block w-px h-8 bg-gray-200" />
-              <div className="flex items-center gap-4">
-                <div className="w-10 h-10 rounded-xl bg-teal-100 flex items-center justify-center">
-                  <FaUsers className="w-5 h-5 text-teal-500" />
-                </div>
-                <div>
-                  <span className="block text-[10px] uppercase tracking-wider text-gray-500 font-bold">Enrollments</span>
-                  <span className="font-bold text-gray-900">5,000+ Active</span>
+                  <span className="block text-[10px] uppercase tracking-widest text-gray-500 font-black">Grade Level</span>
+                  <span className="text-lg font-bold text-gray-900">{program.gradeLevel}</span>
                 </div>
               </div>
             </div>
@@ -473,25 +464,50 @@ export default function ProgramPage() {
           </div>
         </section>
 
-        {/* Curriculum — Simple Numbered Grid */}
-        <section className="py-20 px-4 md:px-8 lg:px-16 bg-gray-50">
+        {/* Curriculum — Premium Centered Section */}
+        <section className="py-24 px-4 md:px-8 lg:px-16 bg-gray-50/50 relative overflow-hidden">
           <div className="w-full mx-auto">
-            <div className="text-center mb-16 w-full">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Curriculum Modules</h2>
-              <p className="text-gray-600 w-full">A structured pathway designed to take students from basics to advanced proficiency.</p>
-            </div>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 w-full">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-center mb-20"
+            >
+              <span className="inline-block px-4 py-1.5 bg-orange-100 text-orange-700 rounded-full text-sm font-black uppercase tracking-widest mb-4">
+                Curriculum
+              </span>
+              <h2 className="text-3xl md:text-5xl font-black text-gray-900 mb-6">Course Modules</h2>
+              <p className="text-gray-600 max-w-2xl mx-auto text-lg leading-relaxed">
+                A carefully structured pathway designed to take students from fundamental concepts to advanced mastery through hands-on projects.
+              </p>
+              <div className="w-24 h-1.5 bg-orange-500 mx-auto mt-8 rounded-full" />
+            </motion.div>
+
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
               {program.curriculum?.map((item, index) => (
-                <div key={index} className="bg-white p-6 rounded-2xl border border-gray-100 hover:border-orange-200 transition-colors shadow-sm text-center">
-                  <div className="w-12 h-12 bg-gray-50 rounded-full flex items-center justify-center mx-auto mb-4 border border-gray-100">
-                    <span className="text-orange-500 font-bold">{index + 1}</span>
+                <motion.div 
+                  key={index}
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  className="bg-white p-8 rounded-[2rem] border border-gray-100 hover:border-orange-200 transition-all duration-300 shadow-sm hover:shadow-xl group relative overflow-hidden"
+                >
+                   <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
+                      <FaBolt className="w-16 h-16 text-orange-500 rotate-12" />
+                   </div>
+                  <div className="w-14 h-14 bg-orange-50 rounded-2xl flex items-center justify-center mb-6 border border-orange-100/50 group-hover:bg-orange-500 transition-colors duration-300">
+                    <span className="text-xl font-black text-orange-600 group-hover:text-white">{String(index + 1).padStart(2, '0')}</span>
                   </div>
-                  <h3 className="font-bold text-gray-900">{item}</h3>
-                </div>
+                  <h3 className="text-lg font-bold text-gray-900 group-hover:text-orange-600 transition-colors">{item}</h3>
+                </motion.div>
               ))}
             </div>
           </div>
         </section>
+
+        {/* Mode of Execution — Unified Brand Section */}
+        <ExecutionModeSection />
 
         {/* CTA — Boxed Dark Card */}
         <section className="py-20 px-4 md:px-8 lg:px-16">

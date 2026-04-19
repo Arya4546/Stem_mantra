@@ -3,6 +3,7 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import {
@@ -26,9 +27,9 @@ import DirectorSection from "@/components/sections/DirectorSection";
 import WhatIsStemSection from "@/components/sections/WhatIsStemSection";
 
 const stats = [
-  { number: "1,25,000+", label: "Students Trained", icon: FaGraduationCap, color: "text-orange-500" },
-  { number: "500+", label: "Schools Partnered", icon: FaSchool, color: "text-teal-500" },
-  { number: "18+", label: "States Covered", icon: FaGlobeAsia, color: "text-blue-500" },
+  { number: "1,50,000+", label: "Students Trained", icon: FaGraduationCap, color: "text-orange-500" },
+  { number: "300+", label: "Schools Partnered", icon: FaSchool, color: "text-teal-500" },
+  { number: "16+", label: "States Covered", icon: FaGlobeAsia, color: "text-blue-500" },
   { number: "20+", label: "Expert Trainers", icon: FaChalkboardTeacher, color: "text-purple-500" },
 ];
 
@@ -68,10 +69,36 @@ const coreValues = [
 ];
 
 const services = [
-  { icon: FaRobot, title: "Robotics Labs - STEAMVERSE Lab", description: "Complete turnkey robotics lab solutions designed to build computational thinking and problem-solving skills from the ground up. Our STEAMVERSE Labs include premium hardware kits (Arduino, Raspberry Pi, servo-based robot arms), structured age-appropriate curriculum spanning Classes 3–12, detailed lesson plans with workbooks, and full teacher training certification. We also provide ongoing maintenance, annual curriculum upgrades, and national-level competition preparation support." },
-  { icon: FaBrain, title: "AI-ML & Coding Labs", description: "Cutting-edge artificial intelligence and machine learning labs engineered to prepare future-ready students for the digital economy. Each lab comes equipped with specialized software environments (Python, TensorFlow, Scratch, Blockly), dedicated hardware for computer vision and NLP experiments, and a progressive curriculum covering visual programming for juniors through advanced deep learning for seniors. Students gain hands-on experience with real-world automation, data analysis, chatbot development, and image recognition projects." },
-  { icon: FaCogs, title: "STEM Labs - INNOVERSE Labs", description: "Integrated Science, Technology, Engineering, and Mathematics laboratories for holistic, project-based learning. INNOVERSE Labs combine IoT sensor kits, basic and intermediate electronics, 3D printing stations, and rapid prototyping tools under one roof. The curriculum encourages collaborative cross-disciplinary projects — from smart agriculture systems to weather monitoring stations — fostering creativity, teamwork, and scientific inquiry across all grade levels." },
-  { icon: FaLightbulb, title: "ATL Labs", description: "Comprehensive Atal Tinkering Lab setup strictly adhering to NITI Aayog guidelines and AIM (Atal Innovation Mission) standards. We handle end-to-end lab design, procurement of approved equipment (3D printers, robotics kits, micro-controllers, sensors), mentor training, and NITI Aayog portal/dashboard maintenance. Additionally, we prepare students for national Tinkering Festivals, ATL Marathon, and innovation challenges with year-round mentorship and dedicated innovation hours." },
+  { 
+    icon: FaGraduationCap, 
+    title: "Pre Tinkering Lab", 
+    href: "/programs/pre-tinkering-lab",
+    description: "Grades 3-5 foundation learning designed to introduce young minds to STEM basics through play and exploration. We focus on spatial reasoning and motor skills using age-appropriate kits." 
+  },
+  { 
+    icon: FaRobot, 
+    title: "STEAMVERSE Lab", 
+    href: "/programs/steamverse-lab",
+    description: "Complete turnkey robotics lab solutions with premium kits, structured Class 3–12 curriculum, and full teacher certification to build computational thinking from the ground up." 
+  },
+  { 
+    icon: FaBrain, 
+    title: "AI & Coding Lab", 
+    href: "/programs/ai-coding-lab",
+    description: "Cutting-edge AI and coding labs equipped with specialized software environments (Python, Scratch) and dedicated hardware for computer vision and machine learning experiments." 
+  },
+  { 
+    icon: FaCogs, 
+    title: "INNOVERSE Lab", 
+    href: "/programs/innoverse-lab",
+    description: "Integrated STEM laboratories for holistic, project-based learning. Combines IoT sensors, 3D printing stations, and prototyping tools for cross-disciplinary innovation." 
+  },
+  { 
+    icon: FaLightbulb, 
+    title: "ATL Lab", 
+    href: "/programs/atl-lab",
+    description: "Comprehensive Atal Tinkering Lab setup adhering to NITI Aayog standards, including equipment procurement, mentor training, and contest preparation." 
+  },
 ];
 
 const whyChooseUs = [
@@ -93,7 +120,6 @@ export default function AboutContent() {
     <>
       <Header />
       <main className="min-h-screen bg-white">
-        {/* Hero Section — Left aligned, no floating blobs */}
         <section className="pt-32 pb-12 px-4">
           <div className="mx-auto px-4 md:px-8 lg:px-16">
             <motion.div
@@ -139,7 +165,7 @@ export default function AboutContent() {
         </section>
 
         {/* Mission & Vision — Stacked cards, no gradient blobs */}
-        <section ref={missionRef} className="py-12 px-4 bg-gray-50">
+        <section ref={missionRef} className="pt-12 pb-6 px-4 bg-gray-50">
           <div className="mx-auto px-4 md:px-8 lg:px-16 relative overflow-hidden">
             <FloatingAnimations variant="section" density="low" />
             <div className="grid lg:grid-cols-2 gap-8">
@@ -188,127 +214,173 @@ export default function AboutContent() {
         {/* About Director Section */}
         <DirectorSection />
 
-        {/* Core Values — 2x2 bento with left accent borders */}
-        <section ref={valuesRef} className="py-12 px-4">
+        {/* Core Values — Centered Header & Premium Grid */}
+        <section ref={valuesRef} className="pt-20 pb-8 px-4">
           <div className="mx-auto px-4 md:px-8 lg:px-16">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={isValuesInView ? { opacity: 1, y: 0 } : {}}
-              className="mb-10"
+              className="text-center mb-16"
             >
-              <span className="inline-block px-4 py-1.5 bg-teal-100 text-teal-600 rounded-full text-sm font-semibold mb-3">
+              <span className="inline-block px-4 py-1.5 bg-teal-100/80 text-teal-700 rounded-full text-sm font-bold uppercase tracking-wider mb-4">
                 What Drives Us
               </span>
-              <h2 className="text-3xl font-bold text-gray-900">Our Core Values</h2>
+              <h2 className="text-3xl md:text-5xl font-black text-gray-900">Our Core Values</h2>
+              <div className="w-20 h-1.5 bg-teal-500 mx-auto mt-6 rounded-full" />
             </motion.div>
 
-            <div className="grid md:grid-cols-2 gap-5">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {coreValues.map((value, index) => (
                 <motion.div
                   key={value.title}
                   initial={{ opacity: 0, y: 15 }}
                   animate={isValuesInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ delay: index * 0.08 }}
-                  className={`bg-white rounded-xl p-6 border border-gray-100 border-l-4 ${value.accent} shadow-sm hover:shadow-md transition-shadow`}
+                  transition={{ delay: index * 0.1 }}
+                  className={`bg-white rounded-2xl p-8 border border-gray-100 flex flex-col items-center text-center shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 relative overflow-hidden group`}
                 >
-                  <div className="flex items-start gap-4">
-                    <div className={`w-11 h-11 ${value.iconBg} rounded-lg flex items-center justify-center flex-shrink-0`}>
-                      <value.icon className={`w-5 h-5 ${value.iconColor}`} />
-                    </div>
-                    <div>
-                      <h3 className="text-lg font-bold text-gray-900 mb-1">{value.title}</h3>
-                      <p className="text-sm text-gray-600">{value.description}</p>
-                    </div>
+                  <div className={`absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-teal-500 to-transparent opacity-0 group-hover:opacity-100 transition-opacity`} />
+                  <div className={`w-14 h-14 ${value.iconBg} rounded-2xl flex items-center justify-center mb-6 transform group-hover:rotate-6 transition-transform shadow-inner`}>
+                    <value.icon className={`w-7 h-7 ${value.iconColor}`} />
                   </div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-3">{value.title}</h3>
+                  <p className="text-gray-600 leading-relaxed text-sm">
+                    {value.description}
+                  </p>
                 </motion.div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* Services — White bg, alternating list items */}
-        <section className="py-12 px-4 bg-gray-50">
+        {/* Services — Centered Header & Grid Cards */}
+        <section className="pt-8 pb-20 px-4 bg-gray-50">
           <div className="mx-auto px-4 md:px-8 lg:px-16">
-            <div className="mb-10">
-              <span className="inline-block px-4 py-1.5 bg-orange-100 text-orange-600 rounded-full text-sm font-semibold mb-3">
+            <div className="text-center max-w-3xl mx-auto mb-16">
+              <span className="inline-block px-4 py-1.5 bg-orange-100/80 text-orange-700 rounded-full text-sm font-bold uppercase tracking-wider mb-4">
                 Our Solutions
               </span>
-              <h2 className="text-3xl font-bold text-gray-900">Complete Lab Solutions</h2>
-              <p className="text-gray-600 mt-2">
-                End-to-end solutions for setting up world-class STEM, AI, and Robotics labs in schools.
+              <h2 className="text-3xl md:text-5xl font-black text-gray-900">Complete Lab Solutions</h2>
+              <p className="text-gray-600 mt-6 text-lg">
+                End-to-end solutions for setting up world-class STEM, AI, and Robotics labs in schools, strictly aligned with NEP 2020 guidelines.
               </p>
+              <div className="w-20 h-1.5 bg-orange-500 mx-auto mt-6 rounded-full" />
             </div>
 
-            <div className="space-y-4">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
               {services.map((service, index) => (
                 <motion.div
                   key={service.title}
-                  initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: index * 0.08 }}
-                  className={`flex items-center gap-5 bg-white rounded-xl p-5 border border-gray-100 shadow-sm ${index % 2 === 1 ? "md:flex-row-reverse md:text-right" : ""
-                    }`}
+                  transition={{ delay: index * 0.1 }}
+                  className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 group flex flex-col h-full"
                 >
-                  <div className="w-12 h-12 bg-orange-50 rounded-xl flex items-center justify-center flex-shrink-0">
-                    <service.icon className="w-6 h-6 text-orange-600" />
+                  <div className="w-12 h-12 bg-orange-50 rounded-xl flex items-center justify-center mb-6 group-hover:bg-orange-500 transition-colors duration-300 shadow-inner">
+                    <service.icon className="w-6 h-6 text-orange-600 group-hover:text-white transition-colors" />
                   </div>
-                  <div className="flex-1">
-                    <h3 className="font-bold text-gray-900 mb-1">{service.title}</h3>
-                    <p className="text-sm text-gray-600">{service.description}</p>
-                  </div>
+                  <h3 className="text-lg font-bold text-gray-900 mb-3 h-12 flex items-center leading-tight">{service.title}</h3>
+                  <p className="text-gray-600 text-xs leading-relaxed mb-6 flex-1">
+                    {service.description}
+                  </p>
+                  <Link 
+                    href={service.href} 
+                    className="inline-flex items-center gap-2 text-orange-600 font-bold text-xs group/btn"
+                  >
+                    Explore Solution
+                    <FaArrowRight className="w-3 h-3 group-hover/btn:translate-x-1 transition-transform" />
+                  </Link>
                 </motion.div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* Why Choose Us — Numbered steps instead of checklist */}
-        <section className="py-12 px-4">
+        {/* Why Choose Us — Visual + Context */}
+        <section className="py-20 px-4 bg-white overflow-hidden">
           <div className="mx-auto px-4 md:px-8 lg:px-16">
-            <div className="grid lg:grid-cols-5 gap-10 items-start">
-              <div className="lg:col-span-2">
-                <span className="inline-block px-4 py-1.5 bg-orange-100 text-orange-600 rounded-full text-sm font-semibold mb-3">
-                  Why STEMmantra
-                </span>
-                <h2 className="text-3xl font-bold text-gray-900 mb-4">
-                  What Makes Us Different
-                </h2>
-                <p className="text-gray-600 leading-relaxed">
-                  We don&apos;t just set up labs - we build complete STEM education ecosystems with
-                  ongoing support, training, and innovation.
-                </p>
+            <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+              <div>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                >
+                  <span className="inline-block px-4 py-1.5 bg-orange-100/80 text-orange-700 rounded-full text-sm font-bold uppercase tracking-wider mb-4">
+                    Why STEMmantra
+                  </span>
+                  <h2 className="text-3xl md:text-5xl font-black text-gray-900 mb-6">
+                    What Makes Us <span className="text-orange-500">Different</span>
+                  </h2>
+                  <p className="text-gray-600 text-lg leading-relaxed mb-10">
+                    We don&apos;t just set up labs - we build complete STEM education ecosystems with
+                    ongoing support, training, and innovation.
+                  </p>
 
-                {/* Compact stats */}
-                <div className="flex flex-wrap gap-6 mt-6 pt-6 border-t border-gray-100">
-                  {[
-                    { value: "100%", label: "Satisfaction", color: "text-orange-500" },
-                    { value: "24/7", label: "Support", color: "text-teal-500" },
-                  ].map((s) => (
-                    <div key={s.label}>
-                      <div className={`text-2xl font-bold ${s.color}`}>{s.value}</div>
-                      <div className="text-xs text-gray-500">{s.label}</div>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4 mb-12">
+                    {whyChooseUs.map((item, index) => (
+                      <motion.div
+                        key={index}
+                        initial={{ opacity: 0, x: -10 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: index * 0.05 }}
+                        className="flex items-start gap-3"
+                      >
+                        <div className="w-5 h-5 rounded-full bg-orange-50 flex items-center justify-center flex-shrink-0 mt-0.5">
+                          <FaCheckCircle className="w-3 h-3 text-orange-500" />
+                        </div>
+                        <span className="text-gray-700 text-sm font-medium leading-tight">{item}</span>
+                      </motion.div>
+                    ))}
+                  </div>
+
+                  {/* Compact stats */}
+                  <div className="flex items-center gap-12 pt-8 border-t border-gray-100">
+                    {[
+                      { value: "100%", label: "Satisfaction", color: "text-orange-500" },
+                      { value: "24/7", label: "Support", color: "text-teal-500" },
+                    ].map((s) => (
+                      <div key={s.label}>
+                        <div className={`text-3xl font-black ${s.color}`}>{s.value}</div>
+                        <div className="text-xs font-bold text-gray-400 uppercase tracking-widest mt-1">{s.label}</div>
+                      </div>
+                    ))}
+                  </div>
+                </motion.div>
+              </div>
+
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9, x: 20 }}
+                whileInView={{ opacity: 1, scale: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+                className="relative"
+              >
+                <div className="absolute inset-0 bg-orange-500/5 rounded-full blur-3xl -z-10" />
+                <div className="relative bg-white rounded-[2.5rem] p-4 md:p-8 shadow-2xl border border-gray-50 overflow-hidden">
+                  <Image
+                    src="/images/pdf_pages/image.copy.png"
+                    alt="STEMmantra Differentiation Ecosystem"
+                    width={800}
+                    height={800}
+                    className="w-full h-auto object-contain"
+                  />
+
+                  {/* Trust Badge - Integrated inside the container for better balance */}
+                  <div className="absolute bottom-4 right-4 md:bottom-8 md:right-8 bg-white/90 backdrop-blur-sm rounded-2xl p-3 md:p-4 shadow-xl border border-orange-100/50 hidden md:block">
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 bg-teal-50 rounded-xl flex items-center justify-center">
+                        <FaAward className="w-5 h-5 text-teal-600" />
+                      </div>
+                      <div>
+                        <div className="text-[10px] text-gray-500 font-bold uppercase tracking-wider">Quality Assurance</div>
+                        <div className="text-sm font-black text-gray-900">ISO Certified</div>
+                      </div>
                     </div>
-                  ))}
+                  </div>
                 </div>
-              </div>
-              <div className="lg:col-span-3 space-y-3">
-                {whyChooseUs.map((item, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, x: 10 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.06 }}
-                    className="flex items-center gap-4 p-4 bg-gray-50 rounded-xl"
-                  >
-                    <span className="w-8 h-8 bg-orange-100 text-orange-600 rounded-lg flex items-center justify-center text-sm font-bold flex-shrink-0">
-                      {String(index + 1).padStart(2, "0")}
-                    </span>
-                    <span className="text-gray-700">{item}</span>
-                  </motion.div>
-                ))}
-              </div>
+              </motion.div>
             </div>
           </div>
         </section>

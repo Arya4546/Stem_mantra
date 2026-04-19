@@ -161,7 +161,7 @@ export default function SEOLinksSection() {
                         robotics labs, AI labs, STEM labs, and Atal Tinkering Labs (ATL) for schools. We provide
                         complete turnkey lab solutions including equipment, NEP 2020 aligned curriculum, teacher
                         training, and ongoing support across Delhi, Mumbai, Bangalore, Hyderabad, Chennai, Pune,
-                        Gurugram, Noida, Kolkata, Jaipur and 500+ cities in India. Our programs cover robotics
+                        Gurugram, Noida, Kolkata, Jaipur and 300+ cities in India. Our programs cover robotics
                         programming, artificial intelligence, machine learning, 3D printing, IoT, electronics,
                         coding, and more for students from Class 1 to Class 12.
                     </p>

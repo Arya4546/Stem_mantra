@@ -42,8 +42,8 @@ export default function ClientsPage() {
             {/* INTEGRATED METRICS */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:divide-x divide-gray-700/50 text-center mx-auto max-w-5xl border-t border-gray-700/50 pt-12">
               {[
-                { value: "500+", label: "Partner Schools" },
-                { value: "100,000+", label: "Students Impacted" },
+                { value: "300+", label: "Partner Schools" },
+                { value: "1.5 Lakh+", label: "Students Impacted" },
                 { value: "50+", label: "Cities Reached" }
               ].map((stat, i) => (
                 <div key={i} className="flex flex-col">

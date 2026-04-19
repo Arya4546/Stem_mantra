@@ -17,7 +17,7 @@ export default function GalleryPreview() {
   const isInView = useInView(ref, { once: true, amount: 0.2 });
 
   return (
-    <section ref={ref} className="relative py-24 lg:py-32 bg-white overflow-hidden">
+    <section ref={ref} className="relative pt-8 pb-12 bg-gradient-to-b from-gray-50 to-white overflow-hidden">
       {/* Floating Icons Animation */}
       <SectionFloatingIcons count={2} zIndex={1} />
       {/* Background Pattern */}
@@ -83,23 +83,6 @@ export default function GalleryPreview() {
           ))}
         </div>
 
-        {/* Bottom Stats */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.6 }}
-          className="flex flex-wrap items-center justify-center gap-8 md:gap-16 mt-12 pt-12 border-t border-gray-100"
-        >
-          <div className="text-center">
-            <div className="text-3xl md:text-4xl font-bold text-orange-500">1000+</div>
-            <div className="text-sm text-gray-500">Photos</div>
-          </div>
-
-          <div className="text-center">
-            <div className="text-3xl md:text-4xl font-bold text-blue-500">16+</div>
-            <div className="text-xs uppercase tracking-widest font-black text-gray-500 mt-1">States</div>
-          </div>
-        </motion.div>
       </div>
     </section>
   );

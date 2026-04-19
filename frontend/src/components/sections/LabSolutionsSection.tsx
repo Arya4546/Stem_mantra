@@ -44,7 +44,7 @@ export default function LabSolutionsSection() {
     const isInView = useInView(ref, { once: true, amount: 0.1 });
 
     return (
-        <section ref={ref} className="relative py-20 lg:py-28 bg-white overflow-hidden border-t border-gray-100">
+        <section ref={ref} className="relative pt-4 lg:pt-6 pb-20 lg:pb-28 bg-white overflow-hidden border-t border-gray-100">
             {/* Keeping floating animations as requested */}
             <FloatingAnimations variant="stem" density="low" />
 
@@ -74,7 +74,7 @@ export default function LabSolutionsSection() {
                             </p>
                             <p className="mb-8">
                                 We don&apos;t just supply equipment; we architect complete learning ecosystems. From initial spatial planning and
-                                hardware installation to rigorous teacher training and curriculum alignment with <strong>NEP 2020</strong>
+                                hardware installation to rigorous teacher training and curriculum alignment with <strong>NEP 2020,</strong> <strong>NCF 2023</strong> 
                                 standards, our turnkey solutions ensure that your institution remains at the forefront of pedagogical innovation.
                             </p>
                         </div>

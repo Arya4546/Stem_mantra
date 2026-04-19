@@ -204,7 +204,7 @@ export default function LocationServicePage({
               {[
                 { icon: FaGraduationCap, text: "10+ years of experience in STEM education" },
                 { icon: FaCertificate, text: "NEP 2020 and Niti Aayog compliant" },
-                { icon: FaUsers, text: "Trained 50,000+ students across India" },
+                { icon: FaUsers, text: "Trained 1.5 Lakh+ students across India" },
                 { icon: FaCog, text: "End-to-end lab setup and support" },
               ].map((item, index) => (
                 <div key={index} className="flex gap-4">
