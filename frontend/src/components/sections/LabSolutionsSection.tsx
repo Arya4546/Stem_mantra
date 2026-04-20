@@ -74,8 +74,7 @@ export default function LabSolutionsSection() {
                             </p>
                             <p className="mb-8">
                                 We don&apos;t just supply equipment; we architect complete learning ecosystems. From initial spatial planning and
-                                hardware installation to rigorous teacher training and curriculum alignment with <strong>NEP 2020,</strong> <strong>NCF 2023</strong> 
-                                standards, our turnkey solutions ensure that your institution remains at the forefront of pedagogical innovation.
+                                hardware installation to rigorous teacher training and curriculum alignment with <strong>NEP 2020,</strong> <strong>NCF 2023</strong> standards, our turnkey solutions ensure that your institution remains at the forefront of pedagogical innovation.
                             </p>
                         </div>
 

@@ -25,6 +25,7 @@ import { Target, Eye } from "lucide-react";
 import FloatingAnimations from "@/components/animations/FloatingAnimations";
 import DirectorSection from "@/components/sections/DirectorSection";
 import WhatIsStemSection from "@/components/sections/WhatIsStemSection";
+import ExecutionModeSection from "@/components/sections/ExecutionModeSection";
 
 const stats = [
   { number: "1,50,000+", label: "Students Trained", icon: FaGraduationCap, color: "text-orange-500" },
@@ -384,6 +385,9 @@ export default function AboutContent() {
             </div>
           </div>
         </section>
+
+        {/* Mode of Execution — Branded Section */}
+        <ExecutionModeSection />
 
         {/* CTA — Contained card */}
         <section className="py-12 px-4">

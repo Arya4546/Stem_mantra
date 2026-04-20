@@ -8,6 +8,7 @@ import Footer from "@/components/layout/Footer";
 import { FaRobot, FaFlask, FaBrain, FaCheckCircle, FaArrowRight } from "react-icons/fa";
 import { GraduationCap, Building2, Globe, Users, ArrowRight, Target, Lightbulb, Wrench, BookOpen, Zap } from "lucide-react";
 import FloatingAnimations from "@/components/animations/FloatingAnimations";
+import ExecutionModeSection from "@/components/sections/ExecutionModeSection";
 
 const programs = [
   {
@@ -272,6 +273,9 @@ export default function ProgramsPage() {
             </div>
           </div>
         </section>
+
+        {/* Mode of Execution — Branded Section */}
+        <ExecutionModeSection />
 
         {/* CTA — Contained card */}
         <section className="py-12 px-4">

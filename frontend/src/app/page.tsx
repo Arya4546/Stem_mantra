@@ -64,8 +64,8 @@ export default function HomePage() {
         {/* Why Choose Us - SEO Rich Content */}
         <WhyChooseUsSection />
 
-        {/* Mode of Execution Section */}
-        <ExecutionModeSection />
+        {/* Mode of Execution Section — Moved to About & Program pages as requested */}
+        {/* <ExecutionModeSection /> */}
 
         {/* Programs Section */}
         <ProgramsSection />
