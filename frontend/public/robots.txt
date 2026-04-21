@@ -1,10 +1,11 @@
-# https://www.robotstxt.org/robotstxt.html
+# *
 User-agent: *
 Allow: /
-
-# Disallow admin or private pages
 Disallow: /api/
 Disallow: /admin/
 
-# Sitemap
+# Host
+Host: https://www.stemmantra.com
+
+# Sitemaps
 Sitemap: https://www.stemmantra.com/sitemap.xml

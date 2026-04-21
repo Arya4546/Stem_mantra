@@ -186,7 +186,8 @@ export default function FloatingAnimations({
     if (element.icon === "robot") return "animate-bounce-subtle";
     if (element.icon === "atom") return "animate-spin-reverse";
 
-    return animations[Math.floor(Math.random() * animations.length)];
+    // Deterministic selection based on element id to prevent flicker on re-renders
+    return animations[element.id % animations.length];
   };
 
   return (

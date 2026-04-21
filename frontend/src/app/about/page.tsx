@@ -14,7 +14,7 @@ export const metadata: Metadata = {
       "Discover STEMmantra’s journey, values, and achievements in transforming STEM education across India.",
     url: "https://www.stemmantra.com/about",
     type: "website",
-    images: ["https://www.stemmantra.com/og-image.jpg"],
+    images: ["/images/logo.png"],
   },
   alternates: {
     canonical: "https://www.stemmantra.com/about",

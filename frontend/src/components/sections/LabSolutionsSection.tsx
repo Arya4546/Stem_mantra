@@ -74,19 +74,19 @@ export default function LabSolutionsSection() {
                             </p>
                             <p className="mb-8">
                                 We don&apos;t just supply equipment; we architect complete learning ecosystems. From initial spatial planning and
-                                hardware installation to rigorous teacher training and curriculum alignment with <strong>NEP 2020,</strong> <strong>NCF 2023</strong> standards, our turnkey solutions ensure that your institution remains at the forefront of pedagogical innovation.
+                                hardware installation to rigorous teacher training and curriculum alignment with <strong>NEP 2020 & </strong> <strong>NCF 2023</strong> standards, our turnkey solutions ensure that your institution remains at the forefront of pedagogical innovation.
                             </p>
                         </div>
 
                         <div className="flex flex-wrap gap-8 justify-center pt-8 border-t border-gray-100 w-full">
                             <div className="flex flex-col items-center gap-2">
-                                <span className="text-4xl md:text-5xl font-black text-gray-900">500+</span>
+                                <span className="text-4xl md:text-5xl font-black text-gray-900">300+</span>
                                 <span className="text-sm font-bold text-gray-500 uppercase tracking-wider leading-tight">Labs Installed</span>
                             </div>
                             <div className="w-px h-16 bg-gray-200 hidden sm:block mt-2"></div>
                             <div className="flex flex-col items-center gap-2">
                                 <span className="text-4xl md:text-5xl font-black text-gray-900">100%</span>
-                                <span className="text-sm font-bold text-gray-500 uppercase tracking-wider leading-tight">NEP 2020 Aligned</span>
+                                <span className="text-sm font-bold text-gray-500 uppercase tracking-wider leading-tight">NEP 2020 & NCF 2023 Aligned</span>
                             </div>
                         </div>
                     </motion.div>

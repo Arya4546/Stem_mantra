@@ -1,0 +1,362 @@
+"use client";
+
+import { useParams } from "next/navigation";
+import Link from "next/link";
+import { motion } from "framer-motion";
+import Header from "@/components/layout/Header";
+import Footer from "@/components/layout/Footer";
+import {
+    FaTools, FaRobot, FaBook, FaChalkboardTeacher, FaUsers, FaTrophy,
+    FaCheckCircle, FaPhone, FaArrowRight, FaClock, FaShieldAlt
+} from "react-icons/fa";
+
+// Service data
+const serviceData: Record<string, {
+    name: string;
+    title: string;
+    icon: React.ComponentType<{ className?: string }>;
+    color: string;
+    description: string;
+    longDescription: string;
+    features: { title: string; description: string }[];
+    process: string[];
+    pricing: string;
+    duration: string;
+}> = {
+    "atl-lab-setup": {
+        name: "ATL Lab Setup",
+        title: "Complete Atal Tinkering Lab Setup Service",
+        icon: FaTools,
+        color: "from-orange-500 to-red-500",
+        description: "End-to-end ATL lab setup as per NITI Aayog guidelines",
+        longDescription: "We provide complete turnkey ATL lab setup services for schools applying under the Atal Innovation Mission. From lab design and equipment procurement to installation and training, we ensure your ATL is ready to inspire the next generation of innovators.",
+        features: [
+            { title: "Lab Design & Layout", description: "Custom lab design optimized for your available space and student count" },
+            { title: "Equipment Procurement", description: "All AIM-specified equipment including 3D printers, robotics kits, electronics" },
+            { title: "Installation & Setup", description: "Professional installation of all equipment with testing and calibration" },
+            { title: "Furniture & Fixtures", description: "Ergonomic workbenches, storage solutions, and safety equipment" },
+            { title: "Documentation Support", description: "Help with grant applications, compliance reports, and audit preparation" },
+            { title: "Launch Event", description: "Official lab inauguration with activities for students and parents" },
+        ],
+        process: [
+            "Site visit and requirement analysis",
+            "Custom lab design and proposal",
+            "Equipment and furniture procurement",
+            "Installation and setup",
+            "Teacher training program",
+            "Student orientation sessions",
+            "Official lab launch",
+            "Ongoing support and maintenance",
+        ],
+        pricing: "₹12-20 Lakhs (based on configuration)",
+        duration: "4-6 weeks for complete setup",
+    },
+    "robotics-lab-setup": {
+        name: "Robotics Lab Setup",
+        title: "Advanced Robotics Lab Setup Service",
+        icon: FaRobot,
+        color: "from-purple-600 to-blue-600",
+        description: "State-of-the-art robotics lab with competition-grade equipment",
+        longDescription: "Our Robotics Lab Setup service creates world-class robotics facilities in your school. With equipment ranging from basic robotics kits to advanced autonomous systems, we prepare your students for national and international robotics competitions.",
+        features: [
+            { title: "Competition-Grade Equipment", description: "WRO, FIRST, and national competition approved robotics platforms" },
+            { title: "Progressive Learning Kits", description: "From basic to advanced robotics kits for all age groups" },
+            { title: "Programming Workstations", description: "High-performance computers with robotics software and IDEs" },
+            { title: "Testing Arena", description: "Competition-standard testing and practice areas" },
+            { title: "Spare Parts Inventory", description: "Comprehensive spare parts kit for uninterrupted learning" },
+            { title: "Charging Infrastructure", description: "Organized charging stations for all robotic equipment" },
+        ],
+        process: [
+            "Needs assessment and goal setting",
+            "Lab layout design for optimal workflow",
+            "Equipment selection and procurement",
+            "Installation and network setup",
+            "Curriculum integration planning",
+            "Teacher certification training",
+            "Student bootcamp sessions",
+            "Competition preparation roadmap",
+        ],
+        pricing: "₹15-35 Lakhs (based on lab size and equipment)",
+        duration: "6-8 weeks for complete setup",
+    },
+    curriculum: {
+        name: "STEM Curriculum",
+        title: "NEP 2020 Aligned STEM Curriculum Development",
+        icon: FaBook,
+        color: "from-teal-500 to-green-500",
+        description: "Comprehensive curriculum design aligned with NEP 2020 and global standards",
+        longDescription: "Our curriculum development service creates engaging, age-appropriate STEM learning pathways. Aligned with NEP 2020 and international standards like NGSS, our curricula integrate hands-on projects, assessments, and real-world applications.",
+        features: [
+            { title: "Grade-Wise Content", description: "Structured content for each grade from 1 to 12 with progressive complexity" },
+            { title: "Project-Based Learning", description: "Real-world projects that connect classroom learning to life applications" },
+            { title: "Assessment Framework", description: "Rubrics, tests, and continuous assessment tools for evaluation" },
+            { title: "Teacher Guides", description: "Detailed lesson plans with activities, timing, and teaching tips" },
+            { title: "Student Workbooks", description: "Interactive workbooks with exercises, projects, and reflections" },
+            { title: "Digital Resources", description: "Videos, simulations, and online activities for blended learning" },
+        ],
+        process: [
+            "School goals and vision alignment",
+            "Current curriculum gap analysis",
+            "Custom curriculum framework design",
+            "Content development and peer review",
+            "Teacher orientation and feedback",
+            "Pilot implementation and refinement",
+            "Full rollout with support",
+            "Annual updates and improvements",
+        ],
+        pricing: "₹2-5 Lakhs (based on grade coverage)",
+        duration: "8-12 weeks for development",
+    },
+    "teacher-training": {
+        name: "Teacher Training",
+        title: "STEM Educator Certification & Training",
+        icon: FaChalkboardTeacher,
+        color: "from-blue-500 to-cyan-500",
+        description: "Transform teachers into confident STEM facilitators",
+        longDescription: "Our comprehensive teacher training program equips educators with the skills and confidence to deliver engaging STEM education. From robotics and coding to lab management and student mentoring, teachers become certified STEM facilitators.",
+        features: [
+            { title: "Hands-On Workshops", description: "Intensive practical sessions with all lab equipment and tools" },
+            { title: "Pedagogy Training", description: "Modern teaching methods including PBL, inquiry-based learning" },
+            { title: "Certification", description: "Recognized certification upon successful completion" },
+            { title: "Ongoing Mentorship", description: "Access to expert mentors for queries and support" },
+            { title: "Resource Library", description: "Digital repository of lesson plans, activities, and videos" },
+            { title: "Community Access", description: "Join the network of STEM educators for collaboration" },
+        ],
+        process: [
+            "Training needs assessment",
+            "Custom training program design",
+            "Foundation module: STEM fundamentals",
+            "Technical module: Equipment mastery",
+            "Pedagogy module: Teaching strategies",
+            "Practical teaching sessions",
+            "Assessment and certification",
+            "Ongoing support and refreshers",
+        ],
+        pricing: "₹15,000-30,000 per teacher",
+        duration: "40-60 hours over 2-3 months",
+    },
+    workshops: {
+        name: "Student Workshops",
+        title: "Interactive STEM Workshops for Students",
+        icon: FaUsers,
+        color: "from-pink-500 to-rose-500",
+        description: "Engaging hands-on workshops to spark interest in STEM",
+        longDescription: "Our student workshops bring the excitement of STEM directly to your school. From robotics and coding to AI and 3D printing, these interactive sessions inspire curiosity, build skills, and create memorable learning experiences.",
+        features: [
+            { title: "Multiple Themes", description: "Robotics, Coding, AI, 3D Printing, Electronics, Space Science, and more" },
+            { title: "Age-Appropriate Activities", description: "Customized content for different age groups and skill levels" },
+            { title: "Take-Home Projects", description: "Students build projects they can take home and show parents" },
+            { title: "Expert Facilitators", description: "Trained instructors who make learning fun and engaging" },
+            { title: "Materials Included", description: "All equipment, materials, and supplies provided" },
+            { title: "Certificates", description: "Participation certificates for all students" },
+        ],
+        process: [
+            "Theme and grade selection",
+            "Date and logistics planning",
+            "Student grouping and scheduling",
+            "Pre-workshop preparation",
+            "Workshop delivery",
+            "Project showcase",
+            "Certificate distribution",
+            "Follow-up resources sharing",
+        ],
+        pricing: "₹500-1,500 per student (min 30 students)",
+        duration: "2-6 hours per workshop",
+    },
+    competitions: {
+        name: "Competition Prep",
+        title: "Robotics Competition Preparation Service",
+        icon: FaTrophy,
+        color: "from-yellow-500 to-orange-500",
+        description: "Expert coaching to prepare students for national and international competitions",
+        longDescription: "Our competition preparation service helps students and schools achieve success at robotics and STEM competitions. With expert coaching, practice sessions, and strategic guidance, we prepare teams for WRO, FIRST Robotics, ATL Marathon, and other prestigious events.",
+        features: [
+            { title: "Competition Analysis", description: "Understanding rules, scoring, and winning strategies" },
+            { title: "Team Formation", description: "Selecting and organizing students into effective teams" },
+            { title: "Robot Design Coaching", description: "Expert guidance on robot design, building, and programming" },
+            { title: "Practice Sessions", description: "Intensive practice with competition-style challenges" },
+            { title: "Mock Competitions", description: "Simulated competition environments for experience" },
+            { title: "Travel Support", description: "Logistics support for regional and national events" },
+        ],
+        process: [
+            "Competition selection and registration",
+            "Team formation and role assignment",
+            "Challenge analysis and strategy planning",
+            "Robot design and prototyping",
+            "Programming and testing",
+            "Practice rounds and refinement",
+            "Mock competition and feedback",
+            "Final preparation and travel",
+        ],
+        pricing: "₹50,000-2,00,000 per team (based on competition)",
+        duration: "2-4 months preparation cycle",
+    },
+};
+
+export default function ServicePage() {
+    const params = useParams();
+    const service = (params.service as string)?.toLowerCase();
+    const data = serviceData[service];
+
+    if (!data) {
+        return (
+            <>
+                <Header />
+                <main className="min-h-screen bg-gradient-to-br from-orange-50/40 via-white to-teal-50/40 pt-32 pb-16">
+                    <div className="container mx-auto px-4 text-center">
+                        <h1 className="text-3xl font-bold text-gray-900 mb-4">Service Not Found</h1>
+                        <p className="text-gray-600 mb-8">We couldn&apos;t find this service.</p>
+                        <Link href="/" className="text-orange-500 hover:underline">
+                            Return to Home
+                        </Link>
+                    </div>
+                </main>
+                <Footer />
+            </>
+        );
+    }
+
+    const IconComponent = data.icon;
+
+    return (
+        <>
+            <Header />
+            <main className="min-h-screen bg-gradient-to-br from-orange-50/40 via-white to-teal-50/40">
+                {/* Hero */}
+                <section className="relative pt-32 pb-20 overflow-hidden">
+                    <div className={`absolute inset-0 bg-gradient-to-r ${data.color} opacity-10`} />
+                    <div className="container mx-auto px-4 relative z-10">
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            className="max-w-4xl mx-auto text-center"
+                        >
+                            <div className={`inline-flex items-center justify-center w-20 h-20 bg-gradient-to-r ${data.color} rounded-2xl mb-6`}>
+                                <IconComponent className="w-10 h-10 text-white" />
+                            </div>
+                            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                                {data.title}
+                            </h1>
+                            <p className="text-lg md:text-xl text-gray-600 mb-8 leading-relaxed">
+                                {data.longDescription}
+                            </p>
+                            <div className="flex flex-wrap justify-center gap-4">
+                                <Link
+                                    href="/contact"
+                                    className={`inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r ${data.color} text-white rounded-xl font-semibold hover:shadow-xl transition-all`}
+                                >
+                                    Get a Quote
+                                </Link>
+                                <a
+                                    href="tel:+916356631515"
+                                    className="inline-flex items-center gap-2 px-8 py-4 bg-white text-gray-900 rounded-xl font-semibold border-2 border-gray-200 hover:border-orange-500 transition-all"
+                                >
+                                    <FaPhone className="w-4 h-4" />
+                                    Call Us
+                                </a>
+                            </div>
+                        </motion.div>
+                    </div>
+                </section>
+
+                {/* Quick Info */}
+                <section className="py-8 bg-white border-y border-gray-100">
+                    <div className="container mx-auto px-4">
+                        <div className="flex flex-wrap justify-center gap-8">
+                            <div className="flex items-center gap-3">
+                                <FaClock className="w-5 h-5 text-orange-500" />
+                                <span className="text-gray-700"><strong>Timeline:</strong> {data.duration}</span>
+                            </div>
+                            <div className="flex items-center gap-3">
+                                <FaShieldAlt className="w-5 h-5 text-teal-500" />
+                                <span className="text-gray-700"><strong>Investment:</strong> {data.pricing}</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                {/* Features */}
+                <section className="py-20">
+                    <div className="container mx-auto px-4">
+                        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-12 text-center">
+                            What&apos;s Included
+                        </h2>
+                        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                            {data.features.map((feature, index) => (
+                                <motion.div
+                                    key={index}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    transition={{ delay: index * 0.1 }}
+                                    className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100"
+                                >
+                                    <div className={`w-12 h-12 bg-gradient-to-r ${data.color} rounded-xl flex items-center justify-center mb-4`}>
+                                        <FaCheckCircle className="w-6 h-6 text-white" />
+                                    </div>
+                                    <h3 className="text-lg font-bold text-gray-900 mb-2">{feature.title}</h3>
+                                    <p className="text-gray-600">{feature.description}</p>
+                                </motion.div>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+
+                {/* Process */}
+                <section className="py-20 bg-gray-50">
+                    <div className="container mx-auto px-4">
+                        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-12 text-center">
+                            Our Process
+                        </h2>
+                        <div className="max-w-3xl mx-auto">
+                            {data.process.map((step, index) => (
+                                <motion.div
+                                    key={index}
+                                    initial={{ opacity: 0, x: -20 }}
+                                    whileInView={{ opacity: 1, x: 0 }}
+                                    transition={{ delay: index * 0.1 }}
+                                    className="flex items-start gap-4 mb-6"
+                                >
+                                    <div className={`w-10 h-10 bg-gradient-to-r ${data.color} rounded-full flex items-center justify-center text-white font-bold flex-shrink-0`}>
+                                        {index + 1}
+                                    </div>
+                                    <div className="pt-2">
+                                        <p className="text-gray-700 font-medium">{step}</p>
+                                    </div>
+                                </motion.div>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+
+                {/* CTA */}
+                <section className="py-20 bg-gray-900 text-white">
+                    <div className="container mx-auto px-4 text-center">
+                        <h2 className="text-3xl md:text-4xl font-bold mb-6">
+                            Ready to Get Started with {data.name}?
+                        </h2>
+                        <p className="text-gray-300 max-w-2xl mx-auto mb-8">
+                            Contact us today for a free consultation and customized quote.
+                            Let us help you transform your school with quality STEM education.
+                        </p>
+                        <div className="flex flex-wrap justify-center gap-4">
+                            <Link
+                                href="/contact"
+                                className={`inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r ${data.color} text-white rounded-xl font-semibold hover:shadow-xl transition-all`}
+                            >
+                                Request a Quote
+                            </Link>
+                            <a
+                                href="tel:+916356631515"
+                                className="inline-flex items-center gap-2 px-8 py-4 bg-white/10 text-white rounded-xl font-semibold hover:bg-white/20 transition-colors"
+                            >
+                                <FaPhone className="w-4 h-4" />
+                                Call: +91 6356631515
+                            </a>
+                        </div>
+                    </div>
+                </section>
+            </main>
+            <Footer />
+        </>
+    );
+}

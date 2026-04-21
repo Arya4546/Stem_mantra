@@ -7,7 +7,7 @@ export const metadata = {
     description: "See our students, teachers, and schools in action—building, learning, and innovating with STEMmantra.",
     type: "website",
     url: "https://www.stemmantra.com/gallery",
-    images: ["https://www.stemmantra.com/og-image.jpg"],
+    images: ["/images/logo.png"],
   },
   alternates: {
     canonical: "https://www.stemmantra.com/gallery",

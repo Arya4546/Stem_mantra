@@ -97,7 +97,7 @@ export default function HeroSection() {
             href="/programs"
             className="group flex items-center justify-center gap-4 px-10 py-5 bg-orange-600 text-white font-black text-lg xl:text-xl rounded-xl hover:bg-orange-700 hover:scale-105 transition-all duration-300 shadow-xl shadow-orange-900/50 whitespace-nowrap w-full sm:w-auto"
           >
-            Explore Our Curriculums
+            Explore Our Programs
             <FaArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </Link>
           <Link

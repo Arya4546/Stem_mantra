@@ -36,7 +36,6 @@ export const metadata: Metadata = {
     title: "STEMmantra - Master The Skills, Drive Your Future",
     description:
       "India's leading provider of robotics, AI, and STEM education solutions for schools.",
-    images: ["/images/og-image.jpg"],
     type: "website",
   },
   twitter: {
@@ -44,6 +43,9 @@ export const metadata: Metadata = {
     title: "STEMmantra - Master The Skills, Drive Your Future",
     description:
       "India's leading provider of robotics, AI, and STEM education solutions for schools.",
+  },
+  alternates: {
+    canonical: "https://www.stemmantra.com",
   },
 };
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useEffect, useState } from "react";
+import { useRef, useEffect, useState, useCallback } from "react";
 import { motion, useInView } from "framer-motion";
 import { FaSchool, FaUsers, FaAward, FaGlobeAsia } from "react-icons/fa";
 import FloatingAnimations from "@/components/animations/FloatingAnimations";
@@ -12,10 +12,16 @@ const stats = [
 ];
 
 function AnimatedCounter({ value, suffix = "", duration = 2000, trigger = true }: { value: number; suffix?: string; duration?: number; trigger?: boolean }) {
-  const [count, setCount] = useState(0);
+  const spanRef = useRef<HTMLSpanElement>(null);
+  const hasAnimated = useRef(false);
+
+  const formatNumber = useCallback((num: number) => {
+    return num.toLocaleString('en-IN');
+  }, []);
 
   useEffect(() => {
-    if (!trigger) return;
+    if (!trigger || hasAnimated.current) return;
+    hasAnimated.current = true;
 
     let startTime: number;
     let animationFrame: number;
@@ -24,26 +30,27 @@ function AnimatedCounter({ value, suffix = "", duration = 2000, trigger = true }
       if (!startTime) startTime = timestamp;
       const progress = Math.min((timestamp - startTime) / duration, 1);
       const easeOutQuart = 1 - Math.pow(1 - progress, 4);
-      setCount(Math.floor(easeOutQuart * value));
+      const current = Math.floor(easeOutQuart * value);
+
+      // Direct DOM update — avoids React re-render on every frame
+      if (spanRef.current) {
+        spanRef.current.textContent = `${formatNumber(current)}${suffix}`;
+      }
 
       if (progress < 1) {
         animationFrame = requestAnimationFrame(animate);
-      } else {
-        setCount(value);
+      } else if (spanRef.current) {
+        spanRef.current.textContent = `${formatNumber(value)}${suffix}`;
       }
     };
 
     animationFrame = requestAnimationFrame(animate);
     return () => cancelAnimationFrame(animationFrame);
-  }, [trigger, value, duration]);
-
-  const formatNumber = (num: number) => {
-    return num.toLocaleString('en-IN');
-  };
+  }, [trigger, value, duration, suffix, formatNumber]);
 
   return (
-    <span>
-      {formatNumber(count)}{suffix}
+    <span ref={spanRef} style={{ willChange: 'contents' }}>
+      {formatNumber(0)}{suffix}
     </span>
   );
 }
@@ -87,6 +94,7 @@ export default function StatsSection() {
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.2 }}
             className="lg:w-1/2 grid grid-cols-2 gap-4 sm:gap-8 lg:gap-12"
+            style={{ willChange: 'transform', transform: 'translateZ(0)' }}
           >
             {stats.map((stat, index) => (
               <div key={index} className="flex flex-col border-l-4 border-orange-500 pl-6 py-2 pb-6">

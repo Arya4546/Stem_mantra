@@ -24,10 +24,6 @@ export default function TestimonialsSection() {
     setActiveIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
   }, []);
 
-  useEffect(() => {
-    const timer = setInterval(nextSlide, 5000);
-    return () => clearInterval(timer);
-  }, [nextSlide]);
 
   const variants = {
     enter: (direction: number) => ({
