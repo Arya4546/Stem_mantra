@@ -108,7 +108,8 @@ export default function WhyChooseUsSection() {
           </div>
 
           {/* CENTER VISUAL */}
-          <div className="w-full lg:w-[30%] flex justify-center relative h-[450px] items-center order-1 lg:order-2">
+          <div className="hidden lg:flex w-full lg:w-[30%] justify-center relative h-[450px] items-center order-1 lg:order-2">
+
 
             {/* Orbit Glow */}
             <div className="absolute w-64 h-64 bg-gray-50 rounded-full blur-3xl opacity-50" />

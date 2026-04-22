@@ -66,18 +66,17 @@ export default function PartnersSection() {
 
           {/* Scrolling Container */}
           <div className="overflow-hidden py-8">
-            <motion.div
-              animate={{ x: ["0%", "-50%"] }}
-              transition={{
-                x: {
-                  repeat: Infinity,
-                  repeatType: "loop",
-                  duration: 30,
-                  ease: "linear",
-                },
-              }}
-              className="flex gap-12"
-            >
+            <style>{`
+              @keyframes marquee-scroll {
+                0% { transform: translateX(0%); }
+                100% { transform: translateX(-50%); }
+              }
+              .marquee-content {
+                animation: marquee-scroll 30s linear infinite;
+              }
+            `}</style>
+            <div className="flex gap-8 md:gap-12 w-max marquee-content hover:[animation-play-state:paused]">
+
               {allPartners.map((partner, index) => (
                 <div
                   key={index}
@@ -94,7 +93,7 @@ export default function PartnersSection() {
                   </div>
                 </div>
               ))}
-            </motion.div>
+            </div>
           </div>
         </motion.div>
 
