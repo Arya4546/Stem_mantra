@@ -281,23 +281,30 @@ export default function FloatingDemoButton() {
                     </motion.button>
 
                     {/* Quick Contact */}
-                    <div className="flex items-center justify-center gap-4 pt-2 border-t border-gray-100">
-                      <span className="text-sm text-gray-500">Or contact us:</span>
+                    <div className="flex flex-wrap items-center justify-center gap-3 pt-2 border-t border-gray-100">
+                      <span className="text-xs text-gray-500 w-full text-center">Or contact us:</span>
                       <a
                         href={`https://wa.me/916356631515`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center gap-2 px-4 py-2 bg-green-500 text-white rounded-lg text-sm font-medium hover:bg-green-600 transition-colors"
+                        className="flex items-center gap-2 px-3 py-1.5 bg-green-500 text-white rounded-lg text-xs font-medium hover:bg-green-600 transition-colors"
                       >
-                        <FaWhatsapp className="w-4 h-4" />
+                        <FaWhatsapp className="w-3 h-3" />
                         WhatsApp
                       </a>
                       <a
                         href={`tel:${SITE_CONFIG.contact.mobile}`}
-                        className="flex items-center gap-2 px-4 py-2 bg-teal-500 text-white rounded-lg text-sm font-medium hover:bg-teal-600 transition-colors"
+                        className="flex items-center gap-2 px-3 py-1.5 bg-teal-500 text-white rounded-lg text-xs font-medium hover:bg-teal-600 transition-colors"
                       >
-                        <FaPhone className="w-4 h-4" />
+                        <FaPhone className="w-3 h-3" />
                         Call
+                      </a>
+                      <a
+                        href={`tel:01203101774`}
+                        className="flex items-center gap-2 px-3 py-1.5 bg-orange-500 text-white rounded-lg text-xs font-medium hover:bg-orange-600 transition-colors"
+                      >
+                        <FaPhone className="w-3 h-3" />
+                        Landline
                       </a>
                     </div>
                   </form>

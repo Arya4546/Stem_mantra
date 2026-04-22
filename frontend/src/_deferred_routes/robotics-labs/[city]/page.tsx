@@ -361,6 +361,12 @@ export default function RoboticsLabCityPage() {
                                     >
                                         Call Us Directly
                                     </a>
+                                    <a
+                                        href="tel:01203101774"
+                                        className="px-10 py-4 bg-white/5 text-white border border-white/10 rounded-2xl font-bold hover:bg-white/10 transition-all"
+                                    >
+                                        Landline: 0120-3101774
+                                    </a>
                                 </div>
                             </div>
                         </div>

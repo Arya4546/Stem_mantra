@@ -63,7 +63,7 @@ const defaultSettings: SettingsState = {
   siteUrl: "https://stemmantra.com",
   contactEmail: "info@stemmantra.com",
   supportEmail: "support@stemmantra.com",
-  contactPhone: "+91-6356631515",
+  contactPhone: "+91-6356631515, 0120-3101774",
   address: "C-104 2nd Floor, Noida Sec-10, UP – 201301",
   facebook: "",
   twitter: "",

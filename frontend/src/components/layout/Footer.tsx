@@ -172,6 +172,13 @@ export default function Footer() {
                 <span className="text-sm">{SITE_CONFIG.contact.mobile}</span>
               </a>
               <a
+                href={`tel:${SITE_CONFIG.contact.landline}`}
+                className="flex items-center gap-3 text-gray-400 hover:text-orange-500 transition-colors"
+              >
+                <FaPhone className="w-4 h-4 text-orange-500" />
+                <span className="text-sm">{SITE_CONFIG.contact.landline} (Landline)</span>
+              </a>
+              <a
                 href={`mailto:${SITE_CONFIG.contact.email}`}
                 className="flex items-center gap-3 text-gray-400 hover:text-orange-500 transition-colors"
               >

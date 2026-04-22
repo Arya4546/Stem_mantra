@@ -226,10 +226,17 @@ export default function Header() {
               <div className="mt-auto py-10 border-t border-gray-100">
                 <a
                   href={`tel:${SITE_CONFIG.contact.mobile}`}
-                  className="flex items-center gap-3 p-4 bg-orange-50 text-orange-600 rounded-2xl font-bold mb-4"
+                  className="flex items-center gap-3 p-4 bg-orange-50 text-orange-600 rounded-2xl font-bold mb-3"
                 >
                   <FaPhone className="w-4 h-4" />
                   <span>{SITE_CONFIG.contact.mobile}</span>
+                </a>
+                <a
+                  href={`tel:${SITE_CONFIG.contact.landline}`}
+                  className="flex items-center gap-3 p-4 bg-orange-50 text-orange-600 rounded-2xl font-bold mb-4"
+                >
+                  <FaPhone className="w-4 h-4" />
+                  <span>{SITE_CONFIG.contact.landline}</span>
                 </a>
                 <Link
                   href="/contact"

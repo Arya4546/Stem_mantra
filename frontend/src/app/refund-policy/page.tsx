@@ -109,7 +109,7 @@ export default function RefundPolicyPage() {
                   <p><strong>STEMmantra</strong></p>
                   <p>C-104, 2nd Floor, Sector-10, Noida, UP – 201301</p>
                   <p>Email: <a href="mailto:sales@stemmantra.com" className="text-orange-600 font-semibold hover:underline">sales@stemmantra.com</a></p>
-                  <p>Phone: <a href="tel:+916356631515" className="text-orange-600 font-semibold hover:underline">+91-6356631515</a></p>
+                  <p>Phone: <a href="tel:+916356631515" className="text-orange-600 font-semibold hover:underline">+91-6356631515</a> | <a href="tel:01203101774" className="text-orange-600 font-semibold hover:underline">0120-3101774</a></p>
                 </div>
               </section>
             </div>

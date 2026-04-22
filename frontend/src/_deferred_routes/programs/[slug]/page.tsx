@@ -527,6 +527,10 @@ export default function ProgramPage() {
                     <FaPhone className="w-4 h-4" /> 
                     <span>+91 6356631515</span>
                   </a>
+                  <a href="tel:01203101774" className="inline-flex items-center justify-center gap-3 px-10 py-4 bg-white/5 border border-white/10 text-white rounded-xl font-bold hover:bg-white/10 transition-all w-full sm:w-auto">
+                    <FaPhone className="w-4 h-4" /> 
+                    <span>0120-3101774</span>
+                  </a>
                 </div>
               </div>
             </div>

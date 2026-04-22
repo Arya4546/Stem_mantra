@@ -219,6 +219,15 @@ export default function HelpPage() {
             <span className="font-medium text-slate-900">Call Us</span>
           </Link>
           <Link
+            href="tel:01203101774"
+            className="flex flex-col items-center gap-2 p-4 bg-white rounded-xl border border-slate-200 hover:border-primary hover:shadow-md transition-all"
+          >
+            <div className="p-3 bg-orange-100 rounded-full">
+              <Phone className="w-6 h-6 text-orange-600" />
+            </div>
+            <span className="font-medium text-slate-900">Landline</span>
+          </Link>
+          <Link
             href="/about"
             className="flex flex-col items-center gap-2 p-4 bg-white rounded-xl border border-slate-200 hover:border-primary hover:shadow-md transition-all"
           >
@@ -369,6 +378,13 @@ export default function HelpPage() {
                   >
                     <Phone className="w-4 h-4" />
                     +91 6356631515
+                  </a>
+                  <a
+                    href="tel:01203101774"
+                    className="flex items-center gap-2 text-slate-600 hover:text-primary"
+                  >
+                    <Phone className="w-4 h-4" />
+                    0120-3101774
                   </a>
                 </div>
               </div>

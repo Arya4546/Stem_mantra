@@ -22,6 +22,7 @@ export const SITE_CONFIG = {
   contact: {
     phone: "+91-6356631515",
     mobile: "+91-6356631515",
+    landline: "0120-3101774",
     email: "sales@stemmantra.com",
     address: "C-104 2nd Floor, Sector-10, Noida, Uttar Pradesh – 201301",
   },

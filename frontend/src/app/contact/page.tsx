@@ -19,7 +19,7 @@ import {
 import { FaWhatsapp, FaLinkedin, FaTwitter, FaFacebook, FaInstagram } from "react-icons/fa";
 
 const contactInfo = [
-  { icon: Phone, title: "Call Us", content: SITE_CONFIG.contact.mobile, subContent: SITE_CONFIG.contact.phone, href: `tel:${SITE_CONFIG.contact.mobile}`, color: "text-orange-500" },
+  { icon: Phone, title: "Call Us", content: SITE_CONFIG.contact.mobile, subContent: `Landline: ${SITE_CONFIG.contact.landline}`, href: `tel:${SITE_CONFIG.contact.mobile}`, color: "text-orange-500" },
   { icon: Mail, title: "Email Us", content: SITE_CONFIG.contact.email, subContent: "We reply within 24 hours", href: `mailto:${SITE_CONFIG.contact.email}`, color: "text-teal-500" },
   { icon: MapPin, title: "Visit Us", content: "C-104, 2nd Floor, Sector-10", subContent: "Noida, UP - 201301", href: "https://maps.google.com/?q=Noida+Sector+10", color: "text-orange-500" },
   { icon: Clock, title: "Working Hours", content: "Mon - Sat: 9:00 AM - 6:00 PM", subContent: "Sunday: Closed", href: "#", color: "text-teal-500" },
@@ -235,6 +235,15 @@ export default function ContactPage() {
                         <div>
                           <p className="font-semibold text-sm text-gray-900">Call Us Now</p>
                           <p className="text-xs text-gray-500">{SITE_CONFIG.contact.mobile}</p>
+                        </div>
+                      </a>
+                      <a href={`tel:${SITE_CONFIG.contact.landline}`}
+                        className="flex items-center gap-3 p-3 bg-orange-50 rounded-lg hover:bg-orange-100 transition-colors"
+                      >
+                        <Phone className="w-5 h-5 text-orange-600" />
+                        <div>
+                          <p className="font-semibold text-sm text-gray-900">Landline</p>
+                          <p className="text-xs text-gray-500">{SITE_CONFIG.contact.landline}</p>
                         </div>
                       </a>
                     </div>

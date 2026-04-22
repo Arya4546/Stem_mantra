@@ -230,6 +230,9 @@ export default function LabTypePage() {
                                 <a href="tel:+916356631515" className="inline-flex items-center gap-2 px-6 py-3 border border-white/20 text-white rounded-xl font-semibold hover:bg-white/10 transition-colors">
                                     <FaPhone className="w-3 h-3" /> +91 6356631515
                                 </a>
+                                <a href="tel:01203101774" className="inline-flex items-center gap-2 px-6 py-3 border border-white/20 text-white rounded-xl font-semibold hover:bg-white/10 transition-colors">
+                                    <FaPhone className="w-3 h-3" /> 0120-3101774
+                                </a>
                             </div>
                         </div>
                     </div>
