@@ -16,6 +16,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://www.stemmantra.com/contact",
   },
+  
 };
 
 export default function ContactLayout({
