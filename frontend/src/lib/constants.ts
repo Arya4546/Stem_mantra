@@ -36,6 +36,7 @@ export const NAVIGATION = [
   { name: "STEM Labs", href: "/programs/stem-labs" },
   { name: "ATL Labs", href: "/programs/atl-labs" },
   { name: "Gallery", href: "/gallery" },
+  { name: "Learn", href: "https://learn.stemmantra.com/", external: true },
   { name: "Contact", href: "/contact" },
 ] as const;
 

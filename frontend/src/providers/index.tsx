@@ -14,11 +14,9 @@ export default function Providers({ children }: ProvidersProps) {
   return (
     <QueryProvider>
       <AuthProvider>
-        <Suspense fallback={null}>
-          <RouteLoadingProvider>
-            {children}
-          </RouteLoadingProvider>
-        </Suspense>
+        <RouteLoadingProvider>
+          {children}
+        </RouteLoadingProvider>
         <ToasterProvider />
       </AuthProvider>
     </QueryProvider>

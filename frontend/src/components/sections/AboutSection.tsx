@@ -85,8 +85,7 @@ export default function AboutSection() {
           >
             <p className="mb-8">
               STEMmantra is universally recognised as the premier educational lab partner across India.
-              We specialise in the holistic development and deployment of advanced <strong className="text-gray-900 border-b-2 border-orange-200">Robotics, Artificial Intelligence &amp; Coding Labs, and STEM/STEAM educational laboratories</strong>
-              within progressive K-12 academic institutions.
+              We specialise in the holistic development and deployment of advanced <strong className="text-gray-900 border-b-2 border-orange-200">Robotics, Artificial Intelligence &amp; Coding Labs and STEM/STEAM educational laboratories</strong> within progressive K-12 academic institutions.
             </p>
             <p className="mb-8">
               Traditional rote learning frameworks are fundamentally incompatible with the demands of the modern algorithmic economy.
@@ -96,7 +95,7 @@ export default function AboutSection() {
             <p className="mb-8">
               From foundational introductory tinkering programs utilising basic electronics circuits to elite-tier competitive robotics
               geared towards national/International level of curriculum, STEMmantra architects learning continuum that scale precisely
-              with student cognitive development and strict <strong className="text-gray-900 border-b-2 border-orange-200">National Education Policy (NEP 2020) &amp; NCF (National Curriculum framework)2023</strong> compliance guidelines.
+              with student cognitive development and strict <strong className="text-gray-900 border-b-2 border-orange-200">National Education Policy (NEP 2020) &amp; National Curriculum Framework (NCF 2023)</strong> compliance guidelines.
             </p>
             <p className="text-2xl font-bold text-orange-600 italic border-l-4 border-orange-500 pl-6 my-10">
               &quot;Our aim is to reach 10 million+ students within the next 3 years, empowering the next generation of innovators.&quot;

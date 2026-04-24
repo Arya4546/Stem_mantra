@@ -367,18 +367,7 @@ export default function AboutContent() {
                     className="w-full h-auto object-contain"
                   />
 
-                  {/* Trust Badge - Integrated inside the container for better balance */}
-                  <div className="absolute bottom-4 right-4 md:bottom-8 md:right-8 bg-white/90 backdrop-blur-sm rounded-2xl p-3 md:p-4 shadow-xl border border-orange-100/50 hidden md:block">
-                    <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 bg-teal-50 rounded-xl flex items-center justify-center">
-                        <FaAward className="w-5 h-5 text-teal-600" />
-                      </div>
-                      <div>
-                        <div className="text-[10px] text-gray-500 font-bold uppercase tracking-wider">Quality Assurance</div>
-                        <div className="text-sm font-black text-gray-900">ISO Certified</div>
-                      </div>
-                    </div>
-                  </div>
+
                 </div>
               </motion.div>
             </div>

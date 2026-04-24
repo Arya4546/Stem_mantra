@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, useState, useEffect, ReactNode } from "react";
+import { createContext, useContext, useState, useEffect, ReactNode, Suspense } from "react";
 import { usePathname, useSearchParams } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -18,21 +18,31 @@ const RouteLoadingContext = createContext<RouteLoadingContextType>({
 
 export const useRouteLoading = () => useContext(RouteLoadingContext);
 
-export function RouteLoadingProvider({ children }: { children: ReactNode }) {
-    const [isLoading, setIsLoading] = useState(false);
+export function RouteChangeListener({ onRouteChanged }: { onRouteChanged: () => void }) {
     const pathname = usePathname();
     const searchParams = useSearchParams();
 
     useEffect(() => {
         // Stop loading when route changes
-        setIsLoading(false);
-    }, [pathname, searchParams]);
+        onRouteChanged();
+    }, [pathname, searchParams, onRouteChanged]);
+
+    return null;
+}
+
+export function RouteLoadingProvider({ children }: { children: ReactNode }) {
+    const [isLoading, setIsLoading] = useState(false);
+
+    const handleRouteChanged = () => setIsLoading(false);
 
     const startLoading = () => setIsLoading(true);
     const stopLoading = () => setIsLoading(false);
 
     return (
         <RouteLoadingContext.Provider value={{ isLoading, startLoading, stopLoading }}>
+            <Suspense fallback={null}>
+                <RouteChangeListener onRouteChanged={handleRouteChanged} />
+            </Suspense>
             {/* Loading Bar */}
             <AnimatePresence>
                 {isLoading && (

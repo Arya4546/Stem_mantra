@@ -32,6 +32,7 @@ export default function Header() {
     { name: "Programs", href: "/programs", dropdown: true },
     { name: "Career", href: "/career" },
     { name: "Gallery", href: "/gallery" },
+    { name: "Learn", href: "https://learn.stemmantra.com/", external: true },
     { name: "Clients", href: "/clients" },
     { name: "Contact", href: "/contact" },
   ];
@@ -99,6 +100,8 @@ export default function Header() {
                 >
                   <Link
                     href={link.href}
+                    target={link.external ? "_blank" : undefined}
+                    rel={link.external ? "noopener noreferrer" : undefined}
                     className={`px-3 py-2 text-[16px] font-bold tracking-tight transition-all duration-300 flex items-center gap-1.5 ${
                       pathname === link.href || (link.dropdown && pathname.startsWith("/programs"))
                         ? "text-orange-600"
@@ -204,6 +207,8 @@ export default function Header() {
                   <div key={link.name}>
                     <Link
                       href={link.href}
+                      target={link.external ? "_blank" : undefined}
+                      rel={link.external ? "noopener noreferrer" : undefined}
                       className={`block py-3 text-xl font-bold tracking-tight ${
                         pathname === link.href ? "text-orange-600" : "text-gray-900"
                       }`}
