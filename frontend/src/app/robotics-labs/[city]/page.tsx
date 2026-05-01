@@ -83,6 +83,30 @@ const cityData: Record<string, {
         labs: 42,
         competitions: 18,
     },
+    kolkata: {
+        name: "Kolkata",
+        state: "West Bengal",
+        description: "Kolkata's robotics labs combine tradition with innovation. We provide students with the tools to build advanced robots, focusing on both mechanical engineering and intelligent programming.",
+        specialties: ["Mechanical Engineering", "Arduino", "AI Robotics", "Competition Prep", "Robot Design"],
+        labs: 25,
+        competitions: 8,
+    },
+    ahmedabad: {
+        name: "Ahmedabad",
+        state: "Gujarat",
+        description: "Ahmedabad's robotics labs are centers for technical excellence. Students learn to build complex autonomous systems, preparing them for industrial robotics and automation challenges.",
+        specialties: ["Autonomous Systems", "Industrial Robotics", "IoT Integration", "Coding", "Drone Tech"],
+        labs: 32,
+        competitions: 15,
+    },
+    jaipur: {
+        name: "Jaipur",
+        state: "Rajasthan",
+        description: "Jaipur is emerging as a strong competitor in robotics education. Our labs provide state-of-the-art equipment for students to explore the world of robotics and automation.",
+        specialties: ["Robotics Fundamentals", "Sensor Networks", "Microcontrollers", "AI Basics", "Competition Prep"],
+        labs: 22,
+        competitions: 10,
+    },
 };
 
 export async function generateStaticParams() {

@@ -85,7 +85,7 @@ export default function FloatingDemoButton() {
             initial={{ scale: 0, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0, opacity: 0 }}
-            className="fixed right-6 bottom-6 z-50"
+            className="fixed left-6 bottom-6 z-50"
           >
             <motion.button
               onClick={() => setIsOpen(true)}
@@ -137,7 +137,7 @@ export default function FloatingDemoButton() {
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
-              className="fixed right-4 bottom-4 sm:right-6 sm:bottom-6 z-50 w-[calc(100%-2rem)] sm:w-[400px] max-h-[90vh] overflow-y-auto"
+              className="fixed left-4 bottom-4 sm:left-6 sm:bottom-6 z-50 w-[calc(100%-2rem)] sm:w-[400px] max-h-[90vh] overflow-y-auto"
             >
               <div className="bg-white rounded-3xl shadow-2xl overflow-hidden">
                 {/* Header */}
@@ -320,10 +320,10 @@ export default function FloatingDemoButton() {
         href="https://wa.me/916356631515?text=Hi,%20I%20am%20interested%20in%20STEM%20Mantra%20programs"
         target="_blank"
         rel="noopener noreferrer"
-        className="fixed left-6 bottom-6 z-40 w-14 h-14 bg-green-500 rounded-full shadow-lg flex items-center justify-center hover:bg-green-600 hover:scale-110 transition-all group"
+        className="fixed right-6 bottom-6 z-40 w-14 h-14 bg-green-500 rounded-full shadow-lg flex items-center justify-center hover:bg-green-600 hover:scale-110 transition-all group"
       >
         <FaWhatsapp className="w-7 h-7 text-white" />
-        <span className="absolute left-16 bg-black/80 text-white text-sm px-3 py-1 rounded-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity">
+        <span className="absolute right-16 bg-black/80 text-white text-sm px-3 py-1 rounded-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity">
           Chat on WhatsApp
         </span>
       </a>

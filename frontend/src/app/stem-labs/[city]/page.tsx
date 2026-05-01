@@ -82,6 +82,30 @@ const cityData: Record<string, {
         labs: 36,
         schools: 30,
     },
+    kolkata: {
+        name: "Kolkata",
+        state: "West Bengal",
+        description: "Kolkata's rich intellectual heritage is being complemented by our modern STEM labs. We help schools integrate hands-on learning into their traditional academic excellence.",
+        specialties: ["Scientific Innovation", "Mechanical Design", "Electronics", "Applied Mathematics", "Digital Fabrication"],
+        labs: 22,
+        schools: 18,
+    },
+    ahmedabad: {
+        name: "Ahmedabad",
+        state: "Gujarat",
+        description: "Ahmedabad's enterprising spirit is reflected in our STEM Innovation Labs. We provide tools for rapid prototyping and creative problem solving for schools across the city.",
+        specialties: ["Entrepreneurship", "Design Thinking", "Product Design", "Electronics", "Coding"],
+        labs: 28,
+        schools: 22,
+    },
+    jaipur: {
+        name: "Jaipur",
+        state: "Rajasthan",
+        description: "Jaipur is rapidly becoming a hub for STEM education. Our labs provide students with the opportunity to explore technology and engineering through hands-on projects.",
+        specialties: ["Robotics Basics", "Electronics", "Science Experiments", "Coding", "Innovation Workshops"],
+        labs: 20,
+        schools: 15,
+    },
 };
 
 export async function generateStaticParams() {
