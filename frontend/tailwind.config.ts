@@ -49,8 +49,11 @@ const config: Config = {
         sm: "calc(var(--radius) - 4px)",
       },
       fontFamily: {
-        sans: ["var(--font-inter)", "sans-serif"],
-        heading: ["var(--font-poppins)", "sans-serif"],
+        body: ["var(--font-body)", "system-ui", "sans-serif"],
+        heading: ["var(--font-heading)", "Georgia", "serif"],
+      },
+      maxWidth: {
+        content: "1200px",
       },
       animation: {
         "fade-in": "fade-in 0.5s ease-in-out",

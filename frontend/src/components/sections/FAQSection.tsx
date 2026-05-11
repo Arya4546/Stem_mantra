@@ -46,52 +46,55 @@ export default function FAQSection() {
     const [openIndex, setOpenIndex] = useState<number | null>(0);
 
     return (
-        <section ref={ref} className="relative pt-12 pb-16 lg:pb-20 bg-gradient-to-br from-orange-50/50 via-white to-teal-50/50 overflow-hidden">
+        <section ref={ref} className="relative overflow-hidden" style={{ paddingTop: 'var(--space-12)', paddingBottom: 'var(--space-section)', backgroundColor: 'var(--color-surface)' }}>
             <FloatingAnimations variant="section" density="low" />
-            <div className="mx-auto px-4 md:px-8 lg:px-16 relative z-10">
+            <div className="max-w-content mx-auto px-4 md:px-8 relative z-10">
                 {/* Section Header */}
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     animate={isInView ? { opacity: 1, y: 0 } : {}}
                     transition={{ duration: 0.6 }}
-                    className="text-center max-w-5xl mx-auto mb-12"
+                    className="text-center max-w-4xl mx-auto mb-12"
                 >
-                    <span className="inline-flex items-center gap-2 px-4 py-1.5 bg-teal-100 text-teal-600 rounded-full text-sm font-semibold mb-4">
+                    <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-md text-xs font-semibold mb-4"
+                      style={{ backgroundColor: 'var(--color-surface-alt)', color: 'var(--color-primary)', border: '1px solid var(--color-border)' }}>
                         <HelpCircle className="w-4 h-4" />
                         Frequently Asked Questions
                     </span>
-                    <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                    <h2 className="font-heading mb-4" style={{ fontSize: 'var(--text-4xl)', color: 'var(--color-text-primary)' }}>
                         Everything You Need to Know About{" "}
-                        <span className="bg-gradient-to-r from-orange-500 to-teal-500 bg-clip-text text-transparent">
+                        <span style={{ color: 'var(--color-accent)' }}>
                             STEM Education
                         </span>
                     </h2>
-                    <p className="text-lg text-gray-600">
+                    <p style={{ fontSize: 'var(--text-lg)', color: 'var(--color-text-secondary)' }}>
                         Get answers to common questions about our robotics labs, curriculum, training, and how we can help transform your school.
                     </p>
                 </motion.div>
 
                 {/* FAQ Accordion */}
-                <div className="max-w-5xl mx-auto">
+                <div className="max-w-4xl mx-auto">
                     {faqs.map((faq, index) => (
                         <motion.div
                             key={index}
                             initial={{ opacity: 0, y: 20 }}
                             animate={isInView ? { opacity: 1, y: 0 } : {}}
                             transition={{ duration: 0.4, delay: index * 0.05 }}
-                            className="mb-4"
+                            className="mb-3"
                         >
                             <button
                                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                                className={`w-full flex items-center justify-between p-5 rounded-xl text-left transition-all ${openIndex === index
-                                    ? "bg-gradient-to-r from-orange-500 to-teal-500 text-white shadow-lg"
-                                    : "bg-white text-gray-900 hover:bg-gray-50 border border-gray-100 shadow-sm"
-                                    }`}
+                                className={`w-full flex items-center justify-between p-5 rounded-lg text-left transition-all`}
+                                style={{
+                                    backgroundColor: openIndex === index ? 'var(--color-primary)' : 'var(--color-white)',
+                                    color: openIndex === index ? 'white' : 'var(--color-text-primary)',
+                                    border: openIndex === index ? 'none' : '1px solid var(--color-border)',
+                                    boxShadow: openIndex === index ? '0 4px 16px rgba(27, 58, 92, 0.15)' : '0 1px 3px rgba(0,0,0,0.03)',
+                                }}
                             >
-                                <span className="font-semibold pr-4">{faq.question}</span>
+                                <span className="font-semibold pr-4" style={{ fontSize: 'var(--text-base)' }}>{faq.question}</span>
                                 <ChevronDown
-                                    className={`w-5 h-5 flex-shrink-0 transition-transform ${openIndex === index ? "rotate-180" : ""
-                                        }`}
+                                    className={`w-5 h-5 flex-shrink-0 transition-transform ${openIndex === index ? "rotate-180" : ""}`}
                                 />
                             </button>
                             <AnimatePresence>
@@ -103,8 +106,8 @@ export default function FAQSection() {
                                         transition={{ duration: 0.3 }}
                                         className="overflow-hidden"
                                     >
-                                        <div className="p-5 bg-white border border-t-0 border-gray-100 rounded-b-xl">
-                                            <p className="text-gray-600 leading-relaxed">{faq.answer}</p>
+                                        <div className="p-5 bg-white border border-t-0 rounded-b-lg" style={{ borderColor: 'var(--color-border)' }}>
+                                            <p className="leading-relaxed" style={{ color: 'var(--color-text-secondary)', fontSize: 'var(--text-base)', lineHeight: 1.7 }}>{faq.answer}</p>
                                         </div>
                                     </motion.div>
                                 )}
@@ -118,12 +121,12 @@ export default function FAQSection() {
                     initial={{ opacity: 0, y: 30 }}
                     animate={isInView ? { opacity: 1, y: 0 } : {}}
                     transition={{ duration: 0.6, delay: 0.5 }}
-                    className="mt-12 max-w-3xl mx-auto text-center"
+                    className="mt-10 max-w-3xl mx-auto text-center"
                 >
-                    <p className="text-gray-600">
+                    <p style={{ color: 'var(--color-text-secondary)' }}>
                         Still have questions? Our team is ready to help you understand how STEMmantra can
                         transform your school&apos;s technology education.
-                        <a href="/contact" className="text-orange-600 font-semibold hover:underline ml-1">
+                        <a href="/contact" className="font-semibold hover:underline ml-1" style={{ color: 'var(--color-accent)' }}>
                             Contact us today
                         </a> for a free consultation and school assessment.
                     </p>

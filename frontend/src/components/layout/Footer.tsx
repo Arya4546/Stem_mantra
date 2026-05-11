@@ -112,93 +112,93 @@ export default function Footer() {
   };
 
   return (
-    <footer className="relative bg-gray-900 text-white overflow-hidden">
-      {/* Decorative Elements */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 right-1/4 w-96 h-96 bg-orange-500/5 rounded-full filter blur-3xl" />
-        <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-teal-500/5 rounded-full filter blur-3xl" />
-      </div>
+    <footer className="relative text-white overflow-hidden" style={{ backgroundColor: 'var(--color-primary-dark)' }}>
 
       {/* Main Footer Content */}
-      <div className="relative container mx-auto px-4 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-12 mb-12">
+      <div className="relative max-w-content mx-auto px-4 md:px-8 py-14">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-10 mb-10">
           {/* Brand Section */}
-          <div className="lg:col-span-2 space-y-6">
+          <div className="lg:col-span-2 space-y-5">
             <div>
               <Link href="/" className="flex items-center mb-4">
                 <img
                   src="/images/logo.png"
                   alt="STEMmantra Logo"
-                  className="h-14 w-auto object-contain"
-                  style={{ maxWidth: '180px' }}
+                  className="h-12 w-auto object-contain"
+                  style={{ maxWidth: '170px' }}
+                  loading="lazy"
                 />
               </Link>
-              <p className="text-gray-400 text-sm leading-relaxed max-w-sm">
+              <p className="text-sm leading-relaxed max-w-sm" style={{ color: 'rgba(255, 255, 255, 0.5)' }}>
                 India&apos;s leading provider of robotics, AI, and STEM education solutions for schools. 
                 Transforming education through innovation and hands-on learning.
               </p>
             </div>
 
             {/* Social Links */}
-            <div className="flex gap-3">
+            <div className="flex gap-2.5">
               {[
-                { Icon: FaFacebookF, href: SITE_CONFIG.social.facebook, color: "hover:bg-blue-600", label: "Facebook" },
-                { Icon: FaTwitter, href: SITE_CONFIG.social.twitter, color: "hover:bg-sky-500", label: "Twitter" },
-                { Icon: FaLinkedinIn, href: SITE_CONFIG.social.linkedin, color: "hover:bg-blue-700", label: "LinkedIn" },
-                { Icon: FaYoutube, href: SITE_CONFIG.social.youtube, color: "hover:bg-red-600", label: "YouTube" },
-                { Icon: FaInstagram, href: SITE_CONFIG.social.instagram, color: "hover:bg-pink-600", label: "Instagram" },
-                { Icon: FaWhatsapp, href: "https://wa.me/916356631515", color: "hover:bg-green-600", label: "WhatsApp" },
-              ].map(({ Icon, href, color, label }, index) => (
+                { Icon: FaFacebookF, href: SITE_CONFIG.social.facebook, label: "Facebook" },
+                { Icon: FaTwitter, href: SITE_CONFIG.social.twitter, label: "Twitter" },
+                { Icon: FaLinkedinIn, href: SITE_CONFIG.social.linkedin, label: "LinkedIn" },
+                { Icon: FaYoutube, href: SITE_CONFIG.social.youtube, label: "YouTube" },
+                { Icon: FaInstagram, href: SITE_CONFIG.social.instagram, label: "Instagram" },
+                { Icon: FaWhatsapp, href: "https://wa.me/916356631515", label: "WhatsApp" },
+              ].map(({ Icon, href, label }, index) => (
                 <a
                   key={index}
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-gray-400 hover:text-white transition-all duration-200 ${color}`}
+                  className="w-9 h-9 rounded-lg flex items-center justify-center transition-all duration-200 hover:opacity-100"
+                  style={{ backgroundColor: 'rgba(255, 255, 255, 0.08)', color: 'rgba(255, 255, 255, 0.5)' }}
                   aria-label={label}
                 >
-                  <Icon className="w-4 h-4" />
+                  <Icon className="w-3.5 h-3.5" />
                 </a>
               ))}
             </div>
 
             {/* Contact Quick Links */}
-            <div className="space-y-3">
+            <div className="space-y-2.5">
               <a
                 href={`tel:${SITE_CONFIG.contact.mobile}`}
-                className="flex items-center gap-3 text-gray-400 hover:text-orange-500 transition-colors"
+                className="flex items-center gap-3 transition-colors hover:opacity-80"
+                style={{ color: 'rgba(255, 255, 255, 0.5)' }}
               >
-                <FaPhone className="w-4 h-4 text-orange-500" />
-                <span className="text-sm">{SITE_CONFIG.contact.mobile}</span>
+                <FaPhone className="w-3.5 h-3.5" style={{ color: 'var(--color-accent)' }} />
+                <span style={{ fontSize: 'var(--text-sm)' }}>{SITE_CONFIG.contact.mobile}</span>
               </a>
               <a
                 href={`tel:${SITE_CONFIG.contact.landline}`}
-                className="flex items-center gap-3 text-gray-400 hover:text-orange-500 transition-colors"
+                className="flex items-center gap-3 transition-colors hover:opacity-80"
+                style={{ color: 'rgba(255, 255, 255, 0.5)' }}
               >
-                <FaPhone className="w-4 h-4 text-orange-500" />
-                <span className="text-sm">{SITE_CONFIG.contact.landline} (Landline)</span>
+                <FaPhone className="w-3.5 h-3.5" style={{ color: 'var(--color-accent)' }} />
+                <span style={{ fontSize: 'var(--text-sm)' }}>{SITE_CONFIG.contact.landline} (Landline)</span>
               </a>
               <a
                 href={`mailto:${SITE_CONFIG.contact.email}`}
-                className="flex items-center gap-3 text-gray-400 hover:text-orange-500 transition-colors"
+                className="flex items-center gap-3 transition-colors hover:opacity-80"
+                style={{ color: 'rgba(255, 255, 255, 0.5)' }}
               >
-                <FaEnvelope className="w-4 h-4 text-orange-500" />
-                <span className="text-sm">{SITE_CONFIG.contact.email}</span>
+                <FaEnvelope className="w-3.5 h-3.5" style={{ color: 'var(--color-accent)' }} />
+                <span style={{ fontSize: 'var(--text-sm)' }}>{SITE_CONFIG.contact.email}</span>
               </a>
-              <div className="flex items-start gap-3 text-gray-400">
-                <FaMapMarkerAlt className="w-4 h-4 text-orange-500 mt-0.5" />
-                <span className="text-sm">{SITE_CONFIG.contact.address}</span>
+              <div className="flex items-start gap-3" style={{ color: 'rgba(255, 255, 255, 0.5)' }}>
+                <FaMapMarkerAlt className="w-3.5 h-3.5 mt-0.5" style={{ color: 'var(--color-accent)' }} />
+                <span style={{ fontSize: 'var(--text-sm)' }}>{SITE_CONFIG.contact.address}</span>
               </div>
             </div>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-white font-semibold mb-6 flex items-center gap-2">
-              <span className="w-8 h-0.5 bg-orange-500 rounded"></span>
+            <h4 className="text-white font-semibold mb-5 flex items-center gap-2" style={{ fontSize: 'var(--text-sm)' }}>
+              <span className="w-6 h-0.5 rounded" style={{ backgroundColor: 'var(--color-accent)' }}></span>
               Quick Links
             </h4>
-            <ul className="space-y-3">
+            <ul className="space-y-2.5">
               {[
                 { label: "Home", href: "/" },
                 { label: "About Us", href: "/about" },
@@ -215,17 +215,19 @@ export default function Footer() {
                       href={link.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-gray-400 hover:text-orange-500 transition-colors duration-200 text-sm flex items-center group"
+                      className="transition-colors duration-200 flex items-center group"
+                      style={{ color: 'rgba(255, 255, 255, 0.45)', fontSize: 'var(--text-sm)' }}
                     >
-                      <FaChevronRight className="w-2 h-2 mr-2 opacity-0 group-hover:opacity-100 transition-opacity text-orange-500" />
+                      <FaChevronRight className="w-2 h-2 mr-2 opacity-0 group-hover:opacity-100 transition-opacity" style={{ color: 'var(--color-accent)' }} />
                       {link.label}
                     </a>
                   ) : (
                     <Link
                       href={link.href}
-                      className="text-gray-400 hover:text-orange-500 transition-colors duration-200 text-sm flex items-center group"
+                      className="transition-colors duration-200 flex items-center group"
+                      style={{ color: 'rgba(255, 255, 255, 0.45)', fontSize: 'var(--text-sm)' }}
                     >
-                      <FaChevronRight className="w-2 h-2 mr-2 opacity-0 group-hover:opacity-100 transition-opacity text-orange-500" />
+                      <FaChevronRight className="w-2 h-2 mr-2 opacity-0 group-hover:opacity-100 transition-opacity" style={{ color: 'var(--color-accent)' }} />
                       {link.label}
                     </Link>
                   )}
@@ -236,11 +238,11 @@ export default function Footer() {
 
           {/* Programs */}
           <div>
-            <h4 className="text-white font-semibold mb-6 flex items-center gap-2">
-              <span className="w-8 h-0.5 bg-teal-500 rounded"></span>
+            <h4 className="text-white font-semibold mb-5 flex items-center gap-2" style={{ fontSize: 'var(--text-sm)' }}>
+              <span className="w-6 h-0.5 rounded" style={{ backgroundColor: 'var(--color-primary-light)' }}></span>
               Our Programs
             </h4>
-            <ul className="space-y-3">
+            <ul className="space-y-2.5">
               {[
                 { label: "ATL Labs", href: "/programs/atl-labs" },
                 { label: "Robotics & AI Labs", href: "/programs/robotics-lab" },
@@ -252,9 +254,10 @@ export default function Footer() {
                 <li key={index}>
                   <Link
                     href={link.href}
-                    className="text-gray-400 hover:text-teal-500 transition-colors duration-200 text-sm flex items-center group"
+                    className="transition-colors duration-200 flex items-center group"
+                    style={{ color: 'rgba(255, 255, 255, 0.45)', fontSize: 'var(--text-sm)' }}
                   >
-                    <FaChevronRight className="w-2 h-2 mr-2 opacity-0 group-hover:opacity-100 transition-opacity text-teal-500" />
+                    <FaChevronRight className="w-2 h-2 mr-2 opacity-0 group-hover:opacity-100 transition-opacity" style={{ color: 'var(--color-primary-light)' }} />
                     {link.label}
                   </Link>
                 </li>
@@ -264,18 +267,19 @@ export default function Footer() {
 
           {/* Location-Based Services - STEM Labs */}
           <div>
-            <h4 className="text-white font-semibold mb-6 flex items-center gap-2">
-              <span className="w-8 h-0.5 bg-purple-500 rounded"></span>
+            <h4 className="text-white font-semibold mb-5 flex items-center gap-2" style={{ fontSize: 'var(--text-sm)' }}>
+              <span className="w-6 h-0.5 rounded" style={{ backgroundColor: 'var(--color-accent)' }}></span>
               STEM Labs By City
             </h4>
-            <ul className="space-y-3">
+            <ul className="space-y-2.5">
               {locationServices["STEM Labs"].map((location, index) => (
                 <li key={index}>
                   <Link
                     href={location.href}
-                    className="text-gray-400 hover:text-purple-500 transition-colors duration-200 text-sm flex items-center group"
+                    className="transition-colors duration-200 flex items-center group"
+                    style={{ color: 'rgba(255, 255, 255, 0.45)', fontSize: 'var(--text-sm)' }}
                   >
-                    <FaChevronRight className="w-2 h-2 mr-2 opacity-0 group-hover:opacity-100 transition-opacity text-purple-500" />
+                    <FaChevronRight className="w-2 h-2 mr-2 opacity-0 group-hover:opacity-100 transition-opacity" style={{ color: 'var(--color-accent)' }} />
                     STEM Lab in {location.city}
                   </Link>
                 </li>
@@ -285,18 +289,19 @@ export default function Footer() {
 
           {/* Location-Based Services - Robotics Labs */}
           <div>
-            <h4 className="text-white font-semibold mb-6 flex items-center gap-2">
-              <span className="w-8 h-0.5 bg-blue-500 rounded"></span>
+            <h4 className="text-white font-semibold mb-5 flex items-center gap-2" style={{ fontSize: 'var(--text-sm)' }}>
+              <span className="w-6 h-0.5 rounded" style={{ backgroundColor: 'var(--color-primary-light)' }}></span>
               Robotics Labs By City
             </h4>
-            <ul className="space-y-3">
+            <ul className="space-y-2.5">
               {locationServices["Robotics Labs"].map((location, index) => (
                 <li key={index}>
                   <Link
                     href={location.href}
-                    className="text-gray-400 hover:text-blue-500 transition-colors duration-200 text-sm flex items-center group"
+                    className="transition-colors duration-200 flex items-center group"
+                    style={{ color: 'rgba(255, 255, 255, 0.45)', fontSize: 'var(--text-sm)' }}
                   >
-                    <FaChevronRight className="w-2 h-2 mr-2 opacity-0 group-hover:opacity-100 transition-opacity text-blue-500" />
+                    <FaChevronRight className="w-2 h-2 mr-2 opacity-0 group-hover:opacity-100 transition-opacity" style={{ color: 'var(--color-primary-light)' }} />
                     Robotics Lab in {location.city}
                   </Link>
                 </li>
@@ -305,15 +310,16 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* ATL Labs By State - Horizontal Row */}
-        <div className="border-t border-gray-800 pt-8 mb-8">
-          <h4 className="text-white font-semibold mb-4 text-center">ATL Lab Setup By State</h4>
-          <div className="flex flex-wrap justify-center gap-4">
+        {/* ATL Labs By State */}
+        <div className="border-t pt-6 mb-6" style={{ borderColor: 'rgba(255, 255, 255, 0.1)' }}>
+          <h4 className="text-white font-semibold mb-4 text-center" style={{ fontSize: 'var(--text-sm)' }}>ATL Lab Setup By State</h4>
+          <div className="flex flex-wrap justify-center gap-3">
             {locationServices["ATL Labs"].map((location, index) => (
               <Link
                 key={index}
                 href={location.href}
-                className="px-4 py-2 bg-white/5 hover:bg-orange-500/20 border border-gray-800 hover:border-orange-500/30 rounded-lg text-gray-400 hover:text-orange-500 text-sm transition-all duration-200"
+                className="px-3.5 py-1.5 rounded-md transition-all duration-200"
+                style={{ backgroundColor: 'rgba(255, 255, 255, 0.05)', border: '1px solid rgba(255, 255, 255, 0.1)', color: 'rgba(255, 255, 255, 0.45)', fontSize: 'var(--text-sm)' }}
               >
                 ATL Lab in {location.city}
               </Link>
@@ -322,19 +328,21 @@ export default function Footer() {
         </div>
 
         {/* Newsletter Section */}
-        <div className="bg-gradient-to-r from-orange-500/10 to-teal-500/10 rounded-2xl p-6 sm:p-8 mb-12 border border-gray-800">
-          <div className="flex flex-col items-center text-center md:text-left md:flex-row md:justify-between gap-6">
+        <div className="rounded-xl p-6 sm:p-8 mb-10 border" style={{ backgroundColor: 'rgba(232, 121, 43, 0.06)', borderColor: 'rgba(255, 255, 255, 0.1)' }}>
+          <div className="flex flex-col items-center text-center md:text-left md:flex-row md:justify-between gap-5">
             <div>
-              <h4 className="text-lg sm:text-xl font-bold text-white mb-2">Subscribe to Our Newsletter</h4>
-              <p className="text-gray-400 text-sm">Get the latest updates on STEM education and programs</p>
+              <h4 className="font-bold text-white mb-1.5" style={{ fontSize: 'var(--text-lg)' }}>Subscribe to Our Newsletter</h4>
+              <p style={{ color: 'rgba(255, 255, 255, 0.45)', fontSize: 'var(--text-sm)' }}>Get the latest updates on STEM education and programs</p>
             </div>
             <div className="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
               <input
                 type="email"
                 placeholder="Enter your email"
-                className="w-full sm:w-auto md:w-64 px-4 py-3 bg-white/10 border border-gray-700 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-orange-500 transition-colors"
+                className="w-full sm:w-auto md:w-60 px-4 py-3 rounded-lg text-white placeholder-gray-500 transition-colors"
+                style={{ backgroundColor: 'rgba(255, 255, 255, 0.08)', border: '1px solid rgba(255, 255, 255, 0.15)', fontSize: 'var(--text-sm)' }}
               />
-              <button className="w-full sm:w-auto px-6 py-3 bg-gradient-to-r from-orange-500 to-orange-600 text-white rounded-xl font-semibold hover:shadow-lg hover:shadow-orange-500/20 transition-all whitespace-nowrap">
+              <button className="w-full sm:w-auto px-5 py-3 text-white rounded-lg font-semibold hover:brightness-110 transition-all whitespace-nowrap"
+                style={{ backgroundColor: 'var(--color-accent)', fontSize: 'var(--text-sm)' }}>
                 Subscribe
               </button>
             </div>
@@ -342,20 +350,20 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-gray-800 pt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-500">
+        <div className="border-t pt-6" style={{ borderColor: 'rgba(255, 255, 255, 0.1)' }}>
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4" style={{ color: 'rgba(255, 255, 255, 0.4)', fontSize: 'var(--text-sm)' }}>
             <p>© {currentYear} STEMmantra Technologies Pvt. Ltd. All rights reserved.</p>
-            <div className="flex flex-wrap justify-center gap-6">
-              <Link href="/privacy-policy" className="hover:text-orange-500 transition-colors">
+            <div className="flex flex-wrap justify-center gap-5">
+              <Link href="/privacy-policy" className="hover:opacity-80 transition-opacity">
                 Privacy Policy
               </Link>
-              <Link href="/terms-of-service" className="hover:text-orange-500 transition-colors">
+              <Link href="/terms-of-service" className="hover:opacity-80 transition-opacity">
                 Terms of Service
               </Link>
-              <Link href="/refund-policy" className="hover:text-orange-500 transition-colors">
+              <Link href="/refund-policy" className="hover:opacity-80 transition-opacity">
                 Refund Policy
               </Link>
-              <Link href="/sitemap" className="hover:text-orange-500 transition-colors">
+              <Link href="/sitemap" className="hover:opacity-80 transition-opacity">
                 Sitemap
               </Link>
             </div>

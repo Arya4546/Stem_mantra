@@ -42,31 +42,31 @@ export default function Header() {
       title: "Pre Tinkering Lab",
       href: "/programs/pre-tinkering-lab",
       description: "Grades 3-5 foundation learning",
-      icon: <Microscope className="w-5 h-5 text-orange-500" />,
+      icon: <Microscope className="w-5 h-5 text-[var(--color-accent)]" />,
     },
     {
       title: "STEAMVERSE Lab",
       href: "/programs/steamverse-lab",
       description: "Robotics & IoT integration",
-      icon: <Zap className="w-5 h-5 text-teal-500" />,
+      icon: <Zap className="w-5 h-5 text-[var(--color-primary)]" />,
     },
     {
       title: "AI & Coding Lab",
       href: "/programs/ai-coding-lab",
       description: "Python & Machine Learning",
-      icon: <Bot className="w-5 h-5 text-blue-500" />,
+      icon: <Bot className="w-5 h-5 text-[var(--color-primary-light)]" />,
     },
     {
       title: "INNOVERSE Lab",
       href: "/programs/innoverse-lab",
       description: "Customized Tech solutions",
-      icon: <Award className="w-5 h-5 text-purple-500" />,
+      icon: <Award className="w-5 h-5 text-[var(--color-accent)]" />,
     },
     {
       title: "ATL Lab",
       href: "/programs/atl-lab",
       description: "NITI Aayog compliance",
-      icon: <Target className="w-5 h-5 text-indigo-500" />,
+      icon: <Target className="w-5 h-5 text-[var(--color-primary)]" />,
     },
   ];
 
@@ -74,23 +74,26 @@ export default function Header() {
     <>
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled ? "bg-white/95 backdrop-blur-md shadow-lg py-4" : "bg-white py-6"
-        } border-b border-gray-100 px-4 md:px-8 lg:px-16`}
+          isScrolled
+            ? "bg-white/98 backdrop-blur-sm shadow-sm py-3"
+            : "bg-white py-4"
+        } border-b border-[var(--color-border)] px-4 md:px-8 lg:px-16`}
       >
-        <div className="w-full flex items-center justify-between">
-          {/* Logo - Static Style (Not touched) */}
+        <div className="w-full max-w-content mx-auto flex items-center justify-between">
+          {/* Logo */}
           <Link href="/" className="flex items-center shrink-0">
             <img
               src="/images/logo.png"
               alt="STEMmantra"
-              className="h-14 w-auto object-contain"
-              style={{ maxWidth: '260px' }}
+              className="h-12 w-auto object-contain"
+              style={{ maxWidth: '240px' }}
+              fetchPriority="high"
             />
           </Link>
 
-          {/* Desktop Navigation - Right Side Highlighting */}
-          <div className="hidden lg:flex items-center gap-6 xl:gap-10">
-            <nav className="flex items-center gap-1 xl:gap-3">
+          {/* Desktop Navigation */}
+          <div className="hidden lg:flex items-center gap-6 xl:gap-8">
+            <nav className="flex items-center gap-1 xl:gap-2">
               {navLinks.map((link) => (
                 <div
                   key={link.name}
@@ -102,10 +105,10 @@ export default function Header() {
                     href={link.href}
                     target={link.external ? "_blank" : undefined}
                     rel={link.external ? "noopener noreferrer" : undefined}
-                    className={`px-3 py-2 text-[16px] font-bold tracking-tight transition-all duration-300 flex items-center gap-1.5 ${
+                    className={`px-3 py-2 text-[15px] font-semibold tracking-tight transition-all duration-200 flex items-center gap-1.5 rounded-md ${
                       pathname === link.href || (link.dropdown && pathname.startsWith("/programs"))
-                        ? "text-orange-600"
-                        : "text-gray-700 hover:text-orange-600"
+                        ? "text-[var(--color-accent)]"
+                        : "text-[var(--color-text-primary)] hover:text-[var(--color-accent)]"
                     }`}
                   >
                     {link.name}
@@ -119,30 +122,31 @@ export default function Header() {
                     <AnimatePresence>
                       {isProgramsOpen && (
                         <motion.div
-                          initial={{ opacity: 0, y: 10 }}
+                          initial={{ opacity: 0, y: 8 }}
                           animate={{ opacity: 1, y: 0 }}
-                          exit={{ opacity: 0, y: 10 }}
-                          className="absolute top-full left-1/2 -translate-x-1/2 pt-4 w-[550px]"
+                          exit={{ opacity: 0, y: 8 }}
+                          transition={{ duration: 0.2 }}
+                          className="absolute top-full left-1/2 -translate-x-1/2 pt-3 w-[520px]"
                         >
-                          <div className="bg-white rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.18)] border border-gray-100 p-5 grid grid-cols-2 gap-3">
+                          <div className="bg-white rounded-xl shadow-lg border border-[var(--color-border)] p-4 grid grid-cols-2 gap-2">
                             {programs.map((prog) => (
                               <Link
                                 key={prog.title}
                                 href={prog.href}
-                                className="flex items-start gap-4 p-4 rounded-xl hover:bg-orange-50 transition-all duration-300 group/item border border-transparent hover:border-orange-100"
+                                className="flex items-start gap-3 p-3 rounded-lg hover:bg-[var(--color-surface)] transition-all duration-200 group/item border border-transparent hover:border-[var(--color-border)]"
                               >
-                                <div className="p-2.5 bg-gray-50 rounded-xl group-hover/item:bg-white transition-colors border border-gray-100">
+                                <div className="p-2 bg-[var(--color-surface-alt)] rounded-lg group-hover/item:bg-white transition-colors border border-[var(--color-border)]">
                                   {prog.icon}
                                 </div>
                                 <div className="min-w-0">
-                                  <div className="text-[14px] font-black text-gray-900 group-hover/item:text-orange-600 transition-colors">{prog.title}</div>
-                                  <div className="text-[11px] text-gray-400 mt-1 truncate">{prog.description}</div>
+                                  <div className="text-sm font-bold text-[var(--color-text-primary)] group-hover/item:text-[var(--color-accent)] transition-colors">{prog.title}</div>
+                                  <div className="text-xs text-[var(--color-text-secondary)] mt-0.5 truncate">{prog.description}</div>
                                 </div>
                               </Link>
                             ))}
                             <Link 
                               href="/programs" 
-                              className="col-span-2 mt-3 p-4 bg-gray-900 rounded-xl text-center text-xs font-black text-white hover:bg-orange-600 transition-all flex items-center justify-center gap-2 group"
+                              className="col-span-2 mt-2 p-3 bg-[var(--color-primary)] rounded-lg text-center text-xs font-bold text-white hover:bg-[var(--color-primary-dark)] transition-all flex items-center justify-center gap-2 group"
                             >
                               EXPLORE ALL PROGRAMS <FaArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
                             </Link>
@@ -155,10 +159,10 @@ export default function Header() {
               ))}
             </nav>
 
-            {/* Enquire Now Button - Professional Highlighting */}
+            {/* Enquire Now Button */}
             <Link
               href="/contact"
-              className="h-14 px-10 flex items-center justify-center bg-orange-600 hover:bg-gray-900 text-white font-black text-[15px] rounded-2xl transition-all duration-300 shadow-xl shadow-orange-600/25 uppercase tracking-widest active:scale-95"
+              className="h-12 px-8 flex items-center justify-center bg-[var(--color-primary)] hover:bg-[var(--color-primary-dark)] text-white font-bold text-sm rounded-lg transition-all duration-200 shadow-md hover:shadow-lg uppercase tracking-wider active:scale-[0.98]"
             >
               Enquire Now
             </Link>
@@ -167,7 +171,8 @@ export default function Header() {
           {/* Mobile Menu Toggle */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="lg:hidden w-12 h-12 flex items-center justify-center text-gray-900 bg-gray-50 hover:bg-gray-100 rounded-xl border border-gray-200 transition-colors"
+            className="lg:hidden w-12 h-12 flex items-center justify-center text-[var(--color-text-primary)] bg-[var(--color-surface)] hover:bg-[var(--color-surface-alt)] rounded-lg border border-[var(--color-border)] transition-colors"
+            aria-label="Toggle mobile menu"
           >
             {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
@@ -181,7 +186,7 @@ export default function Header() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[60] bg-black/60 lg:hidden"
+            className="fixed inset-0 z-[60] bg-black/50 lg:hidden"
             onClick={() => setIsMobileMenuOpen(false)}
           >
             <motion.div
@@ -192,33 +197,34 @@ export default function Header() {
               className="absolute right-0 top-0 bottom-0 w-[85%] max-w-sm bg-white shadow-2xl flex flex-col p-8 overflow-y-auto"
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="flex items-center justify-between mb-12">
+              <div className="flex items-center justify-between mb-10">
                  <img src="/images/logo.png" alt="STEMmantra" className="h-10 w-auto" />
                  <button 
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="p-2 bg-gray-100 rounded-lg"
+                  className="p-2 bg-[var(--color-surface)] rounded-lg"
+                  aria-label="Close menu"
                  >
                    <X className="w-6 h-6" />
                  </button>
               </div>
 
-              <div className="flex-1 space-y-2">
+              <div className="flex-1 space-y-1">
                 {navLinks.map((link) => (
                   <div key={link.name}>
                     <Link
                       href={link.href}
                       target={link.external ? "_blank" : undefined}
                       rel={link.external ? "noopener noreferrer" : undefined}
-                      className={`block py-3 text-xl font-bold tracking-tight ${
-                        pathname === link.href ? "text-orange-600" : "text-gray-900"
+                      className={`block py-3 text-lg font-semibold ${
+                        pathname === link.href ? "text-[var(--color-accent)]" : "text-[var(--color-text-primary)]"
                       }`}
                     >
                       {link.name}
                     </Link>
                     {link.dropdown && (
-                      <div className="mt-1 pl-4 space-y-2 border-l-2 border-orange-500/20 mb-4">
+                      <div className="mt-1 pl-4 space-y-1.5 border-l-2 border-[var(--color-accent)]/20 mb-4">
                         {programs.map((p) => (
-                          <Link key={p.title} href={p.href} className="block py-1 text-[16px] font-semibold text-gray-500 hover:text-orange-600">
+                          <Link key={p.title} href={p.href} className="block py-1.5 text-[15px] font-medium text-[var(--color-text-secondary)] hover:text-[var(--color-accent)]">
                             {p.title}
                           </Link>
                         ))}
@@ -228,24 +234,24 @@ export default function Header() {
                 ))}
               </div>
 
-              <div className="mt-auto py-10 border-t border-gray-100">
+              <div className="mt-auto py-8 border-t border-[var(--color-border)]">
                 <a
                   href={`tel:${SITE_CONFIG.contact.mobile}`}
-                  className="flex items-center gap-3 p-4 bg-orange-50 text-orange-600 rounded-2xl font-bold mb-3"
+                  className="flex items-center gap-3 p-3 bg-[var(--color-surface)] text-[var(--color-primary)] rounded-lg font-semibold mb-2"
                 >
                   <FaPhone className="w-4 h-4" />
                   <span>{SITE_CONFIG.contact.mobile}</span>
                 </a>
                 <a
                   href={`tel:${SITE_CONFIG.contact.landline}`}
-                  className="flex items-center gap-3 p-4 bg-orange-50 text-orange-600 rounded-2xl font-bold mb-4"
+                  className="flex items-center gap-3 p-3 bg-[var(--color-surface)] text-[var(--color-primary)] rounded-lg font-semibold mb-4"
                 >
                   <FaPhone className="w-4 h-4" />
                   <span>{SITE_CONFIG.contact.landline}</span>
                 </a>
                 <Link
                   href="/contact"
-                  className="flex items-center justify-center w-full h-16 bg-orange-600 text-white font-bold rounded-2xl shadow-xl shadow-orange-600/20 uppercase tracking-widest"
+                  className="flex items-center justify-center w-full h-14 bg-[var(--color-primary)] text-white font-bold rounded-lg shadow-md uppercase tracking-wider"
                 >
                   Get A Quote
                 </Link>

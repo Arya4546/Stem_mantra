@@ -1,20 +1,21 @@
 import type { Metadata } from "next";
-import { Inter, Poppins } from "next/font/google";
+import { DM_Serif_Display, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "@/components/SmoothScroll";
 import Providers from "@/providers";
 import FloatingDemoButton from "@/components/ui/FloatingDemoButton";
 
-const inter = Inter({
+const dmSerifDisplay = DM_Serif_Display({
+  weight: "400",
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-heading",
   display: "swap",
 });
 
-const poppins = Poppins({
-  weight: ["400", "500", "600", "700", "800"],
+const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  variable: "--font-poppins",
+  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-body",
   display: "swap",
 });
 
@@ -91,8 +92,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${poppins.variable}`}>
-      <body className="font-sans antialiased w-full">
+    <html lang="en" className={`${dmSerifDisplay.variable} ${plusJakartaSans.variable}`}>
+      <body className="font-body antialiased w-full">
         {/* JSON-LD Organization Schema for rich Google search results */}
         <script
           type="application/ld+json"

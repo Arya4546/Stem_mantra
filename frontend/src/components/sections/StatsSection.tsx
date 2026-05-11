@@ -1,8 +1,8 @@
 "use client";
 
-import { useRef, useEffect, useState, useCallback } from "react";
+import { useRef, useEffect, useCallback } from "react";
 import { motion, useInView } from "framer-motion";
-import { FaSchool, FaUsers, FaAward, FaGlobeAsia } from "react-icons/fa";
+import { FaSchool, FaUsers, FaGlobeAsia } from "react-icons/fa";
 import FloatingAnimations from "@/components/animations/FloatingAnimations";
 
 const stats = [
@@ -60,49 +60,49 @@ export default function StatsSection() {
   const isInView = useInView(ref, { once: true, amount: 0.3 });
 
   return (
-    <section ref={ref} className="relative py-20 bg-gray-900 border-y-8 border-orange-500 overflow-hidden">
+    <section ref={ref} className="relative py-20 overflow-hidden" style={{ backgroundColor: 'var(--color-primary-dark)', borderTop: '4px solid var(--color-accent)', borderBottom: '4px solid var(--color-accent)' }}>
       <FloatingAnimations variant="stem" density="low" />
-      <div className="mx-auto px-4 md:px-8 lg:px-16 relative z-10">
-        <div className="mx-auto flex flex-col lg:flex-row items-center gap-16">
+      <div className="max-w-content mx-auto px-4 md:px-8 relative z-10">
+        <div className="mx-auto flex flex-col lg:flex-row items-center gap-14">
 
-          {/* The Text Column */}
+          {/* Text Column */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.7 }}
             className="lg:w-1/2"
           >
-            <div className="inline-block px-4 py-1.5 bg-gray-800 text-orange-400 font-black tracking-widest uppercase text-sm mb-6 rounded-none">
+            <div className="inline-block px-4 py-1.5 font-bold tracking-wider uppercase text-xs mb-6 rounded-md" style={{ backgroundColor: 'rgba(232, 121, 43, 0.15)', color: 'var(--color-accent)' }}>
               Quantifiable Academic Impact
             </div>
-            <h2 className="text-4xl lg:text-5xl font-extrabold text-white mb-6 leading-tight">
+            <h2 className="font-heading text-white mb-6 leading-tight" style={{ fontSize: 'var(--text-5xl)' }}>
               Powering India&apos;s
               <br />
-              <span className="text-orange-500">STEM Revolution</span>
+              <span style={{ color: 'var(--color-accent)' }}>STEM Revolution</span>
             </h2>
-            <p className="text-gray-300 text-lg leading-relaxed mb-6 font-medium">
+            <p className="text-lg leading-relaxed mb-5 font-medium" style={{ color: 'rgba(255, 255, 255, 0.75)', lineHeight: 1.7 }}>
               Through comprehensive Robotics labs and Atal Tinkering Lab integrations, we have established a demonstrable track record of elevating pedagogical standards and fostering deep technological literacy on a national scale.
             </p>
-            <p className="text-gray-400 text-base leading-relaxed">
+            <p className="leading-relaxed" style={{ color: 'rgba(255, 255, 255, 0.55)', fontSize: 'var(--text-base)', lineHeight: 1.7 }}>
               Our data-driven approach to experiential learning ensures measurable outcomes in student engagement, critical thinking assessments, and participation in national/international coding competition.
             </p>
           </motion.div>
 
-          {/* The Stats Column */}
+          {/* Stats Column */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="lg:w-1/2 grid grid-cols-2 gap-4 sm:gap-8 lg:gap-12"
+            className="lg:w-1/2 grid grid-cols-2 gap-4 sm:gap-8 lg:gap-10"
             style={{ willChange: 'transform', transform: 'translateZ(0)' }}
           >
             {stats.map((stat, index) => (
-              <div key={index} className="flex flex-col border-l-4 border-orange-500 pl-6 py-2 pb-6">
-                <stat.icon className="w-8 h-8 text-orange-500 mb-4 opacity-80" />
-                <div className="text-3xl sm:text-4xl md:text-5xl font-black text-white mb-2 tracking-tight break-words">
+              <div key={index} className="flex flex-col pl-5 py-2 pb-6" style={{ borderLeft: '3px solid var(--color-accent)' }}>
+                <stat.icon className="w-7 h-7 mb-4 opacity-70" style={{ color: 'var(--color-accent)' }} />
+                <div className="font-heading text-white mb-2 tracking-tight break-words" style={{ fontSize: 'var(--text-4xl)', fontVariantNumeric: 'tabular-nums' }}>
                   <AnimatedCounter value={stat.value} trigger={isInView} suffix={stat.suffix} />
                 </div>
-                <div className="text-sm font-bold text-gray-400 uppercase tracking-widest">{stat.label}</div>
+                <div className="text-xs font-bold uppercase tracking-wider" style={{ color: 'rgba(255, 255, 255, 0.5)' }}>{stat.label}</div>
               </div>
             ))}
           </motion.div>

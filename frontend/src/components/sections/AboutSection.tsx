@@ -13,33 +13,21 @@ const methodologyItems = [
     title: "Concept-Based Learning",
     description: "Concept-based learning focuses on building a strong foundation through basic concepts. Students learn these concepts using engaging activities in robotics and coding. This approach makes learning simple, interactive, and easy to understand.",
     icon: FaLightbulb,
-    color: "text-[#f97316]",
-    bg: "bg-orange-50/50",
-    border: "border-orange-100",
-    hoverBorder: "hover:border-orange-200",
-    shadow: "shadow-orange-500/5"
+    color: "var(--color-accent)",
   },
   {
     id: "pbl",
     title: "Project-Based Learning",
     description: "Project-based learning is the intermediate stage where students apply their basic knowledge. They progress from concepts to creating simple projects that help solve everyday problems. This hands-on approach strengthens understanding and practical skills.",
     icon: FaTools,
-    color: "text-[#5bc0be]",
-    bg: "bg-teal-50/50",
-    border: "border-teal-100",
-    hoverBorder: "hover:border-teal-200",
-    shadow: "shadow-teal-500/5"
+    color: "var(--color-primary)",
   },
   {
     id: "ibl",
     title: "Innovation-Based Learning",
     description: "Innovation-based learning focuses on solving real-world problems. Students identify challenges and use their basic and intermediate knowledge to develop solutions while learning advanced concepts. This approach promotes creativity, critical thinking, and innovation.",
     icon: FaCog,
-    color: "text-[#3d5a80]",
-    bg: "bg-slate-50/50",
-    border: "border-slate-100",
-    hoverBorder: "hover:border-slate-200",
-    shadow: "shadow-slate-500/5"
+    color: "var(--color-primary-dark)",
   }
 ];
 
@@ -53,27 +41,26 @@ export default function AboutSection() {
   };
 
   return (
-    <section ref={ref} className="relative pt-20 lg:pt-28 pb-0 bg-white overflow-hidden">
-      {/* Keeping floating animations as requested */}
+    <section ref={ref} className="relative overflow-hidden" style={{ paddingTop: 'var(--space-section)', paddingBottom: '0', backgroundColor: 'var(--color-white)' }}>
       <FloatingAnimations variant="default" density="low" />
 
-      <div className="mx-auto px-4 md:px-8 lg:px-16 relative z-10">
-        <div className="space-y-16 lg:space-y-24">
+      <div className="max-w-content mx-auto px-4 md:px-8 relative z-10">
+        <div className="space-y-16 lg:space-y-20">
 
-          {/* Intro Header - Kept at top as requested */}
+          {/* Intro Header */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}
             className="text-center"
           >
-            <h2 className="text-4xl md:text-6xl lg:text-7xl font-black text-gray-900 mb-8 leading-tight tracking-tighter">
+            <h2 className="font-heading mb-6 leading-tight" style={{ fontSize: 'var(--text-5xl)', color: 'var(--color-text-primary)' }}>
               Pioneering the Future of <br className="hidden md:block" />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-600 via-orange-500 to-orange-400 drop-shadow-sm">
+              <span style={{ color: 'var(--color-accent)' }}>
                 Experiential Learning in India
               </span>
             </h2>
-            <div className="w-24 h-2 bg-orange-500 mx-auto rounded-full mb-8"></div>
+            <div className="w-16 h-1 mx-auto rounded-full mb-6" style={{ backgroundColor: 'var(--color-accent)' }}></div>
           </motion.div>
 
           {/* Heavy SEO Prose */}
@@ -81,91 +68,97 @@ export default function AboutSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="prose prose-xl prose-gray md:prose-2xl text-gray-600 max-w-none text-left md:text-justify leading-relaxed font-medium"
+            className="max-w-none text-left md:text-justify leading-relaxed"
+            style={{ fontSize: 'var(--text-lg)', color: 'var(--color-text-secondary)', lineHeight: 1.8 }}
           >
-            <p className="mb-8">
+            <p className="mb-6">
               STEMmantra is universally recognised as the premier educational lab partner across India.
-              We specialise in the holistic development and deployment of advanced <strong className="text-gray-900 border-b-2 border-orange-200">Robotics, Artificial Intelligence &amp; Coding Labs and STEM/STEAM educational laboratories</strong> within progressive K-12 academic institutions.
+              We specialise in the holistic development and deployment of advanced <strong style={{ color: 'var(--color-text-primary)', borderBottom: '2px solid var(--color-accent)', paddingBottom: '1px' }}>Robotics, Artificial Intelligence &amp; Coding Labs and STEM/STEAM educational laboratories</strong> within progressive K-12 academic institutions.
             </p>
-            <p className="mb-8">
+            <p className="mb-6">
               Traditional rote learning frameworks are fundamentally incompatible with the demands of the modern algorithmic economy.
               Our organization was established to bridge this critical deficit through rigorous, outcome-based, and heavily hands-on
               curricula carefully constructed by industry leader having decade of experience.
             </p>
-            <p className="mb-8">
+            <p className="mb-6">
               From foundational introductory tinkering programs utilising basic electronics circuits to elite-tier competitive robotics
               geared towards national/International level of curriculum, STEMmantra architects learning continuum that scale precisely
-              with student cognitive development and strict <strong className="text-gray-900 border-b-2 border-orange-200">National Education Policy (NEP 2020) &amp; National Curriculum Framework (NCF 2023)</strong> compliance guidelines.
+              with student cognitive development and strict <strong style={{ color: 'var(--color-text-primary)', borderBottom: '2px solid var(--color-accent)', paddingBottom: '1px' }}>National Education Policy (NEP 2020) &amp; National Curriculum Framework (NCF 2023)</strong> compliance guidelines.
             </p>
-            <p className="text-2xl font-bold text-orange-600 italic border-l-4 border-orange-500 pl-6 my-10">
+            {/* Pull Quote — distinctly styled */}
+            <blockquote className="my-10 py-5 px-6 rounded-lg" style={{ borderLeft: '4px solid var(--color-accent)', backgroundColor: 'var(--color-accent-light)', fontSize: 'var(--text-xl)', color: 'var(--color-primary)', fontStyle: 'italic', fontWeight: 600 }}>
               &quot;Our aim is to reach 10 million+ students within the next 3 years, empowering the next generation of innovators.&quot;
-            </p>
+            </blockquote>
           </motion.div>
 
-          {/* Our Core Methodological Philosophy — Redesigned with brochure images */}
+          {/* Core Methodological Philosophy */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
-            {/* Section header - centered to match previous section header */}
-            <div className="mb-12 text-center flex flex-col items-center">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange-100 border border-orange-200 mb-6 mx-auto">
-                <span className="w-2 h-2 rounded-full bg-orange-500 animate-pulse"></span>
-                <span className="text-sm font-bold text-orange-700 uppercase tracking-wider">Our Methodology</span>
+            {/* Section header */}
+            <div className="mb-10 text-center flex flex-col items-center">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-md mb-6 mx-auto" style={{ backgroundColor: 'var(--color-accent-light)', border: '1px solid var(--color-border)' }}>
+                <span className="w-2 h-2 rounded-full animate-pulse" style={{ backgroundColor: 'var(--color-accent)' }}></span>
+                <span className="text-xs font-bold uppercase tracking-wider" style={{ color: 'var(--color-accent-dark)' }}>Our Methodology</span>
               </div>
-              <h2 className="text-4xl md:text-6xl lg:text-7xl font-black text-gray-900 mb-6 leading-tight tracking-tight text-center">
-                Our Core Methodological <span className="text-orange-500 underline decoration-orange-200 underline-offset-8">Philosophy</span>
+              <h2 className="font-heading mb-4 leading-tight text-center" style={{ fontSize: 'var(--text-5xl)', color: 'var(--color-text-primary)' }}>
+                Our Core Methodological <span style={{ color: 'var(--color-accent)' }}>Philosophy</span>
               </h2>
-              <p className="text-xl text-gray-600 leading-relaxed font-medium max-w-4xl mx-auto text-center">
+              <p className="max-w-4xl mx-auto text-center" style={{ fontSize: 'var(--text-lg)', color: 'var(--color-text-secondary)', lineHeight: 1.7 }}>
                 A progressive learning journey that transforms students from curious users to confident innovators through three proven frameworks — CBL, PBL, and IBL.
               </p>
             </div>
 
-            {/* Methodology Cycle Image - centered */}
+            {/* Methodology Cycle Image */}
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={isInView ? { opacity: 1, scale: 1 } : {}}
               transition={{ duration: 0.7, delay: 0.5 }}
-              className="relative mb-16 flex justify-center"
+              className="relative mb-14 flex justify-center"
             >
-              <div className="w-full max-w-[1400px] mx-auto flex justify-center">
+              <div className="w-full max-w-[1200px] mx-auto flex justify-center">
                 <Image
                   src="/images/methodology/imagee4.jpeg"
                   alt="STEMmantra Methodology Cycle - CBL, PBL, IBL learning progression from User to Maker to Creator to Innovator"
                   width={1049}
                   height={822}
-                  className="w-full h-auto object-contain"
-                  sizes="(max-width: 1536px) 100vw, 1400px"
+                  className="w-full h-auto object-contain rounded-lg"
+                  sizes="(max-width: 1200px) 100vw, 1200px"
+                  loading="lazy"
                 />
               </div>
             </motion.div>
 
             {/* Three methodology descriptions */}
-            <div className="grid md:grid-cols-3 gap-10 max-w-[1400px] mx-auto pb-10">
+            <div className="grid md:grid-cols-3 gap-8 max-w-content mx-auto pb-10">
               {methodologyItems.map((item) => {
                 const Icon = item.icon;
                 const isOpen = openStates[item.id];
                 return (
                   <div 
                     key={item.id}
-                    className={`flex flex-col rounded-2xl border ${item.border} bg-white p-6 shadow-sm ${item.shadow} ${item.hoverBorder} hover:shadow-md transition-all cursor-pointer group`}
+                    className="flex flex-col rounded-xl bg-white p-6 border hover:shadow-md transition-all cursor-pointer group"
+                    style={{ borderColor: 'var(--color-border)' }}
                     onClick={() => toggleCard(item.id)}
                   >
                     <div className="flex items-start justify-between gap-4">
-                      <div className="flex flex-col gap-4">
-                        <div className={`w-12 h-12 rounded-xl ${item.bg} flex items-center justify-center ${item.color} group-hover:scale-110 transition-transform`}>
-                          <Icon className="w-6 h-6" />
+                      <div className="flex flex-col gap-3">
+                        <div className="w-11 h-11 rounded-lg flex items-center justify-center group-hover:scale-105 transition-transform"
+                          style={{ backgroundColor: 'var(--color-surface-alt)', color: item.color }}>
+                          <Icon className="w-5 h-5" />
                         </div>
-                        <h4 className={`text-2xl font-black ${item.color} leading-tight`}>
+                        <h4 className="text-xl font-bold leading-tight" style={{ color: item.color }}>
                           {item.title}
                         </h4>
                       </div>
                       <motion.div 
                         animate={{ rotate: isOpen ? 180 : 0 }}
-                        className={`${item.color} opacity-40 mt-2`}
+                        style={{ color: item.color, opacity: 0.4 }}
+                        className="mt-2"
                       >
-                        <FaChevronDown className="w-5 h-5" />
+                        <FaChevronDown className="w-4 h-4" />
                       </motion.div>
                     </div>
 
@@ -178,7 +171,7 @@ export default function AboutSection() {
                           transition={{ duration: 0.3 }}
                           className="overflow-hidden"
                         >
-                          <p className={`mt-6 text-gray-600 leading-relaxed text-lg border-t ${item.border} pt-4`}>
+                          <p className="mt-5 leading-relaxed border-t pt-4" style={{ color: 'var(--color-text-secondary)', fontSize: 'var(--text-base)', borderColor: 'var(--color-border)' }}>
                             {item.description}
                           </p>
                         </motion.div>
@@ -186,7 +179,7 @@ export default function AboutSection() {
                     </AnimatePresence>
                     
                     {!isOpen && (
-                      <p className={`mt-4 text-sm font-bold ${item.color} opacity-40 uppercase tracking-widest group-hover:opacity-100 transition-opacity`}>
+                      <p className="mt-3 text-xs font-semibold uppercase tracking-wider opacity-40 group-hover:opacity-80 transition-opacity" style={{ color: item.color }}>
                         Click to explore
                       </p>
                     )}
@@ -196,12 +189,13 @@ export default function AboutSection() {
             </div>
 
             {/* Bottom CTA */}
-            <div className="mt-8 pt-10 border-t border-gray-100 flex justify-center">
+            <div className="mt-6 pt-8 border-t flex justify-center" style={{ borderColor: 'var(--color-border)' }}>
               <Link 
                 href="/contact" 
-                className="group inline-flex items-center gap-4 px-10 py-5 bg-[#f97316] text-white text-lg md:text-xl font-black rounded-xl hover:bg-orange-700 hover:scale-105 transition-all duration-300 shadow-xl shadow-orange-500/20"
+                className="group inline-flex items-center gap-3 px-8 py-4 text-white font-bold rounded-lg hover:brightness-110 transition-all duration-200 shadow-md"
+                style={{ backgroundColor: 'var(--color-accent)', fontSize: 'var(--text-lg)' }}
               >
-                Connect with our Academic Directors <FaArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                Connect with our Academic Directors <FaArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
             </div>
           </motion.div>

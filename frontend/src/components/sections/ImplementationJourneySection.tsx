@@ -8,147 +8,133 @@ const journeySteps = [
     id: 1,
     title: "Program Details & Presentation",
     description: "STEMMANTRA team & school leadership team will connect for Presentation.",
-    color: "bg-orange-500",
-    lightColor: "bg-orange-50",
-    textColor: "text-orange-600",
   },
   {
     id: 2,
     title: "Customization Of Proposal",
     description: "STEMMANTRA team will discuss with decision makers for the budget & requirement of the school.",
-    color: "bg-teal-500",
-    lightColor: "bg-teal-50",
-    textColor: "text-teal-600",
   },
   {
     id: 3,
     title: "Signing MoU",
     description: "STEMMANTRA team and school leadership team will sign MoU.",
-    color: "bg-indigo-700",
-    lightColor: "bg-indigo-50",
-    textColor: "text-indigo-700",
   },
   {
     id: 4,
     title: "Finalization of Curriculum",
     description: "STEMMANTRA Curriculum team & school Execution team will discuss to finalize the curriculum.",
-    color: "bg-orange-500",
-    lightColor: "bg-orange-50",
-    textColor: "text-orange-600",
   },
   {
     id: 5,
     title: "Access to learning Platform",
     description: "STEMMANTRA team will provide access to every student & teacher involved in Lab.",
-    color: "bg-teal-500",
-    lightColor: "bg-teal-50",
-    textColor: "text-teal-600",
   },
   {
     id: 6,
     title: "Execution of the Program",
     description: "STEMMANTRA team will visit school to set-up the lab & kick-start the training as per the mode of execution.",
-    color: "bg-indigo-700",
-    lightColor: "bg-indigo-50",
-    textColor: "text-indigo-700",
   },
   {
     id: 7,
     title: "Exhibition at PTM",
     description: "STEMMANTRA Team will help students to conduct exhibition on every PTM to showcase the work to the parents.",
-    color: "bg-orange-500",
-    lightColor: "bg-orange-50",
-    textColor: "text-orange-600",
   },
   {
     id: 8,
     title: "Quarterly Assessment & Review Meeting",
     description: "STEMMANTRA Team will conduct quarterly assessment for every students and will do review meeting with the stakeholders on progress.",
-    color: "bg-teal-500",
-    lightColor: "bg-teal-50",
-    textColor: "text-teal-600",
   },
 ];
 
 export default function ImplementationJourneySection() {
   return (
-    <section className="relative pt-12 pb-16 bg-white overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-16">
+    <section className="relative overflow-hidden" style={{ paddingTop: 'var(--space-12)', paddingBottom: 'var(--space-section)', backgroundColor: 'var(--color-white)' }}>
+      <div className="max-w-content mx-auto px-4 md:px-8">
         
-        {/* Header - Centered and Branded */}
-        <div className="text-center mb-16">
+        {/* Header */}
+        <div className="text-center mb-14">
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-3xl md:text-5xl font-black text-gray-900 tracking-tight uppercase inline-block pb-2 relative"
+            className="font-heading inline-block pb-3 relative tracking-tight uppercase"
+            style={{ fontSize: 'var(--text-4xl)', color: 'var(--color-text-primary)' }}
           >
             Implementation Plan
-            <div className="absolute bottom-0 left-0 w-full h-1 bg-orange-500 rounded-full"></div>
+            <div className="absolute bottom-0 left-0 w-full h-1 rounded-full" style={{ backgroundColor: 'var(--color-accent)' }}></div>
           </motion.h2>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="max-w-2xl mx-auto text-lg text-gray-600 font-medium mt-6"
+            className="max-w-2xl mx-auto mt-5"
+            style={{ fontSize: 'var(--text-lg)', color: 'var(--color-text-secondary)', lineHeight: 1.7 }}
           >
             Our meticulously structured 8-step roadmap ensures a seamless integration of STEM excellence into your institution.
           </motion.p>
         </div>
 
-        {/* Vertical Timeline Container */}
+        {/* Timeline */}
         <div className="relative">
           
           {/* Vertical Center Line (Desktop Only) */}
-          <div className="hidden lg:block absolute left-1/2 top-0 bottom-0 -translate-x-1/2 w-0.5 border-l-2 border-dashed border-gray-200"></div>
+          <div className="hidden lg:block absolute left-1/2 top-0 bottom-0 -translate-x-1/2 w-px" style={{ backgroundColor: 'var(--color-border)' }}></div>
 
           {/* Steps */}
-          <div className="space-y-8 lg:space-y-0 relative">
+          <div className="space-y-6 lg:space-y-0 relative">
             {journeySteps.map((step, idx) => (
-              <div key={step.id} className="relative lg:min-h-[140px]">
+              <div key={step.id} className="relative lg:min-h-[130px]">
                 
                 {/* Desktop Grid Layout */}
-                <div className={`hidden lg:grid grid-cols-[1fr_80px_1fr] items-center w-full`}>
+                <div className={`hidden lg:grid grid-cols-[1fr_72px_1fr] items-center w-full`}>
                   
-                  {/* Left Column (Content for odd steps) */}
-                  <div className={`flex justify-end pr-10 ${idx % 2 !== 0 ? 'invisible opacity-0' : ''}`}>
+                  {/* Left Column */}
+                  <div className={`flex justify-end pr-8 ${idx % 2 !== 0 ? 'invisible opacity-0' : ''}`}>
                     <StepCard step={step} align="right" />
                   </div>
 
-                  {/* Center Column (Number Indicator) */}
+                  {/* Center Column (Number) */}
                   <div className="flex justify-center relative z-10">
                     <motion.div 
                       initial={{ scale: 0, opacity: 0 }}
                       whileInView={{ scale: 1, opacity: 1 }}
                       viewport={{ once: true }}
-                      className={`w-12 h-12 rounded-full ${step.color} shadow-lg flex items-center justify-center text-white font-black text-xl border-4 border-white`}
+                      className="w-11 h-11 rounded-lg flex items-center justify-center font-heading text-lg border-2"
+                      style={{
+                        backgroundColor: idx % 2 === 0 ? 'var(--color-primary)' : 'var(--color-accent)',
+                        borderColor: 'var(--color-white)',
+                        color: 'white',
+                      }}
                     >
                       {step.id}
                     </motion.div>
                   </div>
 
-                  {/* Right Column (Content for even steps) */}
-                  <div className={`flex justify-start pl-10 ${idx % 2 === 0 ? 'invisible opacity-0' : ''}`}>
+                  {/* Right Column */}
+                  <div className={`flex justify-start pl-8 ${idx % 2 === 0 ? 'invisible opacity-0' : ''}`}>
                     <StepCard step={step} align="left" />
                   </div>
                 </div>
 
-                {/* Mobile/Tablet Layout (Single Column) */}
-                <div className="lg:hidden flex gap-6 pl-4 relative">
-                  {/* Vertical Line for Mobile */}
-                  <div className="absolute left-10 top-12 bottom-0 w-0.5 border-l-2 border-dashed border-gray-200 -z-10 last:hidden"></div>
+                {/* Mobile Layout */}
+                <div className="lg:hidden flex gap-4 pl-2 relative">
+                  <div className="absolute left-[22px] top-12 bottom-0 w-px -z-10" style={{ backgroundColor: idx < journeySteps.length - 1 ? 'var(--color-border)' : 'transparent' }}></div>
                   
                   <motion.div 
                     initial={{ scale: 0, opacity: 0 }}
                     whileInView={{ scale: 1, opacity: 1 }}
                     viewport={{ once: true }}
-                    className={`w-12 h-12 rounded-full ${step.color} shadow-lg flex items-center justify-center text-white font-black text-xl border-4 border-white shrink-0 z-10`}
+                    className="w-10 h-10 rounded-lg flex items-center justify-center font-heading text-base shrink-0 z-10"
+                    style={{
+                      backgroundColor: idx % 2 === 0 ? 'var(--color-primary)' : 'var(--color-accent)',
+                      color: 'white',
+                    }}
                   >
                     {step.id}
                   </motion.div>
 
-                  <div className="pb-8">
+                  <div className="pb-6 flex-1">
                     <StepCard step={step} align="left" />
                   </div>
                 </div>
@@ -159,14 +145,15 @@ export default function ImplementationJourneySection() {
 
         </div>
 
-        {/* Final CTA Button - Now Clickable and Branded */}
-        <div className="flex justify-center mt-8 md:mt-16">
+        {/* Final CTA */}
+        <div className="flex justify-center mt-10 md:mt-14">
             <motion.a
                 href="/contact"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="group px-10 py-5 bg-[#f97316] text-white rounded-xl font-black text-lg md:text-xl flex items-center gap-4 shadow-xl shadow-orange-500/20 hover:bg-orange-700 hover:scale-105 transition-all duration-300"
+                className="group px-8 py-4 text-white rounded-lg font-bold flex items-center gap-3 shadow-md hover:brightness-110 transition-all duration-200"
+                style={{ backgroundColor: 'var(--color-accent)', fontSize: 'var(--text-lg)' }}
             >
                 Start Your Journey Today 
                 <FaChevronRight className="group-hover:translate-x-1 transition-transform" />
@@ -179,32 +166,27 @@ export default function ImplementationJourneySection() {
 }
 
 function StepCard({ step, align }: { step: any, align: 'left' | 'right' }) {
-  const isLeft = align === 'right';
-  
   return (
     <motion.div 
-      initial={{ opacity: 0, x: isLeft ? -30 : 30 }}
+      initial={{ opacity: 0, x: align === 'right' ? -20 : 20 }}
       whileInView={{ opacity: 1, x: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.5, delay: 0.2 }}
-      className={`group w-full max-w-[620px] bg-white border-2 border-gray-100 rounded-3xl p-6 md:p-8 shadow-sm hover:shadow-2xl hover:border-orange-100 transition-all duration-300 relative`}
+      transition={{ duration: 0.4, delay: 0.15 }}
+      className="w-full max-w-[560px] bg-white border rounded-xl p-5 md:p-6 hover:shadow-md transition-all duration-200 group"
+      style={{ borderColor: 'var(--color-border)' }}
     >
-      {/* Accent Corner Decor */}
-      <div className={`absolute top-0 ${isLeft ? 'right-0' : 'left-0'} w-14 h-14 ${step.lightColor} rounded-tr-3xl rounded-bl-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-0`}></div>
-      
-      <div className="relative z-10">
-        <div className="flex items-center gap-3 mb-4">
-            <span className={`px-3 py-1 rounded-full ${step.lightColor} ${step.textColor} text-xs font-black uppercase tracking-widest`}>
-                Step {step.id}
-            </span>
-        </div>
-        <h3 className={`text-xl md:text-2xl font-black ${step.textColor} mb-3 uppercase tracking-tight`}>
-          {step.title}
-        </h3>
-        <p className="text-gray-600 font-medium leading-relaxed text-sm md:text-base">
-          {step.description}
-        </p>
+      <div className="flex items-center gap-2 mb-3">
+          <span className="px-2.5 py-1 rounded-md text-[10px] font-bold uppercase tracking-wider"
+            style={{ backgroundColor: 'var(--color-surface-alt)', color: 'var(--color-text-secondary)' }}>
+              Step {step.id}
+          </span>
       </div>
+      <h3 className="font-bold mb-2 uppercase tracking-tight" style={{ fontSize: 'var(--text-xl)', color: 'var(--color-text-primary)' }}>
+        {step.title}
+      </h3>
+      <p style={{ color: 'var(--color-text-secondary)', fontSize: 'var(--text-sm)', lineHeight: 1.6 }}>
+        {step.description}
+      </p>
     </motion.div>
   );
 }

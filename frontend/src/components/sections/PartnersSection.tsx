@@ -29,26 +29,27 @@ export default function PartnersSection() {
   const isInView = useInView(ref, { once: true, amount: 0.3 });
 
   return (
-    <section ref={ref} className="relative pt-8 pb-16 bg-gradient-to-b from-gray-50 to-white overflow-hidden">
+    <section ref={ref} className="relative overflow-hidden" style={{ paddingTop: 'var(--space-8)', paddingBottom: 'var(--space-section)', background: 'linear-gradient(to bottom, var(--color-surface), var(--color-white))' }}>
       <FloatingAnimations variant="section" density="low" />
-      <div className="mx-auto px-4 md:px-8 lg:px-16 relative z-10">
+      <div className="max-w-content mx-auto px-4 md:px-8 relative z-10">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center max-w-3xl mx-auto mb-16"
+          className="text-center max-w-3xl mx-auto mb-14"
         >
-          <span className="inline-block px-4 py-1.5 bg-teal-100 text-teal-600 rounded-full text-sm font-semibold mb-4">
+          <span className="inline-block px-3 py-1.5 rounded-md text-xs font-semibold mb-4"
+            style={{ backgroundColor: 'var(--color-surface-alt)', color: 'var(--color-primary)', border: '1px solid var(--color-border)' }}>
             Trusted Partners
           </span>
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+          <h2 className="font-heading mb-5" style={{ fontSize: 'var(--text-4xl)', color: 'var(--color-text-primary)' }}>
             Schools That{" "}
-            <span className="bg-gradient-to-r from-orange-500 to-teal-500 bg-clip-text text-transparent">
+            <span style={{ color: 'var(--color-accent)' }}>
               Trust Us
             </span>
           </h2>
-          <p className="text-lg text-gray-600">
+          <p style={{ fontSize: 'var(--text-lg)', color: 'var(--color-text-secondary)' }}>
             Partnering with India&apos;s leading educational institutions to deliver world-class STEM education
           </p>
         </motion.div>
@@ -61,11 +62,11 @@ export default function PartnersSection() {
           className="relative"
         >
           {/* Gradient Masks */}
-          <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-gray-50 to-transparent z-10" />
-          <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-gray-50 to-transparent z-10" />
+          <div className="absolute left-0 top-0 bottom-0 w-24 z-10" style={{ background: 'linear-gradient(to right, var(--color-surface), transparent)' }} />
+          <div className="absolute right-0 top-0 bottom-0 w-24 z-10" style={{ background: 'linear-gradient(to left, var(--color-surface), transparent)' }} />
 
           {/* Scrolling Container */}
-          <div className="overflow-hidden py-8">
+          <div className="overflow-hidden py-6">
             <style>{`
               @keyframes marquee-scroll {
                 0% { transform: translateX(0%); }
@@ -75,21 +76,23 @@ export default function PartnersSection() {
                 animation: marquee-scroll 30s linear infinite;
               }
             `}</style>
-            <div className="flex gap-8 md:gap-12 w-max marquee-content hover:[animation-play-state:paused]">
+            <div className="flex gap-6 md:gap-8 w-max marquee-content hover:[animation-play-state:paused]">
 
               {allPartners.map((partner, index) => (
                 <div
                   key={index}
-                  className="flex-shrink-0 w-40 h-24 bg-white rounded-xl shadow-md border border-gray-100 flex items-center justify-center p-4 hover:shadow-lg hover:border-orange-200 transition-all duration-300 group"
+                  className="flex-shrink-0 w-36 h-20 bg-white rounded-lg border flex items-center justify-center p-3 hover:shadow-md transition-all duration-200 group"
+                  style={{ borderColor: 'var(--color-border)' }}
                 >
                   {/* Placeholder for logo */}
                   <div className="text-center">
-                    <div className="w-12 h-12 mx-auto bg-gradient-to-br from-orange-100 to-teal-100 rounded-lg flex items-center justify-center mb-2 group-hover:scale-110 transition-transform">
-                      <span className="text-orange-500 font-bold text-lg">
+                    <div className="w-10 h-10 mx-auto rounded-lg flex items-center justify-center mb-1.5 group-hover:scale-105 transition-transform"
+                      style={{ backgroundColor: 'var(--color-surface-alt)' }}>
+                      <span className="font-heading text-base" style={{ color: 'var(--color-primary)' }}>
                         {partner.name.charAt(0)}
                       </span>
                     </div>
-                    <span className="text-xs text-gray-500 line-clamp-1">{partner.name}</span>
+                    <span className="text-[10px] line-clamp-1" style={{ color: 'var(--color-text-secondary)' }}>{partner.name}</span>
                   </div>
                 </div>
               ))}
@@ -102,7 +105,7 @@ export default function PartnersSection() {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.5 }}
-          className="flex flex-wrap items-center justify-center gap-4 md:gap-8 mt-12"
+          className="flex flex-wrap items-center justify-center gap-3 md:gap-6 mt-10"
         >
           {[
             { label: "GeM Registered", icon: CheckCircle },
@@ -113,10 +116,11 @@ export default function PartnersSection() {
           ].map((badge, index) => (
             <div
               key={index}
-              className="flex items-center gap-2 px-5 py-2.5 bg-white rounded-full shadow-sm border border-gray-100 hover:border-orange-200 hover:shadow-md transition-all"
+              className="flex items-center gap-2 px-4 py-2 bg-white rounded-lg border hover:shadow-sm transition-all"
+              style={{ borderColor: 'var(--color-border)' }}
             >
-              <span className="text-lg"><badge.icon className="w-5 h-5 text-orange-500" /></span>
-              <span className="text-sm font-medium text-gray-700">{badge.label}</span>
+              <badge.icon className="w-4 h-4" style={{ color: 'var(--color-accent)' }} />
+              <span className="text-xs font-medium" style={{ color: 'var(--color-text-primary)' }}>{badge.label}</span>
             </div>
           ))}
         </motion.div>
@@ -126,15 +130,16 @@ export default function PartnersSection() {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.7 }}
-          className="text-center mt-16"
+          className="text-center mt-12"
         >
-          <p className="text-gray-600 mb-4">Want to partner with us?</p>
+          <p style={{ color: 'var(--color-text-secondary)' }} className="mb-3">Want to partner with us?</p>
           <a
             href="/contact"
-            className="inline-flex items-center gap-2 text-orange-600 font-semibold hover:text-orange-700 transition-colors"
+            className="inline-flex items-center gap-2 font-semibold hover:underline transition-colors"
+            style={{ color: 'var(--color-accent)' }}
           >
             Become a Partner
-            <span className="group-hover:translate-x-1 transition-transform">→</span>
+            <span>→</span>
           </a>
         </motion.div>
       </div>
