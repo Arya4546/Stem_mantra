@@ -133,11 +133,7 @@ const jobs: Job[] = [
 ];
 
 export default function CareerPage() {
-  const [expandedJobId, setExpandedJobId] = useState<string | null>(null);
-
-  const toggleJob = (id: string) => {
-    setExpandedJobId(expandedJobId === id ? null : id);
-  };
+  const [selectedJobId, setSelectedJobId] = useState<string>("stem-innovation-engineer");
 
   return (
     <>
@@ -190,17 +186,250 @@ export default function CareerPage() {
               </motion.div>
             ))}
           </div>
+        </div>
 
+        {/* Current Openings & Apply Section */}
+        <div className="relative container mx-auto px-4 pb-20">
           {/* Current Openings */}
-          <div className="max-w-4xl mx-auto mb-20">
-            <div className="text-center mb-10">
-              <h2 className="text-3xl font-black text-gray-900 mb-2">Current Openings</h2>
+          <div className="max-w-6xl mx-auto mb-20">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-2">Current Openings</h2>
               <p className="text-gray-600">Join our growing team and make a difference in STEM education.</p>
             </div>
 
-            <div className="space-y-6">
+            {/* Desktop & Tablet Split Layout (lg and up) */}
+            <div className="hidden lg:grid lg:grid-cols-12 gap-8 items-start">
+              {/* Left Pane: Job Selector Cards */}
+              <div className="lg:col-span-5 space-y-4 lg:sticky lg:top-28">
+                {jobs.map((job) => {
+                  const isSelected = selectedJobId === job.id;
+                  return (
+                    <div
+                      key={job.id}
+                      onClick={() => setSelectedJobId(job.id)}
+                      className={`cursor-pointer p-6 rounded-2xl border transition-all duration-300 relative overflow-hidden ${
+                        isSelected
+                          ? "bg-white border-orange-500 shadow-md ring-1 ring-orange-500"
+                          : "bg-white border-gray-100 shadow-sm hover:border-orange-200 hover:shadow-md"
+                      }`}
+                    >
+                      {/* Active indicator bar */}
+                      {isSelected && (
+                        <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-orange-500" />
+                      )}
+                      
+                      <div className="flex justify-between items-start gap-4 mb-3">
+                        <span className="px-2.5 py-0.5 bg-orange-50 text-orange-600 rounded-full text-xs font-bold uppercase tracking-wider">
+                          {job.department}
+                        </span>
+                        
+                        {/* Compact Apply button on the card */}
+                        <a
+                          href={job.applyLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={(e) => e.stopPropagation()} // Prevent selecting the card
+                          className="px-3.5 py-1.5 bg-orange-500 hover:bg-orange-600 text-white text-xs font-bold rounded-lg transition-colors shadow-sm flex-shrink-0"
+                        >
+                          Apply
+                        </a>
+                      </div>
+                      
+                      <h3 className="text-lg font-bold text-gray-900 mb-3 pr-4 leading-snug">
+                        {job.title}
+                      </h3>
+                      
+                      <div className="flex flex-wrap gap-x-3 gap-y-1 text-xs text-gray-500">
+                        <span className="flex items-center gap-1">
+                          <FaMapMarkerAlt className="text-orange-500" /> {job.location}
+                        </span>
+                        <span className="flex items-center gap-1">
+                          <FaClock className="text-blue-500" /> {job.type}
+                        </span>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+
+              {/* Right Pane: Selected Job Details */}
+              <div className="lg:col-span-7 bg-white rounded-3xl border border-gray-100 shadow-sm overflow-hidden p-8 min-h-[500px]">
+                <AnimatePresence mode="wait">
+                  {(() => {
+                    const activeJob = jobs.find((j) => j.id === selectedJobId);
+                    if (!activeJob) return null;
+                    return (
+                      <motion.div
+                        key={activeJob.id}
+                        initial={{ opacity: 0, y: 15 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -15 }}
+                        transition={{ duration: 0.25 }}
+                        className="space-y-8"
+                      >
+                        {/* Header card area with Apply button at top */}
+                        <div className="flex flex-col md:flex-row md:items-start justify-between gap-6 pb-6 border-b border-gray-100">
+                          <div className="space-y-3">
+                            <span className="inline-block px-3 py-1 bg-orange-50 text-orange-600 rounded-full text-xs font-bold uppercase tracking-wider">
+                              {activeJob.department}
+                            </span>
+                            <h3 className="text-2xl md:text-3xl font-black text-gray-900 leading-tight">
+                              {activeJob.title}
+                            </h3>
+                            <div className="flex flex-wrap gap-x-4 gap-y-1 text-sm text-gray-500">
+                              <span className="flex items-center gap-1.5">
+                                <FaMapMarkerAlt className="text-orange-500" /> {activeJob.location}
+                              </span>
+                              <span className="flex items-center gap-1.5">
+                                <FaClock className="text-blue-500" /> {activeJob.type}
+                              </span>
+                            </div>
+                          </div>
+                          
+                          {/* Apply Now button at the top of details */}
+                          <div className="flex-shrink-0">
+                            <a
+                              href={activeJob.applyLink}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-2 px-6 py-3 bg-orange-500 hover:bg-orange-600 text-white font-bold rounded-xl transition-colors shadow-md hover:shadow-lg"
+                            >
+                              Apply Now
+                              <FaArrowRight />
+                            </a>
+                          </div>
+                        </div>
+
+                        {/* About STEMmantra */}
+                        <div>
+                          <h4 className="text-lg font-bold text-gray-900 mb-3 border-l-4 border-orange-500 pl-3">
+                            About STEMmantra Technologies Pvt Ltd
+                          </h4>
+                          <p className="text-gray-600 leading-relaxed text-sm md:text-base">
+                            {activeJob.about}
+                          </p>
+                        </div>
+
+                        {/* Job Summary */}
+                        {activeJob.summary && (
+                          <div>
+                            <h4 className="text-lg font-bold text-gray-900 mb-3 border-l-4 border-orange-500 pl-3">
+                              Job Summary
+                            </h4>
+                            <p className="text-gray-600 leading-relaxed text-sm md:text-base">
+                              {activeJob.summary}
+                            </p>
+                          </div>
+                        )}
+
+                        {/* Job Responsibilities */}
+                        <div>
+                          <h4 className="text-lg font-bold text-gray-900 mb-3 border-l-4 border-orange-500 pl-3">
+                            Job Responsibilities
+                          </h4>
+                          <ul className="space-y-3">
+                            {activeJob.responsibilities.map((resp, i) => (
+                              <li key={i} className="flex items-start gap-3 text-sm md:text-base text-gray-600">
+                                <FaCheck className="text-teal-500 mt-1 flex-shrink-0" />
+                                <span className="leading-relaxed">{resp}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+
+                        {/* Required Skills */}
+                        <div>
+                          <h4 className="text-lg font-bold text-gray-900 mb-3 border-l-4 border-orange-500 pl-3">
+                            {activeJob.id === "stem-innovation-engineer" ? "Required Skills & Qualifications" : "Required Skills"}
+                          </h4>
+                          <ul className="space-y-3">
+                            {activeJob.skills.map((skill, i) => (
+                              <li key={i} className="flex items-start gap-3 text-sm md:text-base text-gray-600">
+                                <FaCheck className="text-orange-500 mt-1 flex-shrink-0" />
+                                <span className="leading-relaxed">{skill}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+
+                        {/* Preferred Skills */}
+                        {activeJob.preferredSkills && (
+                          <div>
+                            <h4 className="text-lg font-bold text-gray-900 mb-3 border-l-4 border-orange-500 pl-3">
+                              Preferred Skills
+                            </h4>
+                            <ul className="space-y-3">
+                              {activeJob.preferredSkills.map((ps, i) => (
+                                <li key={i} className="flex items-start gap-3 text-sm md:text-base text-gray-600">
+                                  <FaCheck className="text-blue-500 mt-1 flex-shrink-0" />
+                                  <span className="leading-relaxed">{ps}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        )}
+
+                        {/* Eligibility */}
+                        {activeJob.eligibility && (
+                          <div>
+                            <h4 className="text-lg font-bold text-gray-900 mb-3 border-l-4 border-orange-500 pl-3">
+                              Eligibility
+                            </h4>
+                            <ul className="space-y-3">
+                              {activeJob.eligibility.map((el, i) => (
+                                <li key={i} className="flex items-start gap-3 text-sm md:text-base text-gray-600">
+                                  <FaCheck className="text-purple-500 mt-1 flex-shrink-0" />
+                                  <span className="leading-relaxed">{el}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        )}
+
+                        {/* Benefits & Advantages */}
+                        <div>
+                          <h4 className="text-lg font-bold text-gray-900 mb-3 border-l-4 border-orange-500 pl-3">
+                            {activeJob.id === "stem-innovation-engineer" ? "Benefits & Advantages" : "Benefits & Advantages"}
+                          </h4>
+                          <ul className="space-y-3">
+                            {activeJob.benefits.map((b, i) => (
+                              <li key={i} className="flex items-start gap-3 text-sm md:text-base text-gray-600">
+                                <FaCheck className="text-emerald-500 mt-1 flex-shrink-0" />
+                                <span className="leading-relaxed">{b}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+
+                        {/* Selection Process */}
+                        <div>
+                          <h4 className="text-lg font-bold text-gray-900 mb-4 border-l-4 border-orange-500 pl-3">
+                            Selection Process
+                          </h4>
+                          <div className="relative pl-6 space-y-4 border-l border-orange-100 ml-3">
+                            {activeJob.selectionProcess.map((step, i) => (
+                              <div key={i} className="relative">
+                                <div className="absolute -left-[31px] top-0.5 w-4 h-4 rounded-full bg-orange-500 border border-white ring-4 ring-orange-50 flex items-center justify-center text-[10px] font-bold text-white">
+                                  {i + 1}
+                                </div>
+                                <h5 className="text-sm font-bold text-gray-800 leading-tight pl-2">
+                                  {step}
+                                </h5>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      </motion.div>
+                    );
+                  })()}
+                </AnimatePresence>
+              </div>
+            </div>
+
+            {/* Mobile Layout (below lg breakpoint) */}
+            <div className="lg:hidden space-y-6">
               {jobs.map((job) => {
-                const isExpanded = expandedJobId === job.id;
+                const isExpanded = selectedJobId === job.id;
                 return (
                   <div
                     key={job.id}
@@ -208,29 +437,39 @@ export default function CareerPage() {
                   >
                     {/* Accordion Trigger */}
                     <button
-                      onClick={() => toggleJob(job.id)}
-                      className="w-full text-left p-6 md:p-8 flex flex-col md:flex-row md:items-center justify-between gap-4 focus:outline-none"
+                      onClick={() => setSelectedJobId(selectedJobId === job.id ? "" : job.id)}
+                      className="w-full text-left p-6 flex flex-col gap-4 focus:outline-none"
                     >
-                      <div className="space-y-2">
-                        <div className="flex flex-wrap gap-2">
-                          <span className="px-3 py-1 bg-orange-50 text-orange-600 rounded-full text-xs font-bold uppercase tracking-wider">
-                            {job.department}
-                          </span>
-                        </div>
-                        <h3 className="text-xl font-bold text-gray-900">{job.title}</h3>
+                      <div className="flex justify-between items-start w-full">
+                        <span className="px-3 py-1 bg-orange-50 text-orange-600 rounded-full text-xs font-bold uppercase tracking-wider">
+                          {job.department}
+                        </span>
+                        
+                        {/* Compact Apply button always visible on mobile card at top */}
+                        <a
+                          href={job.applyLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={(e) => e.stopPropagation()}
+                          className="px-4 py-1.5 bg-orange-500 hover:bg-orange-600 text-white text-xs font-bold rounded-xl transition-colors shadow-sm"
+                        >
+                          Apply
+                        </a>
+                      </div>
+                      
+                      <div>
+                        <h3 className="text-xl font-bold text-gray-900 mb-2">{job.title}</h3>
                         <div className="flex flex-wrap gap-x-4 gap-y-1 text-sm text-gray-500">
                           <span className="flex items-center gap-1.5">
                             <FaMapMarkerAlt className="text-orange-500" /> {job.location}
-                          </span>
-                          <span className="flex items-center gap-1.5">
-                            <FaMoneyBillWave className="text-green-600" /> {job.compensation}
                           </span>
                           <span className="flex items-center gap-1.5">
                             <FaClock className="text-blue-500" /> {job.type}
                           </span>
                         </div>
                       </div>
-                      <div className="flex items-center gap-2 text-orange-500 font-bold self-start md:self-center">
+                      
+                      <div className="flex items-center gap-2 text-orange-500 font-bold">
                         <span>{isExpanded ? "Hide Details" : "Show Details"}</span>
                         {isExpanded ? <FaChevronUp /> : <FaChevronDown />}
                       </div>
@@ -246,13 +485,13 @@ export default function CareerPage() {
                           transition={{ duration: 0.3 }}
                           className="border-t border-gray-50 bg-gray-50/50"
                         >
-                          <div className="p-6 md:p-8 space-y-8">
+                          <div className="p-6 space-y-6">
                             {/* About STEMmantra */}
                             <div>
-                              <h4 className="text-lg font-bold text-gray-900 mb-3 border-l-4 border-orange-500 pl-3">
+                              <h4 className="text-base font-bold text-gray-900 mb-2 border-l-4 border-orange-500 pl-3">
                                 About STEMmantra Technologies Pvt Ltd
                               </h4>
-                              <p className="text-gray-600 leading-relaxed text-sm md:text-base">
+                              <p className="text-gray-600 leading-relaxed text-sm">
                                 {job.about}
                               </p>
                             </div>
@@ -260,10 +499,10 @@ export default function CareerPage() {
                             {/* Job Summary */}
                             {job.summary && (
                               <div>
-                                <h4 className="text-lg font-bold text-gray-900 mb-3 border-l-4 border-orange-500 pl-3">
+                                <h4 className="text-base font-bold text-gray-900 mb-2 border-l-4 border-orange-500 pl-3">
                                   Job Summary
                                 </h4>
-                                <p className="text-gray-600 leading-relaxed text-sm md:text-base">
+                                <p className="text-gray-600 leading-relaxed text-sm">
                                   {job.summary}
                                 </p>
                               </div>
@@ -271,13 +510,13 @@ export default function CareerPage() {
 
                             {/* Job Responsibilities */}
                             <div>
-                              <h4 className="text-lg font-bold text-gray-900 mb-3 border-l-4 border-orange-500 pl-3">
+                              <h4 className="text-base font-bold text-gray-900 mb-2 border-l-4 border-orange-500 pl-3">
                                 Job Responsibilities
                               </h4>
-                              <ul className="space-y-3">
+                              <ul className="space-y-2.5">
                                 {job.responsibilities.map((resp, i) => (
-                                  <li key={i} className="flex items-start gap-3 text-sm md:text-base text-gray-600">
-                                    <FaCheck className="text-teal-500 mt-1 flex-shrink-0" />
+                                  <li key={i} className="flex items-start gap-2.5 text-sm text-gray-600">
+                                    <FaCheck className="text-teal-500 mt-1 flex-shrink-0 text-xs" />
                                     <span className="leading-relaxed">{resp}</span>
                                   </li>
                                 ))}
@@ -286,13 +525,13 @@ export default function CareerPage() {
 
                             {/* Required Skills */}
                             <div>
-                              <h4 className="text-lg font-bold text-gray-900 mb-3 border-l-4 border-orange-500 pl-3">
+                              <h4 className="text-base font-bold text-gray-900 mb-2 border-l-4 border-orange-500 pl-3">
                                 {job.id === "stem-innovation-engineer" ? "Required Skills & Qualifications" : "Required Skills"}
                               </h4>
-                              <ul className="space-y-3">
+                              <ul className="space-y-2.5">
                                 {job.skills.map((skill, i) => (
-                                  <li key={i} className="flex items-start gap-3 text-sm md:text-base text-gray-600">
-                                    <FaCheck className="text-orange-500 mt-1 flex-shrink-0" />
+                                  <li key={i} className="flex items-start gap-2.5 text-sm text-gray-600">
+                                    <FaCheck className="text-orange-500 mt-1 flex-shrink-0 text-xs" />
                                     <span className="leading-relaxed">{skill}</span>
                                   </li>
                                 ))}
@@ -302,13 +541,13 @@ export default function CareerPage() {
                             {/* Preferred Skills */}
                             {job.preferredSkills && (
                               <div>
-                                <h4 className="text-lg font-bold text-gray-900 mb-3 border-l-4 border-orange-500 pl-3">
+                                <h4 className="text-base font-bold text-gray-900 mb-2 border-l-4 border-orange-500 pl-3">
                                   Preferred Skills
                                 </h4>
-                                <ul className="space-y-3">
+                                <ul className="space-y-2.5">
                                   {job.preferredSkills.map((ps, i) => (
-                                    <li key={i} className="flex items-start gap-3 text-sm md:text-base text-gray-600">
-                                      <FaCheck className="text-blue-500 mt-1 flex-shrink-0" />
+                                    <li key={i} className="flex items-start gap-2.5 text-sm text-gray-600">
+                                      <FaCheck className="text-blue-500 mt-1 flex-shrink-0 text-xs" />
                                       <span className="leading-relaxed">{ps}</span>
                                     </li>
                                   ))}
@@ -319,13 +558,13 @@ export default function CareerPage() {
                             {/* Eligibility */}
                             {job.eligibility && (
                               <div>
-                                <h4 className="text-lg font-bold text-gray-900 mb-3 border-l-4 border-orange-500 pl-3">
+                                <h4 className="text-base font-bold text-gray-900 mb-2 border-l-4 border-orange-500 pl-3">
                                   Eligibility
                                 </h4>
-                                <ul className="space-y-3">
+                                <ul className="space-y-2.5">
                                   {job.eligibility.map((el, i) => (
-                                    <li key={i} className="flex items-start gap-3 text-sm md:text-base text-gray-600">
-                                      <FaCheck className="text-purple-500 mt-1 flex-shrink-0" />
+                                    <li key={i} className="flex items-start gap-2.5 text-sm text-gray-600">
+                                      <FaCheck className="text-purple-500 mt-1 flex-shrink-0 text-xs" />
                                       <span className="leading-relaxed">{el}</span>
                                     </li>
                                   ))}
@@ -333,15 +572,15 @@ export default function CareerPage() {
                               </div>
                             )}
 
-                            {/* Compensation & Benefits */}
+                            {/* Benefits & Advantages */}
                             <div>
-                              <h4 className="text-lg font-bold text-gray-900 mb-3 border-l-4 border-orange-500 pl-3">
-                                {job.id === "stem-innovation-engineer" ? "Benefits & Advantages" : "Compensation & Benefits"}
+                              <h4 className="text-base font-bold text-gray-900 mb-2 border-l-4 border-orange-500 pl-3">
+                                {job.id === "stem-innovation-engineer" ? "Benefits & Advantages" : "Benefits & Advantages"}
                               </h4>
-                              <ul className="space-y-3">
+                              <ul className="space-y-2.5">
                                 {job.benefits.map((b, i) => (
-                                  <li key={i} className="flex items-start gap-3 text-sm md:text-base text-gray-600">
-                                    <FaCheck className="text-emerald-500 mt-1 flex-shrink-0" />
+                                  <li key={i} className="flex items-start gap-2.5 text-sm text-gray-600">
+                                    <FaCheck className="text-emerald-500 mt-1 flex-shrink-0 text-xs" />
                                     <span className="leading-relaxed">{b}</span>
                                   </li>
                                 ))}
@@ -350,34 +589,21 @@ export default function CareerPage() {
 
                             {/* Selection Process */}
                             <div>
-                              <h4 className="text-lg font-bold text-gray-900 mb-4 border-l-4 border-orange-500 pl-3">
+                              <h4 className="text-base font-bold text-gray-900 mb-3 border-l-4 border-orange-500 pl-3">
                                 Selection Process
                               </h4>
-                              <div className="relative pl-6 space-y-4 border-l border-orange-100 ml-3">
+                              <div className="relative pl-5 space-y-3.5 border-l border-orange-100 ml-2">
                                 {job.selectionProcess.map((step, i) => (
                                   <div key={i} className="relative">
-                                    <div className="absolute -left-[31px] top-0.5 w-4 h-4 rounded-full bg-orange-500 border border-white ring-4 ring-orange-50 flex items-center justify-center text-[10px] font-bold text-white">
+                                    <div className="absolute -left-[27px] top-0.5 w-3.5 h-3.5 rounded-full bg-orange-500 border border-white ring-4 ring-orange-50 flex items-center justify-center text-[8px] font-bold text-white">
                                       {i + 1}
                                     </div>
-                                    <h5 className="text-sm font-bold text-gray-800 leading-tight pl-2">
+                                    <h5 className="text-xs font-bold text-gray-800 leading-tight pl-2">
                                       {step}
                                     </h5>
                                   </div>
                                 ))}
                               </div>
-                            </div>
-
-                            {/* Apply Button */}
-                            <div className="pt-4 flex justify-end">
-                              <a
-                                href={job.applyLink}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="inline-flex items-center gap-2 px-8 py-3.5 bg-orange-500 hover:bg-orange-600 text-white font-bold rounded-xl transition-colors shadow-md hover:shadow-lg"
-                              >
-                                Apply Now
-                                <FaArrowRight />
-                              </a>
                             </div>
 
                           </div>
