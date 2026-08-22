@@ -55,7 +55,7 @@ export const metadata: Metadata = {
     siteName: "STEMmantra",
     images: [
       {
-        url: "https://www.stemmantra.com/og-image.png",
+        url: "https://learn.stemmantra.com/og-image.png",
         width: 1200,
         height: 630,
         alt: "STEMmantra Logo",
@@ -67,7 +67,7 @@ export const metadata: Metadata = {
     title: "STEMmantra - Robotics & AI Education for Schools",
     description:
       "Master The Skills, Drive Your Future - Leading provider of robotics, AI, and STEM education solutions.",
-    images: ["https://www.stemmantra.com/og-image.png"],
+    images: ["https://learn.stemmantra.com/og-image.png"],
     creator: "@stemmantra",
   },
   robots: {
