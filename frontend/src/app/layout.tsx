@@ -93,7 +93,19 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} ${poppins.variable}`}>
-      <body className="font-sans antialiased w-full">
+      <body className="font-sans antialiased w-full bg-transparent relative min-h-screen selection:bg-orange-200">
+        {/* Global Decorative Light Pastel Backgrounds (Site Wide) */}
+        <div className="fixed inset-0 pointer-events-none -z-50 overflow-hidden bg-gradient-to-br from-slate-50 via-white to-orange-50/30">
+          {/* Top Right Orange Mesh */}
+          <div className="absolute top-[-10%] right-[-5%] w-[50vw] h-[50vw] bg-gradient-to-br from-orange-200/40 to-pink-200/40 rounded-full blur-[100px] mix-blend-multiply opacity-100 animate-blob" />
+          {/* Middle Left Blue Mesh */}
+          <div className="absolute top-[30%] left-[-10%] w-[60vw] h-[60vw] bg-gradient-to-tr from-blue-200/30 to-teal-200/30 rounded-full blur-[120px] mix-blend-multiply opacity-100 animate-blob animation-delay-2000" />
+          {/* Bottom Right Pink Mesh */}
+          <div className="absolute bottom-[-10%] right-[10%] w-[50vw] h-[50vw] bg-gradient-to-bl from-pink-200/30 to-purple-200/30 rounded-full blur-[100px] mix-blend-multiply opacity-100 animate-blob animation-delay-4000" />
+          {/* Grid Overlay for Texture */}
+          <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-[0.02]" />
+        </div>
+
         {/* JSON-LD Organization Schema for rich Google search results */}
         <script
           type="application/ld+json"

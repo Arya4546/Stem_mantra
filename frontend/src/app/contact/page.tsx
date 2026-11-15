@@ -6,7 +6,8 @@ import Link from "next/link";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { SITE_CONFIG } from "@/lib/constants";
-import { useSubmitContact } from "@/hooks/useApi";
+import { submitForm } from "@/lib/submitForm";
+import FormSelect from "@/components/ui/FormSelect";
 import { toast } from "sonner";
 import {
   Phone,
@@ -33,6 +34,18 @@ const socialLinks = [
   { icon: FaInstagram, href: SITE_CONFIG.social.instagram, label: "Instagram", color: "hover:text-pink-500" },
 ];
 
+const interestOptions = [
+  { value: "STEAM & Robotics Lab", label: "STEAM & Robotics Lab" },
+  { value: "Composite Skill Lab", label: "Composite Skill Lab" },
+  { value: "AI & Coding Lab", label: "AI & Coding Lab" },
+  { value: "Pre-Tinkering Lab", label: "Pre-Tinkering Lab" },
+  { value: "Innoverse Lab", label: "Innoverse Lab" },
+  { value: "Atal Tinkering Lab", label: "Atal Tinkering Lab" },
+  { value: "Teacher Training/Curriculum Design", label: "Teacher Training Programs / Curriculum Design" },
+  { value: "Partnership", label: "Partnership Opportunity" },
+  { value: "Other", label: "Other Inquiry" },
+];
+
 export default function ContactPage() {
   const [formData, setFormData] = useState({
     name: "",
@@ -43,22 +56,29 @@ export default function ContactPage() {
     message: "",
   });
 
-  const submitContact = useSubmitContact();
+  const [isSending, setIsSending] = useState(false);
+  const [honeypot, setHoneypot] = useState("");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsSending(true);
     try {
-      await submitContact.mutateAsync({
+      await submitForm({
+        type: "contact",
         name: formData.name,
         email: formData.email,
         phone: formData.phone,
-        subject: `${formData.interest} - ${formData.school || formData.name}`,
-        message: formData.message + (formData.school ? `\n\nSchool/Organization: ${formData.school}` : ""),
+        school: formData.school,
+        interest: formData.interest,
+        message: formData.message,
+        hp_trap: honeypot,
       });
       toast.success("Message sent successfully! We'll get back to you within 24 hours.");
       setFormData({ name: "", email: "", phone: "", school: "", interest: "", message: "" });
     } catch (error) {
-      // Error handled by API interceptor
+      toast.error(error instanceof Error ? error.message : "Could not send your message. Please try again.");
+    } finally {
+      setIsSending(false);
     }
   };
 
@@ -71,7 +91,7 @@ export default function ContactPage() {
   return (
     <>
       <Header />
-      <main className="min-h-screen bg-white">
+      <main className="min-h-screen bg-transparent">
         {/* Hero — Left aligned, no floating icons */}
         <section className="pt-32 pb-10 px-4">
           <div className="max-w-6xl mx-auto">
@@ -140,6 +160,10 @@ export default function ContactPage() {
                     <p className="text-gray-500 mb-6 text-sm">We&apos;ll get back to you within 24 hours.</p>
 
                     <form onSubmit={handleSubmit} className="space-y-4">
+                      {/* Honeypot – hidden from people, filled by bots */}
+                      <input type="text" name="hp_trap" tabIndex={-1} autoComplete="off" aria-hidden="true"
+                        value={honeypot} onChange={(e) => setHoneypot(e.target.value)}
+                        className="absolute left-[-9999px] h-0 w-0 opacity-0" />
                       <div className="grid md:grid-cols-2 gap-4">
                         <div>
                           <label htmlFor="name" className="block text-sm font-semibold text-gray-700 mb-1.5">Full Name *</label>
@@ -166,27 +190,23 @@ export default function ContactPage() {
                       </div>
                       <div>
                         <label htmlFor="interest" className="block text-sm font-semibold text-gray-700 mb-1.5">I&apos;m Interested In *</label>
-                        <select id="interest" name="interest" required value={formData.interest} onChange={handleChange}
-                          className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-orange-500 focus:ring-1 focus:ring-orange-500 focus:outline-none transition-colors text-sm bg-white">
-                          <option value="">Select an option</option>
-                          <option value="Robotics Lab-STEAMVERSE LAB">Robotics Lab - STEAMVERSE LAB</option>
-                          <option value="AI & Coding Lab">AI &amp; Coding Lab</option>
-                          <option value="Pre Tinkering Lab">Pre Tinkering Lab</option>
-                          <option value="STEM/STEAM Lab-INNOVERSE LAB">STEM/STEAM Lab - INNOVERSE LAB</option>
-                          <option value="ATL Lab Setup">Atal Tinkering Lab Setup</option>
-                          <option value="Teacher Training/Curriculum Design">Teacher Training Programs / Curriculum Design</option>
-                          <option value="Partnership">Partnership Opportunity</option>
-                          <option value="Other">Other Inquiry</option>
-                        </select>
+                        <FormSelect
+                          id="interest"
+                          name="interest"
+                          required
+                          value={formData.interest}
+                          onChange={(v) => setFormData((prev) => ({ ...prev, interest: v }))}
+                          options={interestOptions}
+                        />
                       </div>
                       <div>
                         <label htmlFor="message" className="block text-sm font-semibold text-gray-700 mb-1.5">Your Message *</label>
                         <textarea id="message" name="message" required rows={4} value={formData.message} onChange={handleChange}
                           className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-orange-500 focus:ring-1 focus:ring-orange-500 focus:outline-none transition-colors resize-none text-sm" placeholder="Tell us about your requirements..." />
                       </div>
-                      <button type="submit" disabled={submitContact.isPending}
+                      <button type="submit" disabled={isSending}
                         className="w-full py-3.5 bg-orange-500 text-white rounded-lg font-semibold hover:bg-orange-600 transition-colors flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed text-sm">
-                        {submitContact.isPending ? (
+                        {isSending ? (
                           <>
                             <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
                             Sending...

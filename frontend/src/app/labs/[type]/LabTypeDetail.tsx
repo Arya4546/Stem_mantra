@@ -36,7 +36,7 @@ export default function LabTypeDetail({ data }: Props) {
     return (
         <>
             <Header />
-            <main className="min-h-screen bg-white">
+            <main className="min-h-screen bg-transparent">
                 {/* Hero */}
                 <section className="pt-32 pb-10 px-4">
                     <div className="max-w-6xl mx-auto">
@@ -99,7 +99,7 @@ export default function LabTypeDetail({ data }: Props) {
                 </section>
 
                 {/* Subjects */}
-                <section className="py-10 px-4 bg-gray-50">
+                <section className="py-10 px-4 bg-transparent">
                     <div className="max-w-6xl mx-auto">
                         <h2 className="text-2xl font-bold text-gray-900 mb-6">Subjects Covered</h2>
                         <div className="flex flex-wrap gap-3">

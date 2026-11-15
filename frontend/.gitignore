@@ -34,3 +34,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Mail secrets (upload manually to Hostinger, never commit)
+/stemmantra-mail-config.php

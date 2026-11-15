@@ -13,7 +13,7 @@ export default function ClientsPage() {
   return (
     <>
       <Header />
-      <main className="min-h-screen bg-gray-50/50 pt-20">
+      <main className="min-h-screen bg-transparent pt-20">
         
         {/* PREMIUM HERO SECTION */}
         <section className="relative overflow-hidden bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 py-24 lg:py-32">
@@ -56,7 +56,7 @@ export default function ClientsPage() {
         </section>
 
         {/* INFINITE SCROLLING MARQUEE */}
-        <section className="py-20 overflow-hidden bg-white border-y border-gray-100">
+        <section className="py-20 overflow-hidden bg-transparent border-y border-gray-100">
           <div className="text-center mb-12">
             <h2 className="text-2xl font-bold text-gray-800 tracking-wide uppercase">Recognized By Industry Leaders</h2>
             <div className="w-16 h-1 bg-gradient-to-r from-orange-500 to-teal-500 mx-auto mt-4 rounded-full"></div>
@@ -88,7 +88,7 @@ export default function ClientsPage() {
         </section>
 
         {/* FEATURED INSTITUTIONS MATRIX */}
-        <section className="py-24 px-4 md:px-8 lg:px-16 bg-white">
+        <section className="py-24 px-4 md:px-8 lg:px-16 bg-transparent">
           <div className="w-full mx-auto max-w-7xl">
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-5xl font-extrabold text-gray-900 mb-6">Our Esteemed Clients</h2>
@@ -120,7 +120,7 @@ export default function ClientsPage() {
         </section>
 
         {/* FULL WIDTH CALL TO ACTION */}
-        <section className="py-24 px-4 md:px-8 lg:px-16 bg-white">
+        <section className="py-24 px-4 md:px-8 lg:px-16 bg-transparent">
           <div className="w-full mx-auto max-w-6xl">
              <div className="relative rounded-[3rem] overflow-hidden bg-gradient-to-br from-gray-900 to-gray-800 p-12 md:p-20 text-center shadow-2xl">
                <div className="absolute inset-0 bg-[url('/images/grid-pattern.svg')] opacity-10"></div>

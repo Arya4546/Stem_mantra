@@ -57,7 +57,7 @@ export default function StemLabCityDetail({ data }: Props) {
     return (
         <>
             <Header />
-            <main className="min-h-screen bg-white">
+            <main className="min-h-screen bg-transparent">
                 {/* Hero Section */}
                 <section className="relative pt-32 pb-12 overflow-hidden">
                     <div className="container mx-auto px-4">
@@ -100,7 +100,7 @@ export default function StemLabCityDetail({ data }: Props) {
                 </section>
 
                 {/* Stats */}
-                <section className="py-8 bg-gray-50 border-y border-gray-100">
+                <section className="py-8 bg-transparent border-y border-gray-100">
                     <div className="container mx-auto px-4">
                         <div className="flex flex-wrap justify-between items-center gap-6 max-w-6xl mx-auto">
                             <div className="flex items-center gap-3">
@@ -127,7 +127,7 @@ export default function StemLabCityDetail({ data }: Props) {
                 </section>
 
                 {/* STEM Areas */}
-                <section className="py-20 bg-white">
+                <section className="py-20 bg-transparent">
                     <div className="container mx-auto px-4">
                         <div className="mb-12">
                             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
@@ -159,7 +159,7 @@ export default function StemLabCityDetail({ data }: Props) {
                 </section>
 
                 {/* Specialties */}
-                <section className="py-12 bg-gray-50">
+                <section className="py-12 bg-transparent">
                     <div className="container mx-auto px-4">
                         <div className="flex flex-col md:flex-row items-center gap-8 max-w-6xl mx-auto">
                             <h2 className="text-2xl font-bold text-gray-900 flex-shrink-0">

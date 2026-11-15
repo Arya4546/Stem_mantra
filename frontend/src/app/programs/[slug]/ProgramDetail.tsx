@@ -1,246 +1,333 @@
 "use client";
-
+import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { ArrowLeft, ArrowRight, CheckCircle2, Plus, Minus, ChevronRight } from "lucide-react";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-import {
-  FaCheckCircle, FaGraduationCap, FaClock,
-  FaArrowLeft, FaStar, FaRocket, FaLightbulb, FaPhone, FaArrowRight, FaBolt
-} from "react-icons/fa";
-import ExecutionModeSection from "@/components/sections/ExecutionModeSection";
-
-interface Program {
-  id: string;
-  name: string;
-  slug: string;
-  description: string;
-  type: string;
-  status: string;
-  image?: string;
-  thumbnail?: string;
-  duration?: string;
-  gradeLevel?: string;
-  features?: string[];
-  learningOutcomes?: string[];
-  prerequisites?: string[];
-  curriculum?: string[];
-  isFeatured?: boolean;
-}
+import type { Program } from "@/data/programs";
+import { programs } from "@/data/programs";
 
 interface Props {
   program: Program;
 }
 
-export default function ProgramDetail({ program }: Props) {
-  const typeData: Record<string, { label: string; accent: string; bg: string }> = {
-    ATL_LAB: { label: "Atal Tinkering Lab", accent: "text-amber-600", bg: "bg-amber-50" },
-    ROBOTICS_LAB: { label: "Robotics & AI Lab", accent: "text-blue-600", bg: "bg-blue-50" },
-    STEM_LAB: { label: "STEM Innovation Lab", accent: "text-green-600", bg: "bg-green-50" },
-    AI_ML: { label: "AI & Machine Learning", accent: "text-purple-600", bg: "bg-purple-50" },
-    IOT: { label: "Internet of Things", accent: "text-cyan-600", bg: "bg-cyan-50" },
-    CODING: { label: "Coding & Software", accent: "text-rose-600", bg: "bg-rose-50" },
+export default function ProgramDetailPage({ program }: Props) {
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
+
+  // Related labs (exclude current)
+  const related = programs.filter((p) => p.id !== program.id).slice(0, 3);
+
+  // JSON-LD for this lab page
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: program.faqs.map((f) => ({
+      "@type": "Question",
+      name: f.question,
+      acceptedAnswer: { "@type": "Answer", text: f.answer },
+    })),
   };
 
-  const type = typeData[program.type] || { label: program.type, accent: "text-gray-600", bg: "bg-gray-50" };
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://www.stemmantra.com" },
+      { "@type": "ListItem", position: 2, name: "Programs", item: "https://www.stemmantra.com/programs" },
+      { "@type": "ListItem", position: 3, name: program.name, item: `https://www.stemmantra.com/programs/${program.slug}` },
+    ],
+  };
 
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
       <Header />
-      <main className="min-h-screen bg-white">
-        {/* Hero Section */}
-        <section className="pt-32 pb-12 px-4 md:px-8 lg:px-16">
-          <div className="w-full mx-auto">
-            <Link href="/programs" className="inline-flex items-center gap-2 text-sm text-gray-500 hover:text-orange-500 mb-8 transition-colors">
-              <FaArrowLeft className="w-3 h-3" /> Back to All Programs
-            </Link>
+      <main className="min-h-screen bg-transparent">
+        {/* ── Hero ── */}
+        <section className="relative pt-28 pb-0 bg-transparent overflow-hidden">
+          {/* Breadcrumb */}
+          <div className="max-w-[1600px] mx-auto px-4 md:px-8 lg:px-16 pt-4 pb-6">
+            <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-sm text-gray-400">
+              <Link href="/" className="hover:text-gray-600 transition-colors">Home</Link>
+              <ChevronRight className="w-3.5 h-3.5" />
+              <Link href="/programs" className="hover:text-gray-600 transition-colors">Programs</Link>
+              <ChevronRight className="w-3.5 h-3.5" />
+              <span className="text-gray-700 font-medium">{program.name}</span>
+            </nav>
+          </div>
 
-            <div className="grid lg:grid-cols-2 gap-12 lg:gap-24 items-center">
-              <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }}>
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {program.isFeatured && (
-                    <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-amber-100 text-amber-700 rounded-full text-xs font-bold">
-                      <FaStar className="w-3 h-3" /> Featured Program
-                    </span>
-                  )}
-                  <span className={`inline-flex items-center gap-1.5 px-3 py-1 ${type.bg} ${type.accent} rounded-full text-xs font-bold`}>
-                    {type.label}
-                  </span>
-                </div>
+          {/* Hero content */}
+          <div className="max-w-[1600px] mx-auto px-4 md:px-8 lg:px-16 pb-8">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="max-w-3xl"
+            >
+              <div className="flex flex-wrap items-center gap-3 mb-4">
+                <span className={`px-3 py-1 rounded-full text-xs font-semibold ${program.accentBg} ${program.accentText}`}>
+                  {program.gradeRange}
+                </span>
+                <span className="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-xs font-semibold">
+                  {program.seoSubtitle}
+                </span>
+              </div>
+              <h1 className="text-3xl md:text-5xl font-black text-gray-900 leading-tight mb-4">
+                {program.h1}
+              </h1>
+              <p className={`text-lg font-medium italic mb-5 ${program.accentText}`}>
+                &ldquo;{program.positioning}&rdquo;
+              </p>
+              <p className="text-gray-600 text-base leading-relaxed mb-8 max-w-2xl">
+                {program.description}
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-orange-500 text-white rounded-xl font-semibold hover:bg-orange-600 transition-colors"
+                >
+                  Request a Lab Proposal
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+                <Link
+                  href="/programs"
+                  className="inline-flex items-center justify-center gap-2 px-8 py-3.5 border-2 border-gray-200 text-gray-700 rounded-xl font-semibold hover:border-gray-400 transition-colors"
+                >
+                  <ArrowLeft className="w-4 h-4" />
+                  All Programs
+                </Link>
+              </div>
+            </motion.div>
+          </div>
 
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-                  {program.name}
-                </h1>
+          {/* Hero image — 16:9 full width */}
+          <motion.div
+            className="max-w-[1600px] mx-auto px-4 md:px-8 lg:px-16"
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 0.55 }}
+          >
+            <div className="relative aspect-video w-full rounded-2xl overflow-hidden bg-gray-100 shadow-lg mt-8 md:mt-0">
+              <Image
+                src={program.image}
+                alt={program.imageAlt}
+                fill
+                priority
+                sizes="(max-width: 768px) 100vw, 1600px"
+                className="object-cover object-center"
+              />
+            </div>
+          </motion.div>
+        </section>
 
-                <p className="text-lg md:text-xl text-gray-600 mb-10 leading-relaxed">
-                  {program.description}
-                </p>
+        {/* ── What Is This Lab? ── */}
+        <section className="py-16 px-4">
+          <div className="max-w-[1600px] mx-auto px-4 md:px-8 lg:px-16">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+              >
+                <h2 className="text-2xl md:text-3xl font-black text-gray-900 mb-4">
+                  What is the {program.name}?
+                </h2>
+                <p className="text-gray-600 leading-relaxed mb-6">{program.whatIsIt}</p>
 
-                <div className="flex flex-wrap gap-4">
-                  <Link href="/contact" className="px-8 py-4 bg-orange-500 text-white font-bold rounded-xl hover:bg-orange-600 transition-colors shadow-sm">
-                    Enroll Now
-                  </Link>
-                  <Link href="/contact" className="px-8 py-4 border border-gray-200 text-gray-900 font-bold rounded-xl hover:border-orange-500 transition-colors">
-                    Request Demo
-                  </Link>
-                </div>
+                <h3 className="text-lg font-bold text-gray-900 mb-3">Curriculum Approach</h3>
+                <p className="text-gray-600 leading-relaxed mb-6">{program.curriculumApproach}</p>
+
+                <h3 className="text-lg font-bold text-gray-900 mb-3">Lab Infrastructure</h3>
+                <p className="text-gray-600 leading-relaxed">{program.infrastructure}</p>
               </motion.div>
 
-              <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="relative w-full">
-                <div className="relative aspect-video w-full rounded-3xl overflow-hidden shadow-xl border border-gray-100 bg-white">
-                  <Image
-                    src={program.thumbnail || program.image || "/images/programs/placeholder.jpg"}
-                    alt={program.name}
-                    fill
-                    className="object-contain"
-                    priority
-                  />
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                className="space-y-6"
+              >
+                {/* Learning outcomes */}
+                <div className={`rounded-2xl p-6 ${program.accentBg}`}>
+                  <h3 className={`text-base font-bold mb-4 ${program.accentText}`}>
+                    What Students Learn
+                  </h3>
+                  <ul className="space-y-2">
+                    {program.learningOutcomes.map((outcome) => (
+                      <li key={outcome} className="flex items-center gap-2.5 text-sm text-gray-700">
+                        <CheckCircle2 className={`w-4 h-4 flex-shrink-0 ${program.accentText}`} />
+                        {outcome}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-                <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-orange-100 rounded-full -z-10 blur-2xl opacity-60" />
+
+                {/* Tech tags */}
+                <div className="bg-gray-50 rounded-2xl p-6">
+                  <h3 className="text-base font-bold text-gray-900 mb-4">
+                    Technologies &amp; Learning Domains
+                  </h3>
+                  <div className="flex flex-wrap gap-2">
+                    {program.techTags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="px-3 py-1.5 bg-white border border-gray-200 text-gray-700 rounded-full text-sm font-medium"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
               </motion.div>
             </div>
           </div>
         </section>
 
-        {/* Info Strip */}
-        <section className="py-8 border-y border-gray-100 bg-gray-50/20 px-4 md:px-8 lg:px-16">
-          <div className="w-full mx-auto max-w-4xl">
-            <div className="flex flex-wrap justify-center items-center gap-12 md:gap-24">
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-2xl bg-orange-100 flex items-center justify-center shadow-inner">
-                  <FaClock className="w-6 h-6 text-orange-500" />
-                </div>
-                <div>
-                  <span className="block text-[10px] uppercase tracking-widest text-gray-500 font-black">Duration</span>
-                  <span className="text-lg font-bold text-gray-900">{program.duration}</span>
-                </div>
-              </div>
-              <div className="w-px h-10 bg-gray-200 hidden sm:block" />
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-2xl bg-blue-100 flex items-center justify-center shadow-inner">
-                  <FaGraduationCap className="w-6 h-6 text-blue-500" />
-                </div>
-                <div>
-                  <span className="block text-[10px] uppercase tracking-widest text-gray-500 font-black">Grade Level</span>
-                  <span className="text-lg font-bold text-gray-900">{program.gradeLevel}</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Features & Outcomes */}
-        <section className="py-20 px-4 md:px-8 lg:px-16">
-          <div className="w-full mx-auto">
-            <div className="grid md:grid-cols-2 gap-10">
-              <div className="bg-white rounded-3xl p-8 border border-gray-100 shadow-sm w-full">
-                <div className="flex items-center gap-3 mb-8">
-                  <div className="w-12 h-12 rounded-2xl bg-orange-50 flex items-center justify-center">
-                    <FaRocket className="w-6 h-6 text-orange-500" />
-                  </div>
-                  <h2 className="text-2xl font-bold text-gray-900">Program Features</h2>
-                </div>
-                <ul className="space-y-4">
-                  {program.features?.map((feature, index) => (
-                    <li key={index} className="flex items-start gap-4">
-                      <FaCheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
-                      <span className="text-gray-600 font-medium">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <div className="bg-white rounded-3xl p-8 border border-gray-100 shadow-sm w-full">
-                <div className="flex items-center gap-3 mb-8">
-                  <div className="w-12 h-12 rounded-2xl bg-teal-50 flex items-center justify-center">
-                    <FaLightbulb className="w-6 h-6 text-teal-500" />
-                  </div>
-                  <h2 className="text-2xl font-bold text-gray-900">Learning Outcomes</h2>
-                </div>
-                <ul className="space-y-4">
-                  {program.learningOutcomes?.map((outcome, index) => (
-                    <li key={index} className="flex items-start gap-4">
-                      <div className="w-5 h-5 rounded-full bg-teal-500 flex items-center justify-center flex-shrink-0 mt-0.5">
-                        <FaCheckCircle className="w-3 h-3 text-white" />
-                      </div>
-                      <span className="text-gray-600 font-medium">{outcome}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Curriculum */}
-        <section className="py-24 px-4 md:px-8 lg:px-16 bg-gray-50/50 relative overflow-hidden">
-          <div className="w-full mx-auto">
-            <motion.div 
+        {/* ── Implementation ── */}
+        <section className="py-16 px-4 bg-transparent">
+          <div className="max-w-[1600px] mx-auto px-4 md:px-8 lg:px-16">
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-center mb-20"
+              className="mb-10"
             >
-              <span className="inline-block px-4 py-1.5 bg-orange-100 text-orange-700 rounded-full text-sm font-black uppercase tracking-widest mb-4">
-                Curriculum
-              </span>
-              <h2 className="text-3xl md:text-5xl font-black text-gray-900 mb-6">Course Modules</h2>
-              <p className="text-gray-600 max-w-2xl mx-auto text-lg leading-relaxed">
-                A carefully structured pathway designed to take students from fundamental concepts to advanced mastery through hands-on projects.
+              <h2 className="text-2xl md:text-3xl font-black text-gray-900 mb-3">
+                How STEMmantra Implements This
+              </h2>
+              <p className="text-gray-500">
+                A structured process from first conversation to ongoing school support.
               </p>
-              <div className="w-24 h-1.5 bg-orange-500 mx-auto mt-8 rounded-full" />
             </motion.div>
 
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-              {program.curriculum?.map((item, index) => (
-                <motion.div 
-                  key={index}
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {program.implementationSteps.map((step, i) => (
+                <motion.div
+                  key={i}
+                  className="bg-white rounded-xl p-5 border border-gray-100 shadow-sm"
+                  initial={{ opacity: 0, y: 16 }}
+                  whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  className="bg-white p-8 rounded-[2rem] border border-gray-100 hover:border-orange-200 transition-all duration-300 shadow-sm hover:shadow-xl group relative overflow-hidden"
+                  transition={{ delay: i * 0.07 }}
                 >
-                   <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
-                      <FaBolt className="w-16 h-16 text-orange-500 rotate-12" />
-                   </div>
-                  <div className="w-14 h-14 bg-orange-50 rounded-2xl flex items-center justify-center mb-6 border border-orange-100/50 group-hover:bg-orange-500 transition-colors duration-300">
-                    <span className="text-xl font-black text-orange-600 group-hover:text-white">{String(index + 1).padStart(2, '0')}</span>
+                  <div className={`w-8 h-8 ${program.accentBg} rounded-lg flex items-center justify-center mb-3`}>
+                    <span className={`text-xs font-black ${program.accentText}`}>
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
                   </div>
-                  <h3 className="text-lg font-bold text-gray-900 group-hover:text-orange-600 transition-colors">{item}</h3>
+                  <p className="text-sm text-gray-700 font-medium">{step}</p>
                 </motion.div>
               ))}
             </div>
           </div>
         </section>
 
-        <ExecutionModeSection />
-
-        {/* CTA */}
-        <section className="py-20 px-4 md:px-8 lg:px-16">
-          <div className="w-full mx-auto">
-            <div className="bg-gray-900 rounded-[2.5rem] p-10 md:p-16 text-center text-white relative overflow-hidden w-full">
-              <div className="relative z-10 w-full">
-                <h2 className="text-3xl md:text-5xl font-bold mb-6">Ready to Get Started?</h2>
-                <p className="text-gray-400 text-lg mb-10 w-full">
-                  Enroll your child or partner with us to bring this program to your school.
-                  Our experts are ready to guide you.
-                </p>
-                <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-4">
-                  <Link href="/contact" className="inline-flex items-center justify-center px-10 py-4 bg-orange-500 text-white rounded-xl font-bold hover:bg-orange-600 transition-all shadow-lg w-full sm:w-auto">
-                    Register Now
-                  </Link>
-                  <a href="tel:+916356631515" className="inline-flex items-center justify-center gap-3 px-10 py-4 bg-white/5 border border-white/10 text-white rounded-xl font-bold hover:bg-white/10 transition-all w-full sm:w-auto">
-                    <FaPhone className="w-4 h-4" /> 
-                    <span>+91 6356631515</span>
-                  </a>
-                  <a href="tel:01203101774" className="inline-flex items-center justify-center gap-3 px-10 py-4 bg-white/5 border border-white/10 text-white rounded-xl font-bold hover:bg-white/10 transition-all w-full sm:w-auto">
-                    <FaPhone className="w-4 h-4" /> 
-                    <span>0120-3101774</span>
-                  </a>
-                </div>
+        {/* ── FAQ ── */}
+        {program.faqs.length > 0 && (
+          <section className="py-16 px-4 bg-transparent">
+            <div className="max-w-[1600px] mx-auto px-4 md:px-8 lg:px-16">
+              <motion.div
+                className="mb-8"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+              >
+                <h2 className="text-2xl md:text-3xl font-black text-gray-900 mb-3">
+                  Frequently Asked Questions
+                </h2>
+              </motion.div>
+              <div className="max-w-2xl divide-y divide-gray-100">
+                {program.faqs.map((faq, i) => (
+                  <div key={i}>
+                    <button
+                      onClick={() => setOpenFaq(openFaq === i ? null : i)}
+                      className="w-full flex items-center justify-between gap-4 py-4 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-500 focus-visible:ring-offset-2 rounded"
+                      aria-expanded={openFaq === i}
+                    >
+                      <span className="text-sm font-semibold text-gray-800">{faq.question}</span>
+                      <span className="flex-shrink-0 w-6 h-6 rounded-full bg-gray-100 flex items-center justify-center">
+                        {openFaq === i ? (
+                          <Minus className="w-3 h-3 text-gray-600" />
+                        ) : (
+                          <Plus className="w-3 h-3 text-gray-600" />
+                        )}
+                      </span>
+                    </button>
+                    {openFaq === i && (
+                      <p className="pb-4 text-sm text-gray-600 leading-relaxed">{faq.answer}</p>
+                    )}
+                  </div>
+                ))}
               </div>
+            </div>
+          </section>
+        )}
+
+        {/* ── CTA ── */}
+        <section className="py-16 px-4 bg-transparent">
+          <div className="max-w-[1600px] mx-auto px-4 md:px-8 lg:px-16">
+            <div className="bg-gray-900 rounded-3xl p-10 md:p-14 text-center relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-56 h-56 bg-orange-500/10 rounded-full -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+              <h2 className="text-2xl md:text-3xl font-black text-white mb-3 relative z-10">
+                Interested in the{" "}
+                <span className="text-orange-400">{program.name}</span>?
+              </h2>
+              <p className="text-gray-400 mb-7 max-w-lg mx-auto relative z-10">
+                Get a detailed proposal designed for your school — including lab
+                design, equipment, curriculum and implementation plan.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center relative z-10">
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-orange-500 text-white rounded-xl font-semibold hover:bg-orange-600 transition-colors"
+                >
+                  Request a Lab Proposal
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center justify-center gap-2 px-8 py-3.5 border border-white/20 text-white rounded-xl font-semibold hover:bg-white/10 transition-colors"
+                >
+                  Book a Consultation
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ── Related Labs ── */}
+        <section className="py-16 px-4 bg-transparent">
+          <div className="max-w-[1600px] mx-auto px-4 md:px-8 lg:px-16">
+            <h2 className="text-2xl font-black text-gray-900 mb-8">Explore Other Labs</h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+              {related.map((rel) => (
+                <Link
+                  key={rel.id}
+                  href={rel.href}
+                  className="group flex flex-col border border-gray-100 rounded-2xl overflow-hidden hover:shadow-md hover:-translate-y-0.5 transition-all duration-300"
+                >
+                  <div className="relative aspect-video bg-gray-100 overflow-hidden">
+                    <Image
+                      src={rel.image}
+                      alt={rel.imageAlt}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                      className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div className="p-4">
+                    <p className="text-xs text-gray-400 mb-1">{rel.gradeRange}</p>
+                    <p className="font-bold text-gray-900 text-sm mb-1">{rel.name}</p>
+                    <p className={`text-xs font-medium ${rel.accentText} flex items-center gap-1`}>
+                      Explore Lab <ArrowRight className="w-3 h-3" />
+                    </p>
+                  </div>
+                </Link>
+              ))}
             </div>
           </div>
         </section>

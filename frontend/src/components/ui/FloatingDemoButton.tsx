@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaPlay, FaTimes, FaPhone, FaEnvelope, FaUser, FaSchool, FaWhatsapp } from "react-icons/fa";
 import { SITE_CONFIG } from "@/lib/constants";
+import { submitForm } from "@/lib/submitForm";
+import WhatsAppWidget from "@/components/ui/WhatsAppWidget";
 
 interface DemoFormData {
   name: string;
@@ -18,6 +20,8 @@ export default function FloatingDemoButton() {
   const [isVisible, setIsVisible] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState("");
+  const [honeypot, setHoneypot] = useState("");
   const [formData, setFormData] = useState<DemoFormData>({
     name: "",
     email: "",
@@ -46,27 +50,25 @@ export default function FloatingDemoButton() {
     e.preventDefault();
     setIsSubmitting(true);
 
+    setError("");
     try {
-      const response = await fetch("/api/leads", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          ...formData,
-          source: "floating_demo_button",
-          type: "demo_request",
-        }),
+      await submitForm({
+        type: "demo",
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        school: formData.school,
+        message: formData.message,
+        hp_trap: honeypot,
       });
-
-      if (response.ok) {
-        setSubmitted(true);
-        setTimeout(() => {
-          setIsOpen(false);
-          setSubmitted(false);
-          setFormData({ name: "", email: "", phone: "", school: "", message: "" });
-        }, 3000);
-      }
-    } catch {
-      // Handle error silently, form will stay open
+      setSubmitted(true);
+      setTimeout(() => {
+        setIsOpen(false);
+        setSubmitted(false);
+        setFormData({ name: "", email: "", phone: "", school: "", message: "" });
+      }, 3000);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Something went wrong. Please try again.");
     } finally {
       setIsSubmitting(false);
     }
@@ -182,6 +184,9 @@ export default function FloatingDemoButton() {
                   </div>
                 ) : (
                   <form onSubmit={handleSubmit} className="p-6 space-y-4">
+                    <input type="text" name="hp_trap" tabIndex={-1} autoComplete="off" aria-hidden="true"
+                      value={honeypot} onChange={(e) => setHoneypot(e.target.value)}
+                      className="absolute left-[-9999px] h-0 w-0 opacity-0" />
                     {/* Name Input */}
                     <div className="relative">
                       <FaUser className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 w-4 h-4" />
@@ -246,6 +251,12 @@ export default function FloatingDemoButton() {
                       rows={3}
                       className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-orange-500 focus:outline-none focus:ring-4 focus:ring-orange-500/20 transition-all resize-none"
                     />
+
+                    {error && (
+                      <p role="alert" className="rounded-lg bg-red-50 border border-red-200 px-3 py-2 text-sm text-red-600">
+                        {error}
+                      </p>
+                    )}
 
                     {/* Submit Button */}
                     <motion.button
@@ -315,18 +326,7 @@ export default function FloatingDemoButton() {
         )}
       </AnimatePresence>
 
-      {/* WhatsApp Quick Button (always visible) */}
-      <a
-        href="https://wa.me/916356631515?text=Hi,%20I%20am%20interested%20in%20STEM%20Mantra%20programs"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="fixed right-6 bottom-6 z-40 w-14 h-14 bg-green-500 rounded-full shadow-lg flex items-center justify-center hover:bg-green-600 hover:scale-110 transition-all group"
-      >
-        <FaWhatsapp className="w-7 h-7 text-white" />
-        <span className="absolute right-16 bg-black/80 text-white text-sm px-3 py-1 rounded-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity">
-          Chat on WhatsApp
-        </span>
-      </a>
+      <WhatsAppWidget />
     </>
   );
 }

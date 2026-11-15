@@ -43,24 +43,24 @@ export default function TestimonialsSection() {
   };
 
   return (
-    <section ref={ref} className="relative pt-16 pb-12 bg-gray-50 overflow-hidden">
+    <section ref={ref} className="fit relative py-10 lg:py-12 bg-transparent overflow-hidden">
       <FloatingAnimations variant="about" density="low" />
 
-      <div className="mx-auto px-4 md:px-8 lg:px-16 relative z-10">
-        <div className="max-w-4xl mx-auto text-center mb-16">
+      <div className="max-w-[1680px] mx-auto px-4 md:px-8 lg:px-16 relative z-10">
+        <div className="max-w-4xl mx-auto text-center mb-16 fit-mb">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange-100 border border-orange-200 mb-6"
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-orange-100 border border-orange-200 mb-5"
           >
             <span className="w-2 h-2 rounded-full bg-orange-500 animate-pulse"></span>
-            <span className="text-sm font-black text-orange-900 uppercase tracking-widest">Administrator Testimonials</span>
+            <span className="text-sm font-bold text-orange-700 uppercase tracking-wider">Administrator Testimonials</span>
           </motion.div>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.1 }}
-            className="text-4xl md:text-5xl font-black text-gray-900 mb-6 leading-tight"
+            className="fit-h2 text-3xl md:text-4xl lg:text-5xl font-black text-gray-900 mb-6 leading-tight"
           >
             Validated by <span className="text-orange-500">Academic Visionaries</span>
           </motion.h2>
@@ -68,14 +68,14 @@ export default function TestimonialsSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.2 }}
-            className="text-xl text-gray-600 font-medium leading-relaxed"
+            className="fit-lead text-lg text-gray-600 leading-relaxed"
           >
             Listen to Principals & Directors from prestigious K-12 schools across India discuss the transformational impact of our Robotics Laboratories, AI Curriculums, and STEM integrations.
           </motion.p>
         </div>
 
         <div className="relative max-w-7xl mx-auto px-4 md:px-12">
-        <div className="relative h-[650px] sm:h-[550px] md:h-[480px] lg:h-[420px]">
+        <div className="relative h-[650px] sm:h-[550px] md:h-[480px] lg:h-[420px] fit-h">
             <AnimatePresence initial={false} custom={direction}>
               <motion.div
                 key={activeIndex}
@@ -90,13 +90,13 @@ export default function TestimonialsSection() {
                 }}
                 className="absolute w-full h-full"
               >
-                <div className="bg-white p-6 sm:p-8 md:p-12 rounded-3xl border border-gray-100 shadow-2xl h-full flex flex-col md:flex-row gap-6 md:gap-10 items-center justify-center lg:items-center group overflow-hidden">
+                <div className="bg-white p-6 sm:p-8 md:p-12 rounded-2xl border border-gray-100 shadow-xl h-full flex flex-col md:flex-row gap-6 md:gap-10 items-center justify-center lg:items-center group overflow-hidden">
                   {/* Left Side: Quote & Content */}
                   <div className="flex-1 flex flex-col w-full h-full">
                     <div>
                       <FaQuoteLeft className="w-10 h-10 md:w-12 md:h-12 text-orange-100 group-hover:text-orange-200 transition-colors mb-4 md:mb-6" />
-                      <div className="overflow-y-auto pr-2 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]" style={{ maxHeight: '350px' }}>
-                        <p className="text-gray-700 text-base sm:text-lg md:text-xl leading-relaxed font-semibold italic text-left md:text-justify max-w-full">
+                      <div className="overflow-y-auto pr-2 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]" style={{ maxHeight: 'calc(var(--fit-qh, 350px))' }}>
+                        <p className="fit-lead text-gray-700 text-base md:text-lg leading-relaxed font-medium italic text-left max-w-full">
                           &ldquo;{testimonials[activeIndex].content}&rdquo;
                         </p>
                       </div>
@@ -127,9 +127,9 @@ export default function TestimonialsSection() {
                       )}
                     </div>
                     <div>
-                      <div className="font-extrabold text-gray-900 text-xl lg:text-2xl mb-1">{testimonials[activeIndex].name}</div>
-                      <div className="text-orange-600 font-bold text-sm lg:text-base uppercase tracking-widest mb-2">{testimonials[activeIndex].role}</div>
-                      <div className="text-gray-500 font-medium text-sm lg:text-base leading-tight">{testimonials[activeIndex].school}</div>
+                      <div className="font-bold text-gray-900 text-lg lg:text-xl mb-1">{testimonials[activeIndex].name}</div>
+                      <div className="text-orange-600 font-bold text-xs lg:text-sm uppercase tracking-wider mb-2">{testimonials[activeIndex].role}</div>
+                      <div className="text-gray-500 text-sm leading-tight">{testimonials[activeIndex].school}</div>
                     </div>
                   </div>
                 </div>
@@ -138,10 +138,10 @@ export default function TestimonialsSection() {
           </div>
 
           {/* Navigation Controls */}
-          <div className="flex justify-center gap-6 mt-8 relative z-[100] pointer-events-auto">
+          <div className="flex justify-center gap-6 mt-8 fit-mb relative z-[100] pointer-events-auto">
             <button
               onClick={prevSlide}
-              className="w-14 h-14 rounded-full bg-white border border-gray-100 shadow-lg flex items-center justify-center text-gray-900 hover:bg-orange-500 hover:text-white hover:border-orange-500 transition-all active:scale-95"
+              className="w-12 h-12 rounded-full bg-white border border-gray-100 shadow-md flex items-center justify-center text-gray-900 hover:bg-orange-500 hover:text-white hover:border-orange-500 transition-all active:scale-95"
               aria-label="Previous testimonial"
             >
               <FaChevronLeft className="w-5 h-5" />
@@ -158,7 +158,7 @@ export default function TestimonialsSection() {
             </div>
             <button
               onClick={nextSlide}
-              className="w-14 h-14 rounded-full bg-white border border-gray-100 shadow-lg flex items-center justify-center text-gray-900 hover:bg-orange-500 hover:text-white hover:border-orange-500 transition-all active:scale-95"
+              className="w-12 h-12 rounded-full bg-white border border-gray-100 shadow-md flex items-center justify-center text-gray-900 hover:bg-orange-500 hover:text-white hover:border-orange-500 transition-all active:scale-95"
               aria-label="Next testimonial"
             >
               <FaChevronRight className="w-5 h-5" />

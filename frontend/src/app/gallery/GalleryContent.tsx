@@ -204,7 +204,7 @@ export default function GalleryContent() {
   const labImages = galleryImages.filter(img => img.category === "Our Labs");
 
   return (
-    <main className="min-h-screen bg-white pt-32 pb-24 font-sans">
+    <main className="min-h-screen bg-transparent pt-32 pb-24 font-sans">
       <article ref={ref} className="mx-auto px-4 md:px-8 lg:px-16 max-w-screen-2xl">
         {/* Section Header */}
         <motion.header

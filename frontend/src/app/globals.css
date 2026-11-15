@@ -872,3 +872,62 @@ a[href^="#"] {
   left: 50%;
   transform: translateX(-50%);
 }
+/* Selected text: gradient (bg-clip-text) headings use a transparent fill, which
+   makes them invisible on the selection highlight. Give them a readable fill. */
+::selection {
+  background-color: #fed7aa;
+  color: #111827;
+}
+
+.bg-clip-text::selection,
+.bg-clip-text *::selection {
+  -webkit-text-fill-color: #9a3412;
+  color: #9a3412;
+  background-color: #fed7aa;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Fit-to-screen sections (desktop / laptop)
+   Each `.fit` section fills exactly one screen (viewport minus the header)
+   and its type + spacing scale with the viewport HEIGHT as well as width,
+   so a 13" MacBook (≈1440×700) and a 27" monitor both show the section whole.
+   ───────────────────────────────────────────────────────────── */
+:root { --hdr: 5.5rem; }
+
+@media (min-width: 1024px) and (min-height: 500px) {
+  /* Sections never grow to fill the screen (that created uneven blank bands);
+     they simply keep their content within one screen and share one even rhythm. */
+  .fit {
+    padding-top: clamp(1.25rem, 4.4vh, 3.25rem) !important;
+    padding-bottom: clamp(1.25rem, 4.4vh, 3.25rem) !important;
+  }
+  .fit > * { width: 100%; }
+  .fit-h2 {
+    font-size: clamp(1.5rem, min(4.4vh, 3vw), 3rem) !important;
+    line-height: 1.1 !important;
+    margin-bottom: clamp(0.4rem, 1.4vh, 1.25rem) !important;
+  }
+  .fit-lead {
+    font-size: clamp(0.78rem, min(2vh, 1.15vw), 1.125rem) !important;
+    line-height: 1.42 !important;
+  }
+  .fit-title {
+    font-size: clamp(0.95rem, min(2.5vh, 1.6vw), 1.5rem) !important;
+    line-height: 1.2 !important;
+  }
+  .fit-stack > * + * { margin-top: clamp(0.4rem, 1.5vh, 1.25rem) !important; }
+  .fit-gap { gap: clamp(0.6rem, 2.2vh, 2rem) !important; }
+  .fit-mb { margin-bottom: clamp(0.5rem, 2.2vh, 2.5rem) !important; }
+  .fit-pad { padding: clamp(0.75rem, 3vh, 3rem) !important; }
+  .fit-py { padding-top: clamp(0.4rem, 1.6vh, 1.75rem) !important; padding-bottom: clamp(0.4rem, 1.6vh, 1.75rem) !important; }
+}
+
+@media (min-width: 1024px) and (min-height: 500px) {
+  .fit-hero-a { font-size: clamp(1.25rem, min(3.6vh, 2.6vw), 3rem) !important; line-height: 1.15 !important; margin-bottom: 0 !important; }
+  .fit-hero-b { font-size: clamp(2rem, min(7.4vh, 5.2vw), 4.75rem) !important; line-height: 1.05 !important; margin-top: clamp(0.25rem, 1vh, 0.75rem) !important; }
+  .fit-hero-pad { padding-top: clamp(0.5rem, 3vh, 4rem) !important; padding-bottom: clamp(6.5rem, 24vh, 13rem) !important; gap: clamp(1rem, 3vh, 3rem) !important; }
+  .fit-btn { padding: clamp(0.55rem, 1.8vh, 1rem) clamp(1.25rem, 2.6vh, 2rem) !important; font-size: clamp(0.875rem, 2vh, 1rem) !important; }
+  .fit-num { font-size: clamp(1.4rem, min(3.6vh, 2.2vw), 2rem) !important; }
+  .fit-icon { width: clamp(2rem, 5vh, 3.5rem) !important; height: clamp(2rem, 5vh, 3.5rem) !important; }
+  .fit-h { height: clamp(14rem, 40vh, 26rem) !important; }
+}

@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import Image from "next/image";
+import SteamBanner from "@/components/ui/SteamBanner";
 
 /* ──────────────────────────────────────────
    Premium SVG Chart — Learning Retention
@@ -18,9 +18,9 @@ const retentionData = [
 
 function PremiumChart({ animate }: { animate: boolean }) {
   return (
-    <div className="relative w-full h-[350px] md:h-[450px] flex flex-col mt-8">
+    <div className="relative w-full h-[350px] md:h-[400px] lg:h-[clamp(190px,calc(100svh_-_27rem),420px)] flex flex-col mt-2 lg:mt-0">
       {/* 1. Percentages Row - Perfectly Aligned Top Baseline */}
-      <div className="flex items-center justify-between gap-2 md:gap-4 mb-4">
+      <div className="flex items-center justify-between gap-2 md:gap-4 mb-3">
         {retentionData.map((d, i) => (
           <motion.div
             key={`pct-${i}`}
@@ -59,7 +59,7 @@ function PremiumChart({ animate }: { animate: boolean }) {
       </div>
 
       {/* 3. Labels Row - Perfectly Aligned Bottom Baseline */}
-      <div className="flex items-start justify-between gap-2 md:gap-4 mt-6">
+      <div className="flex items-start justify-between gap-2 md:gap-4 mt-4">
         {retentionData.map((d, i) => (
           <div key={`lbl-${i}`} className="flex-1 text-center">
             <span className="text-[9px] md:text-xs font-bold text-gray-700 leading-tight block">
@@ -104,65 +104,52 @@ export default function WhatIsStemSection() {
   return (
     <>
       {/* ═══════════════════════════════════
-          SECTION 1: What is STEM? - Sleek overlapping design
+          FRAME 1: What is STEM / STEAM?
           ═══════════════════════════════════ */}
-      <section ref={stemRef} className="relative pt-4 pb-16 lg:pt-6 lg:pb-24 px-4 overflow-hidden bg-white">
-        {/* Subtle decorative background */}
+      <section ref={stemRef} className="fit relative py-10 lg:py-12 px-4 overflow-hidden bg-transparent">
         <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-gradient-to-br from-orange-50 to-transparent rounded-full blur-3xl opacity-50 -translate-y-1/2 translate-x-1/3 pointer-events-none" />
 
-        <div className="mx-auto px-4 md:px-8 lg:px-16 relative z-10 w-full">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-            
-            {/* Left: Text Content - Clean, modern typography */}
+        <div className="max-w-[1680px] mx-auto px-4 md:px-8 lg:px-16 relative z-10 w-full">
+          <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 fit-gap items-center">
+
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={isStemInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.7 }}
             >
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-orange-100/80 border border-orange-200 mb-6">
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-orange-100/80 border border-orange-200 mb-5">
                 <span className="text-xs font-bold text-orange-700 uppercase tracking-widest">Introduction</span>
               </div>
-              
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-8 leading-[1.1] tracking-tight">
+
+              <h2 className="fit-h2 text-4xl md:text-5xl font-black text-gray-900 mb-6 leading-[1.1] tracking-tight">
                 The Foundation of <br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-orange-400">
                   Modern Education
                 </span>
               </h2>
-              
-              <div className="space-y-6 mt-10">
-                <div className="pl-6 border-l-4 border-orange-500">
-                  <span className="block text-3xl md:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-orange-600 to-orange-400 mb-3">
+
+              <div className="space-y-5 fit-stack">
+                <div className="pl-5 border-l-4 border-orange-500">
+                  <span className="fit-title block text-2xl md:text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-orange-600 to-orange-400 mb-2">
                     What is STEM/STEAM?
                   </span>
-                  <p className="text-gray-600 text-lg md:text-xl leading-relaxed font-medium">
-                    It stands for Science, Technology, Engineering, Arts, and Mathematics. 
+                  <p className="fit-lead text-gray-700 text-lg leading-relaxed font-medium">
+                    It stands for Science, Technology, Engineering, Arts, and Mathematics.
                     But beyond the acronym, it is a revolutionary interdisciplinary approach to learning.
                   </p>
                 </div>
-                <p className="text-gray-500 text-lg leading-relaxed pl-6">
+                <p className="fit-lead text-gray-600 text-lg leading-relaxed pl-5">
                   STEM education integrates these four critical disciplines, replacing isolated subject teaching with project-based, experiential learning. It emphasizes critical thinking, robust problem-solving, and practical application to prepare students for the complex, technology-driven careers of the future.
                 </p>
               </div>
             </motion.div>
 
-            {/* Right: Premium Image Presentation */}
             <motion.div
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={isStemInView ? { opacity: 1, scale: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="relative"
             >
-              <div className="relative aspect-[16/9] lg:aspect-[4/3] w-full mx-auto">
-                <Image
-                  src="/images/stem-education-banner.png"
-                  alt="STEM - Science, Technology, Engineering, Mathematics Collaboration"
-                  fill
-                  className="object-contain drop-shadow-xl z-10 relative"
-                  sizes="(max-width: 1024px) 100vw, 800px"
-                  priority
-                />
-              </div>
+              <SteamBanner />
             </motion.div>
 
           </div>
@@ -170,55 +157,51 @@ export default function WhatIsStemSection() {
       </section>
 
       {/* ═══════════════════════════════════
-          SECTION 2: Benefit of STEM Education 
+          FRAME 2: Benefits of STEM education
           ═══════════════════════════════════ */}
-      <section ref={benefitRef} className="py-20 lg:py-28 px-4 bg-gray-900 text-white relative overflow-hidden">
-        {/* Dark theme premium background with subtle glow */}
+      <section ref={benefitRef} className="fit py-10 lg:py-12 px-4 bg-gray-900 text-white relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('/images/ui/grid-pattern.svg')] opacity-5" />
         <div className="absolute top-1/2 left-1/4 w-[600px] h-[600px] bg-teal-500/20 rounded-full blur-[100px] -translate-y-1/2 -translate-x-1/2 pointer-events-none" />
         <div className="absolute top-1/2 right-0 w-[500px] h-[500px] bg-orange-500/10 rounded-full blur-[100px] -translate-y-1/2 pointer-events-none" />
 
-        <div className="mx-auto px-4 md:px-8 lg:px-16 relative z-10 w-full">
-          
-          <div className="text-center w-full mx-auto mb-16 lg:mb-20">
-            <motion.h2 
+        <div className="max-w-[1680px] mx-auto px-4 md:px-8 lg:px-16 relative z-10 w-full">
+
+          <div className="text-center w-full mx-auto mb-8 fit-mb">
+            <motion.h2
               initial={{ opacity: 0, y: 20 }}
               animate={isBenefitInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6 }}
-              className="text-3xl md:text-5xl lg:text-6xl font-black mb-6 tracking-tight text-white max-w-4xl mx-auto"
+              className="fit-h2 text-3xl md:text-4xl lg:text-5xl font-black mb-3 tracking-tight text-white max-w-4xl mx-auto"
             >
               Benefit of <span className="text-teal-400">STEM Education</span> / <br /> Hands-On Learning
             </motion.h2>
-            <motion.p 
+            <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={isBenefitInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.1, duration: 0.6 }}
-              className="text-gray-300 text-lg md:text-xl"
+              className="fit-lead text-gray-300 text-base md:text-lg max-w-3xl mx-auto"
             >
               Research consistently demonstrates that hands-on, experiential learning drastically outperforms traditional lecture-based pedagogies.
             </motion.p>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
-            
-            {/* Left: The Premium Chart */}
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 fit-gap items-center">
+
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               animate={isBenefitInView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.7 }}
-              className="bg-white/5 backdrop-blur-md rounded-2xl p-4 md:p-10 border border-white/10 shadow-2xl relative"
+              className="bg-white/5 backdrop-blur-md rounded-2xl p-4 md:p-5 border border-white/10 shadow-2xl relative"
             >
-              <div className="absolute -top-4 -left-4 w-20 h-20 bg-teal-500/30 blur-2xl rounded-full" />
-              <h3 className="text-xl font-bold text-white mb-2 text-center">Learning Retention Rates</h3>
-              <p className="text-sm text-gray-400 text-center mb-8">Comparison of instructional methodologies</p>
-              
-              <div className="bg-white rounded-xl p-4 md:p-8 shadow-inner overflow-hidden">
+              <h3 className="fit-title text-lg font-bold text-white mb-1 text-center">Learning Retention Rates</h3>
+              <p className="text-xs text-gray-400 text-center mb-3">Comparison of instructional methodologies</p>
+
+              <div className="bg-white rounded-xl p-3 md:p-4 shadow-inner overflow-hidden">
                 <PremiumChart animate={isBenefitInView} />
               </div>
             </motion.div>
 
-            {/* Right: The Core Benefits Grid */}
-            <div className="grid sm:grid-cols-2 gap-x-8 gap-y-12">
+            <div className="grid sm:grid-cols-2 gap-x-6 gap-y-7 fit-gap">
               {benefits.map((b, i) => (
                 <motion.div
                   key={b.title}
@@ -227,14 +210,14 @@ export default function WhatIsStemSection() {
                   transition={{ delay: 0.3 + (i * 0.1), duration: 0.6 }}
                   className="relative group"
                 >
-                  <div className="absolute -left-4 top-0 w-1 h-0 bg-teal-500 transition-all duration-300 group-hover:h-full rounded-full" />
-                  <div className="flex items-center gap-3 mb-3">
-                    <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-teal-400 font-bold text-sm border border-white/5">
+                  <div className="absolute -left-3 top-0 w-1 h-0 bg-teal-500 transition-all duration-300 group-hover:h-full rounded-full" />
+                  <div className="flex items-center gap-2 mb-2">
+                    <div className="w-7 h-7 rounded-full bg-white/10 flex items-center justify-center text-teal-400 font-bold text-[11px] border border-white/5 shrink-0">
                       0{i + 1}
                     </div>
-                    <h4 className="text-lg font-bold text-white leading-tight">{b.title}</h4>
+                    <h4 className="fit-title text-base font-bold text-white leading-tight">{b.title}</h4>
                   </div>
-                  <p className="text-gray-400 text-sm leading-relaxed pl-11">
+                  <p className="fit-lead text-gray-300 text-sm leading-relaxed pl-9">
                     {b.text}
                   </p>
                 </motion.div>

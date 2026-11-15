@@ -37,12 +37,21 @@ export const metadata: Metadata = {
     description:
       "India's leading provider of robotics, AI, and STEM education solutions for schools.",
     type: "website",
+    images: [
+      {
+        url: "https://learn.stemmantra.com/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "STEMmantra Logo",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "STEMmantra - Master The Skills, Drive Your Future",
     description:
       "India's leading provider of robotics, AI, and STEM education solutions for schools.",
+    images: ["https://learn.stemmantra.com/og-image.png"],
   },
   alternates: {
     canonical: "https://www.stemmantra.com",
@@ -53,7 +62,9 @@ export default function HomePage() {
   return (
     <>
       <Header />
-      <main className="min-h-screen">
+      
+
+      <main className="min-h-screen relative z-10 bg-transparent">
         {/* Hero Section with Video Background */}
         <HeroSection />
 

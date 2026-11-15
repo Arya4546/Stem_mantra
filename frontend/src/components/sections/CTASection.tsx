@@ -11,50 +11,50 @@ export default function CTASection() {
   const isInView = useInView(ref, { once: true, amount: 0.3 });
 
   return (
-    <section ref={ref} className="py-0 bg-white">
+    <section ref={ref} className="fit py-10 lg:py-12 bg-transparent">
       {/* Heavy Split Level CTA instead of a weak single floating card */}
-      <div className="mx-auto px-0 md:px-8 lg:px-16">
+      <div className="max-w-[1680px] mx-auto px-4 md:px-8 lg:px-16">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5 }}
-          className="mx-auto grid lg:grid-cols-2 shadow-2xl overflow-hidden rounded-none md:rounded-3xl"
+          className="mx-auto grid lg:grid-cols-2 shadow-2xl overflow-hidden rounded-2xl md:rounded-3xl ring-1 ring-black/5"
         >
 
           {/* Left Side: Heavy Text / Action */}
-          <div className="bg-orange-600 p-10 md:p-16 text-white flex flex-col justify-center">
-            <div className="inline-block px-4 py-1.5 bg-black/20 font-black tracking-widest uppercase text-sm mb-6 w-fit">
+          <div className="bg-gradient-to-br from-orange-600 via-orange-600 to-orange-500 p-8 md:p-12 lg:p-14 fit-pad text-white flex flex-col justify-center">
+            <div className="inline-block px-4 py-1.5 bg-black/20 rounded-full font-bold tracking-wider uppercase text-sm mb-5 w-fit">
               Institutional Partnership
             </div>
 
-            <h2 className="text-4xl md:text-5xl font-black mb-6 leading-tight">
+            <h2 className="fit-h2 text-3xl md:text-4xl lg:text-5xl font-black mb-6 leading-tight">
               Establish A World-Class <br className="hidden md:block" />
-              <span className="text-black bg-white px-2 mt-2 inline-block">STEM Laboratory</span>
+              <span className="text-orange-600 bg-white px-3 py-0.5 mt-2 inline-block rounded-lg">STEM Laboratory</span>
             </h2>
 
-            <p className="text-lg md:text-xl font-medium leading-relaxed mb-10 text-orange-50">
+            <p className="fit-lead text-base md:text-lg leading-relaxed mb-8 fit-mb text-orange-50">
               Join the 300+ forward-thinking K-12 institutions across India utilizing STEMmantra&apos;s robust
               <strong> Robotics, STEM/STEAM-Robotics, AI &amp; Coding, and Atal Tinkering Lab (ATL)</strong> pedagogical frameworks. Prepare your students for the intellectual demands of tomorrow.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 mb-10">
+            <div className="flex flex-col sm:flex-row gap-4 mb-10 fit-mb">
               <Link
                 href="/contact"
-                className="group flex items-center justify-center gap-3 px-8 py-5 bg-black text-white rounded-none font-black hover:bg-gray-900 transition-colors shadow-xl"
+                className="group flex items-center justify-center gap-3 fit-btn px-7 py-3.5 bg-gray-900 text-white rounded-xl font-bold hover:bg-black hover:-translate-y-0.5 transition-all shadow-xl"
               >
                 Schedule Technical Consultation
-                <FaArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                <FaArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
               <a
                 href={`tel:${SITE_CONFIG.contact.mobile}`}
-                className="flex items-center justify-center gap-3 px-8 py-5 bg-orange-700 text-white rounded-none font-bold border-2 border-orange-500 hover:bg-orange-800 transition-colors"
+                className="flex items-center justify-center gap-3 fit-btn px-7 py-3.5 bg-white/10 text-white rounded-xl font-semibold border border-white/30 hover:bg-white/20 transition-colors"
               >
-                <FaPhone className="w-5 h-5" />
+                <FaPhone className="w-4 h-4" />
                 {SITE_CONFIG.contact.mobile}
               </a>
             </div>
 
-            <div className="grid grid-cols-2 gap-4 border-t border-orange-500/50 pt-8 mt-auto">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm border-t border-white/20 pt-6 mt-auto">
               <div className="flex items-center gap-2 font-semibold">
                 <FaCheckCircle className="text-orange-300 w-5 h-5" /> NEP 2020 & NCF 2023 Aligned
               </div>
@@ -71,29 +71,29 @@ export default function CTASection() {
 
           </div>
 
-          {/* Right Side: Informational Contact / Proof (No gradients) */}
-          <div className="bg-gray-900 p-10 md:p-16 text-white flex flex-col justify-center border-l-8 border-orange-500">
-            <h3 className="text-3xl font-extrabold mb-8 text-orange-500">Corporate Headquarters</h3>
+          {/* Right Side: Informational Contact / Proof */}
+          <div className="relative overflow-hidden bg-gray-900 p-8 md:p-12 lg:p-14 fit-pad text-white flex flex-col justify-center">
+            <h3 className="fit-h2 text-2xl md:text-3xl font-black mb-8 text-orange-500 tracking-tight">Corporate Headquarters</h3>
 
-            <div className="space-y-8 mb-12">
+            <div className="space-y-8 fit-stack mb-12 fit-mb">
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-gray-800 flex items-center justify-center rounded-none flex-shrink-0">
+                <div className="w-11 h-11 bg-white/10 flex items-center justify-center rounded-xl flex-shrink-0">
                   <FaBuilding className="text-gray-400 w-5 h-5" />
                 </div>
                 <div>
-                  <div className="font-bold text-lg text-white mb-1">Corporate Address</div>
-                  <div className="text-gray-400 leading-relaxed font-medium">
+                  <div className="font-bold text-base text-white mb-1">Corporate Address</div>
+                  <div className="text-gray-400 text-sm fit-lead leading-relaxed">
                     {SITE_CONFIG.contact.address}
                   </div>
                 </div>
               </div>
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-gray-800 flex items-center justify-center rounded-none flex-shrink-0">
+                <div className="w-11 h-11 bg-white/10 flex items-center justify-center rounded-xl flex-shrink-0">
                   <FaChalkboardTeacher className="text-gray-400 w-5 h-5" />
                 </div>
                 <div>
-                  <div className="font-bold text-lg text-white mb-1">Curriculum Support</div>
-                  <div className="text-gray-400 leading-relaxed font-medium">
+                  <div className="font-bold text-base text-white mb-1">Curriculum Support</div>
+                  <div className="text-gray-400 text-sm fit-lead leading-relaxed">
                     {SITE_CONFIG.contact.email}
                     <br />Support Hours: Mon-Sat, 9AM-6PM
                   </div>
@@ -101,12 +101,12 @@ export default function CTASection() {
               </div>
             </div>
 
-            <div className="bg-gray-800 p-6 border-l-4 border-orange-500">
-              <div className="font-black text-xl mb-2">Request RFP Document</div>
-              <p className="text-sm font-medium text-gray-400 leading-relaxed mb-4">
+            <div className="bg-white/5 border border-white/10 rounded-2xl p-6 fit-pad">
+              <div className="font-bold text-lg mb-2">Request RFP Document</div>
+              <p className="text-sm text-gray-400 leading-relaxed mb-4">
                 Institutions requiring a comprehensive descriptive evaluation for large-scale multi-lab installations can request our official RFP documentation and technical specifications.
               </p>
-              <Link href="/contact" className="text-orange-500 font-bold hover:text-orange-400 flex items-center gap-2 text-sm uppercase tracking-widest">
+              <Link href="/contact" className="text-orange-500 font-bold hover:text-orange-400 flex items-center gap-2 text-sm uppercase tracking-wider">
                 Submit Request <FaArrowRight className="w-3 h-3" />
               </Link>
             </div>

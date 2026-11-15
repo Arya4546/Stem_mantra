@@ -46,70 +46,77 @@ export default function FAQSection() {
     const [openIndex, setOpenIndex] = useState<number | null>(0);
 
     return (
-        <section ref={ref} className="relative pt-12 pb-16 lg:pb-20 bg-gradient-to-br from-orange-50/50 via-white to-teal-50/50 overflow-hidden">
+        <section ref={ref} className="fit relative py-10 lg:py-12 bg-transparent overflow-hidden">
             <FloatingAnimations variant="section" density="low" />
-            <div className="mx-auto px-4 md:px-8 lg:px-16 relative z-10">
+            <div className="max-w-[1680px] mx-auto px-4 md:px-8 lg:px-16 relative z-10">
                 {/* Section Header */}
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     animate={isInView ? { opacity: 1, y: 0 } : {}}
                     transition={{ duration: 0.6 }}
-                    className="text-center max-w-5xl mx-auto mb-12"
+                    className="text-center max-w-5xl mx-auto mb-12 fit-mb"
                 >
-                    <span className="inline-flex items-center gap-2 px-4 py-1.5 bg-teal-100 text-teal-600 rounded-full text-sm font-semibold mb-4">
+                    <span className="inline-flex items-center gap-2 px-4 py-1.5 bg-teal-100/80 text-teal-700 rounded-full text-sm font-bold uppercase tracking-wider mb-4">
                         <HelpCircle className="w-4 h-4" />
                         Frequently Asked Questions
                     </span>
-                    <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                    <h2 className="fit-h2 text-3xl md:text-4xl lg:text-5xl font-black text-gray-900 mb-4 leading-tight tracking-tight">
                         Everything You Need to Know About{" "}
-                        <span className="bg-gradient-to-r from-orange-500 to-teal-500 bg-clip-text text-transparent">
+                        <span className="text-orange-500">
                             STEM Education
                         </span>
                     </h2>
-                    <p className="text-lg text-gray-600">
+                    <p className="fit-lead text-lg text-gray-600">
                         Get answers to common questions about our robotics labs, curriculum, training, and how we can help transform your school.
                     </p>
                 </motion.div>
 
-                {/* FAQ Accordion */}
-                <div className="max-w-5xl mx-auto">
-                    {faqs.map((faq, index) => (
-                        <motion.div
-                            key={index}
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={isInView ? { opacity: 1, y: 0 } : {}}
-                            transition={{ duration: 0.4, delay: index * 0.05 }}
-                            className="mb-4"
-                        >
-                            <button
-                                onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                                className={`w-full flex items-center justify-between p-5 rounded-xl text-left transition-all ${openIndex === index
-                                    ? "bg-gradient-to-r from-orange-500 to-teal-500 text-white shadow-lg"
-                                    : "bg-white text-gray-900 hover:bg-gray-50 border border-gray-100 shadow-sm"
-                                    }`}
-                            >
-                                <span className="font-semibold pr-4">{faq.question}</span>
-                                <ChevronDown
-                                    className={`w-5 h-5 flex-shrink-0 transition-transform ${openIndex === index ? "rotate-180" : ""
-                                        }`}
-                                />
-                            </button>
-                            <AnimatePresence>
-                                {openIndex === index && (
+                {/* FAQ Accordion — two balanced columns on desktop */}
+                <div className="mx-auto grid lg:grid-cols-2 gap-x-8 items-start">
+                    {[faqs.slice(0, Math.ceil(faqs.length / 2)), faqs.slice(Math.ceil(faqs.length / 2))].map((column, colIndex) => (
+                        <div key={colIndex}>
+                            {column.map((faq, i) => {
+                                const index = colIndex === 0 ? i : Math.ceil(faqs.length / 2) + i;
+                                return (
                                     <motion.div
-                                        initial={{ height: 0, opacity: 0 }}
-                                        animate={{ height: "auto", opacity: 1 }}
-                                        exit={{ height: 0, opacity: 0 }}
-                                        transition={{ duration: 0.3 }}
-                                        className="overflow-hidden"
+                                        key={index}
+                                        initial={{ opacity: 0, y: 20 }}
+                                        animate={isInView ? { opacity: 1, y: 0 } : {}}
+                                        transition={{ duration: 0.4, delay: index * 0.05 }}
+                                        className="mb-4 fit-mb"
                                     >
-                                        <div className="p-5 bg-white border border-t-0 border-gray-100 rounded-b-xl">
-                                            <p className="text-gray-600 leading-relaxed">{faq.answer}</p>
-                                        </div>
+                                        <button
+                                            onClick={() => setOpenIndex(openIndex === index ? null : index)}
+                                            className={`w-full flex items-center justify-between p-5 fit-py rounded-2xl text-left transition-all ${openIndex === index
+                                                ? "bg-gradient-to-r from-orange-500 to-teal-500 text-white shadow-lg"
+                                                : "bg-white text-gray-900 hover:bg-gray-50 border border-gray-100 shadow-sm"
+                                                }`}
+                                        >
+                                            <span className="fit-lead font-bold pr-4">{faq.question}</span>
+                                            <ChevronDown
+                                                className={`w-5 h-5 flex-shrink-0 transition-transform ${openIndex === index ? "rotate-180" : ""
+                                                    }`}
+                                            />
+                                        </button>
+                                        <AnimatePresence>
+                                            {openIndex === index && (
+                                                <motion.div
+                                                    initial={{ height: 0, opacity: 0 }}
+                                                    animate={{ height: "auto", opacity: 1 }}
+                                                    exit={{ height: 0, opacity: 0 }}
+                                                    transition={{ duration: 0.3 }}
+                                                    className="overflow-hidden"
+                                                >
+                                                    <div className="p-5 bg-white border border-t-0 border-gray-100 rounded-b-2xl">
+                                                        <p className="fit-lead text-gray-600 leading-relaxed">{faq.answer}</p>
+                                                    </div>
+                                                </motion.div>
+                                            )}
+                                        </AnimatePresence>
                                     </motion.div>
-                                )}
-                            </AnimatePresence>
-                        </motion.div>
+                                );
+                            })}
+                        </div>
                     ))}
                 </div>
 
@@ -118,9 +125,9 @@ export default function FAQSection() {
                     initial={{ opacity: 0, y: 30 }}
                     animate={isInView ? { opacity: 1, y: 0 } : {}}
                     transition={{ duration: 0.6, delay: 0.5 }}
-                    className="mt-12 max-w-3xl mx-auto text-center"
+                    className="mt-12 fit-mb max-w-3xl mx-auto text-center"
                 >
-                    <p className="text-gray-600">
+                    <p className="fit-lead text-gray-600">
                         Still have questions? Our team is ready to help you understand how STEMmantra can
                         transform your school&apos;s technology education.
                         <a href="/contact" className="text-orange-600 font-semibold hover:underline ml-1">

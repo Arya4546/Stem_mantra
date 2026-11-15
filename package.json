@@ -1,38 +1,20 @@
 {
   "name": "stem-mantra-monorepo",
   "version": "1.0.0",
-  "description": "STEMmantra - Educational Platform with Next.js Frontend and Node.js Backend",
+  "description": "STEMmantra - Next.js website (backend to be rebuilt)",
   "private": true,
   "workspaces": [
-    "frontend",
-    "backend"
+    "frontend"
   ],
   "scripts": {
-    "dev": "concurrently \"npm run dev:frontend\" \"npm run dev:backend\"",
-    "dev:frontend": "cd frontend && npm run dev",
-    "dev:backend": "cd backend && npm run dev",
-    "build": "npm run build:frontend && npm run build:backend",
-    "build:frontend": "cd frontend && npm run build",
-    "build:backend": "cd backend && npm run build",
-    "start": "concurrently \"npm run start:frontend\" \"npm run start:backend\"",
-    "start:frontend": "cd frontend && npm run start",
-    "start:backend": "cd backend && npm run start",
-    "install:all": "npm install && cd frontend && npm install && cd ../backend && npm install",
-    "db:generate": "cd backend && npx prisma generate",
-    "db:migrate": "cd backend && npx prisma migrate dev",
-    "db:migrate:prod": "cd backend && npx prisma migrate deploy",
-    "db:push": "cd backend && npx prisma db push",
-    "db:seed": "cd backend && npm run prisma:seed",
-    "db:studio": "cd backend && npx prisma studio",
-    "db:reset": "cd backend && npx prisma migrate reset",
-    "lint": "npm run lint:frontend && npm run lint:backend",
-    "lint:frontend": "cd frontend && npm run lint",
-    "lint:backend": "cd backend && npm run lint",
-    "type-check": "npm run type-check:frontend && npm run type-check:backend",
-    "type-check:frontend": "cd frontend && npm run type-check",
-    "type-check:backend": "cd backend && npx tsc --noEmit",
-    "clean": "rimraf frontend/node_modules frontend/.next backend/node_modules backend/dist node_modules",
-    "setup": "npm run install:all && npm run db:generate"
+    "dev": "cd frontend && npm run dev",
+    "build": "cd frontend && npm run build",
+    "start": "cd frontend && npm run start",
+    "lint": "cd frontend && npm run lint",
+    "type-check": "cd frontend && npm run type-check",
+    "docker:build": "docker compose build",
+    "docker:up": "docker compose up -d",
+    "clean": "rimraf frontend/node_modules frontend/.next node_modules"
   },
   "devDependencies": {
     "concurrently": "^8.2.2",
@@ -52,9 +34,7 @@
     "education",
     "robotics",
     "nextjs",
-    "nodejs",
     "typescript",
-    "prisma",
     "monorepo"
   ],
   "dependencies": {

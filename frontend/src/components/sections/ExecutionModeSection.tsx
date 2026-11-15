@@ -1,159 +1,95 @@
 "use client";
-
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-
-/* Inline SVG gear icon matching the brochure exactly */
-function GearsSvg() {
-  return (
-    <svg
-      viewBox="0 0 140 120"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className="w-full max-w-[90px] md:max-w-[140px] h-auto"
-    >
-      {/* Large gear (left) */}
-      <g>
-        <path
-          d="M52,22 L56,10 L64,10 L68,22 L78,18 L82,8 L90,12 L86,24 L94,32 L106,28 L110,36 L98,40 L100,50 L112,54 L110,62 L98,60 L94,70 L106,78 L100,84 L90,76 L82,82 L86,94 L78,96 L74,84 L64,86 L62,98 L54,96 L56,84 L46,78 L34,84 L30,76 L42,70 L38,60 L26,62 L24,54 L36,50 L34,40 L22,36 L26,28 L38,32 L46,24 L42,12 L50,8 L52,22Z"
-          fill="#3d5a80"
-          stroke="#2c4a6e"
-          strokeWidth="1"
-        />
-        <circle cx="67" cy="52" r="16" fill="white" stroke="#3d5a80" strokeWidth="2" />
-      </g>
-
-      {/* Small gear (right) */}
-      <g transform="translate(6, 0)">
-        <path
-          d="M100,50 L103,42 L108,42 L111,50 L118,47 L120,40 L125,43 L122,50 L128,56 L135,54 L137,59 L130,61 L131,68 L138,70 L137,75 L130,74 L127,80 L134,85 L130,89 L124,83 L119,87 L121,94 L116,96 L114,88 L108,90 L107,97 L102,96 L103,88 L97,84 L90,88 L87,83 L94,79 L92,72 L84,71 L84,66 L92,65 L93,58 L86,55 L88,50 L95,52 L100,50Z"
-          fill="#5a7fa5"
-          stroke="#3d5a80"
-          strokeWidth="1"
-        />
-        <circle cx="111" cy="70" r="11" fill="white" stroke="#3d5a80" strokeWidth="2" />
-      </g>
-
-      {/* Teal check circle (center overlap) */}
-      <circle cx="82" cy="58" r="22" fill="#5bc0be" />
-      <circle cx="82" cy="58" r="19" fill="#5bc0be" />
-      {/* Checkmark */}
-      <polyline
-        points="72,58 79,66 94,50"
-        fill="none"
-        stroke="white"
-        strokeWidth="4"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-
-      {/* Small decorative dots */}
-      <circle cx="52" cy="20" r="2.5" fill="#5a7fa5" opacity="0.5" />
-      <circle cx="60" cy="15" r="2" fill="#f97316" opacity="0.6" />
-      <circle cx="68" cy="18" r="2.5" fill="#5a7fa5" opacity="0.5" />
-      <circle cx="76" cy="14" r="2" fill="#f97316" opacity="0.6" />
-
-      <circle cx="60" cy="98" r="2.5" fill="#5a7fa5" opacity="0.5" />
-      <circle cx="68" cy="102" r="2" fill="#f97316" opacity="0.6" />
-      <circle cx="76" cy="100" r="2.5" fill="#5a7fa5" opacity="0.5" />
-      <circle cx="84" cy="103" r="2" fill="#f97316" opacity="0.6" />
-    </svg>
-  );
-}
+import { Users, GraduationCap, CheckCircle2 } from "lucide-react";
 
 export default function ExecutionModeSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.15 });
 
+  const models = [
+    {
+      Icon: Users,
+      title: "Lead by STEMmantra Team",
+      text: "A dedicated STEMmantra Engineer visits your school to conduct hands-on sessions for students directly, following a structured time schedule.",
+      points: ["Zero hassle for school staff", "Expert-led instruction", "Predictable scheduling"],
+      tile: "bg-orange-100 text-orange-600",
+      check: "text-orange-500",
+      border: "border-orange-100 hover:border-orange-300",
+      glow: "bg-orange-100",
+    },
+    {
+      Icon: GraduationCap,
+      title: "Lead by School Teachers",
+      text: "STEMmantra Engineers comprehensively train your school teachers, empowering them to confidently conduct sessions for their students.",
+      points: ["Builds internal school capability", "Deepens teacher-student bonds", "Flexible scheduling"],
+      tile: "bg-teal-100 text-teal-600",
+      check: "text-teal-500",
+      border: "border-teal-100 hover:border-teal-300",
+      glow: "bg-teal-100",
+    },
+  ];
+
   return (
-    <section
-      ref={ref}
-      className="w-full pt-8 lg:pt-12 pb-0 bg-white overflow-hidden"
-    >
-      <div className="mx-auto px-2 md:px-8 lg:px-16 max-w-6xl">
+    <section ref={ref} className="fit relative py-10 lg:py-12 px-4 bg-transparent overflow-hidden">
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-orange-50 rounded-full blur-[100px] opacity-60 -translate-y-1/2 translate-x-1/3 pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-teal-50 rounded-full blur-[100px] opacity-60 translate-y-1/2 -translate-x-1/3 pointer-events-none" />
 
-        {/* EXECUTION heading — orange, bold, underlined */}
-        <motion.h3
-          initial={{ opacity: 0, y: 15 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.4 }}
-          className="text-3xl md:text-4xl font-black text-orange-500 mb-12 tracking-tight text-center"
-          style={{
-            textDecoration: "underline",
-            textDecorationColor: "#f97316",
-            textUnderlineOffset: "6px",
-            textDecorationThickness: "3px",
-          }}
-        >
-          EXECUTION
-        </motion.h3>
+      <div className="max-w-[1680px] mx-auto px-4 md:px-8 lg:px-16 relative z-10 w-full">
+        <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 fit-gap items-center">
 
-        {/* Main diagram container - Using a mathematical grid layout to guarantee perfect dashed-line alignment */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="relative flex flex-col items-center w-full max-w-[1000px] mx-auto pb-2"
-        >
-          {/* Top Box ("Mode of Execution") */}
-          {/* We calculate width exactly. If left/right columns are 34%, their centers sit exactly at 17% and 83% of the container. 83-17 = 66%. Thus, a 66% width top box guarantees edges align perfectly with column centers regardless of screen size. */}
-          <div className="relative w-[66%] flex justify-center z-10">
-            {/* Outline box */}
-            <div className="w-full border-[3px] border-solid border-[#555] border-l-dashed border-r-dashed bg-white py-4 md:py-6 shadow-sm">
-              <h2 className="text-xl sm:text-2xl md:text-4xl lg:text-[42px] font-bold text-gray-900 text-center tracking-tight" style={{ fontFamily: "'Georgia', 'Times New Roman', serif" }}>
-                Mode of Execution
-              </h2>
+          {/* Left: heading */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.5 }}
+            className="lg:col-span-4"
+          >
+            <span className="inline-block px-4 py-1.5 bg-white border border-gray-200 text-gray-600 rounded-full text-sm font-bold uppercase tracking-wider mb-4 shadow-sm">
+              Implementation
+            </span>
+            <h2 className="fit-h2 text-3xl md:text-4xl lg:text-5xl font-black text-gray-900 mb-5 leading-tight tracking-tight">
+              Flexible Modes of <span className="text-orange-500">Execution</span>
+            </h2>
+            <div className="w-20 h-1.5 bg-orange-500 rounded-full mb-5 fit-mb" />
+            <p className="fit-lead text-lg text-gray-600 leading-relaxed">
+              We adapt to your school&apos;s operational needs. Choose to have our expert engineers lead the sessions, or empower your own teachers through our comprehensive training program.
+            </p>
+          </motion.div>
+
+          {/* Right: two models joined by an OR marker */}
+          <div className="lg:col-span-8 relative grid md:grid-cols-2 gap-6 fit-gap">
+            <div className="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-white rounded-full border border-gray-200 items-center justify-center shadow-md z-20">
+              <span className="text-sm font-bold text-gray-500">OR</span>
             </div>
-            
-            {/* Dashed lines attached to left and right edges */}
-            <div className="absolute left-[0px] md:left-[-1.5px] top-[100%] h-[40px] md:h-[60px] border-l-[2px] md:border-l-[3px] border-dashed border-[#888]"></div>
-            <div className="absolute right-[0px] md:right-[-1.5px] top-[100%] h-[40px] md:h-[60px] border-l-[2px] md:border-l-[3px] border-dashed border-[#888]"></div>
+
+            {models.map((m, i) => (
+              <motion.div
+                key={m.title}
+                initial={{ opacity: 0, x: i === 0 ? -30 : 30 }}
+                animate={isInView ? { opacity: 1, x: 0 } : {}}
+                transition={{ duration: 0.5, delay: 0.2 + i * 0.15 }}
+                className={`relative group overflow-hidden rounded-3xl bg-white/90 border ${m.border} shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 p-7 md:p-9 fit-pad`}
+              >
+                <div className={`absolute top-0 right-0 w-28 h-28 ${m.glow} rounded-bl-[100px] -z-0 opacity-70 transition-transform duration-500 group-hover:scale-110`} />
+                <div className={`relative fit-icon w-14 h-14 rounded-2xl flex items-center justify-center mb-5 fit-mb ${m.tile}`}>
+                  <m.Icon className="w-1/2 h-1/2" />
+                </div>
+                <h3 className="relative fit-title text-xl md:text-2xl font-black text-gray-900 mb-3 leading-tight tracking-tight">{m.title}</h3>
+                <p className="relative fit-lead text-gray-600 leading-relaxed mb-5 fit-mb">{m.text}</p>
+                <ul className="relative space-y-3 fit-stack">
+                  {m.points.map((item) => (
+                    <li key={item} className="flex items-center gap-3 text-gray-700 font-medium fit-lead">
+                      <CheckCircle2 className={`w-5 h-5 flex-shrink-0 ${m.check}`} />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
+            ))}
           </div>
 
-          {/* Bottom Row */}
-          <div className="flex w-full mt-[40px] md:mt-[60px] items-start">
-            
-            {/* Left Box (34% width) */}
-            <div className="w-[34%] flex flex-col items-center px-1 lg:px-4">
-              <div className="w-full border-[3px] md:border-[4px] border-[#f97316] rounded-lg md:rounded-xl bg-white px-2 md:px-6 py-4 md:py-8 text-center shadow-sm">
-                <span className="text-[14px] sm:text-lg md:text-2xl lg:text-[26px] font-bold text-gray-900 leading-snug md:leading-tight block" style={{ fontFamily: "'Georgia', 'Times New Roman', serif" }}>
-                  Lead by<br/>STEMMANTRA<br/>Team
-                </span>
-              </div>
-              <div className="my-2 md:my-3">
-                <div className="h-[20px] md:h-[40px] border-l-[2px] md:border-l-[3px] border-dashed border-[#888]"></div>
-              </div>
-              <p className="text-center text-gray-700 text-[10px] sm:text-xs md:text-base lg:text-lg font-medium leading-snug md:leading-relaxed">
-                STEMMANTRA Engineer will visit school to conduct session for the students as per given time schedule.
-              </p>
-            </div>
-
-            {/* Center Gear (32% width) */}
-            <div className="w-[32%] flex flex-col items-center justify-start -mt-2 md:-mt-6">
-              <GearsSvg />
-              <div className="mt-2 md:mt-4">
-                <div className="h-[40px] md:h-[100px] border-l-[2px] md:border-l-[3px] border-dashed border-orange-500"></div>
-              </div>
-            </div>
-
-            {/* Right Box (34% width) */}
-            <div className="w-[34%] flex flex-col items-center px-1 lg:px-4">
-              <div className="w-full border-[3px] md:border-[4px] border-[#f97316] rounded-lg md:rounded-xl bg-white px-2 md:px-6 py-4 md:py-8 text-center shadow-sm">
-                <span className="text-[14px] sm:text-lg md:text-2xl lg:text-[26px] font-bold text-gray-900 leading-snug md:leading-tight block" style={{ fontFamily: "'Georgia', 'Times New Roman', serif" }}>
-                  Lead by<br/>School<br/>Teachers
-                </span>
-              </div>
-              <div className="my-2 md:my-3">
-                <div className="h-[20px] md:h-[40px] border-l-[2px] md:border-l-[3px] border-dashed border-[#888]"></div>
-              </div>
-              <p className="text-center text-gray-700 text-[10px] sm:text-xs md:text-base lg:text-lg font-medium leading-snug md:leading-relaxed">
-                STEMMANTRA Engineer will train school teachers &amp; school teachers will conduct sessions for students.
-              </p>
-            </div>
-
-          </div>
-
-        </motion.div>
+        </div>
       </div>
     </section>
   );

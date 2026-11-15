@@ -3,6 +3,7 @@ export default {
   siteUrl: process.env.SITE_URL || 'https://www.stemmantra.com',
   generateRobotsTxt: true,
   sitemapSize: 5000,
+  trailingSlash: true,
   exclude: [
     '/api/*',
     '/admin',

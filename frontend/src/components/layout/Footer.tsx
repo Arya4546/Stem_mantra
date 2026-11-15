@@ -127,10 +127,10 @@ export default function Footer() {
             <div>
               <Link href="/" className="flex items-center mb-4">
                 <img
-                  src="/images/logo.png"
+                  src="/Logo_WT.png"
                   alt="STEMmantra Logo"
-                  className="h-14 w-auto object-contain"
-                  style={{ maxWidth: '180px' }}
+                  className="h-12 w-auto object-contain"
+                  style={{ maxWidth: '220px' }}
                 />
               </Link>
               <p className="text-gray-400 text-sm leading-relaxed max-w-sm">
@@ -204,7 +204,8 @@ export default function Footer() {
                 { label: "About Us", href: "/about" },
                 { label: "Programs", href: "/programs" },
                 { label: "Career", href: "/career" },
-                { label: "Learn", href: "https://learn.stemmantra.com/", external: true },
+                { label: "Learn (LMS)", href: "https://learn.stemmantra.com/", external: true },
+                { label: "Code Platform", href: "https://code.stemmantra.com/", external: true },
                 { label: "Gallery", href: "/gallery" },
                 { label: "Our Clients", href: "/clients" },
                 { label: "Contact", href: "/contact" },
@@ -242,12 +243,12 @@ export default function Footer() {
             </h4>
             <ul className="space-y-3">
               {[
-                { label: "ATL Labs", href: "/programs/atl-labs" },
-                { label: "Robotics & AI Labs", href: "/programs/robotics-lab" },
-                { label: "STEM Innovation Labs", href: "/programs/stem-lab" },
-                { label: "Coding Programs", href: "/programs/coding" },
-                { label: "Teacher Training", href: "/programs/teacher-training" },
-                { label: "Summer Camps", href: "/programs/summer-camps" },
+                { label: "STEAM & Robotics Lab", href: "/programs/steamverse-lab" },
+                { label: "Composite Skill Lab", href: "/programs/composite-skill-lab" },
+                { label: "AI & Coding Lab", href: "/programs/ai-coding-lab" },
+                { label: "Pre-Tinkering Lab", href: "/programs/pre-tinkering-lab" },
+                { label: "Innoverse Lab", href: "/programs/innoverse-lab" },
+                { label: "Atal Tinkering Lab", href: "/programs/atal-tinkering-lab" },
               ].map((link, index) => (
                 <li key={index}>
                   <Link
@@ -306,6 +307,7 @@ export default function Footer() {
         </div>
 
         {/* ATL Labs By State - Horizontal Row */}
+        {/*
         <div className="border-t border-gray-800 pt-8 mb-8">
           <h4 className="text-white font-semibold mb-4 text-center">ATL Lab Setup By State</h4>
           <div className="flex flex-wrap justify-center gap-4">
@@ -320,8 +322,9 @@ export default function Footer() {
             ))}
           </div>
         </div>
+        */}
 
-        {/* Newsletter Section */}
+        {/* Newsletter Section — hidden for now
         <div className="bg-gradient-to-r from-orange-500/10 to-teal-500/10 rounded-2xl p-6 sm:p-8 mb-12 border border-gray-800">
           <div className="flex flex-col items-center text-center md:text-left md:flex-row md:justify-between gap-6">
             <div>
@@ -340,6 +343,7 @@ export default function Footer() {
             </div>
           </div>
         </div>
+        */}
 
         {/* Bottom Bar */}
         <div className="border-t border-gray-800 pt-8">

@@ -13,7 +13,7 @@ export default function PrivacyPolicyPage() {
   return (
     <>
       <Header />
-      <main className="min-h-screen bg-white">
+      <main className="min-h-screen bg-transparent">
         <section className="pt-32 pb-20 px-4">
           <div className="mx-auto px-4 md:px-8 lg:px-16">
             <span className="inline-block px-4 py-1.5 bg-orange-100 text-orange-600 rounded-full text-sm font-semibold mb-4">

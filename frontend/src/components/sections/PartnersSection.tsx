@@ -29,26 +29,26 @@ export default function PartnersSection() {
   const isInView = useInView(ref, { once: true, amount: 0.3 });
 
   return (
-    <section ref={ref} className="relative pt-8 pb-16 bg-gradient-to-b from-gray-50 to-white overflow-hidden">
+    <section ref={ref} className="fit relative py-10 lg:py-12 bg-transparent overflow-hidden">
       <FloatingAnimations variant="section" density="low" />
-      <div className="mx-auto px-4 md:px-8 lg:px-16 relative z-10">
+      <div className="max-w-[1680px] mx-auto px-4 md:px-8 lg:px-16 relative z-10">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center max-w-3xl mx-auto mb-16"
+          className="text-center max-w-3xl mx-auto mb-16 fit-mb"
         >
-          <span className="inline-block px-4 py-1.5 bg-teal-100 text-teal-600 rounded-full text-sm font-semibold mb-4">
+          <span className="inline-block px-4 py-1.5 bg-teal-100/80 text-teal-700 rounded-full text-sm font-bold uppercase tracking-wider mb-4">
             Trusted Partners
           </span>
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+          <h2 className="fit-h2 text-3xl md:text-4xl lg:text-5xl font-black text-gray-900 mb-5 tracking-tight">
             Schools That{" "}
-            <span className="bg-gradient-to-r from-orange-500 to-teal-500 bg-clip-text text-transparent">
+            <span className="text-orange-500">
               Trust Us
             </span>
           </h2>
-          <p className="text-lg text-gray-600">
+          <p className="fit-lead text-lg text-gray-600">
             Partnering with India&apos;s leading educational institutions to deliver world-class STEM education
           </p>
         </motion.div>
@@ -61,11 +61,9 @@ export default function PartnersSection() {
           className="relative"
         >
           {/* Gradient Masks */}
-          <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-gray-50 to-transparent z-10" />
-          <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-gray-50 to-transparent z-10" />
 
           {/* Scrolling Container */}
-          <div className="overflow-hidden py-8">
+          <div className="overflow-hidden py-8 lg:py-[clamp(0.25rem,1.6vh,2rem)] [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)] [-webkit-mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]">
             <style>{`
               @keyframes marquee-scroll {
                 0% { transform: translateX(0%); }
@@ -80,7 +78,7 @@ export default function PartnersSection() {
               {allPartners.map((partner, index) => (
                 <div
                   key={index}
-                  className="flex-shrink-0 w-40 h-24 bg-white rounded-xl shadow-md border border-gray-100 flex items-center justify-center p-4 hover:shadow-lg hover:border-orange-200 transition-all duration-300 group"
+                  className="flex-shrink-0 w-40 h-24 lg:h-[clamp(4rem,11vh,6rem)] bg-white rounded-2xl shadow-sm border border-gray-100 flex items-center justify-center p-4 hover:shadow-lg hover:border-orange-200 transition-all duration-300 group"
                 >
                   {/* Placeholder for logo */}
                   <div className="text-center">
@@ -102,7 +100,7 @@ export default function PartnersSection() {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.5 }}
-          className="flex flex-wrap items-center justify-center gap-4 md:gap-8 mt-12"
+          className="flex flex-wrap items-center justify-center gap-4 md:gap-8 mt-12 fit-mb"
         >
           {[
             { label: "GeM Registered", icon: CheckCircle },
@@ -113,10 +111,10 @@ export default function PartnersSection() {
           ].map((badge, index) => (
             <div
               key={index}
-              className="flex items-center gap-2 px-5 py-2.5 bg-white rounded-full shadow-sm border border-gray-100 hover:border-orange-200 hover:shadow-md transition-all"
+              className="flex items-center gap-2 px-4 py-2 bg-white/90 rounded-full shadow-sm border border-gray-100 hover:border-orange-200 hover:shadow-md transition-all"
             >
               <span className="text-lg"><badge.icon className="w-5 h-5 text-orange-500" /></span>
-              <span className="text-sm font-medium text-gray-700">{badge.label}</span>
+              <span className="text-sm font-semibold text-gray-700">{badge.label}</span>
             </div>
           ))}
         </motion.div>
@@ -126,7 +124,7 @@ export default function PartnersSection() {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.7 }}
-          className="text-center mt-16"
+          className="text-center mt-16 fit-mb"
         >
           <p className="text-gray-600 mb-4">Want to partner with us?</p>
           <a
