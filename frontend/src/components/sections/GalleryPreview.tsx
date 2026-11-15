@@ -5,16 +5,15 @@ import { useRef } from "react";
 import Link from "next/link";
 import { motion, useInView } from "framer-motion";
 import { FaArrowRight, FaImages } from "react-icons/fa";
+import MediaImage from "@/components/ui/MediaImage";
+import type { GalleryPhoto } from "@/types/site";
 
-import { galleryImages } from "@/data/gallery";
-
-const sessionImages = galleryImages
-  .filter(img => img.category === "Session in Action")
-  .slice(0, 7);
-
-export default function GalleryPreview() {
+/** Home page "Moments of Innovation": the photos marked as featured in the admin. */
+export default function GalleryPreview({ images }: { images: GalleryPhoto[] }) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
+
+  if (images.length === 0) return null;
 
   return (
     <section ref={ref} className="fit relative py-10 lg:py-12 bg-transparent overflow-hidden">
@@ -65,7 +64,7 @@ export default function GalleryPreview() {
 
         {/* Photo mosaic — fixed row height so it always fits the screen */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4 fit-gap lg:[grid-auto-rows:clamp(7rem,27vh,17rem)]">
-          {sessionImages.map((image, i) => (
+          {images.slice(0, 7).map((image, i) => (
             <motion.div
               key={image.id}
               initial={{ opacity: 0, y: 20 }}
@@ -73,11 +72,13 @@ export default function GalleryPreview() {
               transition={{ duration: 0.5, delay: i * 0.1 }}
               className={`relative group overflow-hidden rounded-2xl shadow-sm hover:shadow-xl transition-shadow bg-gray-100 aspect-[4/3] lg:aspect-auto ${i === 0 ? "lg:col-span-2" : ""}`}
             >
-              <img
-                src={image.src}
-                alt={image.alt}
-                className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
-                loading="lazy"
+              <MediaImage
+                media={image.media}
+                alt={image.altText}
+                variant={i === 0 ? "full" : "thumb"}
+                fill
+                sizes={i === 0 ? "(min-width: 1024px) 50vw, 50vw" : "(min-width: 1024px) 25vw, 50vw"}
+                className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
               />
             </motion.div>
           ))}

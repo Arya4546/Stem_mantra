@@ -4,27 +4,11 @@ import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { BookOpen, CheckCircle, Award, Star } from "lucide-react";
 import FloatingAnimations from "@/components/animations/FloatingAnimations";
+import LogoMarquee from "@/components/sections/LogoMarquee";
+import type { ClientItem } from "@/types/site";
 
-// Partner schools and organizations - real logos from STEMmantra brochure
-const partners = [
-  { name: "St. Thomas School", logo: "/images/partners/partner-1.png" },
-  { name: "Shaheed Amar Singh Public School", logo: "/images/partners/partner-2.png" },
-  { name: "Unique Global Academy", logo: "/images/partners/partner-3.png" },
-  { name: "MBLM School", logo: "/images/partners/partner-4.png" },
-  { name: "GD Goenka Signature School", logo: "/images/partners/partner-5.png" },
-  { name: "Education Partner", logo: "/images/partners/partner-6.png" },
-  { name: "Muslim Education Society", logo: "/images/partners/partner-7.png" },
-  { name: "Prabhakar Sr. Sec. School", logo: "/images/partners/partner-8.png" },
-  { name: "Partner School", logo: "/images/partners/partner-9.png" },
-  { name: "Army School", logo: "/images/partners/partner-10.png" },
-  { name: "Partner Institution", logo: "/images/partners/partner-11.png" },
-  { name: "Mount Olympus School", logo: "/images/partners/partner-12.png" },
-];
-
-// Duplicate for seamless loop
-const allPartners = [...partners, ...partners];
-
-export default function PartnersSection() {
+/** Home page "Schools That Trust Us": logos of the clients marked "show in logo strip". */
+export default function PartnersSection({ clients }: { clients: ClientItem[] }) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.3 });
 
@@ -54,46 +38,19 @@ export default function PartnersSection() {
         </motion.div>
 
         {/* Partner Logos Marquee */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1 } : {}}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="relative"
-        >
-          {/* Gradient Masks */}
-
-          {/* Scrolling Container */}
-          <div className="overflow-hidden py-8 lg:py-[clamp(0.25rem,1.6vh,2rem)] [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)] [-webkit-mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]">
-            <style>{`
-              @keyframes marquee-scroll {
-                0% { transform: translateX(0%); }
-                100% { transform: translateX(-50%); }
-              }
-              .marquee-content {
-                animation: marquee-scroll 30s linear infinite;
-              }
-            `}</style>
-            <div className="flex gap-8 md:gap-12 w-max marquee-content hover:[animation-play-state:paused]">
-
-              {allPartners.map((partner, index) => (
-                <div
-                  key={index}
-                  className="flex-shrink-0 w-40 h-24 lg:h-[clamp(4rem,11vh,6rem)] bg-white rounded-2xl shadow-sm border border-gray-100 flex items-center justify-center p-4 hover:shadow-lg hover:border-orange-200 transition-all duration-300 group"
-                >
-                  {/* Placeholder for logo */}
-                  <div className="text-center">
-                    <div className="w-12 h-12 mx-auto bg-gradient-to-br from-orange-100 to-teal-100 rounded-lg flex items-center justify-center mb-2 group-hover:scale-110 transition-transform">
-                      <span className="text-orange-500 font-bold text-lg">
-                        {partner.name.charAt(0)}
-                      </span>
-                    </div>
-                    <span className="text-xs text-gray-500 line-clamp-1">{partner.name}</span>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </motion.div>
+        {clients.some((c) => c.logo) && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={isInView ? { opacity: 1 } : {}}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="py-8 lg:py-[clamp(0.25rem,1.6vh,2rem)]"
+          >
+            <LogoMarquee
+              clients={clients}
+              tileClassName="w-40 h-24 lg:h-[clamp(4rem,11vh,6rem)] bg-white rounded-2xl shadow-sm border border-gray-100 p-4"
+            />
+          </motion.div>
+        )}
 
         {/* Trust Badges */}
         <motion.div

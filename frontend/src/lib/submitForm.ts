@@ -1,9 +1,4 @@
-/**
- * Posts a form to the PHP mailer (public/send-mail.php) that ships with the static export.
- * Override with NEXT_PUBLIC_FORM_ENDPOINT if the mailer lives elsewhere (e.g. local testing).
- */
-const FORM_ENDPOINT = process.env.NEXT_PUBLIC_FORM_ENDPOINT || "/send-mail.php";
-
+/** Sends the contact / book-a-demo forms to the website API (saved + emailed to the sales team). */
 export interface FormPayload {
   type: "contact" | "demo";
   name: string;
@@ -16,26 +11,42 @@ export interface FormPayload {
   hp_trap?: string;
 }
 
-export async function submitForm(payload: FormPayload): Promise<void> {
+export class FormError extends Error {
+  constructor(
+    message: string,
+    public fieldErrors: Record<string, string> = {},
+  ) {
+    super(message);
+  }
+}
+
+export async function submitForm(payload: FormPayload): Promise<string> {
   let res: Response;
   try {
-    res = await fetch(FORM_ENDPOINT, {
+    res = await fetch("/api/public/enquiries", {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload),
+      headers: { "Content-Type": "application/json", Accept: "application/json" },
+      credentials: "same-origin",
+      body: JSON.stringify({ ...payload, sourcePath: window.location.pathname.slice(0, 300) }),
     });
   } catch {
-    throw new Error("Network error. Please check your connection and try again.");
+    throw new FormError("Network error. Please check your connection and try again.");
   }
 
-  let data: { ok?: boolean; error?: string } = {};
+  let body: { success?: boolean; message?: string; meta?: { errors?: Record<string, string> } } = {};
   try {
-    data = await res.json();
+    body = await res.json();
   } catch {
-    /* non-JSON response (e.g. PHP not available) */
+    /* non-JSON response */
   }
 
-  if (!res.ok || !data.ok) {
-    throw new Error(data.error || "Something went wrong. Please try again or contact us on WhatsApp.");
+  if (res.status === 429) {
+    throw new FormError(body.message || "Too many submissions. Please wait a few minutes or reach us on WhatsApp.");
   }
+  if (!res.ok || !body.success) {
+    const fieldErrors = body.meta?.errors ?? {};
+    const first = Object.values(fieldErrors)[0];
+    throw new FormError(first || body.message || "Something went wrong. Please try again or contact us on WhatsApp.", fieldErrors);
+  }
+  return body.message || "Thank you! We'll get back to you within 24 hours.";
 }

@@ -60,6 +60,7 @@ const config: Config = {
         "slide-down": "slide-down 0.5s ease-out",
         "scale-in": "scale-in 0.3s ease-out",
         "marquee": "marquee 40s linear infinite",
+        "logo-marquee": "logo-marquee var(--marquee-duration, 40s) linear infinite",
       },
       keyframes: {
         blob: {
@@ -95,6 +96,10 @@ const config: Config = {
         "marquee": {
           "0%": { transform: "translateX(0%)" },
           "100%": { transform: "translateX(-100%)" },
+        },
+        "logo-marquee": {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(-50%)" },
         },
       },
     },

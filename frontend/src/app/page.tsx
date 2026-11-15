@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
+import { orEmpty, siteApi } from "@/lib/site-api";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-import FloatingDemoButton from "@/components/ui/FloatingDemoButton";
 import HeroSection from "@/components/sections/HeroSection";
 import AboutSection from "@/components/sections/AboutSection";
 import LabSolutionsSection from "@/components/sections/LabSolutionsSection";
@@ -58,7 +58,17 @@ export const metadata: Metadata = {
   },
 };
 
-export default function HomePage() {
+// Testimonials, featured photos and client logos are managed in the admin panel.
+export const dynamic = "force-dynamic";
+
+export default async function HomePage() {
+  const [testimonials, featuredPhotos, clients] = await Promise.all([
+    orEmpty(siteApi.testimonials(), [], "testimonials"),
+    orEmpty(siteApi.featuredPhotos(7), [], "featured photos"),
+    orEmpty(siteApi.clients(), [], "clients"),
+  ]);
+  const logoClients = clients.filter((c) => c.isFeatured);
+
   return (
     <>
       <Header />
@@ -90,22 +100,21 @@ export default function HomePage() {
         <StatsSection />
 
         {/* Testimonials Section */}
-        <TestimonialsSection />
+        <TestimonialsSection testimonials={testimonials} />
 
         {/* FAQ Section - SEO Rich Content */}
         <FAQSection />
 
         {/* Gallery Preview */}
-        <GalleryPreview />
+        <GalleryPreview images={featuredPhotos} />
 
         {/* Partners/Clients Section */}
-        <PartnersSection />
+        <PartnersSection clients={logoClients} />
 
         {/* CTA Section */}
         <CTASection />
       </main>
       <Footer />
-      <FloatingDemoButton />
     </>
   );
 }

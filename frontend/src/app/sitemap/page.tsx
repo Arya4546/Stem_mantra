@@ -2,11 +2,12 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-import { FaHome, FaInfoCircle, FaFlask, FaImages, FaEnvelope, FaBriefcase, FaShieldAlt, FaFileContract, FaUndo, FaRobot, FaBrain, FaHandshake } from "react-icons/fa";
+import { FaHome, FaInfoCircle, FaFlask, FaImages, FaEnvelope, FaBriefcase, FaShieldAlt, FaFileContract, FaUndo, FaRobot, FaBrain, FaHandshake, FaNewspaper } from "react-icons/fa";
 import { BookOpen } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Sitemap | STEMmantra - STEM, Robotics & AI Education",
+  title: { absolute: "Sitemap | STEMmantra - STEM, Robotics & AI Education" },
+  alternates: { canonical: "https://www.stemmantra.com/sitemap" },
   description:
     "Navigate STEMmantra's complete website structure. Find all pages including programs, lab solutions, gallery, contact, and legal pages for STEM education services.",
   robots: { index: true, follow: true },
@@ -21,6 +22,7 @@ const siteLinks = [
       { name: "Our Programs", href: "/programs", icon: FaFlask, desc: "Explore Robotics, STEM/STEAM, AI & Coding, and ATL lab programs" },
       { name: "Gallery", href: "/gallery", icon: FaImages, desc: "View sessions in action, exhibitions, and media coverage" },
       { name: "Our Clients", href: "/clients", icon: FaHandshake, desc: "See the schools and educational institutions we partner with across India" },
+      { name: "Blog", href: "/blog", icon: FaNewspaper, desc: "Articles on STEM education, robotics, AI labs and Atal Tinkering Labs" },
       { name: "Contact Us", href: "/contact", icon: FaEnvelope, desc: "Get in touch for lab setup inquiries, demo requests, and partnerships" },
       { name: "Careers", href: "/career", icon: FaBriefcase, desc: "Join STEMmantra's team of educators and innovators" },
     ],

@@ -1,24 +1,14 @@
 "use client";
 
-import { ReactNode, Suspense } from "react";
-import QueryProvider from "./QueryProvider";
+import { ReactNode } from "react";
 import ToasterProvider from "./ToasterProvider";
-import { AuthProvider } from "./auth-provider";
 import { RouteLoadingProvider } from "./RouteLoadingProvider";
 
-interface ProvidersProps {
-  children: ReactNode;
-}
-
-export default function Providers({ children }: ProvidersProps) {
+export default function Providers({ children }: { children: ReactNode }) {
   return (
-    <QueryProvider>
-      <AuthProvider>
-        <RouteLoadingProvider>
-          {children}
-        </RouteLoadingProvider>
-        <ToasterProvider />
-      </AuthProvider>
-    </QueryProvider>
+    <RouteLoadingProvider>
+      {children}
+      <ToasterProvider />
+    </RouteLoadingProvider>
   );
 }

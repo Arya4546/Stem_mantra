@@ -3,7 +3,8 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy | STEMmantra - STEM, Robotics & AI Education",
+  title: { absolute: "Privacy Policy | STEMmantra - STEM, Robotics & AI Education" },
+  alternates: { canonical: "https://www.stemmantra.com/privacy-policy" },
   description:
     "Read STEMmantra's Privacy Policy to understand how we collect, use, and protect your personal information when you use our STEM education services and website.",
   robots: { index: true, follow: true },

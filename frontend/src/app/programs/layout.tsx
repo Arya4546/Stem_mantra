@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "STEM Labs & Innovation Programs for Schools | STEMmantra",
+  title: { absolute: "STEM Labs & Innovation Programs for Schools | STEMmantra" },
   description:
     "Explore STEMmantra's STEM, STEAM, robotics, AI, coding, tinkering and skill labs for schools, with hands-on curriculum, teacher enablement and future-ready learning programs.",
   keywords: [

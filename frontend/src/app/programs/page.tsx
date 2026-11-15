@@ -1,4 +1,5 @@
 import Header from "@/components/layout/Header";
+import { orEmpty, siteApi } from "@/lib/site-api";
 import Footer from "@/components/layout/Footer";
 import ProgramsHero from "@/components/sections/programs/ProgramsHero";
 import ProgramsCredibilityStrip from "@/components/sections/programs/ProgramsCredibilityStrip";
@@ -11,7 +12,15 @@ import ProgramsTrustSection from "@/components/sections/programs/ProgramsTrustSe
 import ProgramsFAQ from "@/components/sections/programs/ProgramsFAQ";
 import ProgramsFinalCTA from "@/components/sections/programs/ProgramsFinalCTA";
 
-export default function ProgramsPage() {
+// Client logos and testimonials are managed in the admin panel.
+export const dynamic = "force-dynamic";
+
+export default async function ProgramsPage() {
+  const [clients, testimonials] = await Promise.all([
+    orEmpty(siteApi.clients(), [], "clients"),
+    orEmpty(siteApi.testimonials(), [], "testimonials"),
+  ]);
+
   return (
     <>
       <Header />
@@ -38,7 +47,7 @@ export default function ProgramsPage() {
         <ProgramsGallerySection />
 
         {/* 8b. Trust & Testimonials */}
-        <ProgramsTrustSection />
+        <ProgramsTrustSection clients={clients.filter((c) => c.isFeatured)} testimonials={testimonials} />
 
         {/* 9. FAQ */}
         <ProgramsFAQ />

@@ -1,15 +1,21 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Self-contained server build for Docker (.next/standalone)
-  output: 'standalone',
-  trailingSlash: true,
+  // The site is served by the Node.js backend (backend/src/next-app.ts), which mounts Next.js as a
+  // custom server next to the /api and /media routes. Build with `next build`; no standalone output.
+  //
+  // URLs have no trailing slash (matches the canonical URLs and the sitemap); /about/ → 308 → /about.
+  trailingSlash: false,
   poweredByHeader: false,
+  // Responses are compressed by the backend (Express `compression`), not twice.
+  compress: false,
   images: {
-    // Images are served as-is (already optimised in /public); remote hosts allowed for CDN/B2 uploads later.
-    unoptimized: true,
+    // Optimises the photos shipped in /public (resized + WebP, cached in .next/cache/images).
+    // Admin uploads (/media/...) are already WebP with a thumbnail and use `unoptimized`.
+    formats: ['image/webp'],
+    minimumCacheTTL: 60 * 60 * 24 * 30,
     remotePatterns: [
-      { protocol: 'https', hostname: '**' },
-      { protocol: 'http', hostname: 'localhost', port: '3000', pathname: '/**' },
+      { protocol: 'https', hostname: 'www.stemmantra.com' },
+      { protocol: 'https', hostname: 'learn.stemmantra.com' },
     ],
   },
   experimental: {

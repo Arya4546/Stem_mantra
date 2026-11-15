@@ -29,11 +29,12 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
       - uses: docker/build-push-action@v6
         with:
-          context: ./frontend
+          context: .
+          file: ./Dockerfile
           push: true
           tags: |
-            ghcr.io/arya4546/stem_mantra-web:latest
-            ghcr.io/arya4546/stem_mantra-web:${{ github.sha }}
+            ghcr.io/arya4546/stem_mantra:latest
+            ghcr.io/arya4546/stem_mantra:${{ github.sha }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
@@ -49,13 +50,10 @@ jobs:
           username: ${{ secrets.VPS_USER }}
           key: ${{ secrets.VPS_SSH_KEY }}
           port: ${{ secrets.VPS_PORT }}
-          command_timeout: 10m
+          command_timeout: 15m
           script_stop: true
+          # Keep each command on one line: script_stop inserts an exit-code check after every line.
           script: |
             cd /opt/stemmantra-site
             git pull origin main
-            export IMAGE_TAG=${{ github.sha }}
-            docker compose pull web
-            docker compose up -d --no-deps --force-recreate web
-            docker image prune -f
-            echo "✅ STEMmantra site deployed (${IMAGE_TAG})"
+            bash deploy/deploy.sh ${{ github.sha }}

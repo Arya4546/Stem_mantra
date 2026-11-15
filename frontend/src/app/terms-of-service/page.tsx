@@ -3,7 +3,8 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 
 export const metadata: Metadata = {
-  title: "Terms of Service | STEMmantra - STEM, Robotics & AI Education",
+  title: { absolute: "Terms of Service | STEMmantra - STEM, Robotics & AI Education" },
+  alternates: { canonical: "https://www.stemmantra.com/terms-of-service" },
   description:
     "Review STEMmantra's Terms of Service governing the use of our website, STEM education programs, lab setup services, teacher training, and related offerings.",
   robots: { index: true, follow: true },

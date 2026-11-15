@@ -208,6 +208,7 @@ export default function Footer() {
                 { label: "Code Platform", href: "https://code.stemmantra.com/", external: true },
                 { label: "Gallery", href: "/gallery" },
                 { label: "Our Clients", href: "/clients" },
+                { label: "Blog", href: "/blog" },
                 { label: "Contact", href: "/contact" },
               ].map((link, index) => (
                 <li key={index}>

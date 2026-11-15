@@ -3,7 +3,7 @@ import AboutContent from "./AboutContent";
 
 /* ===================== SEO METADATA ===================== */
 export const metadata: Metadata = {
-  title: "About STEMmantra | STEM, Robotics & AI Lab Company in India",
+  title: { absolute: "About STEMmantra | STEM, Robotics & AI Lab Company in India" },
   description:
     "STEMmantra sets up STEM, robotics, AI & coding labs and Atal Tinkering Labs (ATL) in 300+ schools across India — NEP 2020 aligned curriculum, teacher training, plus our own LMS and online coding platform.",
   keywords: [

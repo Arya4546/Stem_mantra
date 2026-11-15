@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Contact Us | STEMmantra - Get In Touch for STEM Lab Setup",
+  title: { absolute: "Contact Us | STEMmantra - Get In Touch for STEM Lab Setup" },
   description:
     "Contact STEMmantra for Robotics Lab setup, ATL Lab implementation, teacher training, and STEM education solutions. Schedule a free consultation for your school. Based in Noida, serving schools across India.",
   keywords:

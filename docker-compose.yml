@@ -1,17 +1,30 @@
-# Runs on the VPS in /opt/stemmantra-site (see .github/workflows/deploy.yml).
-# The image is built in GitHub Actions and pulled from GHCR - the VPS never builds.
-# The API + Postgres services will be added here when the new backend is written.
+# Runs on the VPS in /opt/stemmantra-site (see README.md → Deployment).
+# The image is built by GitHub Actions and pulled from GHCR — the VPS never builds.
+#
+# One container serves everything on www.stemmantra.com: the Next.js pages, /api, /media, /admin.
+# Its database ("stemmantra_site") lives in the LMS Postgres container (stemmantra_db), reached
+# over the LMS compose network; `prisma migrate deploy` creates it on the first start.
 services:
-  web:
-    image: ghcr.io/arya4546/stem_mantra-web:${IMAGE_TAG:-latest}
-    container_name: stemmantra_web
+  app:
+    image: ghcr.io/arya4546/stem_mantra:${IMAGE_TAG:-latest}
+    container_name: stemmantra_site
     restart: always
-    ports:
-      - "127.0.0.1:3002:3000"   # nginx on the host proxies to this
+    init: true
+    env_file: .env            # /opt/stemmantra-site/.env — see backend/.env.example
     environment:
-      - NODE_ENV=production
+      NODE_ENV: production
+      PORT: 3000
+    ports:
+      - "127.0.0.1:3002:3000" # nginx on the host proxies to this (3000 = LMS, 3001 = TinkerGyan)
+    networks:
+      - lms
     logging:
       driver: "json-file"
       options:
         max-size: "10m"
         max-file: "3"
+
+networks:
+  lms:
+    name: stemmantra-lms_default   # created by the LMS compose project
+    external: true

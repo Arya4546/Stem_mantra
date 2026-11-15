@@ -1,23 +1,19 @@
 {
   "name": "stem-mantra-monorepo",
   "version": "1.0.0",
-  "description": "STEMmantra - Next.js website (backend to be rebuilt)",
+  "description": "STEMmantra website: Next.js frontend served by a Node.js (Express + Prisma) backend",
   "private": true,
-  "workspaces": [
-    "frontend"
-  ],
   "scripts": {
-    "dev": "cd frontend && npm run dev",
-    "build": "cd frontend && npm run build",
-    "start": "cd frontend && npm run start",
-    "lint": "cd frontend && npm run lint",
-    "type-check": "cd frontend && npm run type-check",
+    "install:all": "npm ci --prefix backend && npm ci --prefix frontend",
+    "dev": "npm run dev --prefix backend",
+    "build": "npm run build --prefix frontend && npm run build --prefix backend",
+    "start": "npm start --prefix backend",
+    "lint": "npm run lint --prefix frontend",
+    "type-check": "npm run type-check --prefix frontend && npm run typecheck --prefix backend",
     "docker:build": "docker compose build",
-    "docker:up": "docker compose up -d",
-    "clean": "rimraf frontend/node_modules frontend/.next node_modules"
+    "docker:up": "docker compose up -d"
   },
   "devDependencies": {
-    "concurrently": "^8.2.2",
     "rimraf": "^5.0.5"
   },
   "engines": {

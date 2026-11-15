@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import { Inter, Poppins } from "next/font/google";
 import "./globals.css";
-import SmoothScroll from "@/components/SmoothScroll";
 import Providers from "@/providers";
-import FloatingDemoButton from "@/components/ui/FloatingDemoButton";
+import PublicSiteExtras from "@/components/PublicSiteExtras";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -81,9 +80,6 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-  alternates: {
-    canonical: "https://www.stemmantra.com",
-  },
 };
 
 export default function RootLayout({
@@ -152,9 +148,8 @@ export default function RootLayout({
           }}
         />
         <Providers>
-          <SmoothScroll />
+          <PublicSiteExtras />
           {children}
-          <FloatingDemoButton />
         </Providers>
       </body>
     </html>

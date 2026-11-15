@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Careers | STEMmantra - Join India's Leading STEM Education Company",
+  title: { absolute: "Careers | STEMmantra - Join India's Leading STEM Education Company" },
   description:
     "Join STEMmantra's team of educators, curriculum developers, robotics trainers, and tech enthusiasts. Help us transform STEM education for schools across India.",
   keywords:

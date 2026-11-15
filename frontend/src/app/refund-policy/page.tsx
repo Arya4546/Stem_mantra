@@ -3,7 +3,8 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 
 export const metadata: Metadata = {
-  title: "Refund Policy | STEMmantra - STEM, Robotics & AI Education",
+  title: { absolute: "Refund Policy | STEMmantra - STEM, Robotics & AI Education" },
+  alternates: { canonical: "https://www.stemmantra.com/refund-policy" },
   description:
     "Understand STEMmantra's Refund and Cancellation Policy for lab setup services, equipment purchases, training programs, and educational solutions.",
   robots: { index: true, follow: true },
