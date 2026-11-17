@@ -70,7 +70,7 @@ export default function LoginForm() {
               onChange={(e) => setEmail(e.target.value)}
               required
               autoFocus
-              placeholder="admin@stemmantra.com"
+              placeholder="Enter your email address"
               className="w-full pl-12 pr-4 py-4 bg-white border border-slate-200 rounded-2xl text-slate-900 outline-none transition-all focus:border-orange-400 focus:ring-4 focus:ring-orange-100"
             />
           </div>

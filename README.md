@@ -81,12 +81,22 @@ Ports on the VPS: `3000` LMS, `3001` TinkerGyan, `3002` this site (bound to 127.
    - a new `JWT_ACCESS_SECRET`: `node -e "console.log(require('crypto').randomBytes(48).toString('base64url'))"`
 4. Let the VPS pull from GHCR: `docker login ghcr.io` (a GitHub user plus a PAT with `read:packages`),
    or make the package public.
-5. nginx: copy `deploy/nginx/stemmantra.com.conf` to `/etc/nginx/sites-available/stemmantra.com`,
-   enable it, run `certbot --nginx -d stemmantra.com -d www.stemmantra.com`, then
-   `nginx -t && systemctl reload nginx`.
-6. After the first GitHub Actions build: `cd /opt/stemmantra-site && bash deploy/deploy.sh latest`.
-7. DNS: point the `@` and `www` A records at the VPS. **Leave the MX / SPF / DKIM records
-   untouched**, because email stays on Hostinger.
+5. DNS (Hostinger): point the `@` and `www` **A records** at the VPS. Leave MX / SPF / DKIM /
+   DMARC and every other record untouched (email stays on Hostinger).
+6. nginx + certificate (needs step 5 to have propagated):
+   ```bash
+   mkdir -p /var/www/certbot /var/cache/nginx
+   cp deploy/nginx/stemmantra.com-http.conf /etc/nginx/sites-available/stemmantra.com-http
+   ln -s /etc/nginx/sites-available/stemmantra.com-http /etc/nginx/sites-enabled/
+   nginx -t && systemctl reload nginx
+   certbot certonly --webroot -w /var/www/certbot -d stemmantra.com -d www.stemmantra.com \
+     --deploy-hook "systemctl reload nginx"
+   cp deploy/nginx/stemmantra.com.conf /etc/nginx/sites-available/stemmantra.com
+   ln -s /etc/nginx/sites-available/stemmantra.com /etc/nginx/sites-enabled/
+   nginx -t && systemctl reload nginx
+   ```
+   Certificates renew automatically through certbot's systemd timer (`certbot renew --dry-run` to test).
+7. After the first GitHub Actions build: `cd /opt/stemmantra-site && bash deploy/deploy.sh latest`.
 
 **GitHub repository secrets:** `VPS_HOST`, `VPS_USER`, `VPS_SSH_KEY`, `VPS_PORT` (same as the LMS).
 
