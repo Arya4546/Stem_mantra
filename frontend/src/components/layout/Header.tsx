@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaPhone, FaArrowRight } from "react-icons/fa";
-import { ChevronDown, Menu, X, Microscope, Bot, Zap, Award, Target, Wrench, BookOpen, Code2, ExternalLink } from "lucide-react";
+import { ChevronDown, Menu, X, Microscope, Bot, Zap, Award, Target, Wrench, BookOpen, Code2, Briefcase, ExternalLink } from "lucide-react";
 import { SITE_CONFIG } from "@/lib/constants";
 
 export default function Header() {
@@ -54,6 +54,14 @@ export default function Header() {
       description: "Block coding, C++ & board simulator",
       Icon: Code2,
       tile: "bg-teal-100 text-teal-600",
+    },
+    {
+      title: "S-One",
+      host: "one.stemmantra.com",
+      href: "https://one.stemmantra.com/",
+      description: "HRMS & inventory workspace for your team",
+      Icon: Briefcase,
+      tile: "bg-indigo-100 text-indigo-600",
     },
   ];
 
